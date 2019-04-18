@@ -68,7 +68,7 @@ window.onpopstate = function () {
 <div class="login-box">
     <div class="login-logo">
 		<a href="index.html">
-			<b>Param Enterprises hi</b>
+			<b>Param Enterprises</b>
 		</a>
 	</div>
     
