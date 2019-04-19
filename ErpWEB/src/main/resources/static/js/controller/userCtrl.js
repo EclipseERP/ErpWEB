@@ -124,7 +124,7 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 		  $scope.totalOrdersCal();
 		  $scope.totalEventsCal();
 		  $scope.totalAppointmentsCal();
-	  }
+	  };
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //#########################################################################  All JS for ERP Software starts from here #################################################################################################	  
@@ -176,8 +176,40 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 				alert()
 			}
 			
+			
+			
+			/**
+			 * ********** To submit Raw Materials form data
+			 * ********************************************************************
+			 */ 
+			$scope.submititemList = function(itemData){
+		    	$http.post('/rawMaterials/addItemFormData/'+$scope.currentUserName,itemData).success(function(data) {
+		    		$scope.itemData = data;
+		    		$scope.itemTable = new NgTableParams({}, {
+		    			dataset : $scope.itemData
+				}, function myError(response) {
+					alert("Sorry, Some technical error occur");
+				});
+		    	}}
+		    		/**
+					 * ********** To submit Vendor Document form data
+					 * ********************************************************************
+					 */ 
+
+		    		$scope.submitVendorDocForm =function(vendordoc){
+		    			$http.post('/vendorctrl/addVendorFormData').success(function(vdata))
+		    			{$scope.vendorData = vdata;
+		    			 $scope.vendorTable= new NgTableParams({},{
+		    				 dataset : $scope.vendorData
+		    			 }, function myError(response)
+		    			{
+		    				 alert("Sorry, Some technical error occur");
+		    			});
+				    	}}
+		    		
+		    		
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //#########################################################################  All JS for ERP Software starts from here #################################################################################################	  
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++		 
-});
+);
 
