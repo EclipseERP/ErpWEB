@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ets.csm.model.User;
@@ -19,17 +20,13 @@ import com.ets.csm.service.VenueService;
 @Controller
 @RequestMapping("/vendorctrl")
 public class VendorController {
-	
-	
-	
+
 	
 	@Autowired
 	VendorService vendorService;
 	
 	@Autowired
 	UserService userService;
-	
-	
 	
 
 	@GetMapping("/vendorPageload")
@@ -57,6 +54,10 @@ public class VendorController {
 		return "/module/user/vendordoclist";
 	}
 	
+	@PostMapping("/addVendorFormData")
+	public @ResponseBody void addVendorData(@RequestBody Vendor v) {
+		
+	}
 	
 	
 	

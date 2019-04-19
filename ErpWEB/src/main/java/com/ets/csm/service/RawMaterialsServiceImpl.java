@@ -2,11 +2,13 @@ package com.ets.csm.service;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 
 import com.ets.csm.model.RawMaterials;
 import com.ets.csm.repository.RawMaterialsRepository;
 @Service
+
 public class RawMaterialsServiceImpl implements RawMaterialsService{
     @Autowired
 	RawMaterialsRepository rawmaterialrepository;
@@ -17,4 +19,12 @@ public class RawMaterialsServiceImpl implements RawMaterialsService{
 		rawmaterialrepository.save(raw);
 	}
 
+	
+	@Autowired
+	private RawMaterialsRepository RawMaterialsRepository;
+	
+	@Override
+	public RawMaterials saveOrUpdate(RawMaterials rm) {
+		return RawMaterialsRepository.save(rm);
+	}
 }

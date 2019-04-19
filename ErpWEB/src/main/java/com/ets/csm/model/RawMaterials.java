@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import com.ets.csm.model.User;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -21,9 +24,12 @@ public class RawMaterials {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
+	private User user;
 	
 	@Column(name = "name")
 	private String name;
+/*<<<<<<< HEAD
+=======
 	
 	@Column(name = "itemCode")
 	private String itemCode;
@@ -274,8 +280,37 @@ public class RawMaterials {
 		// TODO Auto-generated constructor stub
 	}
 	
+>>>>>>> branch 'master' of https://github.com/EclipseERP/ErpWEB.git
+*/	
+	@Column(name = "itemtype")
+	private String itemtype;
 	
+	@Column(name = "itemcode")
+	private String itemcode;
 	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 	
 	
 	
