@@ -3,6 +3,7 @@
                       <!--Form and Application Button-->
         <section class="content" ng-show="vendoraddshow">
             <div class="row">
+             <form  name="vendorForm">
                 <div class="col-md-12">
                     <div class="box box-primary">
                         <div class="box-header with-border">
@@ -16,7 +17,10 @@
                         <!-- /.box-header -->
                         <div class="box-body">
                             <div class="row">
-                            <form ng-submit="submitVendor(ven)" name="vendorForm">
+<!--                             <form ng-submit="submitVendor(ven)" name="vendorForm"> -->
+                            
+                           
+                            
 								<div class="col-md-6">	
 																
 									<div class="form-group">
@@ -70,26 +74,26 @@
 								</div>
 								<div class="col-md-6">									
 									<div class="form-group">
-										<label for="af7">IFSC Code </label>
-										<input type="text" class="form-control" id="af7" placeholder="">
+										<label for="af7">Bank Details ID </label>
+										<input type="text" ng-model="ven.bankDetailsID" class="form-control" id="af7" placeholder="">
 									</div>									
 								</div>
 								<div class="col-md-4">									
 									<div class="form-group">
-										<label for="af8">Bank Name </label>
-										<input type="text" class="form-control" id="af8" placeholder="">
+										<label for="af8">Vendor Type </label>
+										<input type="text" ng-model="ven.vendorType" class="form-control" id="af8" placeholder="">
 									</div>									
 								</div>
 								<div class="col-md-4">									
 									<div class="form-group">
-										<label for="af9">Branch Name </label>
-										<input type="text" class="form-control" id="af9" placeholder="">
+										<label for="af9">Vendor Code </label>
+										<input type="text" ng-model="ven.vendorCode" class="form-control" id="af9" placeholder="">
 									</div>									
 								</div>
 								<div class="col-md-4">									
 									<div class="form-group">
-										<label for="af91">Branch Code </label>
-										<input type="text" class="form-control" id="af91" placeholder="">
+										<label for="af91">Vendor Document ID</label>
+										<input type="text" ng-model="ven.vendorDocID" class="form-control" id="af91" placeholder="">
 									</div>									
 								</div>
 								<div class="col-md-6">									
@@ -116,14 +120,15 @@
 										<input type="text" ng-model="ven.country" class="form-control" id="af64" placeholder="">
 									</div>									
 								</div>
-								</form>
+							
                             </div>
                         </div>
 						<div class="box-footer" align="right">
-							<button type="submit" class="btn btn-primary pad40L pad40R mrg5L">Submit</button>
+							<button type="submit" ng-click="vendorDetailsADD(ven)"  class="btn btn-primary pad40L pad40R mrg5L">Submit</button>
 						</div>
                     </div>
-                </div>                
+                </div>  
+                </form>              
             </div>
         </section>
         

@@ -199,6 +199,20 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 				alert()
 			}
 			
+														
+			
+			
+			$scope.vendorDetailsADD=function(ven)
+			{
+				console.log("axsdfsdfsdfsd",ven);
+				alert("aaaaaaaaaaaaaaa");
+		    	console.log("Vendor Data...",ven);
+		    	$http.post('/vendorctrl/addVendor/'+$scope.currentUserName,ven).success(function(data) {
+		    	$scope.ven = null;
+				}, function myError(response) {
+					alert("Sorry, Some technical error occur");
+				});
+			}
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //#########################################################################  All JS for ERP Software starts from here #################################################################################################	  
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++		 

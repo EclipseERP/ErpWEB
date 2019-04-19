@@ -20,9 +20,6 @@ import com.ets.csm.service.VenueService;
 @RequestMapping("/vendorctrl")
 public class VendorController {
 	
-	
-	
-	
 	@Autowired
 	VendorService vendorService;
 	
@@ -30,8 +27,6 @@ public class VendorController {
 	UserService userService;
 	
 	
-	
-
 	@GetMapping("/vendorPageload")
 	public String vendorAdd()
 	{
