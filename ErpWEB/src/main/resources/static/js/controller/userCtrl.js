@@ -116,10 +116,6 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 	  }
 	 
 	  
-	  
-	  
-	  
-	  
 	  $scope.submitVendor = function(ven){
 		    alert("aaaaaaaaaaaaaaa");
 	    	console.log("Vendor Data...",ven);
@@ -130,15 +126,6 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 			});
 	    }
 	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
 	  //-----------------------Dash board Function-------------------------------------->
 	  
 	  $scope.dashboardFn = function(){
@@ -147,7 +134,7 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 		  $scope.totalOrdersCal();
 		  $scope.totalEventsCal();
 		  $scope.totalAppointmentsCal();
-	  }
+	  };
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //#########################################################################  All JS for ERP Software starts from here #################################################################################################	  
@@ -200,9 +187,6 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 			}
 			
 
-														
-			
-			
 			$scope.vendorDetailsADD=function(ven)
 			{
 				console.log("axsdfsdfsdfsd",ven);
@@ -231,11 +215,8 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 			
 		    $scope.submitItem=function(raw)
 		    {
+		    	console.log(raw)
 		    	
-		    	console.log("sdfsdf",raw)
-		    	
-		    	
-		    	console.log("user...",$scope.currentUserName);
 		    	$http.post('/rawMaterials/saveRawMaterial/'+$scope.currentUserName,raw).success(function(data) {
 					/*$scope.backToVenueList();*/
 		    		
@@ -246,12 +227,8 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 				});
 		    	
 		    	
-		    	
-		    	
-		    	
-		    	
 		    }
->>>>>>> branch 'master' of https://github.com/EclipseERP/ErpWEB.git
+
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //#########################################################################  All JS for ERP Software starts from here #################################################################################################	  
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++		 
