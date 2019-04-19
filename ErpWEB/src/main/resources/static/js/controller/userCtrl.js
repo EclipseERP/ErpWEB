@@ -116,10 +116,6 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 	  }
 	 
 	  
-	  
-	  
-	  
-	  
 	  $scope.submitVendor = function(ven){
 		    alert("aaaaaaaaaaaaaaa");
 	    	console.log("Vendor Data...",ven);
@@ -129,15 +125,6 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 				alert("Sorry, Some technical error occur");
 			});
 	    }
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
 	  
 	  //-----------------------Dash board Function-------------------------------------->
 	  
@@ -199,44 +186,7 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 				alert()
 			}
 			
-<<<<<<< HEAD
-			
-			
-			/**
-			 * ********** To submit Raw Materials form data
-			 * ********************************************************************
-			 */ 
-			$scope.submititemList = function(itemData){
-		    	$http.post('/rawMaterials/addItemFormData/'+$scope.currentUserName,itemData).success(function(data) {
-		    		$scope.itemData = data;
-		    		$scope.itemTable = new NgTableParams({}, {
-		    			dataset : $scope.itemData
-				}, function myError(response) {
-					alert("Sorry, Some technical error occur");
-				});
-		    	}}
-		    		/**
-					 * ********** To submit Vendor Document form data
-					 * ********************************************************************
-					 */ 
 
-		    		$scope.submitVendorDocForm =function(vendordoc){
-		    			$http.post('/vendorctrl/addVendorFormData').success(function(vdata))
-		    			{$scope.vendorData = vdata;
-		    			 $scope.vendorTable= new NgTableParams({},{
-		    				 dataset : $scope.vendorData
-		    			 }, function myError(response)
-		    			{
-		    				 alert("Sorry, Some technical error occur");
-		    			});
-				    	}}
-		    		
-		    		
-=======
-
-														
-			
-			
 			$scope.vendorDetailsADD=function(ven)
 			{
 				console.log("axsdfsdfsdfsd",ven);
@@ -278,10 +228,9 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 		    	
 		    	
 		    }
->>>>>>> branch 'master' of https://github.com/EclipseERP/ErpWEB.git
->>>>>>> branch 'master' of https://github.com/EclipseERP/ErpWEB.git
+
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //#########################################################################  All JS for ERP Software starts from here #################################################################################################	  
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++		 
-);
+});
 
