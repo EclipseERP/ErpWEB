@@ -225,9 +225,27 @@ public class RawMaterials {
 		this.qty = qty;
 	}
 
+	public String getUnit() {
+		return unit;
+	}
+
+	public void setUnit(String unit) {
+		this.unit = unit;
+	}
+
+	public String getHsno() {
+		return hsno;
+	}
+
+	public void setHsno(String hsno) {
+		this.hsno = hsno;
+	}
+
+
+
 	public RawMaterials(int id, String name, String itemCode, String city, String state, double amount, int companyId,
 			int projectId, int vendorId, int gst, double totalAmount, int itemType, String transportationCode,
-			Date dateOfEntry, String descriptionHSNno, User user, int rate, int qty) {
+			Date dateOfEntry, String descriptionHSNno, User user, int rate, int qty, String unit, String hsno) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -247,6 +265,8 @@ public class RawMaterials {
 		this.user = user;
 		this.rate = rate;
 		this.qty = qty;
+		this.unit = unit;
+		this.hsno = hsno;
 	}
 
 	public RawMaterials() {

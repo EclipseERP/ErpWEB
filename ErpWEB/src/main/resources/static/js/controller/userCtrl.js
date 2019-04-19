@@ -215,11 +215,8 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 			
 		    $scope.submitItem=function(raw)
 		    {
+		    	console.log(raw)
 		    	
-		    	console.log("sdfsdf",raw)
-		    	
-		    	
-		    	console.log("user...",$scope.currentUserName);
 		    	$http.post('/rawMaterials/saveRawMaterial/'+$scope.currentUserName,raw).success(function(data) {
 					/*$scope.backToVenueList();*/
 		    		
@@ -228,10 +225,6 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 				}, function myError(response) {
 					alert("Sorry, Some technical error occur");
 				});
-		    	
-		    	
-		    	
-		    	
 		    	
 		    	
 		    }

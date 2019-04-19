@@ -2,10 +2,10 @@
      <!-- Content Header (Page header) -->
                <section class="content" ng-show="itemaddshow">
               
-                 <form ng-submit="submitItem(data)" class="row" name="itemForm">
+                 
                  <div class="row">
                 <div class="col-md-12">
-             
+             <form ng-submit="submitItem(data)" class="col-md-12" name="itemForm">
                     <div class="box box-warning">
                         <div class="box-header with-border">
                             <h3 class="box-title">Raw Materials Form</h3>
@@ -64,19 +64,19 @@
 								<div class="col-md-6">									
 									<div class="form-group">
 										<label for="af6">Amount </label>
-										<input type="text" id="subtotal" ng-model="data.amount" readonly="readonly"  value="0" class="form-control" id="af6" placeholder="">
+										<input type="text" id="subtotal" ng-model="data.amount" readonly="readonly"   class="form-control" id="af6" placeholder="">
 									</div>									
 								</div>
 								<div class="col-md-6">									
 									<div class="form-group">
 										<label for="af7">GST Percentage </label>
-										<input type="text" id="gst" ng-model="data.gst" ng-keyup="calculateTotal()" class="form-control" value="0" id="af7" placeholder="">
+										<input type="text" id="gst" ng-model="data.gst" ng-keyup="calculateTotal()" class="form-control"  id="af7" placeholder="">
 									</div>									
 								</div>
 								<div class="col-md-6">									
 									<div class="form-group">
 										<label for="af8">Total Amount </label>
-										<input type="text" id="grandTotal" ng-model="data.totalAmount" readonly="readonly" value="0" class="form-control" id="af8" placeholder="">
+										<input type="text" id="grandTotal" ng-model="data.totalAmount" readonly="readonly"  class="form-control" id="af8" placeholder="">
 									</div>									
 								</div>
 								<div class="col-md-6">									
@@ -105,11 +105,11 @@
 						</div>
 					
                     </div>
-                    
+                     </form>	
                 </div> 
                               
             </div>
-             </form>	
+            
         </section>
      
                 <script type="text/javascript">
