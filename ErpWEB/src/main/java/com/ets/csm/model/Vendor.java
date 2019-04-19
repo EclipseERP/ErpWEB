@@ -32,6 +32,9 @@ public class Vendor {
 	@Column(name = "id")
 	private int id;
 	
+	@Column(name = "company_name")
+	private String companyName;
+	
 	@Column(name = "primary_contact")
 	private String primaryContact;
 	
@@ -73,8 +76,170 @@ public class Vendor {
 	@JoinColumn(name="bank_details_ID")
 	private BankDetails bankDetailsID;
 	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnore
+	@JoinColumn(name="admin_user_id")
+	private User user;
+	
 	@Column(name = "company_PAN")
 	private String companyPAN;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getCompanyName() {
+		return companyName;
+	}
+
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
+	}
+
+	public String getPrimaryContact() {
+		return primaryContact;
+	}
+
+	public void setPrimaryContact(String primaryContact) {
+		this.primaryContact = primaryContact;
+	}
+
+	public String getSecondaryContact() {
+		return secondaryContact;
+	}
+
+	public void setSecondaryContact(String secondaryContact) {
+		this.secondaryContact = secondaryContact;
+	}
+
+	public String getAddress1() {
+		return address1;
+	}
+
+	public void setAddress1(String address1) {
+		this.address1 = address1;
+	}
+
+	public String getAddress2() {
+		return address2;
+	}
+
+	public void setAddress2(String address2) {
+		this.address2 = address2;
+	}
+
+	public String getVendorType() {
+		return vendorType;
+	}
+
+	public void setVendorType(String vendorType) {
+		this.vendorType = vendorType;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public Integer getZip() {
+		return zip;
+	}
+
+	public void setZip(Integer zip) {
+		this.zip = zip;
+	}
+
+	public int getVendorCode() {
+		return vendorCode;
+	}
+
+	public void setVendorCode(int vendorCode) {
+		this.vendorCode = vendorCode;
+	}
+
+	public int getVendorDocID() {
+		return vendorDocID;
+	}
+
+	public void setVendorDocID(int vendorDocID) {
+		this.vendorDocID = vendorDocID;
+	}
+
+	public int getStatus() {
+		return Status;
+	}
+
+	public void setStatus(int status) {
+		Status = status;
+	}
+
+	public BankDetails getBankDetailsID() {
+		return bankDetailsID;
+	}
+
+	public void setBankDetailsID(BankDetails bankDetailsID) {
+		this.bankDetailsID = bankDetailsID;
+	}
+
+	public String getCompanyPAN() {
+		return companyPAN;
+	}
+
+	public void setCompanyPAN(String companyPAN) {
+		this.companyPAN = companyPAN;
+		
+	
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 	
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
