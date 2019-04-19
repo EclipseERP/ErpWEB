@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import com.ets.csm.model.User;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -21,9 +24,11 @@ public class RawMaterials {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
+
 	
 	@Column(name = "name")
 	private String name;
+
 	
 	@Column(name = "itemCode")
 	private String itemCode;
@@ -81,21 +86,7 @@ public class RawMaterials {
 	@Column(name = "hsno")
 	private String hsno;
 
-	public int getId() {
-		return id;
-	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	public String getItemCode() {
 		return itemCode;
@@ -201,13 +192,7 @@ public class RawMaterials {
 		this.descriptionHSNno = descriptionHSNno;
 	}
 
-	public User getUser() {
-		return user;
-	}
 
-	public void setUser(User user) {
-		this.user = user;
-	}
 
 	public int getRate() {
 		return rate;
@@ -225,9 +210,27 @@ public class RawMaterials {
 		this.qty = qty;
 	}
 
+	public String getUnit() {
+		return unit;
+	}
+
+	public void setUnit(String unit) {
+		this.unit = unit;
+	}
+
+	public String getHsno() {
+		return hsno;
+	}
+
+	public void setHsno(String hsno) {
+		this.hsno = hsno;
+	}
+
+
+
 	public RawMaterials(int id, String name, String itemCode, String city, String state, double amount, int companyId,
 			int projectId, int vendorId, int gst, double totalAmount, int itemType, String transportationCode,
-			Date dateOfEntry, String descriptionHSNno, User user, int rate, int qty) {
+			Date dateOfEntry, String descriptionHSNno, User user, int rate, int qty, String unit, String hsno) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -247,6 +250,8 @@ public class RawMaterials {
 		this.user = user;
 		this.rate = rate;
 		this.qty = qty;
+		this.unit = unit;
+		this.hsno = hsno;
 	}
 
 	public RawMaterials() {
@@ -255,7 +260,31 @@ public class RawMaterials {
 	}
 	
 	
+
 	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 	
 	
 	

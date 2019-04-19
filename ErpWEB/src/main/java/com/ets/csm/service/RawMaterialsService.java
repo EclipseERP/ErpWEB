@@ -6,7 +6,8 @@ import org.springframework.stereotype.Service;
 import com.ets.csm.model.RawMaterials;
 
 public interface RawMaterialsService {
-	
+
+	public RawMaterials saveOrUpdate(RawMaterials rm);
 	public void saveItemData(RawMaterials raw);
 
 }

@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ets.csm.model.RawMaterials;
@@ -13,6 +14,13 @@ import com.ets.csm.model.User;
 import com.ets.csm.service.RawMaterialsService;
 import com.ets.csm.service.UserService;
 
+import com.ets.csm.model.Calender;
+import com.ets.csm.model.Referral;
+import com.ets.csm.model.User;
+import com.ets.csm.service.UserService;
+import com.ets.csm.service.RawMaterialsService;
+import com.ets.csm.util.DateUtility;
+import com.ets.csm.model.RawMaterials;
 @Controller
 @RequestMapping("/rawMaterials")
 public class RawMaterialsController {
@@ -35,10 +43,14 @@ public class RawMaterialsController {
 	
 
 	
-	
-	
-	
-	
-	
+	@Autowired
+	RawMaterialsService itemService;
+
+	@PostMapping("/addItemFormData/{userName}")
+	public @ResponseBody void addItemFormData(@RequestBody RawMaterials itemData, @PathVariable String userName) {
+		User user = userService.getUserByUserName(userName);
+		itemData.setUser(user);
+		itemService.saveOrUpdate(itemData);
+	}
 	
 }
