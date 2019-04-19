@@ -1,14 +1,12 @@
 package com.ets.csm.service;
 import java.util.Date;
 
-public interface RawMaterialsService {
+import org.springframework.stereotype.Service;
 
+import com.ets.csm.model.RawMaterials;
+
+public interface RawMaterialsService {
 	
-	
-	
-	
-	
-	
-	
-	
+	public void saveItemData(RawMaterials raw);
+
 }
