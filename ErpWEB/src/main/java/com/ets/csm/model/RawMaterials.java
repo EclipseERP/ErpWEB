@@ -24,12 +24,11 @@ public class RawMaterials {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
-	private User user;
+
 	
 	@Column(name = "name")
 	private String name;
-/*<<<<<<< HEAD
-=======
+
 	
 	@Column(name = "itemCode")
 	private String itemCode;
@@ -87,21 +86,7 @@ public class RawMaterials {
 	@Column(name = "hsno")
 	private String hsno;
 
-	public int getId() {
-		return id;
-	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	public String getItemCode() {
 		return itemCode;
@@ -207,13 +192,7 @@ public class RawMaterials {
 		this.descriptionHSNno = descriptionHSNno;
 	}
 
-	public User getUser() {
-		return user;
-	}
 
-	public void setUser(User user) {
-		this.user = user;
-	}
 
 	public int getRate() {
 		return rate;
@@ -280,13 +259,8 @@ public class RawMaterials {
 		// TODO Auto-generated constructor stub
 	}
 	
->>>>>>> branch 'master' of https://github.com/EclipseERP/ErpWEB.git
-*/	
-	@Column(name = "itemtype")
-	private String itemtype;
 	
-	@Column(name = "itemcode")
-	private String itemcode;
+
 	
 	public int getId() {
 		return id;
