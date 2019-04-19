@@ -28,7 +28,7 @@ public class RawMaterials {
 	
 	@Column(name = "name")
 	private String name;
-<<<<<<< HEAD
+/*<<<<<<< HEAD
 =======
 	
 	@Column(name = "itemCode")
@@ -261,7 +261,7 @@ public class RawMaterials {
 	}
 	
 >>>>>>> branch 'master' of https://github.com/EclipseERP/ErpWEB.git
-	
+*/	
 	@Column(name = "itemtype")
 	private String itemtype;
 	

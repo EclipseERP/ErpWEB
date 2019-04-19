@@ -6,17 +6,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-<<<<<<< HEAD
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-=======
+
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ets.csm.model.RawMaterials;
 import com.ets.csm.model.User;
 import com.ets.csm.service.RawMaterialsService;
 import com.ets.csm.service.UserService;
->>>>>>> branch 'master' of https://github.com/EclipseERP/ErpWEB.git
 
 import com.ets.csm.model.Calender;
 import com.ets.csm.model.Referral;
@@ -49,9 +45,7 @@ public class RawMaterialsController {
 	
 	@Autowired
 	RawMaterialsService itemService;
-	@Autowired
-	UserService userService;
-	
+
 	@PostMapping("/addItemFormData/{userName}")
 	public @ResponseBody void addItemFormData(@RequestBody RawMaterials itemData, @PathVariable String userName) {
 		User user = userService.getUserByUserName(userName);
