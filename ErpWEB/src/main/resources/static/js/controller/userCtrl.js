@@ -116,6 +116,29 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 	  }
 	 
 	  
+	  
+	  
+	  
+	  
+	  $scope.submitVendor = function(ven){
+		    alert("aaaaaaaaaaaaaaa");
+	    	console.log("Vendor Data...",ven);
+	    	$http.post('/vendorctrl/addVendor/'+$scope.currentUserName,ven).success(function(data) {
+				/*$scope.backToVenueList();*/
+			}, function myError(response) {
+				alert("Sorry, Some technical error occur");
+			});
+	    }
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
 	  //-----------------------Dash board Function-------------------------------------->
 	  
 	  $scope.dashboardFn = function(){
