@@ -199,6 +199,7 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 				alert()
 			}
 			
+
 														
 			
 			
@@ -213,6 +214,44 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 					alert("Sorry, Some technical error occur");
 				});
 			}
+
+			
+		    $scope.calculateTotal=function()
+		    {
+		     	var total=0;
+	        	var subtotal=0;
+	        	var qty=$("#qty").val()
+	        	var rate=$("#rate").val();
+	        	subtotal=parseFloat(rate) * parseFloat(qty)
+	        	$("#subtotal").val(subtotal)
+	        	var gstamt=parseFloat(subtotal)* $("#gst").val()/100
+	        	var fianltotal=subtotal+gstamt;
+	        	$("#grandTotal").val(fianltotal)
+		    }
+			
+		    $scope.submitItem=function(raw)
+		    {
+		    	
+		    	console.log("sdfsdf",raw)
+		    	
+		    	
+		    	console.log("user...",$scope.currentUserName);
+		    	$http.post('/rawMaterials/saveRawMaterial/'+$scope.currentUserName,raw).success(function(data) {
+					/*$scope.backToVenueList();*/
+		    		
+		    		alert("save")
+		    		
+				}, function myError(response) {
+					alert("Sorry, Some technical error occur");
+				});
+		    	
+		    	
+		    	
+		    	
+		    	
+		    	
+		    }
+>>>>>>> branch 'master' of https://github.com/EclipseERP/ErpWEB.git
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //#########################################################################  All JS for ERP Software starts from here #################################################################################################	  
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++		 
