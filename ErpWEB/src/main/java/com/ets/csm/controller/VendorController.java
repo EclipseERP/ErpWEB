@@ -3,19 +3,31 @@ package com.ets.csm.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import com.ets.csm.model.Vendor;
-import com.ets.csm.service.VendorService;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.ets.csm.model.User;
+import com.ets.csm.model.Vendor;
+import com.ets.csm.model.Venue;
+import com.ets.csm.service.UserService;
+import com.ets.csm.service.VendorService;
+import com.ets.csm.service.VenueService;
 
 @Controller
 @RequestMapping("/vendorctrl")
 public class VendorController {
+
+	
 	@Autowired
 	VendorService vendorService;
+	
+	@Autowired
+	UserService userService;
+	
 
 	@GetMapping("/vendorPageload")
 	public String vendorAdd()
@@ -46,5 +58,21 @@ public class VendorController {
 	public @ResponseBody void addVendorData(@RequestBody Vendor v) {
 		
 	}
+	
+	
+	
+	@PostMapping("/addVendor/{userName}")
+	public @ResponseBody void saveVendor(@RequestBody Vendor ven, @PathVariable String userName) {
+		User user = userService.getUserByUserName(userName);
+		ven.setUser(user);
+		vendorService.saveOrUpdate(ven);
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 }

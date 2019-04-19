@@ -36,21 +36,22 @@ $(function () {
 											<tr>
 												<th width="1">#</th>
 												<th>Name</th>
+												<th>Contact Number</th>
+												<th>PAN No.</th>
 												<th>Address</th>
-												<th>City</th>
-												<th>PIN Code</th>
-												<th>Country</th>
-												<th>Action</th>
+												<th>State</th>
+												<th>Company Type</th>
 											</tr>
 										</thead>
 										<tbody>
 											<tr>
 												<td>1</td>
-												<td>Lorem ipsum dolor</td>
-												<td> sit amet, consectetur</td>
-												<td>adipisicing</td>
-												<td>elit. Ullam</td>
-												<td>Fuga sunt</td>
+												<td>Luminous Steel</td>
+												<td>8965744122</td>
+												<td>AELPU5278H</td>
+												<td>2/G Kottam, Near Gol Gumbaj</td>
+												<td>Kerala</td>
+												<td>Iron And Steel</td>
 												<td class="action" width="1">
 													<i class="fa fa-eye text-primary" aria-hidden="true"></i>
 													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
@@ -59,11 +60,12 @@ $(function () {
 											</tr>
 											<tr>
 												<td>2</td>
-												<td>Lorem ipsum dolor</td>
-												<td> sit amet, consectetur</td>
-												<td>adipisicing</td>
-												<td>elit. Ullam</td>
-												<td>Fuga sunt</td>
+												<td>Forestry Furniture</td>
+												<td> 9898652358</td>
+												<td>FFLPU5278H</td>
+												<td>Lake Town, Kolkata-700053</td>
+												<td>West Bengal</td>
+												<td>Furniture</td>
 												<td class="action" width="1">
 													<i class="fa fa-eye text-primary" aria-hidden="true"></i>
 													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
@@ -72,11 +74,12 @@ $(function () {
 											</tr>
 											<tr>
 												<td>3</td>
-												<td>Lorem ipsum dolor</td>
-												<td> sit amet, consectetur</td>
-												<td>adipisicing</td>
-												<td>elit. Ullam</td>
-												<td>Fuga sunt</td>
+												<td>Thread Computers</td>
+												<td>9854721589</td>
+												<td>DPLPU5368H</td>
+												<td>Kankar Bagh, near Golambar, PAtna-800006</td>
+												<td>Bihar</td>
+												<td>Computer Shop</td>
 												<td class="action" width="1">
 													<i class="fa fa-eye text-primary" aria-hidden="true"></i>
 													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
@@ -85,11 +88,12 @@ $(function () {
 											</tr>
 											<tr>
 												<td>4</td>
-												<td>Lorem ipsum dolor</td>
-												<td> sit amet, consectetur</td>
-												<td>adipisicing</td>
-												<td>elit. Ullam</td>
-												<td>Fuga sunt</td>
+												<td>Biom Plastics</td>
+												<td>9898653258</td>
+												<td>FDLPU6578H</td>
+												<td>Near Shivalik Temple, Bhopal-8</td>
+												<td>Madhya Pradesh</td>
+												<td>Synthetic Fibres</td>
 												<td class="action" width="1">
 													<i class="fa fa-eye text-primary" aria-hidden="true"></i>
 													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
@@ -98,18 +102,19 @@ $(function () {
 											</tr>
 											<tr>
 												<td>5</td>
-												<td>Lorem ipsum dolor</td>
-												<td> sit amet, consectetur</td>
-												<td>adipisicing</td>
-												<td>elit. Ullam</td>
-												<td>Fuga sunt</td>
+												<td>Potential Electronics</td>
+												<td>6969542130</td>
+												<td>SFLPU3628H</td>
+												<td>Sidhhi Para, Bardhamaan</td>
+												<td>West Bengal</td>
+												<td>Electronics</td>
 												<td class="action" width="1">
 													<i class="fa fa-eye text-primary" aria-hidden="true"></i>
 													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
 													<i class="fa fa-trash-o text-danger" aria-hidden="true"></i>
 												</td>
 											</tr>
-											<tr>
+											<!-- <tr>
 												<td>6</td>
 												<td>Lorem ipsum dolor</td>
 												<td> sit amet, consectetur</td>
@@ -173,7 +178,7 @@ $(function () {
 													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
 													<i class="fa fa-trash-o text-danger" aria-hidden="true"></i>
 												</td>
-											</tr>
+											</tr> -->
 										</tbody>
 									</table>									
 								</div>				
