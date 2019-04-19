@@ -1,7 +1,10 @@
 package com.ets.csm.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,23 +37,24 @@ public class RawMaterialsController {
 	public @ResponseBody void saveUser(@RequestBody RawMaterials raw , @PathVariable String userName) 
 	{
 		User userdetails = userService.getUserByUserName(userName);
-		
 		raw.setUser(userdetails);
-		
+		raw.setDateOfEntry(DateUtility.getCurrentDateWithTime());
+		raw.setDescriptionHSNno("NOT Available");
 		rawservice.saveItemData(raw);
 		
 	}
 	
-
-	
-	@Autowired
-	RawMaterialsService itemService;
-
 	@PostMapping("/addItemFormData/{userName}")
 	public @ResponseBody void addItemFormData(@RequestBody RawMaterials itemData, @PathVariable String userName) {
 		User user = userService.getUserByUserName(userName);
 		itemData.setUser(user);
-		itemService.saveOrUpdate(itemData);
+		itemData.setDateOfEntry(DateUtility.getCurrentDateWithTime());
+		rawservice.saveOrUpdate(itemData);
+	}
+	
+	@GetMapping("/getRawMaterials")
+	public @ResponseBody List getRawMaterialList() {
+		return rawservice.getAllRawMaterials();
 	}
 	
 }

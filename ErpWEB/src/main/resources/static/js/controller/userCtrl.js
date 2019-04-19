@@ -151,6 +151,7 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 			{
 				$scope.itemaddshow=false;
 				$scope.itemlistshow=true;
+				$scope.getRawMaterialsData();
 			}
 				
 			
@@ -221,12 +222,29 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 					/*$scope.backToVenueList();*/
 		    		
 		    		alert("save")
+		    		$scope.itemlistload();
 		    		
 				}, function myError(response) {
 					alert("Sorry, Some technical error occur");
 				});
 		    	
 		    	
+		    }
+		    
+		    
+		    $scope.getRawMaterialsData=function()
+		    {
+		    	       $http.get('/rawMaterials/getRawMaterials/').success(function(data) 
+			  			{
+			  		       console.log("Data came ",data)
+						   $scope.rowMaterialData = new NgTableParams({}, 
+						   { 
+					       dataset : data
+						   });
+							
+						}, function myError(response) {
+							alert("Sorry, Some technical error occur");
+						});
 		    }
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
