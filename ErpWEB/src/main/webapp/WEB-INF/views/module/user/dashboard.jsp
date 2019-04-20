@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="col-lg-3 col-sm-6 col-xs-12">
                     <div class="info-box"> <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
-                        <div class="info-box-content"> <span class="info-box-text">Ongoing Projects</span> <span class="info-box-number">90<small>%</small></span> </div>
+                        <div class="info-box-content"> <span class="info-box-text">Ongoing Projects</span> <span class="info-box-number">0<small>%</small></span> </div>
                         <!-- /.info-box-content --> 
                     </div>
                     <!-- /.info-box --> 
@@ -20,7 +20,7 @@
                 <!-- /.col -->
                 <div class="col-lg-3 col-sm-6 col-xs-12">
                     <div class="info-box"> <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
-                        <div class="info-box-content"> <span class="info-box-text">Vendors</span> <span class="info-box-number">41,410</span> </div>
+                        <div class="info-box-content"> <span class="info-box-text">Vendors</span> <span class="info-box-number">0</span> </div>
                         <!-- /.info-box-content --> 
                     </div>
                     <!-- /.info-box --> 
@@ -28,7 +28,7 @@
                 <!-- /.col -->
                 <div class="col-lg-3 col-sm-6 col-xs-12">
                     <div class="info-box"> <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
-                        <div class="info-box-content"> <span class="info-box-text">Branches</span> <span class="info-box-number">10</span> </div>
+                        <div class="info-box-content"> <span class="info-box-text">Branches</span> <span class="info-box-number">0</span> </div>
                         <!-- /.info-box-content --> 
                     </div>
                     <!-- /.info-box --> 
@@ -36,7 +36,7 @@
                 <!-- /.col -->
                 <div class="col-lg-3 col-sm-6 col-xs-12">
                     <div class="info-box"> <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
-                        <div class="info-box-content"> <span class="info-box-text">New Projects</span> <span class="info-box-number">2,000</span> </div>
+                        <div class="info-box-content"> <span class="info-box-text">New Projects</span> <span class="info-box-number">0</span> </div>
                         <!-- /.info-box-content --> 
                     </div>
                     <!-- /.info-box --> 
@@ -50,11 +50,11 @@
             <div class="row">
                 <div class="col-md-3 col-sm-6 col-xs-12">
                     <div class="info-box bg-aqua"> <span class="info-box-icon"><i class="fa fa-bookmark-o"></i></span>
-                        <div class="info-box-content"> <span class="info-box-text">Users</span> <span class="info-box-number">41,410</span>
+                        <div class="info-box-content"> <span class="info-box-text">Users</span> <span class="info-box-number">0</span>
                             <div class="progress">
                                 <div class="progress-bar" style="width: 70%"></div>
                             </div>
-                            <span class="progress-description"> 60 </span> </div>
+                            <span class="progress-description"> 0 </span> </div>
                         <!-- /.info-box-content --> 
                     </div>
                     <!-- /.info-box --> 
@@ -62,11 +62,11 @@
                 <!-- /.col -->
                 <div class="col-md-3 col-sm-6 col-xs-12">
                     <div class="info-box bg-green"> <span class="info-box-icon"><i class="fa fa-thumbs-o-up"></i></span>
-                        <div class="info-box-content"> <span class="info-box-text">Bills Receivable</span> <span class="info-box-number">41,410</span>
+                        <div class="info-box-content"> <span class="info-box-text">Bills Receivable</span> <span class="info-box-number">0</span>
                             <div class="progress">
                                 <div class="progress-bar" style="width: 70%"></div>
                             </div>
-                            <span class="progress-description"> 70% Increase in 30 Days </span> </div>
+                            <span class="progress-description"> 0% Increase in 0 Days </span> </div>
                         <!-- /.info-box-content --> 
                     </div>
                     <!-- /.info-box --> 
@@ -74,11 +74,11 @@
                 <!-- /.col -->
                 <div class="col-md-3 col-sm-6 col-xs-12">
                     <div class="info-box bg-yellow"> <span class="info-box-icon"><i class="fa fa-calendar"></i></span>
-                        <div class="info-box-content"> <span class="info-box-text">Transporting Units</span> <span class="info-box-number">41,410</span>
+                        <div class="info-box-content"> <span class="info-box-text">Transporting Units</span> <span class="info-box-number">0</span>
                             <div class="progress">
-                                <div class="progress-bar" style="width: 70%"></div>
+                                <div class="progress-bar" style="width: 0%"></div>
                             </div>
-                            <span class="progress-description"> 70% Increase in 30 Days </span> </div>
+                            <span class="progress-description"> 0% Increase in 0 Days </span> </div>
                         <!-- /.info-box-content --> 
                     </div>
                     <!-- /.info-box --> 
@@ -86,11 +86,11 @@
                 <!-- /.col -->
                 <div class="col-md-3 col-sm-6 col-xs-12">
                     <div class="info-box bg-red"> <span class="info-box-icon"><i class="fa fa-comments-o"></i></span>
-                        <div class="info-box-content"> <span class="info-box-text">Projects Completed</span> <span class="info-box-number">41,410</span>
+                        <div class="info-box-content"> <span class="info-box-text">Projects Completed</span> <span class="info-box-number">0</span>
                             <div class="progress">
-                                <div class="progress-bar" style="width: 70%"></div>
+                                <div class="progress-bar" style="width: 0%"></div>
                             </div>
-                            <span class="progress-description"> 70% Increase in 30 Days </span> </div>
+                            <span class="progress-description"> 0% Increase in 0 Days </span> </div>
                         <!-- /.info-box-content --> 
                     </div>
                     <!-- /.info-box --> 
@@ -106,7 +106,7 @@
                     <!-- small box -->
                     <div class="small-box bg-aqua">
                         <div class="inner">
-                            <h3>150</h3>
+                            <h3>0</h3>
                             <p>Pending Bills</p>
                         </div>
                         <div class="icon"> <i class="ion ion-bag"></i> </div>
@@ -117,7 +117,7 @@
                     <!-- small box -->
                     <div class="small-box bg-green">
                         <div class="inner">
-                            <h3>53<sup style="font-size: 20px">%</sup></h3>
+                            <h3>0<sup style="font-size: 20px">%</sup></h3>
                             <p>Progress Rate</p>
                         </div>
                         <div class="icon"> <i class="ion ion-stats-bars"></i> </div>
@@ -128,7 +128,7 @@
                     <!-- small box -->
                     <div class="small-box bg-yellow">
                         <div class="inner">
-                            <h3>44</h3>
+                            <h3>1</h3>
                             <p>New Users</p>
                         </div>
                         <div class="icon"> <i class="ion ion-person-add"></i> </div>
@@ -139,7 +139,7 @@
                     <!-- small box -->
                     <div class="small-box bg-red">
                         <div class="inner">
-                            <h3>65</h3>
+                            <h3>0</h3>
                             <p>Upcoming Deadlines</p>
                         </div>
                         <div class="icon"> <i class="ion ion-pie-graph"></i> </div>
@@ -353,3 +353,27 @@
 				
             </div>
         </section>
+        
+        <script>
+$(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2();
+	
+	//Date picker
+    $('#datepicker').datepicker({
+      autoclose: true
+    });
+	//Colorpicker
+    $('.colorpicker2').colorpicker();
+
+    //Timepicker
+    $('.timepicker').timepicker({
+      showInputs: false
+    });
+	
+	// For Text Editor
+	$(document).ready(function() {
+		$("#txtEditor").Editor();
+	});
+});
+</script>
