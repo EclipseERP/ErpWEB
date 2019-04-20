@@ -1,5 +1,6 @@
 package com.ets.csm.service;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -27,4 +28,10 @@ public class RawMaterialsServiceImpl implements RawMaterialsService{
 	public RawMaterials saveOrUpdate(RawMaterials rm) {
 		return RawMaterialsRepository.save(rm);
 	}
+	@Override
+	public List getAllRawMaterials()
+	{
+		return rawmaterialrepository.getAllRawMaterials();
+	}
+	
 }

@@ -151,6 +151,7 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 			{
 				$scope.itemaddshow=false;
 				$scope.itemlistshow=true;
+				$scope.getRawMaterialsData();
 			}
 				
 			
@@ -217,11 +218,36 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 		    {
 		    	console.log(raw)
 		    	$http.post('/rawMaterials/saveRawMaterial/'+$scope.currentUserName,raw).success(function(data) {
+/*<<<<<<< HEAD*/
 				    alert("save")
 		    		}, function myError(response) {
-					alert("Sorry, Some technical error occur");
+/*=======*/
+					/*$scope.backToVenueList();*/
+		    		
+		    		alert("save")
+		    		$scope.itemlistload();
+		    		
+				}, function myError(response) {
+/*>>>>>>> branch 'master' of https://github.com/EclipseERP/ErpWEB.git
+*/					alert("Sorry, Some technical error occur");
 				});
 		    	
+		    }
+		    
+		    
+		    $scope.getRawMaterialsData=function()
+		    {
+		    	       $http.get('/rawMaterials/getRawMaterials/').success(function(data) 
+			  			{
+			  		       console.log("Data came ",data)
+						   $scope.rowMaterialData = new NgTableParams({}, 
+						   { 
+					       dataset : data
+						   });
+							
+						}, function myError(response) {
+							alert("Sorry, Some technical error occur");
+						});
 		    }
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
