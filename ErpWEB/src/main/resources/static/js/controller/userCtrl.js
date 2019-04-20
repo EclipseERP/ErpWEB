@@ -49,7 +49,7 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 		    for (var i = 0; i < arrData.length; i++) {
 		        var row = "";
 		        // 2nd loop will extract each column and convert it in string
-				// comma-seprated
+				// comma-separated
 		        for (var index in arrData[i]) {
 		            row += '"' + arrData[i][index] + '",';
 		        }

@@ -11,6 +11,7 @@ $document.ready( function(){
         <section class="content" ng-show="vendorDocaddshow">
             <div class="row">
                 <div class="col-md-12">
+                 <form name="VendorDocForm" class="col-md-12" ng-submit="submitVendorDocForm(vendordoc)">
                     <div class="box box-primary">
                         <div class="box-header with-border">
                             <h3 class="box-title">Vendor Document Form</h3>
@@ -20,7 +21,7 @@ $document.ready( function(){
 								</button>
                             </div>
                         </div>
-                        <form name="VendorDocForm" class="form-horizontal" ng-submit="submitVendorDocForm(vendordoc)">
+                       
                         <!-- /.box-header -->
                         <div class="box-body">
                             <div class="row">
@@ -74,8 +75,9 @@ $document.ready( function(){
 							<button type="submit" class="btn btn-primary pad40L pad40R mrg5L">Submit</button>
 						</div>
                     </div>
+                    </form>
                 </div>                
             </div>
         </section>
-        </form>
+        
         
