@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.ets.csm.model.RawMaterials;
 import com.ets.csm.model.User;
 import com.ets.csm.model.Vendor;
 import com.ets.csm.model.Venue;
@@ -67,9 +68,6 @@ public class VendorController {
 		ven.setUser(user);
 		vendorService.saveOrUpdate(ven);
 	}
-	
-	
-	
 	
 	
 	

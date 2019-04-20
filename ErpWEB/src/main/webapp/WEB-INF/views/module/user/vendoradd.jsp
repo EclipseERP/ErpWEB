@@ -3,8 +3,9 @@
                       <!--Form and Application Button-->
         <section class="content" ng-show="vendoraddshow">
             <div class="row">
-             <form  name="vendorForm">
                 <div class="col-md-12">
+                <form ng-submit="vendorAdd(ven)" class="col-md-12" name="vendorForm">
+                
                     <div class="box box-primary">
                         <div class="box-header with-border">
                             <h3 class="box-title">Vendor Form</h3>
@@ -17,9 +18,6 @@
                         <!-- /.box-header -->
                         <div class="box-body">
                             <div class="row">
-<!--                             <form ng-submit="submitVendor(ven)" name="vendorForm"> -->
-                            
-                           
                             
 								<div class="col-md-6">	
 																
@@ -127,8 +125,9 @@
 							<button type="submit" ng-click="vendorDetailsADD(ven)"  class="btn btn-primary pad40L pad40R mrg5L">Submit</button>
 						</div>
                     </div>
+                    </form> 
                 </div>  
-                </form>              
+                             
             </div>
         </section>
         

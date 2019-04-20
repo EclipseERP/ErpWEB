@@ -187,13 +187,13 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 			}
 			
 
-			$scope.vendorDetailsADD=function(ven)
+			$scope.vendorAdd=function(ven)
 			{
-				console.log("axsdfsdfsdfsd",ven);
 				alert("aaaaaaaaaaaaaaa");
 		    	console.log("Vendor Data...",ven);
+		    	console.log("Data...",$scope.currentUserName);
 		    	$http.post('/vendorctrl/addVendor/'+$scope.currentUserName,ven).success(function(data) {
-		    	$scope.ven = null;
+		    		alert("saved")
 				}, function myError(response) {
 					alert("Sorry, Some technical error occur");
 				});
@@ -216,16 +216,11 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 		    $scope.submitItem=function(raw)
 		    {
 		    	console.log(raw)
-		    	
 		    	$http.post('/rawMaterials/saveRawMaterial/'+$scope.currentUserName,raw).success(function(data) {
-					/*$scope.backToVenueList();*/
-		    		
-		    		alert("save")
-		    		
-				}, function myError(response) {
+				    alert("save")
+		    		}, function myError(response) {
 					alert("Sorry, Some technical error occur");
 				});
-		    	
 		    	
 		    }
 
