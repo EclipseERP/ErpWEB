@@ -7,6 +7,7 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 	  $scope.tirelayers=["1","2","3","4","5"];
 	  $scope.posts=[0,1,2,3,4,5,6,7,8];
 	  $scope.measures=["Please Select","Quantity(Cups)","Weight(Pounds)"];
+	  $scope.projectlistshow = true;
 
 	  
 	  $scope.getCurrentUser = function(){
@@ -49,7 +50,7 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 		    for (var i = 0; i < arrData.length; i++) {
 		        var row = "";
 		        // 2nd loop will extract each column and convert it in string
-				// comma-seprated
+				// comma-separated
 		        for (var index in arrData[i]) {
 		            row += '"' + arrData[i][index] + '",';
 		        }
@@ -178,7 +179,26 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 				$scope.itemlistshow=true;
 				$scope.getRawMaterialsData();
 			}
-				
+			
+			$scope.projectlistload=function()
+			{
+				$scope.projectaddshow=false;
+				$scope.projectlistshow=true;
+				$scope.getProjectData();
+			}
+			
+			$scope.projectaddload=function()
+			{
+				$scope.projectaddshow=true;
+				$scope.projectlistshow=false;
+			}
+			
+			$scope.itemadd=function()
+			{
+				$scope.itemaddshow=false;
+				$scope.itemaddlistshow=true;
+				$scope.getItemData();
+			}
 			
 			$scope.vendoraddload=function()
 			{
@@ -272,6 +292,7 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 						});
 		    }
 		    
+
 		    
 		    
 		    
@@ -299,6 +320,80 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 							alert("Sorry, Some technical error occur");
 						});
 		    }
+
+
+		    $scope.getProjectData=function()
+		    {
+		    	       $http.get('/project/getProjects/').success(function(data) 
+			  			{
+			  		       console.log("Data came ",data)
+						   $scope.projectListTable = new NgTableParams({}, 
+						   { 
+					       dataset : data
+						   });
+							
+						}, function myError(response) {
+							alert("Sorry, Some technical error occur");
+						});
+		    }
+		    
+		    $scope.getItemData=function()
+		    {
+		    	       $http.get('/itemctrl/getItem/').success(function(data) 
+			  			{
+			  		       console.log("Data came ",data)
+						   $scope.itemData = new NgTableParams({}, 
+						   { 
+					       dataset : data
+						   });
+							
+						}, function myError(response) {
+							alert("Sorry, Some technical error occur");
+						});
+		    }
+		    
+		    $scope.projectAdd=function(p)
+			{
+				alert("aaaaaaaaaaaaaaa");
+		    	console.log("Project Data...",p);
+		    	console.log("Data...",$scope.currentUserName);
+		    	var creationDate=p.creationDate;
+		    	console.log(creationDate);
+	    		
+		    /*	var dateStr= JSON.parse(creationDate);
+		    	console.log(dateStr); */
+		    	
+		    	var date = new Date(creationDate);
+	    		
+	    		p.creationDate=date; 
+	    		console.log(p.creationDate);
+		    	
+		    	$http.post('/project/saveProject/'+ $scope.currentUserName,p).success(function(data) {
+		    		
+		    		
+		    		alert("saved");
+		    		$scope.projectlistload();
+				}, function myError(response) {
+					alert("Sorry, Some technical error occur");
+				});
+			}
+
+		    $scope.itemadd=function()
+		    {
+		    	$http.get('/itemctrl/getItem/').success(function(data) 
+			  			{
+			  		       console.log("Data came ",data)
+						   $scope.addItemData = new NgTableParams({}, 
+						   { 
+					       dataset : data
+						   });
+							
+						}, function myError(response) {
+							alert("Sorry, Some technical error occur");
+						});
+		    	
+		    }
+		    
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //#########################################################################  All JS for ERP Software starts from here #################################################################################################	  

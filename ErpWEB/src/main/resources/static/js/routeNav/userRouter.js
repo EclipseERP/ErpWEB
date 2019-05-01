@@ -48,6 +48,16 @@ app.config(function($routeProvider,$httpProvider) {
 						controller : 'userCtrl'
 				   })
 				   
+				 .when('/projectload', {
+						templateUrl : '/project/projectPageload',
+						controller : 'userCtrl'
+				   }) 
+				   
+				   .when('/projectListload', {
+						templateUrl : '/project/projectListPageload',
+						controller : 'userCtrl'
+				   })
+				   
 				   	  .when('/itemload', {
 						templateUrl : '/itemctrl/itemPageload',
 						controller : 'userCtrl'
