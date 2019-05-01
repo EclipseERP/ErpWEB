@@ -9,4 +9,6 @@ public interface VendorService {
 
 	public void saveOrUpdate(Vendor ven);
 
+	public List getAllVendors();
+
 }

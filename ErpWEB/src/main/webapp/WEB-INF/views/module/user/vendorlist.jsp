@@ -31,7 +31,7 @@ $(function () {
                         <div class="box-body">
                             <div class="row">
 								<div class="col-md-12">									
-									<table id="dataTableID" class="data-table table table-bordered table-striped table-responsive">
+									<table id="vendorDataTable" ng-table="vendorData" class="data-table table table-bordered table-striped table-responsive">
 										<thead>
 											<tr>
 												<th width="1">#</th>
@@ -44,7 +44,37 @@ $(function () {
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
+										
+										
+										
+										
+										
+										<tr ng-repeat="datas in $data | filter : keyword">
+							<td title="'Name'">{{datas.name}}</td>
+							<td title="'Contact Number'">{{datas.descriptionHSNno}}</td>
+							<td title="'PAN No.'">{{datas.unit}}</td>
+							<td title="'Address'">{{datas.qty}}</td>
+							<td title="'State'">{{datas.rate}}</td>
+							<td title="'Company Type'">{{datas.gst}}</td>
+							<td title="'Total Amount(Rs.)'">{{datas.totalAmount}}</td>
+							<td title="'dateofentry'">{{datas.dateOfEntry| date : 'yyyy-MM-dd h:mm a'}}</td>
+						     <td class="action" width="1">
+													<i class="fa fa-eye text-primary" aria-hidden="true"></i>
+													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
+													<i class="fa fa-trash-o text-danger" aria-hidden="true"></i>
+												</td>
+							
+							
+						</tr>
+										
+										
+										
+										
+										
+										
+										
+										
+											<!-- <tr>
 												<td>1</td>
 												<td>Luminous Steel</td>
 												<td>8965744122</td>
@@ -113,7 +143,7 @@ $(function () {
 													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
 													<i class="fa fa-trash-o text-danger" aria-hidden="true"></i>
 												</td>
-											</tr>
+											</tr> -->
 											<!-- <tr>
 												<td>6</td>
 												<td>Lorem ipsum dolor</td>

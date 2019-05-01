@@ -142,13 +142,38 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 	  
 			$scope.itemaddload=function()
 			{
+				alert("xxxxxxxxx");
 				$scope.itemaddshow=true;
 				$scope.itemlistshow=false;
 			}
 			
 			
+			
+		/*	
+			
+			
+			
+			$scope.vendoraddload=function()
+			{
+				$scope.itemaddshow=true;
+				$scope.vendorlistshow=false;
+			}
+			
+			$scope.vendorlistload=function()
+			{
+				$scope.itemaddshow=false;
+				$scope.ivendorlistshow=true;
+				$scope.getvendorData();
+			}
+			
+			*/
+			
+			
+			
+			
 			$scope.itemlistload=function()
 			{
+				alert("yyyyyyy");
 				$scope.itemaddshow=false;
 				$scope.itemlistshow=true;
 				$scope.getRawMaterialsData();
@@ -157,6 +182,7 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 			
 			$scope.vendoraddload=function()
 			{
+				alert("aaaaaa");
 				$scope.vendoraddshow=true;
 				$scope.vendorlistshow=false;
 			}
@@ -164,8 +190,10 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 			
 			$scope.vendorlistload=function()
 			{
+				alert("bbbbbbbb");
 				$scope.vendoraddshow=false;
 				$scope.vendorlistshow=true;
+				$scope.getvendorData();
 			}
 			
 			$scope.vendorDocaddload=function()
@@ -214,22 +242,16 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 	        	$("#grandTotal").val(fianltotal)
 		    }
 			
+		    
+		    
 		    $scope.submitItem=function(raw)
 		    {
 		    	console.log(raw)
 		    	$http.post('/rawMaterials/saveRawMaterial/'+$scope.currentUserName,raw).success(function(data) {
-/*<<<<<<< HEAD*/
-				    alert("save")
-		    		}, function myError(response) {
-/*=======*/
-					/*$scope.backToVenueList();*/
-		    		
-		    		alert("save")
+                    alert("save")
 		    		$scope.itemlistload();
-		    		
-				}, function myError(response) {
-/*>>>>>>> branch 'master' of https://github.com/EclipseERP/ErpWEB.git
-*/					alert("Sorry, Some technical error occur");
+		    		}, function myError(response) {
+                   alert("Sorry, Some technical error occur");
 				});
 		    	
 		    }
@@ -237,10 +259,38 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 		    
 		    $scope.getRawMaterialsData=function()
 		    {
+		    	alert("zzzzzzz");
 		    	       $http.get('/rawMaterials/getRawMaterials/').success(function(data) 
 			  			{
-			  		       console.log("Data came ",data)
 						   $scope.rowMaterialData = new NgTableParams({}, 
+						   { 
+					       dataset : data
+						   });
+							
+						}, function myError(response) {
+							alert("Sorry, Some technical error occur");
+						});
+		    }
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    $scope.getvendorData=function()
+		    {
+		    	alert("cccc");
+		    	       $http.get('/vendorctrl/getVendorDetails/').success(function(data) 
+			  			{
+						   $scope.vendorData = new NgTableParams({}, 
 						   { 
 					       dataset : data
 						   });
