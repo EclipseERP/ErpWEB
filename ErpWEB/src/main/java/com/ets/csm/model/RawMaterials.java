@@ -85,7 +85,63 @@ public class RawMaterials {
 	
 	@Column(name = "hsno")
 	private String hsno;
+	
+	@Column(name = "bill_quantity")
+	private String billQuantity;
+	
+	@Column(name = "way_bill_no_date")
+	private String wayBillNoDate;
+	
+	@Column(name = "bill_no")
+	private String billNo;
+	
+	@Column(name = "date")
+	private String date;
+	
+	@Column(name = "arrival_date_at_railway_store")
+	private String arrivalDateAtRailwayStore;
 
+	@Column(name = "date_of_railway_receipt")
+	private String dateOfRailwayReceipt;
+	
+	@Column(name = "truck_number")
+	private String truckNumber;
+	
+	@Column(name = "transporter")
+	private String transporter;
+	
+	@Column(name = "place_of_delivery")
+	private String placeOfDelivery;
+	
+	@Column(name = "supply_quantity")
+	private String supplyQuantity;
+	
+	@Column(name = "balance_quantity")
+	private String balanceQuantity;
+	
+	@Column(name = "ic_details")
+	private String icDetails;
+	
+	@Column(name = "date_of_supply")
+	private String dateOfSupply;
+	
+	@Column(name = "supplier_with_address")
+	private String supplierWithAddress;
+	
+	@Column(name = "percentage_above")
+	private String percentageAbove;
+	
+	@Column(name = "ins")
+	private String ins;
+	
+	@Column(name = "all_inclusive_rate")
+	private String allInclusiveRate;
+	
+	@Column(name = "ei_work1")
+	private String eiWork1;
+	
+	@Column(name = "ei_work2")
+	private String eiWork2;
 
 	public String getItemCode() {
 		return itemCode;

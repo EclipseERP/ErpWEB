@@ -21,20 +21,20 @@
                             <div class="row">
 								<div class="col-md-6">									
 									<div class="form-group">
-										<label for="af1">Item Name </label>
+										<label for="af1">Item Name</label>
 										<input type="text" ng-model="data.name"  class="form-control" id="af1" placeholder="">
 									</div>									
 								</div>
 									<div class="col-md-6">									
 									<div class="form-group">
-										<label for="af3">Item Code </label>
+										<label for="af3">Item Code</label>
 										<input type="text" ng-model="data.itemCode" class="form-control" id="af3" placeholder="">
 									</div>									
 								</div>
 								
-									<div class="col-md-12">									
+									<div class="col-md-6">									
 									<div class="form-group">
-										<label for="af2">Item Type </label>
+										<label for="af2">Item Type</label>
 										<select ng-model="data.itemType" class="form-control select2" style="width: 100%;">
 											<option selected="selected">Select Option</option>
 											<option value="1">Electronics</option>
@@ -42,37 +42,91 @@
 										</select>
 									</div>									
 								</div>
+								<div class="col-md-12">									
+									<div class="form-group">
+										<label for="af11">Description</label>
+										<input type="text" ng-model="data.description"  class="form-control" id="af11" placeholder="">
+									</div>									
+								</div>
+								<div class="col-md-4">									
+									<div class="form-group">
+										<label for="af3">SCH Quantity 1</label>
+										<input type="text" ng-model="data.schQuantity1" id="unit" value="NOS" class="form-control" id="af3" placeholder="">
+									</div>									
+								</div>
+								<div class="col-md-4">									
+									<div class="form-group">
+										<label for="af3">SCH Quantity 2</label>
+										<input type="text" ng-model="data.schQuantity2" id="unit" value="NOS" class="form-control" id="af3" placeholder="">
+									</div>									
+								</div>
+								<div class="col-md-4">									
+									<div class="form-group">
+										<label for="af3">SCH Quantity 3</label>
+										<input type="text" ng-model="data.schQuantity3" id="unit" value="NOS" class="form-control" id="af3" placeholder="">
+									</div>									
+								</div>
 								<div class="col-md-6">									
 									<div class="form-group">
-										<label for="af3">Unit </label>
+										<label for="af4">EI-Work 1</label>
+										<input type="text" id="qty" ng-model="data.eiWork1" ng-keyup="calculateTotal()" value="0" class="form-control" id="af4" placeholder="">
+									</div>									
+								</div>
+								<div class="col-md-6">									
+									<div class="form-group">
+										<label for="af4">EI-Work 2</label>
+										<input type="text" id="qty" ng-model="data.eiWork2" ng-keyup="calculateTotal()" value="0" class="form-control" id="af4" placeholder="">
+									</div>									
+								</div>
+								<div class="col-md-6">									
+									<div class="form-group">
+										<label for="af3">Unit</label>
 										<input type="text" ng-model="data.unit" id="unit" value="NOS" class="form-control" id="af3" placeholder="">
 									</div>									
 								</div>
 										<div class="col-md-6">									
 									<div class="form-group">
-										<label for="af5">Rate </label>
+										<label for="af5">Rate</label>
 										<input type="text" id="rate" ng-model="data.rate" ng-keyup="calculateTotal()"  value="0" class="form-control" id="af5" placeholder="">
 									</div>									
 								</div>
 								<div class="col-md-6">									
 									<div class="form-group">
-										<label for="af4">Quantity </label>
-										<input type="text" id="qty" ng-model="data.qty" ng-keyup="calculateTotal()" value="0" class="form-control" id="af4" placeholder="">
+										<label for="af4">Total Quantity</label>
+										<input type="text" id="qty" ng-model="data.totalQty" ng-keyup="calculateTotal()" value="0" class="form-control" id="af4" placeholder="">
 									</div>									
 								</div>
-						
+						       <div class="col-md-6">									
+									<div class="form-group">
+										<label for="af4">INS</label>
+										<input type="text" id="qty" ng-model="data.ins" ng-keyup="calculateTotal()" value="0" class="form-control" id="af4" placeholder="">
+									</div>									
+								</div>
 								<div class="col-md-6">									
 									<div class="form-group">
-										<label for="af6">Amount </label>
+										<label for="af6">Amount</label>
 										<input type="text" id="subtotal" ng-model="data.amount" readonly="readonly"   class="form-control" id="af6" placeholder="">
 									</div>									
 								</div>
 								<div class="col-md-6">									
 									<div class="form-group">
-										<label for="af7">GST Percentage </label>
+										<label for="af7">GST Percentage</label>
 										<input type="text" id="gst" ng-model="data.gst" ng-keyup="calculateTotal()" class="form-control"  id="af7" placeholder="">
 									</div>									
 								</div>
+								<div class="col-md-6">									
+									<div class="form-group">
+										<label for="af3">% Above</label>
+										<input type="text" ng-model="data.percentageAbove" id="unit" value="NOS" class="form-control" id="af3" placeholder="">
+									</div>									
+								</div>
+								<div class="col-md-6">									
+									<div class="form-group">
+										<label for="af3">All Inclusive Rate</label>
+										<input type="text" ng-model="data.allInclusiveRate" id="unit" value="NOS" class="form-control" id="af3" placeholder="">
+									</div>									
+								</div>
+								
 								<div class="col-md-6">									
 									<div class="form-group">
 										<label for="af8">Total Amount </label>
@@ -82,19 +136,103 @@
 								<div class="col-md-6">									
 									<div class="form-group">
 										<label for="af9">Transportation Code </label>
-										<input type="text" class="form-control" ng-model="data.transportationCode" id="af9" placeholder="">
+										<input type="text" class="form-control" ng-model="data.hsNo" id="af9" placeholder="">
 									</div>									
 								</div>
 								<div class="col-md-6">									
 									<div class="form-group">
-										<label for="af10">Description  </label>
-										<input type="text" class="form-control" ng-model="data.descriptionHSNno" id="af10" placeholder="">
+										<label for="af10">HSN Number</label>
+										<input type="text" class="form-control" ng-model="data.hsno" id="af10" placeholder="">
 									</div>									
 								</div>
 								<div class="col-md-12">									
 									<div class="form-group">
-										<label for="af11">HSN Number </label>
-										<input type="text" ng-model="data.hsno"  class="form-control" id="af11" placeholder="">
+										<label for="af11">Supplier With Address</label>
+										<input type="text" ng-model="data.supplierWithAddress"  class="form-control" id="af11" placeholder="">
+									</div>									
+								</div>
+								<div class="col-md-6">									
+									<div class="form-group">
+										<label for="af3">Details of IC</label>
+										<input type="text" ng-model="data.icDetails" id="unit" value="NOS" class="form-control" id="af3" placeholder="">
+									</div>									
+								</div>
+								<div class="col-md-6">									
+									<div class="form-group">
+										<label for="af3">Date of Supply</label>
+										<input type="text" datetime-picker="MM/dd/yyyy HH:mm" ng-model="data.dateOfSupply" id="unit" value="NOS" class="form-control" id="af3" placeholder="">
+									</div>									
+								</div>
+								<div class="col-md-6">									
+									<div class="form-group">
+										<label for="af4">Supply Quantity</label>
+										<input type="text" id="qty" ng-model="data.supplyQuantity" ng-keyup="calculateTotal()" value="0" class="form-control" id="af4" placeholder="">
+									</div>									
+								</div>
+								<div class="col-md-6">									
+									<div class="form-group">
+										<label for="af3">Balance Quantity</label>
+										<input type="text" ng-model="data.balanceQuantity" id="unit" value="NOS" class="form-control" id="af3" placeholder="">
+									</div>									
+								</div>
+								<div class="col-md-6">									
+									<div class="form-group">
+										<label for="af3">Place of Delivery</label>
+										<input type="text" ng-model="data.placeOfDelivery" id="unit" value="NOS" class="form-control" id="af3" placeholder="">
+									</div>									
+								</div>
+								<div class="col-md-6">									
+									<div class="form-group">
+										<label for="af3">Way Bill No. Date</label>
+										<input type="text" ng-model="data.wayBillNoDate" id="unit" value="NOS" class="form-control" id="af3" placeholder="">
+									</div>									
+								</div>
+								<div class="col-md-6">									
+									<div class="form-group">
+										<label for="af3">Truck Number</label>
+										<input type="text" ng-model="data.truckNo" id="unit" value="NOS" class="form-control" id="af3" placeholder="">
+									</div>									
+								</div>
+								<div class="col-md-6">									
+									<div class="form-group">
+										<label for="af3">Transporter</label>
+										<input type="text" ng-model="data.transporter" id="unit" value="NOS" class="form-control" id="af3" placeholder="">
+									</div>									
+								</div>
+								<div class="col-md-6">									
+									<div class="form-group">
+										<label for="af3">Arrival Date at Railway Store</label>
+										<input type="text" datetime-picker="MM/dd/yyyy HH:mm" ng-model="data.arrivalDateAtRailwayStore" id="unit" value="NOS" class="form-control" id="af3" placeholder="">
+									</div>									
+								</div>
+								<div class="col-md-6">									
+									<div class="form-group">
+										<label for="af3">Date of Railway Receipt</label>
+										<input type="text" datetime-picker="MM/dd/yyyy HH:mm" ng-model="data.dateOfRailwayReceipt" id="unit" value="NOS" class="form-control" id="af3" placeholder="">
+									</div>									
+								</div>
+								<div class="col-md-6">									
+									<div class="form-group">
+										<label for="af3">Bill No.</label>
+										<input type="text" ng-model="data.billNo" id="unit" value="NOS" class="form-control" id="af3" placeholder="">
+									</div>									
+								</div>
+								<div class="col-md-6">									
+									<div class="form-group">
+										<label for="af3">Date</label>
+										<input type="text" datetime-picker="MM/dd/yyyy HH:mm" ng-model="data.date" id="unit" value="NOS" class="form-control" id="af3" placeholder="">
+									</div>									
+								</div>
+								<div class="col-md-6">									
+									<div class="form-group">
+										<label for="af3">Bill Quantity</label>
+										<input type="text" ng-model="data.billQuantity" id="unit" value="NOS" class="form-control" id="af3" placeholder="">
+									</div>									
+								</div>
+								<div class="col-md-6">									
+									<div class="form-group">
+										<label for="af3">Way Bill No. Date</label>
+										<input type="text" datetime-picker="MM/dd/yyyy HH:mm" ng-model="data.wayBillNoDate" id="unit" value="NOS" class="form-control" id="af3" placeholder="">
 									</div>									
 								</div>
 												
