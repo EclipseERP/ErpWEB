@@ -26,14 +26,42 @@
 								
 								<div class="col-md-6">									
 									<div class="form-group">
-										<label for="af3">Name </label>
+										<label for="af3">Tender Name </label>
 										<input type="text" class="form-control" ng-model="p.projectName" id="af3" placeholder="">
 									</div>									
 								</div>
+								
+								
+							 <div class="col-md-12">
+							  <a id="eiworkadd" style = "cursor: pointer" >EI Work</a>									
+									<div id="eiwork" class="form-group">
+									
+									 <input type="text" class="form-control" ng-model="p.projectName" id="af3" placeholder="Add Location"> 
+
+									</div>									
+							</div>
+								
+								
+							  <div class="col-md-12">
+							  <a id="locationadd" style = "cursor: pointer" >Add Location</a>									
+									<div id="locationfield" class="form-group">
+									
+<!-- 									 <input type="text" class="form-control" ng-model="p.projectName" id="af3" placeholder="Add Location"> -->
+										
+										
+									</div>									
+								</div>
+								
+								
 								<div class="col-md-6">									
 									<div class="form-group">
 										<label for="af4">Details </label>
+										
+										
+										
 										<input type="text" class="form-control" id="af4" placeholder="">
+										
+										
 									</div>									
 								</div>								
 								<div class="col-md-6">									
@@ -58,5 +86,38 @@
             </div>
         </section>
         
+        <script type="text/javascript">
+        var counter=0;
+        $("#locationadd").click(function()
+        {
+        	  $("#locationfield").append(" <div id=c"+counter+"><input  type=text class=form-control ng-model=p.projectName id=af3 placeholder='Add location' > <a id=r"+counter+" onclick=remove('"+counter+"') style = cursor:pointer >Remove</a> <hr/></div>");
+        	  counter=counter+1;
+        }); 
+        
+        
+        function remove(count)
+        {
+        	  $('#c'+count).remove();
+        	
+        }
+        
+        
+        
+        
+        $("#locationadd").click(function()
+                {
+                	  $("#locationfield").append(" <div id=c"+counter+"><input  type=text class=form-control ng-model=p.projectName id=af3 placeholder='Add location' > <a id=r"+counter+" onclick=remove('"+counter+"') style = cursor:pointer >Remove</a> <hr/></div>");
+                	  counter=counter+1;
+                }); 
+                
+                
+                function remove(count)
+                {
+                	  $('#c'+count).remove();
+                	
+                }
+        
+
+        </script>
         
     

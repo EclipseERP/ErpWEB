@@ -11,7 +11,7 @@
 <!-- jQuery 3 --> 
 <script src="/assets/js/jquery-3.3.1.js"></script> 
 <!-- jQuery UI 1.11.4 --> 
-<script src="assets/js/jquery-ui.min.js"></script> 
+<script src="/assets/js/jquery-ui.min.js"></script> 
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip --> 
 <script>
   $.widget.bridge('uibutton', $.ui.button);
@@ -62,9 +62,6 @@
 <!-- AdminLTE dashboard demo (This is only for demo purposes) --> 
 <script src="/assets/js/dashboard.js"></script> 
 
-
-
-
     <script src="/lib/ie10-viewport-bug-workaround.js"></script> 
     <script src="/lib/angular.js"></script>
     <script src="/lib/ng-table.min.js"></script>
@@ -72,6 +69,30 @@
  
      <script src="/lib/angular-moment.min.js"/></script>
      <script src="/lib/angular-route.min.js"/></script>
+     
+     <script src="/js/routeNav/userRouter.js"></script>
+     <script src="/js/controller/userCtrl.js"/></script>
+     
+   <script type="text/javascript">
+
+	// For Datatable
+	function loadDatatable() 
+	{
+		
+			"use strict";
+			var table = $('#dataTableID').DataTable( {
+				"order": [[ 0, "desc" ]],
+				responsive: true,
+				"pagingType": "full_numbers",
+				"lengthMenu": [[10, 20, 40, -1], [10, 20, 40, "All"]]
+			});
+
+	}
+
+		setTimeout(loadDatatable, 1000);
+	
+    </script>
+     
      <script src="/lib/ng-file-upload-all.min.js"/></script>
      <script src="/lib/ng-file-upload-shim.min.js"/></script>
      <script src="/js/routeNav/userRouter.js"></script>
@@ -81,11 +102,18 @@
      <script src="/lib/ui-bootstrap-tpls.js"></script>
      <script src="/lib/angular-messages.js"/></script>
      <script src="/lib/datetime-picker.js"/></script>
+
      <script src="/js/routeNav/userRouter.js"></script>
      <script src="/js/controller/userCtrl.js"/></script>
      
      <script type="text/javascript" src="/js/moduleJs/project_JS_User.js"></script>
      <script type="text/javascript" src="/js/moduleJs/projectValidation.js"></script>
+
+
+
+
+<!-- Content Header (Page header) -->
+
 
 </body>
 </html>
