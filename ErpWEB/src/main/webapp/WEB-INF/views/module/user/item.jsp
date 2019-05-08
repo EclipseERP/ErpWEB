@@ -25,7 +25,7 @@
 								<div class="col-md-6">									
 									<div class="form-group">
 										<label for="af1">Item Name</label>
-										<input type="text" ng-model="data.name"  class="form-control" id="af1" placeholder="" required>
+										<input type="text" ng-model="data.name"  class="form-control" id="af1" placeholder=""  required>
 									</div>									
 								</div>
 									<div class="col-md-6">									

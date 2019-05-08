@@ -78,9 +78,111 @@
 								
                             </div>
                         </div>
-						<div class="box-footer" align="right">
+                        <div >
+							<div class="box-footer" align="left">
+								<button class="btn btn-primary pad40L pad40R mrg5L" ng-click="addItemModal()" >
+			                  	Add Item</button>
+							</div>
+							
+							<div id="ad_cart" class="form-group input-group-sm" ng-show="itemShow">
+							<div class="col-sm-12 ">
+							
+							<table class="table" ng-table="itemMenuTable" >
+  <thead class="thead-dark" style="width: 100%">
+    <tr>
+      <th scope="col">Sl No.</th>
+      <th scope="col">Item Name</th>
+      <th scope="col">Item Type</th>
+      <th scope="col">Select</th>
+    </tr>
+  </thead>
+  <tbody id="rowgen">
+	                             <tr align="center" ng-repeat="datas in $data | filter : keyword">
+				
+									<td   >Free Style</td>
+									
+									<td  > 
+									
+									<div ng-if="datas[3].id==null" >
+									<input type="text" value="0"/>
+									<input type="hidden" name='itemids' value='0' readonly='readonly' />
+									</div>
+									
+									<div ng-if="datas[3].item_name!=null" >
+									<input type="text" value=" {{datas[3].item_name}}"/>
+									<input type="hidden" name='itemids' value='{{datas[3].id}}' readonly='readonly' />
+									</div>
+									
+								   </td>
+						
+									<td  >  
+									
+									<div ng-if="datas[0].desc==null" >
+									<input type="text" name='descs' value="0"/>
+									</div>
+									
+									<div ng-if="datas[0].desc!=null" >
+									<input type="text" name='descs' value=" {{datas[0].desc}}"/>
+									</div>
+									
+									</td>
+									<td   > 
+									
+									
+									<div ng-if="datas[2].cat_name==null" >
+									<input type="text" value="0"/>
+									<input type="hidden" name='categoryids' value='0' readonly='readonly'/>
+									</div>
+									
+									<div ng-if="datas[2].cat_name!=null" >
+									<input type="text" value=" {{datas[2].cat_name}}"/>
+									<input type="hidden" name='categoryids' value='{{datas[2].id}}' readonly='readonly'/>
+									</div>
+									
+									</td>
+									<td   >  <input type="text" name='quantitys' value=" {{datas[0].quantity}}"/></td>
+									<td   >  <input type="text" name='calcprice' onkeyup='totalAdormentCalc()' value=" {{datas[0].price}}"/></td>
+									<td   ><button onclick='deleteCakeRow(this)' >Delete </button></td>
+								
+								 </tr>
+
+ 
+
+  </tbody>
+  <tfoot>
+  <tr>
+  <td colspan="2"> <input type="button" class="btn btn-blue pull-left" ng-click="closeItemCart()"  value="close"/>
+  </td>
+  </tfoot>
+</table>
+							<script type="text/javascript">
+							</script>
+							
+							</div>
+							</div>
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+						    <div class="box-footer" align="right">
 							<button type="submit" class="btn btn-primary pad40L pad40R mrg5L">Submit</button>
-						</div>
+						    </div>
                     </div>
                 </div>                
             </div>
@@ -121,3 +223,42 @@
         </script>
         
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="itemModal" class="modal fade" >
+    <div class="modal-dialog" style="max-width: 70%" role="document"  >
+        <div class="modal-content" style="width: 864px;height:300px">
+            <div class="modal-header" style="background-color: #bfa8a3">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Items</h4>
+            </div>
+            <div class="modal-body" style="background-color: white; ">
+			
+         
+
+             
+		                                       
+            </div>
+        </div>
+    </div>
+</div>

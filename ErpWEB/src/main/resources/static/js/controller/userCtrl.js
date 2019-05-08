@@ -388,6 +388,37 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 		    	
 		    }
 		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    $scope.addItemModal=function()
+			{
+				$scope.itemShow=true;
+				      $("#itemModal").modal(
+						{
+							backdrop: 'static',
+						    keyboard: false  
+						}		
+						);
+			}
+		    
+		    
+		    
+		    
+		    
+		    $scope.closeItemCart=function()
+			{
+				$scope.itemShow=false;
+			}
+		    
+		    
+		    
+		    
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //#########################################################################  All JS for ERP Software starts from here #################################################################################################	  
