@@ -143,7 +143,6 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 	  
 			$scope.itemaddload=function()
 			{
-				alert("xxxxxxxxx");
 				$scope.itemaddshow=true;
 				$scope.itemlistshow=false;
 			}
@@ -174,7 +173,6 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 			
 			$scope.itemlistload=function()
 			{
-				alert("yyyyyyy");
 				$scope.itemaddshow=false;
 				$scope.itemlistshow=true;
 				$scope.getRawMaterialsData();
@@ -238,11 +236,9 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 
 			$scope.vendorAdd=function(ven)
 			{
-				alert("aaaaaaaaaaaaaaa");
 		    	console.log("Vendor Data...",ven);
 		    	console.log("Data...",$scope.currentUserName);
 		    	$http.post('/vendorctrl/addVendor/'+$scope.currentUserName,ven).success(function(data) {
-		    		alert("saved")
 				}, function myError(response) {
 					alert("Sorry, Some technical error occur");
 				});
@@ -268,7 +264,6 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 		    {
 		    	console.log(raw)
 		    	$http.post('/rawMaterials/saveRawMaterial/'+$scope.currentUserName,raw).success(function(data) {
-                    alert("save")
 		    		$scope.itemlistload();
 		    		}, function myError(response) {
                    alert("Sorry, Some technical error occur");
@@ -279,7 +274,6 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 		    
 		    $scope.getRawMaterialsData=function()
 		    {
-		    	alert("zzzzzzz");
 		    	       $http.get('/rawMaterials/getRawMaterials/').success(function(data) 
 			  			{
 						   $scope.rowMaterialData = new NgTableParams({}, 

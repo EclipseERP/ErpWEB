@@ -83,6 +83,9 @@
      <script src="/lib/datetime-picker.js"/></script>
      <script src="/js/routeNav/userRouter.js"></script>
      <script src="/js/controller/userCtrl.js"/></script>
+     
+     <script type="text/javascript" src="/js/moduleJs/project_JS_User.js"></script>
+     <script type="text/javascript" src="/js/moduleJs/projectValidation.js"></script>
 
 </body>
 </html>
