@@ -20,7 +20,7 @@
 								<div class="col-md-6">									
 									<div class="form-group">
 										<label for="af1">Project Code </label>
-										<input type="text" class="form-control" ng-model="p.projectCode"af1" placeholder="">
+										<input type="text" class="form-control" readonly="readonly"  id="af1" value="{{projectcode}}" placeholder="">
 									</div>									
 								</div>
 								
@@ -33,17 +33,27 @@
 								
 								
 							 <div class="col-md-12">
-							  <a id="eiworkadd" style = "cursor: pointer" >EI Work</a>									
+							 	<a id="eiworkadd"  class="btn btn-primary pad40L pad40R mrg5L" >
+			                  	Add EI Work</a>
+							 
+												<br/>		
+											<br/>
 									<div id="eiwork" class="form-group">
 									
-									 <input type="text" class="form-control" ng-model="p.projectName" id="af3" placeholder="Add Location"> 
+									
 
-									</div>									
+									</div>
+									<hr style="color:red"/>
+																	
 							</div>
 								
 								
 							  <div class="col-md-12">
-							  <a id="locationadd" style = "cursor: pointer" >Add Location</a>									
+							  <a id="locationadd" class="btn btn-primary pad40L pad40R mrg5L" >
+			                  	Add Location</a>
+											<br/>		
+											<br/>	
+												
 									<div id="locationfield" class="form-group">
 									
 <!-- 									 <input type="text" class="form-control" ng-model="p.projectName" id="af3" placeholder="Add Location"> -->
@@ -53,50 +63,60 @@
 								</div>
 								
 								
-								<div class="col-md-6">									
+								<div class="col-md-12">									
 									<div class="form-group">
 										<label for="af4">Details </label>
 										
 										
-										
-										<input type="text" class="form-control" id="af4" placeholder="">
+										<textarea class="form-control" cols="12" id="af4" rows="3" required="required"></textarea>
+								
 										
 										
 									</div>									
 								</div>								
-								<div class="col-md-6">									
-									<div class="form-group">
-										<label for="datepicker">Date </label>
-										 <div class="input-group date">
-                                            <div class="input-group-addon"> <i class="fa fa-calendar"></i> </div>
-										<input type="text" class="form-control" ng-model="p.creationDate" id="af5" placeholder="">
-										</div>
-									</div>									
-								</div>
+							
 								
 								
 								
                             </div>
                         </div>
+                        </div>
                         <div >
 							<div class="box-footer" align="left">
 								<button class="btn btn-primary pad40L pad40R mrg5L" ng-click="addItemModal()" >
 			                  	Add Item</button>
-							</div>
-							
-							<div id="ad_cart" class="form-group input-group-sm" ng-show="itemShow">
+			                  	
+			                  	
+			                  	
+			                  	
+			                  	
+			                  	
+			                  	
+			                  							<div id="ad_cart" class="form-group input-group-sm" ng-show="itemShow">
 							<div class="col-sm-12 ">
 							
-							<table class="table" ng-table="itemMenuTable" >
+							<table class="table" ng-table="itemMenuTable" class="data-table table table-bordered table-striped table-responsive" >
   <thead class="thead-dark" style="width: 100%">
     <tr>
-      <th scope="col">Sl No.</th>
-      <th scope="col">Item Name</th>
-      <th scope="col">Item Type</th>
-      <th scope="col">Select</th>
+     
+      <th scope="col">Item Code</th>
+      <th scope="col">Description</th>
+      <th scope="col">INS</th>
+      <th scope="col">View full details</th>
+      <th scope="col">Remove</th>
     </tr>
   </thead>
   <tbody id="rowgen">
+	                            
+	                        <tr >      
+	                            
+	                            
+	                            
+	                            
+	                            
+	                            
+	                            
+	                            
 	                             <tr align="center" ng-repeat="datas in $data | filter : keyword">
 				
 									<td   >Free Style</td>
@@ -160,105 +180,99 @@
 							
 							</div>
 							</div>
+			                  	
+			                  	
+			                  	
+			                  	
+			                  	
+			                  	
+			                  	
+			                  	
+			                  	
+			                  	
+			                  	
+			                  	
+							</div>
 							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
+	
 							
 							
 						    <div class="box-footer" align="right">
 							<button type="submit" class="btn btn-primary pad40L pad40R mrg5L">Submit</button>
 						    </div>
                     </div>
+                   </form>
                 </div>                
             </div>
+            
         </section>
         
-        <script type="text/javascript">
-        var counter=0;
-        $("#locationadd").click(function()
-        {
-        	  $("#locationfield").append(" <div id=c"+counter+"><input  type=text class=form-control ng-model=p.projectName id=af3 placeholder='Add location' > <a id=r"+counter+" onclick=remove('"+counter+"') style = cursor:pointer >Remove</a> <hr/></div>");
-        	  counter=counter+1;
-        }); 
-        
-        
-        function remove(count)
-        {
-        	  $('#c'+count).remove();
-        	
-        }
-        
-        
-        
-        
-        $("#locationadd").click(function()
-                {
-                	  $("#locationfield").append(" <div id=c"+counter+"><input  type=text class=form-control ng-model=p.projectName id=af3 placeholder='Add location' > <a id=r"+counter+" onclick=remove('"+counter+"') style = cursor:pointer >Remove</a> <hr/></div>");
-                	  counter=counter+1;
-                }); 
-                
-                
-                function remove(count)
-                {
-                	  $('#c'+count).remove();
-                	
-                }
-        
 
-        </script>
         
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
     <div id="itemModal" class="modal fade" >
-    <div class="modal-dialog" style="max-width: 70%" role="document"  >
-        <div class="modal-content" style="width: 864px;height:300px">
+    <div class="modal-dialog" style="max-width: 100%" role="document"  >
+        <div class="modal-content" style="width: 920px;height:600px;left:-108px; position:relative;top:-14px;">
             <div class="modal-header" style="background-color: #bfa8a3">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Items</h4>
+                <h4 class="modal-title">Items available</h4>
             </div>
             <div class="modal-body" style="background-color: white; ">
 			
          
+<div class="col-md-12">	
+								      <button type="button"   class="btn btn-box-tool" data-widget="add">
+									<i class="fa fa-plus"></i> Create Item
+									
+								  </button>	
+<input type="text" class="pull-right" placeholder=" search.." ng-model = "keyword">
+			<table  ng-table="rowMaterialData" class="data-table table table-bordered table-striped table-responsive"  style="width: 100%;">
+										<thead>
+															<tr>
+												<th>Item Code</th>
+												<th>Item/Material Name</th>
+												<th>Description</th>
+												<th>INS</th>
+												<th>View full details</th>
+												<th>Add to Project/Tender</th>
+									            
+											</tr>
+										</thead>
+										<tbody>
+										
+										
+							<tr ng-repeat="datas in $data | filter : keyword">
+							<td >{{datas.itemCode}}</td>
+							<td >No name available</td>
+							<td >{{datas.descriptionHSNno}}</td>
+							<td ><select id="insindex{{$index}} ">
+							
+							<option value="">--Select INS Types--</option>
+							<option value="Consignee (CONS)">Consignee (CONS)</option>
+							<option value="RITES">RITES</option>
+							<option value="RDSO">RDSO</option>
+							
+							</select></td>
+							<td ><a >View full details</a></td>
+							<td ><a class="btn btn-primary pad40L pad40R mrg5L" ng-click="addItemToProjectCart(datas,$index )" style="cursor: pointer">Add to project</a></td>
 
+						    </tr>
+										
+										
+										
+										
+										
+											
+										</tbody>
+									</table>	
              
 		                                       
             </div>
         </div>
     </div>
 </div>
+</div>
+
+ <script type="text/javascript" src="/js/moduleJs/project_JS_User.js"></script>

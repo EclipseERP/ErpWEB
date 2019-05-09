@@ -110,8 +110,6 @@
      <script type="text/javascript" src="/js/moduleJs/projectValidation.js"></script>
 
 
-
-
 <!-- Content Header (Page header) -->
 
 

@@ -28,6 +28,8 @@ public class ProjectMasterController {
 	
 	@Autowired
 	ProjectsService projectservice;
+	
+	
 	@GetMapping("/getProjects")
 	public @ResponseBody List getProjectList() {
 		return projectservice.getAllProjects();
@@ -56,5 +58,15 @@ public class ProjectMasterController {
 		projectservice.saveOrUpdate(p);
 		
 	}
+	
+	@GetMapping("/getProjectCode")
+	public @ResponseBody Object getProjectCode()
+	{
+	
+		Object  code=projectservice.getAllProjects().size()+1;
+		return code;
+		
+	}
+	
 	
 }

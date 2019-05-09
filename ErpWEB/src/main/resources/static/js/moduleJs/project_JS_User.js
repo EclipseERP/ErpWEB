@@ -390,4 +390,43 @@ function deleteRowTemp(x)
 	 $(x).closest('tr').remove();
 }
 
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ ERP JAVA ,JQuery codes++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+var counter=0;
+$("#locationadd").click(function()
+{
+	  $("#locationfield").append(" <div id=c"+counter+"><input  type=text class=form-control ng-model=p.projectName id=af"+counter+" placeholder='Add location' > <a id=r"+counter+" onclick=remove('"+counter+"') style = cursor:pointer >Remove</a> <hr/></div>");
+	  counter=counter+1;
+}); 
+
+
+function remove(count)
+{
+	  $('#c'+count).remove();
+	
+}
+
+function removeItem(count)
+{
+	  $('#it'+count).remove();
+	
+}
+var counterei=0;
+$("#eiworkadd").click(function()
+{
+	  $("#eiwork").append(" <div id=cc"+counterei+"><input  type=text name=eiworks class=form-control ng-model=p.projectName id=af"+counterei+" placeholder='Add EI work details' > <a id=r"+counterei+" onclick=removeEiworks('"+counterei+"') style = cursor:pointer >Remove</a> <hr/></div>");
+	  counterei=counterei+1;
+}); 
+
+function removeEiworks(count)
+{
+	  $('#cc'+count).remove();
+	
+}
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ ERP JAVA ,JQuery codes++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 

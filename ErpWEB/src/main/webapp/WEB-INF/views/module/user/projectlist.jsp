@@ -23,7 +23,7 @@
                         <div class="box-body">
                             <div class="row">
 								
-								<div class="col-md-12">		
+								
 								             <input type="text" class="pull-right" placeholder=" search.." ng-model = "keyword">
 							<table  ng-table="projectListTable" class="data-table table table-bordered table-striped table-responsive">
 										<thead>

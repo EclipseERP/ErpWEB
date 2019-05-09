@@ -187,8 +187,26 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 			
 			$scope.projectaddload=function()
 			{
-				$scope.projectaddshow=true;
 				$scope.projectlistshow=false;
+				$http.get('/project/getProjectCode/').success(function(data) 
+			  			{
+					      var code="PR00"+parseInt(data)
+					      console.log("projectcode..",code)
+		    	    	  $scope.projectcode=code;
+						  $scope.projectaddshow=true;
+							
+						}, function myError(response) {
+							alert("Sorry, Some technical error occur");
+				
+			
+				  $timeout(function()
+						  {
+					
+						
+						  },200);
+		
+				});
+				
 			}
 			
 			$scope.itemadd=function()
@@ -276,6 +294,7 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 		    {
 		    	       $http.get('/rawMaterials/getRawMaterials/').success(function(data) 
 			  			{
+		    	    	   console.log(data)
 						   $scope.rowMaterialData = new NgTableParams({}, 
 						   { 
 					       dataset : data
@@ -285,19 +304,6 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 							alert("Sorry, Some technical error occur");
 						});
 		    }
-		    
-
-		    
-		    
-		    
-		    
-		    
-		    
-		    
-		    
-		    
-		    
-		    
 		    
 		    
 		    $scope.getvendorData=function()
@@ -389,15 +395,12 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 		    }
 		    
 		    
-		    
-		    
-		    
-		    
-		    
-		    
-		    
 		    $scope.addItemModal=function()
 			{
+		    	
+		    	
+		        $scope.getRawMaterialsData();
+		    	
 				$scope.itemShow=true;
 				      $("#itemModal").modal(
 						{
@@ -407,16 +410,31 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 						);
 			}
 		    
-		    
-		    
+		    var icounter=0;
+		    $scope.addItemToProjectCart=function(itemdata,indexno)
+		    {
+		    	
+		    	var insSelected = $("#insindex"+indexno).val();
+		    	
+		      console.log("itemdata found",itemdata.itemCode)
+		    	
+		    	var dynamicdata="<tr id=it"+icounter+" ><td><input type=text class=form-control name=itemcodes value="+itemdata.itemCode+" readonly=readonly /></td>" +
+		    			"<td><textarea name=descriptions rows=2 cols=65 class=form-control> </textarea></td>" +
+		    			"<td><input type=text class=form-control value="+insSelected+" readonly=readonly/></td>" +
+		    			"<td><a  >View full details</a></td>" +
+		    			"<td align=right><a ><img src=/assets/img/del.png width=20px height=20px onclick=removeItem('"+icounter+"') style='cursor:pointer' /></a></td>" +
+		    			"</tr>"
+		    	
+		      $("#rowgen").append(dynamicdata);
+		  	  icounter=icounter+1;
+
+		    }
 		    
 		    
 		    $scope.closeItemCart=function()
 			{
 				$scope.itemShow=false;
 			}
-		    
-		    
 		    
 		    
 
