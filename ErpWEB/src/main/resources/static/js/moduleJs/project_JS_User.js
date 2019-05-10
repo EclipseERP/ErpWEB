@@ -397,32 +397,87 @@ function deleteRowTemp(x)
 var counter=0;
 $("#locationadd").click(function()
 {
-	  $("#locationfield").append(" <div id=c"+counter+"><input  type=text class=form-control ng-model=p.projectName id=af"+counter+" placeholder='Add location' > <a id=r"+counter+" onclick=remove('"+counter+"') style = cursor:pointer >Remove</a> <hr/></div>");
+	  locationaddarray.push(counter)
+	  $("#locationfield").append(" <div id=c"+counter+"><input  type=text class=form-control name=locationfield id=af"+counter+" placeholder='Add location' > <a id=r"+counter+" onclick=remove('"+counter+"') style = cursor:pointer >Remove</a> <hr/></div>");
 	  counter=counter+1;
+	  
 }); 
 
 
 function remove(count)
 {
+	  locationaddarray.splice( locationaddarray.indexOf(count), 1 );
+	  
+	 
+	  
+	  
 	  $('#c'+count).remove();
+	  
+	  
+	  var loc = "";
+	  incloc=incloc-1;
+      var locations = $("[name=locationfield]");
+     
+      for(var h=0;h<locations.length;h++)
+      	{
+   	
+         loc= loc.concat("<th>("+incloc+")"+locations[h].value+"SCH.QTY.</th>");
+         incloc++
+      	}
+      
+      
+      var ei = "";
+      
+      var eiworks=$("[name=eiworksfield]");
+      
+      for(var i=0;i<eiworks.length;i++)
+  	{
+	
+      ei= ei.concat("<th>"+eiworks[i].value+"</th>");
+      incei++
+  	}
+      
+  	var itemHeaddynamicdata="<tr>" +
+		"<th>Item Code</th>"+
+		"<th>Description</th>"+loc+ei+
+		"<th>INS</th>"+
+		"<th>Total</th>"+
+		"<th>View full details</th>"+
+		"<th>Remove</th>"+
+		"</tr>"
+      
+      $("#materialHead").html(itemHeaddynamicdata)
+	  
+	  
 	
 }
 
-function removeItem(count)
-{
-	  $('#it'+count).remove();
-	
-}
+
 var counterei=0;
 $("#eiworkadd").click(function()
 {
-	  $("#eiwork").append(" <div id=cc"+counterei+"><input  type=text name=eiworks class=form-control ng-model=p.projectName id=af"+counterei+" placeholder='Add EI work details' > <a id=r"+counterei+" onclick=removeEiworks('"+counterei+"') style = cursor:pointer >Remove</a> <hr/></div>");
+	  eiworkarray.push(counterei)
+	  $("#eiwork").append(" <div id=cc"+counterei+"><input  type=text  class=form-control name=eiworksfield id=af"+counterei+" placeholder='Add EI work details' > <a id=r"+counterei+" onclick=removeEiworks('"+counterei+"') style = cursor:pointer >Remove</a> <hr/></div>");
 	  counterei=counterei+1;
 }); 
 
 function removeEiworks(count)
 {
+	  eiworkarray.splice( eiworkarray.indexOf(count), 1 );
 	  $('#cc'+count).remove();
+	
+}
+
+var incloc=1;
+var incei=1;
+var itemcodearray =new Array()
+var eiworkarray=new Array()
+var locationaddarray=new Array()
+function removeItem(count,itemcode)
+{
+itemcodearray.splice( itemcodearray.indexOf(itemcode), 1 );
+
+$('#it'+count).remove();
 	
 }
 

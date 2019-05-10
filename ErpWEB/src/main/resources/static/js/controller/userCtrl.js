@@ -140,35 +140,18 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //#########################################################################  All JS for ERP Software starts from here #################################################################################################	  
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+	  /**
+	  *  Author : Pradipto Roy 
+	  *  Designation : SR.Java Developer 
+	  */
+	  
 	  
 			$scope.itemaddload=function()
 			{
 				$scope.itemaddshow=true;
 				$scope.itemlistshow=false;
 			}
-			
-			
-			
-		/*	
-			
-			
-			
-			$scope.vendoraddload=function()
-			{
-				$scope.itemaddshow=true;
-				$scope.vendorlistshow=false;
-			}
-			
-			$scope.vendorlistload=function()
-			{
-				$scope.itemaddshow=false;
-				$scope.ivendorlistshow=true;
-				$scope.getvendorData();
-			}
-			
-			*/
-			
-			
 			
 			
 			$scope.itemlistload=function()
@@ -394,13 +377,14 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 		    	
 		    }
 		    
-		    
+		  
 		    $scope.addItemModal=function()
 			{
 		    	
-		    	
 		        $scope.getRawMaterialsData();
-		    	
+		        
+		        $scope.dynamicColumnHeader();
+		        
 				$scope.itemShow=true;
 				      $("#itemModal").modal(
 						{
@@ -410,23 +394,87 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 						);
 			}
 		    
+		    
+		    
+		    $scope.dynamicColumnHeader=function()
+		    {
+		    	
+        //--------------------------------------Dynamic table column headings add process-------------------------------------
+		        
+		        var loc = "";
+		        
+		        var locations = $("[name=locationfield]");
+		       
+		        for(var h=0;h<locations.length;h++)
+		        	{
+		     	
+		           loc= loc.concat("<th>("+incloc+")"+locations[h].value+"SCH.QTY.</th>");
+		           incloc++
+		        	}
+		        
+		        
+		        var ei = "";
+		        
+		        var eiworks=$("[name=eiworksfield]");
+		        alert(eiworks.length)
+		        
+		        for(var i=0;i<eiworks.length;i++)
+	        	{
+	     	
+	            ei= ei.concat("<th>"+eiworks[i].value+"</th>");
+	            incei++
+	        	}
+		        
+		    	var itemHeaddynamicdata="<tr>" +
+    			"<th>Item Code</th>"+
+				"<th>Description</th>"+loc+ei+
+				"<th>INS</th>"+
+				"<th>Total</th>"+
+				"<th>View full details</th>"+
+				"<th>Remove</th>"+
+    			"</tr>"
+		        
+		        $("#materialHead").html(itemHeaddynamicdata)
+		        
+		    	//--------------------------------------Dynamic table column headings add process ends here-------------------------------------
+		    	
+		    }
+		    
+		    
 		    var icounter=0;
 		    $scope.addItemToProjectCart=function(itemdata,indexno)
 		    {
 		    	
 		    	var insSelected = $("#insindex"+indexno).val();
 		    	
-		      console.log("itemdata found",itemdata.itemCode)
-		    	
-		    	var dynamicdata="<tr id=it"+icounter+" ><td><input type=text class=form-control name=itemcodes value="+itemdata.itemCode+" readonly=readonly /></td>" +
-		    			"<td><textarea name=descriptions rows=2 cols=65 class=form-control> </textarea></td>" +
-		    			"<td><input type=text class=form-control value="+insSelected+" readonly=readonly/></td>" +
-		    			"<td><a  >View full details</a></td>" +
-		    			"<td align=right><a ><img src=/assets/img/del.png width=20px height=20px onclick=removeItem('"+icounter+"') style='cursor:pointer' /></a></td>" +
-		    			"</tr>"
-		    	
-		      $("#rowgen").append(dynamicdata);
-		  	  icounter=icounter+1;
+		    	if(insSelected=="")
+		    		{
+		    		alert("Please select INS type")
+		    		}
+		    	if(insSelected!="")
+		    		{
+		    	      console.log("itemdata found",itemdata.itemCode)
+				    	var dynamicdata="<tr id=it"+icounter+" ><td><input type=text class=form-control name=itemcodes value="+itemdata.itemCode+" readonly=readonly /></td>" +
+				    			"<td><textarea name=descriptions rows=2 cols=65 class=form-control> </textarea></td>" +
+				    			"<td><input type=text class=form-control value="+insSelected+" readonly=readonly/></td>" +
+				    			"<td><a  >View full details</a></td>" +
+				    			"<td align=right><a ><img src=/assets/img/del.png width=20px height=20px onclick=removeItem('"+icounter+"','"+itemdata.itemCode+"') style='cursor:pointer' /></a></td>" +
+				    			"</tr>"
+				    	
+				    			
+				       if(!itemcodearray.includes(itemdata.itemCode))	
+				    	   {		
+				      $("#rowgen").append(dynamicdata);
+				      icounter=icounter+1;
+				    	   }
+		    	      if(itemcodearray.includes(itemdata.itemCode))	
+			    	   {		
+			           alert("You already added this Item in project ")
+			    	   }
+				  	  
+				  	  itemcodearray.push(itemdata.itemCode)
+				  	  
+		    		}
 
 		    }
 		    
@@ -443,3 +491,5 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++		 
 });
 
+
+$.import_js('/js/moduleJs/project_JS_User.js');  

@@ -96,7 +96,7 @@
 							<div class="col-sm-12 ">
 							
 							<table class="table" ng-table="itemMenuTable" class="data-table table table-bordered table-striped table-responsive" >
-  <thead class="thead-dark" style="width: 100%">
+  <thead id="materialHead" class="thead-dark" style="width: 100%">
     <tr>
      
       <th scope="col">Item Code</th>
@@ -229,8 +229,8 @@
 								  </button>	
 <input type="text" class="pull-right" placeholder=" search.." ng-model = "keyword">
 			<table  ng-table="rowMaterialData" class="data-table table table-bordered table-striped table-responsive"  style="width: 100%;">
-										<thead>
-															<tr>
+										<thead >
+											<tr>
 												<th>Item Code</th>
 												<th>Item/Material Name</th>
 												<th>Description</th>
