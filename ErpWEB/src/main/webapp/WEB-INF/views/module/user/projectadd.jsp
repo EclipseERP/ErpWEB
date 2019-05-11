@@ -122,8 +122,8 @@
                         
                         
 							<div class="box-footer" align="left" >
-								<button class="btn btn-primary pad40L pad40R mrg5L" ng-click="addItemModal()" >
-			                  	Add Item</button>
+								<a class="btn btn-primary pad40L pad40R mrg5L" ng-click="addItemModal()" >
+			                  	Add Item</a>
 			                  	
 			                 <div id="ad_cart" class="form-group input-group-sm" ng-show="itemShow">
 							<div class="col-sm-12 ">

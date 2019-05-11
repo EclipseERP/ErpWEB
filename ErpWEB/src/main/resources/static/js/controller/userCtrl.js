@@ -144,7 +144,7 @@ app
 					}
 
 					$scope.submitVendor = function(ven) {
-						alert("aaaaaaaaaaaaaaa");
+					
 						console.log("Vendor Data...", ven);
 						$http.post(
 								'/vendorctrl/addVendor/'
@@ -350,7 +350,7 @@ app
 					}
 
 					$scope.projectAdd = function(p) {
-						alert("aaaaaaaaaaaaaaa");
+						
 						console.log("Project Data...", p);
 						console.log("Data...", $scope.currentUserName);
 						var creationDate = p.creationDate;
@@ -466,7 +466,7 @@ app
 
 							var itemHeaddynamicdata = "<tr>"
 									+ "<th>Item Code</th>"
-									+ "<th>Description</th>" + loc + ei
+									+ "<th>Description</th><th>Unit</th>" + loc + ei
 									+ "<th>INS</th>" + "<th>Total</th>"
 									+ "<th>View full details</th>"
 									+ "<th>Remove</th>" + "</tr>"
@@ -497,15 +497,47 @@ app
 						}
 						if (insSelected != "") {
 							console.log("itemdata found", itemdata.itemCode)
+							
+							
+							// --------------------------------------Dynamic
+							// table column headings add
+							// process-------------------------------------
+							var ei = "";
+							var loc = "";
+							var locations = $("[name=locationfield]");
+							var inb = 1
+							for (var h = 0; h < locations.length; h++) {
+
+								loc = loc.concat("<td><input type=text name=locationvalue size=4 value=0 onkeyup=calculationItemtotal('"+icounter+"') id=locationvalueid"+icounter+h+" /></td>");
+
+								inb++
+							}
+
+							var eiworks = $("[name=eiworksfield]");
+
+							for (var i = 0; i < eiworks.length; i++) {
+
+								ei = ei.concat("<td><input type=text name=eiworksvalue size=4 value=0 id=eiworksvalueid"+icounter+h+" /></td>");
+								incei++
+							}
+
+							// --------------------------------------Dynamic
+							// table column headings add process ends
+							// here-------------------------------------
+							
+							
+							
 							var dynamicdata = "<tr id=it"
 									+ icounter
 									+ " ><td><input type=text class=form-control name=itemcodes value="
 									+ itemdata.itemCode
 									+ " readonly=readonly /></td>"
 									+ "<td><textarea name=descriptions rows=2 cols=65 class=form-control> </textarea></td>"
-									+ "<td><input type=text class=form-control value="
+									+"<td><input type=text name=unit size=4 value=NOS  /></td>"
+									+loc+ei+ "<td><input type=text class=form-control value="
 									+ insSelected
 									+ " readonly=readonly/></td>"
+									+ "<td><input type=text name=totalval size=4 value=0 id=totalvalid"+icounter+" /></td></td>"
 									+ "<td><a  >View full details</a></td>"
 									+ "<td align=right><a ><img src=/assets/img/del.png width=20px height=20px onclick=removeItem('"
 									+ icounter + "','" + itemdata.itemCode
@@ -573,9 +605,7 @@ app
 								$scope.projectcode=$("#af1").val();
 								$scope.projectname=$("#af3").val();
 								$scope.details=$("#af4").val();
-								
-								
-								
+	
 								$scope.projectaddFirstPartView = false;
 								$scope.projectaddSecondPartView = true;
 							} else {
@@ -598,5 +628,18 @@ app
 					// #################################################################################################
 					// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 				});
+
+function calculationItemtotal(inccounter_calc)
+{
+	var total=0
+	var locationvalues = $("[name=locationvalue]");
+
+	for(var t=0;t<locationvalues.length;t++)
+		{
+		total=total+parseInt(locationvalues[t].value)
+		}
+	
+alert(total)
+}
 
 $.import_js('/js/moduleJs/project_JS_User.js');
