@@ -66,13 +66,14 @@
 								<div class="col-md-12">									
 									<div class="form-group">
 										<label for="af4">Details </label>
-										
-										
-										<textarea class="form-control" cols="12" id="af4" rows="3" required="required"></textarea>
-								
-										
-										
-									</div>									
+
+
+									<textarea class="form-control" cols="12" id="af4" rows="3"
+										required="required"></textarea>
+
+
+
+								</div>									
 								</div>								
 							
 										<div class="col-md-12">									
@@ -90,17 +91,41 @@
                         </div>
                         </div>
                         <div ng-show="projectaddSecondPartView">
+                        
+                        <div  class="box-footer">
+                        
+                        	<div class="col-md-12">									
+									<div class="form-group">
+										<label for="af3">Project Code : </label>
+										<b>{{projectcode}}</b>
+									</div>									
+								</div>
+								
+								<div class="col-md-12">									
+									<div class="form-group">
+										<label for="af3">Project / Tender Name : </label>
+										
+										<b>{{projectname}} </b>
+									</div>									
+								</div>
+								
+								
+								<div class="col-md-12">									
+									<div class="form-group">
+										<label for="af3">Details : </label>
+										<b>{{details}} </b>
+									</div>									
+								</div>
+                        
+                        
+                        </div>
+                        
+                        
 							<div class="box-footer" align="left" >
 								<button class="btn btn-primary pad40L pad40R mrg5L" ng-click="addItemModal()" >
 			                  	Add Item</button>
 			                  	
-			                  	
-			                  	
-			                  	
-			                  	
-			                  	
-			                  	
-			                  							<div id="ad_cart" class="form-group input-group-sm" ng-show="itemShow">
+			                 <div id="ad_cart" class="form-group input-group-sm" ng-show="itemShow">
 							<div class="col-sm-12 ">
 							
 							<table class="table" ng-table="itemMenuTable" class="data-table table table-bordered table-striped table-responsive" >
@@ -149,7 +174,7 @@
 									</div>
 									
 									</td>
-									<td   > 
+									<td> 
 									
 									
 									<div ng-if="datas[2].cat_name==null" >
@@ -184,17 +209,7 @@
 							</div>
 							</div>
 			                  	
-			                  	
-			                  	
-			                  	
-			                  	
-			                  	
-			                  	
-			                  	
-			                  	
-			                  	
-			                  	
-			                  	
+		
 							</div>
 							
 	

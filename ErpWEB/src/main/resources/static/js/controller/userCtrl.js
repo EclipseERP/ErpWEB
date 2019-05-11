@@ -192,6 +192,7 @@ app
 						$scope.projectaddshow = false;
 						$scope.projectlistshow = true;
 						$scope.getProjectData();
+						$route.reload();
 					}
 
 					$scope.projectaddload = function() {
@@ -200,6 +201,9 @@ app
 						$scope.projectlistshow = false;
 						$scope.projectaddFirstPartView = true;
 						$scope.projectaddSecondPartView = false;
+						
+						
+						
 						$http.get('/project/getProjectCode/').success(
 								function(data) {
 									var code = "PR00" + parseInt(data)
@@ -565,6 +569,13 @@ app
 								&& $("#af4").val() != "") {
 
 							if (confirm('Before continue please check once. The data save at this process cannot be revert. !!')) {
+								
+								$scope.projectcode=$("#af1").val();
+								$scope.projectname=$("#af3").val();
+								$scope.details=$("#af4").val();
+								
+								
+								
 								$scope.projectaddFirstPartView = false;
 								$scope.projectaddSecondPartView = true;
 							} else {
