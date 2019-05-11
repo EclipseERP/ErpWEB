@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-md-12">
                 <form ng-submit="projectAdd(p)" class="col-md-12" name="ProjectForm">
-                    <div class="box box-primary">
+                    <div class="box box-primary" >
                         <div class="box-header with-border">
                             <h3 class="box-title">Project Details Form</h3>
                             <div class="box-tools pull-right">
@@ -15,7 +15,7 @@
                             </div>
                         </div>
                         <!-- /.box-header -->
-                        <div class="box-body">
+                        <div ng-show="projectaddFirstPartView" class="box-body">
                             <div class="row">
 								<div class="col-md-6">									
 									<div class="form-group">
@@ -27,7 +27,7 @@
 								<div class="col-md-6">									
 									<div class="form-group">
 										<label for="af3">Tender Name </label>
-										<input type="text" class="form-control" ng-model="p.projectName" id="af3" placeholder="">
+										<input type="text" class="form-control"  ng-model="p.projectName" id="af3" placeholder="">
 									</div>									
 								</div>
 								
@@ -75,14 +75,22 @@
 									</div>									
 								</div>								
 							
+										<div class="col-md-12">									
+									<div class="form-group" align="right">
+		                             
+		                             <a class="btn btn-primary pad40L pad40R mrg5L" ng-click="projectSecondPartshow()"> Save and Continue</a>
 								
+										
+										
+									</div>									
+								</div>
 								
 								
                             </div>
                         </div>
                         </div>
-                        <div >
-							<div class="box-footer" align="left">
+                        <div ng-show="projectaddSecondPartView">
+							<div class="box-footer" align="left" >
 								<button class="btn btn-primary pad40L pad40R mrg5L" ng-click="addItemModal()" >
 			                  	Add Item</button>
 			                  	
