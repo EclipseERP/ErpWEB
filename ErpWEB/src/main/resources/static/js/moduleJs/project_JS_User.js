@@ -397,47 +397,102 @@ function deleteRowTemp(x)
 var counter=0;
 $("#locationadd").click(function()
 {
+       var locations = $("[name=locationfield]");
+       var flagloc=0
+       
+       for(var h=0;h<locations.length;h++)
+    	{
+ 	  
+    	 if(locations[h].value=="")  
+    		 {
+    		 alert("Please enter location name !!")
+    		 flagloc=0;
+    		 break;
+    		 }
+    	 if(locations[h].value!="")  
+		 {
+    		 flagloc=1
+		 }
+    	 
+    	}
+	
+	 
+	  if(counter==0)
+		  {
 	  locationaddarray.push(counter)
 	  $("#locationfield").append(" <div id=c"+counter+"><input  type=text class=form-control name=locationfield id=af"+counter+" placeholder='Add location' > <a id=r"+counter+" onclick=remove('"+counter+"') style = cursor:pointer >Remove</a> <hr/></div>");
 	  counter=counter+1;
+		  }
+	  if(counter>0)
+		  {
+		  if(flagloc>0)
+			  {
+			  locationaddarray.push(counter)
+			  $("#locationfield").append(" <div id=c"+counter+"><input  type=text class=form-control name=locationfield id=af"+counter+" placeholder='Add location' > <a id=r"+counter+" onclick=remove('"+counter+"') style = cursor:pointer >Remove</a> <hr/></div>");
+			  counter=counter+1;
+			  }
+		  }
+		
 	  
 }); 
 
 
 function remove(count)
 {
-	  locationaddarray.splice( locationaddarray.indexOf(count), 1 );
-	  
 	 
-	  
-	  
-	  $('#c'+count).remove();
-	  
-	  
-	  var loc = "";
-	  incloc=incloc-1;
+     locationaddarray.splice( locationaddarray.indexOf(count), 1 );
+
       var locations = $("[name=locationfield]");
-     
+      var flagloc=0
+      
       for(var h=0;h<locations.length;h++)
-      	{
-   	
-         loc= loc.concat("<th>("+incloc+")"+locations[h].value+"SCH.QTY.</th>");
-         incloc++
-      	}
+   	{
+	  
+   	 if(locations[h].value=="")  
+   		 {
+   		 alert("One of your loaction field is blank !!")
+   		 flagloc=0;
+   		 break;
+   		 }
+   	 if(locations[h].value!="")  
+		 {
+   		flagloc=1;
+		 }
+   	 
+   	}
       
       
-      var ei = "";
-      
-      var eiworks=$("[name=eiworksfield]");
-      
-      for(var i=0;i<eiworks.length;i++)
-  	{
+      if(flagloc>0)
+    	{
+    	
+	        //--------------------------------------Dynamic table column headings add process-------------------------------------
+	    var ei = "";
+		var loc = "";
+    var locations = $("[name=locationfield]");
+	var inb=1
+    for(var h=0;h<locations.length;h++)
+    	{
+ 
+       loc= loc.concat("<th>("+inb+") <br/>"+locations[h].value+" <br/> SCH.QTY.</th>");
+     
+       inb++
+    	}
+    
 	
-      ei= ei.concat("<th>"+eiworks[i].value+"</th>");
-      incei++
-  	}
-      
-  	var itemHeaddynamicdata="<tr>" +
+	
+    var eiworks=$("[name=eiworksfield]");
+    var eib=1
+    for(var i=0;i<eiworks.length;i++)
+	{
+	
+    ei= ei.concat("<th>"+eiworks[i].value+"</th>");
+    eib++
+	}
+    
+	//--------------------------------------Dynamic table column headings add process ends here-------------------------------------
+    	
+    	
+	var itemHeaddynamicdata="<tr>" +
 		"<th>Item Code</th>"+
 		"<th>Description</th>"+loc+ei+
 		"<th>INS</th>"+
@@ -445,11 +500,19 @@ function remove(count)
 		"<th>View full details</th>"+
 		"<th>Remove</th>"+
 		"</tr>"
-      
-      $("#materialHead").html(itemHeaddynamicdata)
-	  
-	  
 	
+	$("#materialHead").empty();	
+ 
+    $("#rowgen").empty()
+    
+   	$('#c'+count).remove();
+	counter=counter-1;
+	
+	alert("Location removed please click the  'Add item' button to reload changes")
+	
+
+    	}
+      
 }
 
 

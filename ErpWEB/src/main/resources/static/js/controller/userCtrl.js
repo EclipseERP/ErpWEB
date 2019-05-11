@@ -170,6 +170,9 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 			
 			$scope.projectaddload=function()
 			{
+				loc="";
+				ei="";
+				
 				$scope.projectlistshow=false;
 				$http.get('/project/getProjectCode/').success(function(data) 
 			  			{
@@ -377,46 +380,53 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 		    	
 		    }
 		    
-		  
+//*************************************************************************************************************************************************			    
+//******************************************************************* Item add method to project **************************************************
+//*************************************************************************************************************************************************		    
 		    $scope.addItemModal=function()
 			{
 		    	
 		        $scope.getRawMaterialsData();
 		        
-		        $scope.dynamicColumnHeader();
-		        
-				$scope.itemShow=true;
-				      $("#itemModal").modal(
-						{
-							backdrop: 'static',
-						    keyboard: false  
-						}		
-						);
-			}
-		    
-		    
-		    
-		    $scope.dynamicColumnHeader=function()
-		    {
-		    	
-        //--------------------------------------Dynamic table column headings add process-------------------------------------
-		        
-		        var loc = "";
-		        
+
+		        		        
 		        var locations = $("[name=locationfield]");
-		       
+		        var flagloc=0
+		        
+		        for(var h=0;h<locations.length;h++)
+		     	{
+		  	  
+		     	 if(locations[h].value=="")  
+		     		 {
+		     		 alert("One of your loaction field is blank !!")
+		     		 flagloc=0;
+		     		 break;
+		     		 }
+		     	 if(locations[h].value!="")  
+		 		 {
+		     		flagloc=1;
+		 		 }
+		     	 
+		     	}
+		        
+		        if(flagloc>0)
+		        	{
+		        	
+		        	
+			        //--------------------------------------Dynamic table column headings add process-------------------------------------
+		    	    var ei = "";
+				    var loc = "";
+		        var locations = $("[name=locationfield]");
+		    	var inb=1
 		        for(var h=0;h<locations.length;h++)
 		        	{
-		     	
-		           loc= loc.concat("<th>("+incloc+")"+locations[h].value+"SCH.QTY.</th>");
-		           incloc++
+		     
+		           loc= loc.concat("<th>("+inb+") <br/>"+locations[h].value+" <br/> SCH.QTY.</th>");
+		         
+		           inb++
 		        	}
 		        
-		        
-		        var ei = "";
-		        
 		        var eiworks=$("[name=eiworksfield]");
-		        alert(eiworks.length)
 		        
 		        for(var i=0;i<eiworks.length;i++)
 	        	{
@@ -424,7 +434,10 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 	            ei= ei.concat("<th>"+eiworks[i].value+"</th>");
 	            incei++
 	        	}
-		        
+		       
+		    	//--------------------------------------Dynamic table column headings add process ends here-------------------------------------
+		        	
+		        	
 		    	var itemHeaddynamicdata="<tr>" +
     			"<th>Item Code</th>"+
 				"<th>Description</th>"+loc+ei+
@@ -433,12 +446,23 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 				"<th>View full details</th>"+
 				"<th>Remove</th>"+
     			"</tr>"
-		        
+		      
 		        $("#materialHead").html(itemHeaddynamicdata)
-		        
-		    	//--------------------------------------Dynamic table column headings add process ends here-------------------------------------
-		    	
-		    }
+				
+				$scope.itemShow=true;
+				
+				$("#itemModal").modal(
+						{
+							backdrop: 'static',
+						    keyboard: false  
+						}		
+						);
+		        	}
+			}
+		    
+//************************************************************ Item add to project method ends here *********************************************************
+//***********************************************************************************************************************************************************		 
+		
 		    
 		    
 		    var icounter=0;

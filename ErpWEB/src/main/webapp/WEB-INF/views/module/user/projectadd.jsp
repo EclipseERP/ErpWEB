@@ -110,12 +110,7 @@
 	                            
 	                        <tr >      
 	                            
-	                            
-	                            
-	                            
-	                            
-	                            
-	                            
+	                          
 	                            
 	                             <tr align="center" ng-repeat="datas in $data | filter : keyword">
 				
