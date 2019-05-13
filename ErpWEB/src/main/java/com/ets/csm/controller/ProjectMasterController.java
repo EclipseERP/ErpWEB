@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ets.csm.model.Projects;
@@ -50,14 +51,44 @@ public class ProjectMasterController {
 		return "/module/user/projectadd";
 	}
 	
+	
+	//++++++++++++++++++++++++++++++++++++++++++++++ Tender Creation method starts here ++++++++++++++++++++++++++++++++++++++++++++++++++
+	
 	@PostMapping("/saveProject/{userName}")
-	public @ResponseBody void saveProject(@RequestBody Projects p , @PathVariable String userName) 
+	public @ResponseBody void saveProject(@RequestBody Projects p ,
+			@PathVariable String userName,@RequestParam(name = "eiwork") String[] eiworks,
+			@RequestParam(name = "location") String[] locationfields,
+			@RequestParam(name = "itemcode") String[] itemcodes,
+			@RequestParam(name = "itemcode") String[] inslist,
+			@RequestParam(name = "projectcode") String projectcode
+			) 
 	{
-		User userdetails = userService.getUserByUserName(userName);
-		p.setCreationDate(DateUtility.getCurrentDateWithTime());
-		projectservice.saveOrUpdate(p);
+		
+		String eiwork[]=eiworks;
+		String locationfield[]=locationfields;
+		String itemcode[]=itemcodes;
+		String ins[]=inslist;
+		
+		for(int i=0;i<itemcode.length;i++)
+		{
+			
+			User userdetails = userService.getUserByUserName(userName);
+			p.setCreationDate(DateUtility.getCurrentDateWithTime());
+			p.setProjectCode(projectcode);
+			p.setItemcodes(itemcodes[i]);
+			p.setLocation(locationfields[i]);
+			p.setEiwork(eiworks[i]);
+			p.setIns(ins[i]);
+			projectservice.saveOrUpdate(p);
+			
+		}
+		
+	
+		
 		
 	}
+	
+	//++++++++++++++++++++++++++++++++++++++++++++++ Tender Creation method ends here +++++++++++++++++++++++++++++++++++++++++++++++++++++
 	
 	@GetMapping("/getProjectCode")
 	public @ResponseBody Object getProjectCode()
@@ -67,6 +98,10 @@ public class ProjectMasterController {
 		return code;
 		
 	}
+	
+	
+	
+	
 	
 	
 }
