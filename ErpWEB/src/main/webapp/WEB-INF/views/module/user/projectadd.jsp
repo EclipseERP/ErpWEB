@@ -26,7 +26,23 @@
 								</div>
 							</div>
 
-							<div class="col-md-6">
+                     
+
+
+                         	<div class="col-md-6">
+								<div class="form-group">
+									<label for="af2">Date </label> 
+									
+			                            <input type="text" class="form-control" id="tendardate" readonly="readonly" placeholder="Project Date" datetime-picker="yyyy-MM-dd " size="3" ng-model="p.creation_date" is-open="ctrl.date.eventTime" /> 									
+										<span class="input-group-btn">
+										<button type="button" class="btn btn-blue" ng-click="ctrl.date.eventTime = true"> <i class="fa fa-calendar"></i>
+									
+								</div>
+							</div>
+
+
+
+							<div class="col-md-12">
 								<div class="form-group">
 									<label for="af3">Tender Name </label> <input type="text"
 										class="form-control" ng-model="p.projectName" id="af3"
@@ -34,26 +50,24 @@
 								</div>
 							</div>
 
-
 							<div class="col-md-12">
+								<a id="locationadd" class="btn btn-primary pad40L pad40R mrg5L">
+									Add Project Location</a> <br /> <br />
+
+								<div id="locationfield" class="form-group">
+
+							   <!-- <input type="text" class="form-control" ng-model="p.projectName" id="af3" placeholder="Add Location"> -->
+
+								</div>
+							</div>
+							
+							
+						    <div class="col-md-12">
 								<a id="eiworkadd" class="btn btn-primary pad40L pad40R mrg5L">
 									Add EI Work</a> <br /> <br />
 								<div id="eiwork" class="form-group"></div>
 								<hr style="color: red" />
 
-							</div>
-
-
-							<div class="col-md-12">
-								<a id="locationadd" class="btn btn-primary pad40L pad40R mrg5L">
-									Add Location</a> <br /> <br />
-
-								<div id="locationfield" class="form-group">
-
-									<!-- 									 <input type="text" class="form-control" ng-model="p.projectName" id="af3" placeholder="Add Location"> -->
-
-
-								</div>
 							</div>
 
 
@@ -97,7 +111,19 @@
 
 						<div class="col-md-12">
 							<div class="form-group">
-								<label for="af3">Project / Tender Name : </label> <b>{{projectname}}</b>
+
+								<label for="af3">Project Details : </label> 
+								<b>{{projectname}}
+								</b>
+							</div>
+						</div>
+						
+
+							<div class="col-md-12">
+							<div class="form-group">
+								<label for="af3">Date : </label> <b>{{projectdate}}
+								</b>
+
 							</div>
 						</div>
 
@@ -107,8 +133,12 @@
 								<label for="af3">Details : </label> <b>{{details}}</b>
 							</div>
 						</div>
+<<<<<<< HEAD
                     </div>
 
+
+
+					</div>
 
 					<div class="box-footer" align="left">
 						<a class="btn btn-primary pad40L pad40R mrg5L"
@@ -188,8 +218,6 @@
 
 										</tr>
 
-
-
 									</tbody>
 									<tfoot>
 										<tr>
@@ -212,7 +240,7 @@
 
 
 					<div class="box-footer" align="right">
-						<button type="submit" class="btn btn-primary pad40L pad40R mrg5L">Submit</button>
+						<button type="button" ng-click="saveProject(p)" class="btn btn-primary pad40L pad40R mrg5L">Save project</button>
 					</div>
 				</div>
 			</form>
@@ -220,10 +248,6 @@
 	</div>
 
 </section>
-
-
-
-
 
 
 <div id="itemModal" class="modal fade">
@@ -280,10 +304,6 @@
 									style="cursor: pointer">Add to project</a></td>
 
 							</tr>
-
-
-
-
 
 
 						</tbody>

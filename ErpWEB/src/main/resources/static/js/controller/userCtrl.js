@@ -460,8 +460,7 @@ app
 							var itemHeaddynamicdata = "<tr>"
 									+ "<th>Item Code</th>"
 									+ "<th>Description</th><th>Unit</th>" + loc
-									+ ei + "<th>INS</th>" + "<th>Total</th>"
-									+ "<th>View full details</th>"
+									+ ei + "<th>Total</th>" + "<th>INS</th>"
 									+ "<th>Remove</th>" + "</tr>"
 
 							$("#materialHead").html(itemHeaddynamicdata)
@@ -501,7 +500,7 @@ app
 							for (var h = 0; h < locations.length; h++) {
 
 								loc = loc
-										.concat("<td><input type=text name=locationvalue size=4 value=0 onkeyup=calculationItemtotal('"
+										.concat("<td><input type=text name=locationvalue"+icounter+" size=4 value=0 onkeyup=calculationItemtotal('"
 												+ icounter
 												+ h
 												+ "','"
@@ -540,13 +539,12 @@ app
 									+ "<td><input type=text name=unit size=4 value=NOS  /></td>"
 									+ loc
 									+ ei
+									+ "<td><input type=text name=totalval size=4 value=0 id=totalvalid"
+									+ icounter
+									+ " /></td>"
 									+ "<td><input type=text class=form-control value="
 									+ insSelected
 									+ " readonly=readonly/></td>"
-									+ "<td><input type=text name=totalval size=4 value=0 id=totalvalid"
-									+ icounter
-									+ " /></td></td>"
-									+ "<td><a  >View supply details</a></td>"
 									+ "<td align=right><a ><img src=/assets/img/del.png width=20px height=20px onclick=removeItem('"
 									+ icounter + "','" + itemdata.itemCode
 									+ "') style='cursor:pointer' /></a></td>"
@@ -573,6 +571,8 @@ app
 
 						var locations = $("[name=locationfield]");
 						var flagloc = 0
+						var projectDetails="";
+						var inb = 1
 
 						for (var h = 0; h < locations.length; h++) {
 
@@ -582,6 +582,9 @@ app
 								break;
 							}
 							if (locations[h].value != "") {
+								
+								projectDetails=projectDetails.concat(inb+" : "+locations[h].value+"  ,  "+"   ");
+								inb++;
 								flagloc = 1;
 							}
 
@@ -606,13 +609,15 @@ app
 
 						if (flagloc > 0 && flagloc2 > 0
 								&& $("#af3").val() != ""
-								&& $("#af4").val() != "") {
+								&& $("#af4").val() != ""
+								&& $("#tendardate").val()!="") {
 
 							if (confirm('Before continue please check once. The data save at this process cannot be revert. !!')) {
 
 								$scope.projectcode = $("#af1").val();
-								$scope.projectname = $("#af3").val();
+								$scope.projectname = projectDetails;
 								$scope.details = $("#af4").val();
+								$scope.projectdate=$("#tendardate").val();
 
 								$scope.projectaddFirstPartView = false;
 								$scope.projectaddSecondPartView = true;
@@ -627,13 +632,107 @@ app
 						if ($("#af4").val() == "") {
 							alert("Details found blank !!")
 						}
-
+						
+						if ($("#tendardate").val() == "") {
+							alert("Project Date Required !!")
+						}
+						
+						
+						
+						
 					}
+					
+					
+					//********************************************* Project Save method starts here ****************************************************
+					
+					$scope.saveProject=function(data)
+					{		
+					console.log("any...",data)	
+									
+					var projectLocationlist=new Array();
+					var projectLocationlistSCHQTY=new Array();
+					
+					var addEiworklist=new Array();
+					var itemcodeslist=new Array();
+					var unitlist=new Array();
+					var locationvaluelist=new Array();
+					var eiworksvaluelist=new Array();
+					
+					var projectcode=$("#af1").val();
+					var tendername=$("#af3").val();
+					
+					var locations = $("[name=locationfield]");
+					var eiworksfileds = $("[name=eiworksfield]");
+					var locval=$("[name=locationfield]");
+					
+					
+					for (var h = 0; h < locations.length; h++) 
+					{
+                     projectLocationlist.push(locations[h].value)
+					}
+					
+                  
+					var eiworkslength = eiworksfileds.length;
+					for (var n = 0; n < parseInt(eiworkslength); n++) 
+					{
+					addEiworklist.push()
+					}
+					
+					var projectdetails=$("#af4").val();
+					
+					
+					alert("length of local val "+locval.length)
+					for (var p = 0; p < locval.length; p++) 
+					{
+                   
+						
+					console.log("Data..."+locval[p].value)
+					
+					
+					}
+					
+					
+					for(var l=0;l<projectLocationlist.length;l++)
+						{
+						
+						
+						console.log(projectLocationlist[l].value);
+						
+						
+						}
+					
+					
+					
+					
+					/*
+					var loc = "";
+					var locations = $("[name=locationfield]");
+					var inb = 1
+					for (var h = 0; h < locations.length; h++) {
+
+						loc = loc.concat("<td><input type=text name=locationvalue size=4 value=0 onkeyup=calculationItemtotal('"
+										+ icounter
+										+ h
+										+ "','"
+										+ icounter
+										+ "')  /></td>");
+
+						inb++
+					}
+					*/
+					
+		
+					
+					
+				
+					}
+					
+			        //*************************************************************************************************************************************
 
 					// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 					// #########################################################################
 					// All JS for ERP Software starts from here
-					// #################################################################################################
+					// #########################################################################
 					// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 				});
 
