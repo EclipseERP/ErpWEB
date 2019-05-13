@@ -531,6 +531,51 @@ function removeEiworks(count) {
 	$("#rowgen").empty()
 }
 
+
+
+
+
+
+
+
+var counters=0;
+$("#schQuantityadd").click(function()
+{
+	  $("#schQuantity").append(" <div id=ccc"+counters+"><input  type=text name=SCHQuantityadd class=form-control ng-model=p.projectName id=af"+counters+" placeholder='Add SCH Quantity details' > <a id=r"+counters+" onclick=removeSCHworks('"+counters+"') style = cursor:pointer >Remove</a> <hr/></div>");
+	  counters=counters+1;
+}); 
+
+function removeSCHworks(count)
+{
+	  $('#ccc'+count).remove();
+	
+}
+
+
+
+
+var count=0;
+$("#eiworksadd").click(function()
+{
+	  $("#eiworks").append(" <div id=cccc"+count+"><input  type=text name=SCHQuantityadd class=form-control ng-model=p.projectName id=af"+count+" placeholder='Add EI Work details' > <a id=r"+count+" onclick=removeEIwork('"+count+"') style = cursor:pointer >Remove</a> <hr/></div>");
+	  count=count+1;
+}); 
+
+function removeEIwork(count)
+{
+	  $('#cccc'+count).remove();
+	
+}
+
+
+
+
+
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ ERP JAVA ,JQuery codes++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 var incloc = 1;
 var incei = 1;
 var itemcodearray = new Array()
@@ -566,4 +611,5 @@ function calculationItemtotal(inccounter_calc, icounterSingle) {
 // ERP JAVA ,JQuery
 // codes++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 
