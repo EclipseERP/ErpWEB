@@ -543,6 +543,26 @@ function removeItem(count, itemcode) {
 
 }
 
+function calculationItemtotal(inccounter_calc, icounterSingle) {
+	var eiwal = 0;
+	var locval = 0;
+	var locations = $("[name=locationfield]");
+	for (var h = 0; h < locations.length; h++) {
+
+		locval = locval
+				+ parseInt($("#locationvalueid" + icounterSingle + h).val())
+	}
+
+	var eiworks = $("[name=eiworksfield]");
+	for (var i = 0; i < eiworks.length; i++) {
+
+		eiwal = eiwal
+				+ parseInt($("#eiworksvalueid" + icounterSingle + i).val())
+	}
+
+	$("#totalvalid" + icounterSingle).val(parseInt(locval) + parseInt(eiwal));
+}
+
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // ERP JAVA ,JQuery
