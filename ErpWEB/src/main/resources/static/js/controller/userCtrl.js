@@ -195,6 +195,7 @@ app
 						$route.reload();
 					}
 
+					
 					$scope.projectaddload = function() {
 						loc = "";
 						ei = "";
@@ -254,16 +255,14 @@ app
 					}
 
 					$scope.vendorAdd = function(ven) {
+						alert("aaaaaaaaaaa");
 						console.log("Vendor Data...", ven);
 						console.log("Data...", $scope.currentUserName);
-						$http.post(
-								'/vendorctrl/addVendor/'
-										+ $scope.currentUserName, ven).success(
-								function(data) {
+						$http.post('/vendorctrl/addVendor/'+$scope.currentUserName, ven).success(function(data){
 								}, function myError(response) {
 									alert("Sorry, Some technical error occur");
 								});
-					}
+					    }
 
 					$scope.calculateTotal = function() {
 						var total = 0;
@@ -280,16 +279,12 @@ app
 
 					$scope.submitItem = function(raw) {
 						console.log(raw)
-						$http.post(
-								'/rawMaterials/saveRawMaterial/'
-										+ $scope.currentUserName, raw).success(
-								function(data) {
+						$http.post('/rawMaterials/saveRawMaterial/'+$scope.currentUserName, raw).success(function(data) {
 									$scope.itemlistload();
 								}, function myError(response) {
 									alert("Sorry, Some technical error occur");
 								});
-
-					}
+                    }
 
 					$scope.getRawMaterialsData = function() {
 						$http.get('/rawMaterials/getRawMaterials/').success(

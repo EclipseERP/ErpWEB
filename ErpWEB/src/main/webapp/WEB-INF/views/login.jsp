@@ -68,8 +68,7 @@
 <body class="hold-transition login-page">
 	<div class="login-box">
 		<div class="login-logo">
-			<a  > <b>Param Enterprises pvt.Ltd</b>
-			</a>
+			<a > <b>Param Enterprises Pvt.Ltd.</b></a>
 		</div>
 
 		<div class="login-box-body">
@@ -80,7 +79,8 @@
 					<select id="usertype" class="custom-select form-control">
 						<option value="">User Type</option>
 						<option value="1">Admin</option>
-						<option value="2">User</option>
+						<option value="2">Order Management Department</option>
+						<option value="3">Accounts Department</option>
 
 					</select>
 

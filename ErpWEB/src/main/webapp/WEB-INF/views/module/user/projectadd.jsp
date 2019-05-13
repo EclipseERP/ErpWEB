@@ -97,20 +97,17 @@
 
 						<div class="col-md-12">
 							<div class="form-group">
-								<label for="af3">Project / Tender Name : </label> <b>{{projectname}}
-								</b>
+								<label for="af3">Project / Tender Name : </label> <b>{{projectname}}</b>
 							</div>
 						</div>
 
 
 						<div class="col-md-12">
 							<div class="form-group">
-								<label for="af3">Details : </label> <b>{{details}} </b>
+								<label for="af3">Details : </label> <b>{{details}}</b>
 							</div>
 						</div>
-
-
-					</div>
+                    </div>
 
 
 					<div class="box-footer" align="left">

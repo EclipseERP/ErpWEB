@@ -1,4 +1,4 @@
-
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
      <!-- Content Header (Page header) -->
                       <!--Form and Application Button-->
         <section class="content" ng-show="vendoraddshow">
@@ -8,7 +8,10 @@
                 
                     <div class="box box-primary">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Vendor Form</h3>
+                        <c:import url="/WEB-INF/views/messages/success.jsp"/>	
+                    <c:import url="/WEB-INF/views/messages/error.jsp"/>	
+                    <c:import url="/WEB-INF/views/messages/processing.jsp"/>
+                        <h3 class="box-title">Vendor Form</h3>
                             <div class="box-tools pull-right">
                                     <button type="button" ng-click="vendorlistload()" class="btn btn-box-tool" data-widget="back">
 									<i class="fa fa-reply"> </i> Back
@@ -43,13 +46,13 @@
 								<div class="col-md-6">									
 									<div class="form-group">
 										<label for="af3">Primary Contact Number </label>
-										<input type="text" ng-model="ven.primaryContact" class="form-control" id="af3" placeholder="">
+										<input type="text" ng-model="ven.primaryContact" onkeypress="return isNumber(event)" onkeyup="phoneNumberValidation_Divid('phone','phones','Please enter only valid number !!')"  class="form-control" id="phone" placeholder="">
 									</div>									
 								</div>
 								<div class="col-md-6">									
 									<div class="form-group">
 										<label for="af4">Secondary Contact Number </label>
-										<input type="text" ng-model="ven.secondaryContact" class="form-control" id="af4" placeholder="">
+										<input type="text" ng-model="ven.secondaryContact" onkeypress="return isNumber(event)" onkeyup="phoneNumberValidation_Divid('phone2','phones','Please enter only valid number !!')" class="form-control" id="phone2" placeholder="">
 									</div>									
 								</div>								
 								<div class="col-md-6">									

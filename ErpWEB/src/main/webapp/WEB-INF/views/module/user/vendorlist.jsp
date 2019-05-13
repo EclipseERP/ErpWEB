@@ -49,7 +49,7 @@ $(function () {
 										
 										
 										
-										<tr ng-repeat="datas in $data | filter : keyword">
+							<tr ng-repeat="datas in $data | filter : keyword">
 							<td title="'Name'">{{datas.name}}</td>
 							<td title="'Contact Number'">{{datas.descriptionHSNno}}</td>
 							<td title="'PAN No.'">{{datas.unit}}</td>
@@ -58,7 +58,7 @@ $(function () {
 							<td title="'Company Type'">{{datas.gst}}</td>
 							<td title="'Total Amount(Rs.)'">{{datas.totalAmount}}</td>
 							<td title="'dateofentry'">{{datas.dateOfEntry| date : 'yyyy-MM-dd h:mm a'}}</td>
-						     <td class="action" width="1">
+						    <td class="action" width="1">
 													<i class="fa fa-eye text-primary" aria-hidden="true"></i>
 													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
 													<i class="fa fa-trash-o text-danger" aria-hidden="true"></i>

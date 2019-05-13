@@ -19,6 +19,7 @@ import com.ets.csm.model.Venue;
 import com.ets.csm.service.UserService;
 import com.ets.csm.service.VendorService;
 import com.ets.csm.service.VenueService;
+import com.ets.csm.util.DateUtility;
 
 @Controller
 @RequestMapping("/vendorctrl")
@@ -68,7 +69,8 @@ public class VendorController {
 	public @ResponseBody void saveVendor(@RequestBody Vendor ven, @PathVariable String userName) {
 		User user = userService.getUserByUserName(userName);
 		ven.setUser(user);
-		vendorService.saveOrUpdate(ven);
+		vendorService.saveVendorData(ven);
+		
 	}
 	
 	
