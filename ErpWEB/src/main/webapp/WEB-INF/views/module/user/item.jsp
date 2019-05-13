@@ -56,7 +56,44 @@
 										<input textarea ng-model="data.description" class="form-control" id="description" placeholder="" required>
 									</div>									
 								</div>
-								<div class="col-md-4">									
+								
+								
+								
+								
+								<div class="col-md-12">
+							 	<a id="schQuantityadd"  class="btn btn-primary pad40L pad40R mrg5L" >
+			                  	Add SCH Quantity</a>
+							 
+												<br/>		
+											<br/>
+									<div id="schQuantity" class="form-group">
+									
+									
+
+									</div>
+									<hr style="color:red"/>
+																	
+							    </div>
+							    
+							    <div class="col-md-12">
+							 	<a id="eiworksadd"  class="btn btn-primary pad40L pad40R mrg5L" >
+			                  	Add EI-Work</a>
+							 
+												<br/>		
+											<br/>
+									<div id="eiworks" class="form-group">
+									
+									
+
+									</div>
+									<hr style="color:red"/>
+																	
+							    </div>
+								
+								
+								
+								
+								<!-- <div class="col-md-4">									
 									<div class="form-group">
 										<label for="af3">SCH Quantity 1</label>
 										<input type="text" onkeypress="return isNumber(event)" onkeyup="positiveNumberValidation_divid('sch1','number_validation','Please enter only valid integers !!')" ng-model="data.schQuantity1" id="sch1" value="NOS" class="form-control" placeholder="" required>
@@ -85,7 +122,9 @@
 										<label for="af4">EI-Work 2</label>
 										<input type="text" onkeypress="return isNumber(event)" onkeyup="positiveNumberValidation_divid('eiWork2','number_validation','Please enter only valid integers !!')" id="eiWork2" ng-model="data.eiWork2" ng-keyup="calculateTotal()" value="0" class="form-control" placeholder="" required>
 									</div>									
-								</div>
+								</div> -->
+								
+								
 								<div class="col-md-6">									
 									<div class="form-group">
 										<label for="af3">Unit</label>
@@ -558,3 +597,5 @@
         </script>
 >>>>>>> branch 'master' of https://github.com/EclipseERP/ErpWEB.git
      -->
+     
+      <script type="text/javascript" src="/js/moduleJs/project_JS_User.js"></script>
