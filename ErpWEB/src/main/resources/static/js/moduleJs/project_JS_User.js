@@ -549,15 +549,13 @@ function calculationItemtotal(inccounter_calc, icounterSingle) {
 	var locations = $("[name=locationfield]");
 	for (var h = 0; h < locations.length; h++) {
 
-		locval = locval
-				+ parseInt($("#locationvalueid" + icounterSingle + h).val())
+		locval = locval + parseInt($("#locationvalueid" + icounterSingle + h).val())
 	}
 
 	var eiworks = $("[name=eiworksfield]");
 	for (var i = 0; i < eiworks.length; i++) {
 
-		eiwal = eiwal
-				+ parseInt($("#eiworksvalueid" + icounterSingle + i).val())
+		eiwal = eiwal + parseInt($("#eiworksvalueid" + icounterSingle + i).val())
 	}
 
 	$("#totalvalid" + icounterSingle).val(parseInt(locval) + parseInt(eiwal));
