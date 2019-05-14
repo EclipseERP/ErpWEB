@@ -40,7 +40,7 @@ public class MainController {
 			    mav.addObject("invalidLogin", "");
 		        if (request.isUserInRole("ROLE_ADMIN")) {
 		        	
-		        	mav.setViewName("redirect:/admin/");
+		        	mav.setViewName("redirect:/accounts/");
 		        }
 		        else if(request.isUserInRole("ROLE_USER"))
 		        {

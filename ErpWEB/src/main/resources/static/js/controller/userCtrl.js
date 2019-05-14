@@ -506,7 +506,7 @@ app
 												+ "','"
 												+ icounter
 												+ "') id=locationvalueid"
-												+ icounter + h + " /><input type=text name=locflag value='"+locations[h].value+"' ></td>");
+												+ icounter + h + " /><input type=hidden name=locflag value='"+locations[h].value+"' ></td>");
 
 								inb++
 							}
@@ -520,7 +520,7 @@ app
 												+ "','"
 												+ icounter
 												+ "') id=eiworksvalueid"
-												+ icounter + i + " /><input type=text name=eiflag value='"+eiworks[i].value+"' ></td>");
+												+ icounter + i + " /><input type=hidden name=eiflag value='"+eiworks[i].value+"' ></td>");
 								incei++
 							}
 

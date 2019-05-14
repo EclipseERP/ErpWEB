@@ -45,7 +45,7 @@
 						 <li class="treeview">
 					<a href="#">
 						<i class="fa fa-folder"></i>
-						<span>Projects</span>
+						<span>Accounts</span>
 						<span class="pull-right-container">
 							<i class="fa fa-angle-left pull-right"></i>
 						</span>
@@ -54,13 +54,13 @@
                       
                         <li>
 							<a href="#projectListload" ng-click="projectlistload()">
-								<i class="fa fa-circle-o"></i> Project List
+								<i class="fa fa-circle-o"></i> Accounts Turnover
 							</a>
 						</li>
     
                     </ul>
                 </li>
-                
+                <!--  
                   <li class="treeview">
 					<a href="#">
 						<i class="fa fa-folder"></i>
@@ -111,7 +111,7 @@
                 </li>
                 
    
-				
+				-->
             
              
 				
