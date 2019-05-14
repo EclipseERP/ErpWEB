@@ -40,7 +40,7 @@ public class AdminController {
 	UserService userService;
 	
 	@GetMapping("/")
-	public String adminM() {
+	public String admin() {
 		
 		return "/module/admin/admin";
 	
@@ -49,7 +49,7 @@ public class AdminController {
 	@GetMapping("/dashboard")
 	public String dashboard() {
 		
-		return "/module/admin/adminDashboard";
+		return "/module/accounts/accountsDashboard";
 	
 	}
 	

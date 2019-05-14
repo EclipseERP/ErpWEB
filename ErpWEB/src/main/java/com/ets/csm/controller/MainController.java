@@ -152,21 +152,19 @@ public class MainController {
 			return i+"";
 		}
 		
-		
 		   @RequestMapping("/logout")
 		    public  ModelAndView logout(HttpServletRequest request) {
 			   ModelAndView mav = new ModelAndView(); 
-			   
-			   
+
 			    HttpSession session= request.getSession(false);
 		        SecurityContextHolder.clearContext();
-		        if(session != null) {
-		            session.invalidate();
+		        if(session != null) 
+		        {
+		        session.invalidate();
 		        }
 			   
 			   mav.setViewName("/login");
 			   return mav;
-			    }
-		
-	 
+			    
+		   }
 }
