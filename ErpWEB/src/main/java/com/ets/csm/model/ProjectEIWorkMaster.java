@@ -25,10 +25,10 @@ public class ProjectEIWorkMaster {
 	@Column(name = "id")
 	private int id;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+/*	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnore
 	@JoinColumn(name="project_code")
-	private Projects projects;
+	private Projects projects;*/
 	
 	@Column(name = "ei_works")
 	private String eiWorks;
@@ -36,10 +36,10 @@ public class ProjectEIWorkMaster {
 	@Column(name = "quantity")
 	private String quantity;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+/*	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnore
 	@JoinColumn(name="id")
-	private CompanyDetails companyDetails;
+	private CompanyDetails companyDetails;*/
 	
 
 }

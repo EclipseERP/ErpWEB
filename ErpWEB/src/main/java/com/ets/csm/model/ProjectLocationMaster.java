@@ -25,10 +25,10 @@ public class ProjectLocationMaster {
 	@Column(name = "id")
 	private int id;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+/*	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnore
 	@JoinColumn(name="project_code")
-	private Projects projects;
+	private Projects projects;*/
 	
 	@Column(name = "project_location")
 	private String projectLocation;
@@ -36,10 +36,10 @@ public class ProjectLocationMaster {
 	@Column(name = "sch_quantity")
 	private String schQuantity;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+/*	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnore
 	@JoinColumn(name="id")
-	private CompanyDetails companyDetails;
+	private CompanyDetails companyDetails;*/
 	
 
 }
