@@ -59,7 +59,6 @@ public class Projects {
     @Column(name="projectname")
     private String projectname;
     
-    
 	public String getProjectCode() {
 		return project_code;
 	}

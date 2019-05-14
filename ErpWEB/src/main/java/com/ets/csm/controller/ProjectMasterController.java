@@ -55,14 +55,26 @@ public class ProjectMasterController {
 	//++++++++++++++++++++++++++++++++++++++++++++++ Tender Creation method starts here ++++++++++++++++++++++++++++++++++++++++++++++++++
 	
 	@PostMapping("/saveProject/{userName}")
-	public @ResponseBody void saveProject(@RequestBody Projects p ,
-			@PathVariable String userName,@RequestParam(name = "eiwork") String[] eiworks,
-			@RequestParam(name = "location") String[] locationfields,
-			@RequestParam(name = "itemcode") String[] itemcodes,
-			@RequestParam(name = "itemcode") String[] inslist,
-			@RequestParam(name = "projectcode") String projectcode
-			) 
+	public @ResponseBody void saveProject(@PathVariable String userName,@RequestParam("projectLocationlist") String[] projectLocationlist) 
 	{
+		
+        System.out.println("called"+projectLocationlist.length);
+		
+      //		System.out.println("size "+locationfields);
+		
+		
+		 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		/*
 		
 		String eiwork[]=eiworks;
 		String locationfield[]=locationfields;
@@ -83,7 +95,7 @@ public class ProjectMasterController {
 			
 		}
 		
-	
+	  */
 		
 		
 	}

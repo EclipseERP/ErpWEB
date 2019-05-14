@@ -499,30 +499,28 @@ app
 							var inb = 1
 							for (var h = 0; h < locations.length; h++) {
 
-								loc = loc
-										.concat("<td><input type=text name=locationvalue"+icounter+" size=4 value=0 onkeyup=calculationItemtotal('"
+								loc = loc.concat("<td><input type=text name=locationvalue"
+												+ " size=4 value=0 onkeyup=calculationItemtotal('"
 												+ icounter
 												+ h
 												+ "','"
 												+ icounter
 												+ "') id=locationvalueid"
-												+ icounter + h + " /></td>");
+												+ icounter + h + " /><input type=text name=locflag value='"+locations[h].value+"' ></td>");
 
 								inb++
 							}
 
 							var eiworks = $("[name=eiworksfield]");
-
 							for (var i = 0; i < eiworks.length; i++) {
 
-								ei = ei
-										.concat("<td><input type=text name=eiworksvalue size=4 value=0 onkeyup=calculationItemtotal('"
+								ei = ei.concat("<td><input type=text name=eiworksvalue size=4 value=0 onkeyup=calculationItemtotal('"
 												+ icounter
 												+ i
 												+ "','"
 												+ icounter
 												+ "') id=eiworksvalueid"
-												+ icounter + i + " /></td>");
+												+ icounter + i + " /><input type=text name=eiflag value='"+eiworks[i].value+"' ></td>");
 								incei++
 							}
 
@@ -542,7 +540,7 @@ app
 									+ "<td><input type=text name=totalval size=4 value=0 id=totalvalid"
 									+ icounter
 									+ " /></td>"
-									+ "<td><input type=text class=form-control value="
+									+ "<td><input type=text class=form-control name=ins value="
 									+ insSelected
 									+ " readonly=readonly/></td>"
 									+ "<td align=right><a ><img src=/assets/img/del.png width=20px height=20px onclick=removeItem('"
@@ -571,7 +569,7 @@ app
 
 						var locations = $("[name=locationfield]");
 						var flagloc = 0
-						var projectDetails="";
+						var projectDetails = "";
 						var inb = 1
 
 						for (var h = 0; h < locations.length; h++) {
@@ -582,8 +580,10 @@ app
 								break;
 							}
 							if (locations[h].value != "") {
-								
-								projectDetails=projectDetails.concat(inb+" : "+locations[h].value+"  ,  "+"   ");
+
+								projectDetails = projectDetails.concat(inb
+										+ " : " + locations[h].value + "  ,  "
+										+ "   ");
 								inb++;
 								flagloc = 1;
 							}
@@ -610,14 +610,14 @@ app
 						if (flagloc > 0 && flagloc2 > 0
 								&& $("#af3").val() != ""
 								&& $("#af4").val() != ""
-								&& $("#tendardate").val()!="") {
+								&& $("#tendardate").val() != "") {
 
 							if (confirm('Before continue please check once. The data save at this process cannot be revert. !!')) {
 
 								$scope.projectcode = $("#af1").val();
 								$scope.projectname = projectDetails;
 								$scope.details = $("#af4").val();
-								$scope.projectdate=$("#tendardate").val();
+								$scope.projectdate = $("#tendardate").val();
 
 								$scope.projectaddFirstPartView = false;
 								$scope.projectaddSecondPartView = true;
@@ -627,107 +627,193 @@ app
 
 						}
 						if ($("#af3").val() == "") {
-							alert("Project name found blank !!")
+							alert("LOA details found blank !!")
 						}
 						if ($("#af4").val() == "") {
 							alert("Details found blank !!")
 						}
-						
+
 						if ($("#tendardate").val() == "") {
 							alert("Project Date Required !!")
 						}
-						
-						
-						
-						
+
 					}
+
 					
-					
-					//********************************************* Project Save method starts here ****************************************************
-					
-					$scope.saveProject=function(data)
-					{		
-					console.log("any...",data)	
-									
-					var projectLocationlist=new Array();
-					var projectLocationlistSCHQTY=new Array();
-					
-					var addEiworklist=new Array();
-					var itemcodeslist=new Array();
-					var unitlist=new Array();
-					var locationvaluelist=new Array();
-					var eiworksvaluelist=new Array();
-					
-					var projectcode=$("#af1").val();
-					var tendername=$("#af3").val();
-					
-					var locations = $("[name=locationfield]");
-					var eiworksfileds = $("[name=eiworksfield]");
-					var locval=$("[name=locationfield]");
-					
-					
-					for (var h = 0; h < locations.length; h++) 
+					// ********************************************* Project
+					// Save method starts here
+					// ****************************************************
+
+					$scope.saveProject = function(data) 
 					{
-                     projectLocationlist.push(locations[h].value)
-					}
-					
-                  
-					var eiworkslength = eiworksfileds.length;
-					for (var n = 0; n < parseInt(eiworkslength); n++) 
-					{
-					addEiworklist.push()
-					}
-					
-					var projectdetails=$("#af4").val();
-					
-					
-					alert("length of local val "+locval.length)
-					for (var p = 0; p < locval.length; p++) 
-					{
-                   
+						console.log("any...", data)
 						
-					console.log("Data..."+locval[p].value)
-					
-					
-					}
-					
-					
-					for(var l=0;l<projectLocationlist.length;l++)
+						
+						
+						//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+						
+						var projectLocationlist = new Array(); // Project	
+						var projectLocationlistSCHQTY = new Array();// Project quantity
+						var addEiworklist = new Array();
+						var addEiworklistQTY = new Array();
+						var itemcodeslist = new Array();
+						var unitlist = new Array();
+						var locationvaluelist = new Array();
+						var eiworksvaluelist = new Array();
+						var descriptionlist=new Array();
+						var totallist=new Array();
+						var inslist=new Array();
+						var locflaglist=new Array();
+						var eiflaglist=new Array();
+                       //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+						
+						var projectcode = $("#af1").val();
+						var tendername = $("#af3").val();
+						var projectdetails = $("#af4").val();
+						
+						var locations = $("[name=locationfield]");
+						var eiworksfileds = $("[name=eiworksfield]");
+						var eiqtyval=$("[name=eiworksvalue]");
+						
+						var locval = $("[name=locationvalue]");
+						var locflag=$("[name=locflag]");
+						var eiflag=$("[name=eiflag]");
+						
+						var itemcodes=$("[name=itemcodes]");
+						var descriptions=$("[name=descriptions]");
+						var totals=$("[name=totalval]");
+						var ins=$("[name=ins]");
+						var units=$("[name=unit")
+						
+						
+//						alert("length of local val " + locval.length)
+						
+						
+						// ---------------------------------------------------------------------------
+						for (var h = 0; h < locations.length; h++) 
 						{
-						
-						
-						console.log(projectLocationlist[l].value);
-						
-						
+							
+							projectLocationlist.push(locations[h].value)
+								
 						}
-					
-					
-					
-					
-					/*
-					var loc = "";
-					var locations = $("[name=locationfield]");
-					var inb = 1
-					for (var h = 0; h < locations.length; h++) {
+						// -----------------------------------------------------------------------------
 
-						loc = loc.concat("<td><input type=text name=locationvalue size=4 value=0 onkeyup=calculationItemtotal('"
-										+ icounter
-										+ h
-										+ "','"
-										+ icounter
-										+ "')  /></td>");
+						
+						
+						// ---------------------------------------------------------------------------
+						for (var p = 0; p < locval.length; p++) 
+						{
+							projectLocationlistSCHQTY.push(locval[p].value)
+						}
+						// ---------------------------------------------------------------------------
+						
+						
+						
+						// ---------------------------------------------------------------------------
+						var eiworkslength = eiworksfileds.length;
+						for (var n = 0; n < parseInt(eiworkslength); n++) 
+						{
+							addEiworklist.push(eiworksfileds[n].value)
+						}
+						// ---------------------------------------------------------------------------
+						
+						
+						// ---------------------------------------------------------------------------
+						for (var q = 0; q < eiqtyval.length; q++) 
+						{
 
-						inb++
-					}
-					*/
+							addEiworklistQTY.push(eiqtyval[q].value);
+							
+
+						}
+						// ---------------------------------------------------------------------------
+						
+
+						// ---------------------------------------------------------------------------
+						for (var l = 0; l < locflag.length; l++) 
+						{
+							locflaglist.push(locflag[l].value);
+							
+						}
+						// ---------------------------------------------------------------------------
 					
-		
-					
-					
+						
+						// ---------------------------------------------------------------------------
+						for (var m = 0; m < eiflag.length; m++) 
+						{
+
+							eiflaglist.push(eiflag[m].value);
+							
+
+						}
+						// ---------------------------------------------------------------------------
+						
+						// ---------------------------------------------------------------------------
+						for (var r = 0; r < itemcodes.length; r++) 
+						{
+
+							itemcodeslist.push(itemcodes[r].value);
+							
+
+						}
+						// ---------------------------------------------------------------------------
 				
+						
+						// ---------------------------------------------------------------------------
+						for (var a = 0; a < descriptions.length; a++) 
+						{
+
+							descriptionlist.push(descriptions[a].value);
+							
+
+						}
+						// ---------------------------------------------------------------------------
+						
+						
+						
+						// ---------------------------------------------------------------------------
+						for (var a = 0; a < ins.length; a++) 
+						{
+
+							inslist.push(ins[a].value);
+							
+						}
+						// ---------------------------------------------------------------------------
+						
+						
+						// ---------------------------------------------------------------------------
+						for (var b = 0; b < units.length; b++) 
+						{
+
+							unitlist.push(units[b].value);
+							
+						}
+						// ---------------------------------------------------------------------------
+						
+						
+                         var url="/project/saveProject/"+$scope.currentUserName;
+                        
+                         
+                         var params="?projectLocationlist="+projectLocationlist+"&projectLocationlistSCHQTY="+projectLocationlistSCHQTY;
+                         
+						
+						$http.post(url+params).success(
+								function(data) 
+								{
+
+								alert("saved");
+									
+//									$scope.projectlistload();
+								}, function myError(response) {
+									alert("Sorry, Some technical error occur");
+								});
+						
+						
+
 					}
-					
-			        //*************************************************************************************************************************************
+
+					// *************************************************************************************************************************************
 
 					// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 					// #########################################################################
