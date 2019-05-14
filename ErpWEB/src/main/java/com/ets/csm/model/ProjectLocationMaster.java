@@ -33,8 +33,43 @@ public class ProjectLocationMaster {
 	@Column(name = "project_location")
 	private String projectLocation;
 	
+	@Column(name = "projectcode")
+	private String projectcode;
+	
 	@Column(name = "sch_quantity")
 	private String schQuantity;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getProjectLocation() {
+		return projectLocation;
+	}
+
+	public void setProjectLocation(String projectLocation) {
+		this.projectLocation = projectLocation;
+	}
+
+	public String getSchQuantity() {
+		return schQuantity;
+	}
+
+	public void setSchQuantity(String schQuantity) {
+		this.schQuantity = schQuantity;
+	}
+
+	public String getProjectcode() {
+		return projectcode;
+	}
+
+	public void setProjectcode(String projectcode) {
+		this.projectcode = projectcode;
+	}
 	
 /*	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnore

@@ -6,9 +6,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 
+import com.ets.csm.model.ProjectLocationMaster;
 import com.ets.csm.model.RawMaterials;
+import com.ets.csm.repository.ProjectLocationMasterRepository;
 import com.ets.csm.repository.RawMaterialsRepository;
 @Service
 public class ProjectLocationMasterServiceImpl implements ProjectLocationMasterService {
+
+	@Autowired
+	ProjectLocationMasterRepository plocrepository;
+	@Override
+	public ProjectLocationMaster saveOrUpdate(ProjectLocationMaster p) {
+		// TODO Auto-generated method stub
+		return plocrepository.save(p);
+	}
 
 }

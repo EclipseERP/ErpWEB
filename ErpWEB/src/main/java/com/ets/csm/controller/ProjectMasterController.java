@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.ets.csm.model.ProjectLocationMaster;
 import com.ets.csm.model.Projects;
 import com.ets.csm.model.User;
 import com.ets.csm.service.ProjectsService;
@@ -29,6 +30,8 @@ public class ProjectMasterController {
 	
 	@Autowired
 	ProjectsService projectservice;
+	
+
 	
 	
 	@GetMapping("/getProjects")
@@ -65,7 +68,7 @@ public class ProjectMasterController {
 			@RequestParam("locationvaluelist") String[] locationvaluelist,
 			@RequestParam("eiworksvaluelist") String[] eiworksvaluelist,
 			@RequestParam("descriptionlist") String[] descriptionlist,
-			@RequestParam("totallist") String[] totallist,
+			@RequestParam("totallist") int[] totallist,
 			@RequestParam("inslist") String[] inslist,
 			@RequestParam("locflaglist") String[] locflaglist,
 			@RequestParam("eiflaglist") String[] eiflaglist ,
@@ -81,8 +84,21 @@ public class ProjectMasterController {
 		pdata.setLoa_no(loadetails);
 		pdata.setProjectdetails(projectdetails);
 		pdata.setProjectname(projectLocationlist[i]);
+		pdata.setItemcodes(itemcodeslist[i]);
+		pdata.setUnits(unitlist[i]);
+		pdata.setTotalqty(totallist[i]);
+		pdata.setIns(inslist[i]);
 		
+		for(int l=0;l<projectLocationlistSCHQTY.length;l++)
+		{
+		ProjectLocationMaster plocation=new ProjectLocationMaster();
 		
+		plocation.setProjectcode(projectcode);
+		plocation.setProjectLocation(projectLocationlist[i]);
+		plocation.setSchQuantity(projectLocationlistSCHQTY[l]);
+			
+			
+		}
 		
 		projectservice.saveOrUpdate(pdata);	
 			
