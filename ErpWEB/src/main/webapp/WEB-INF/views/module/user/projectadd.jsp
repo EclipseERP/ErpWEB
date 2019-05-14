@@ -33,7 +33,7 @@
 								<div class="form-group">
 									<label for="af2">Date </label> 
 									
-			                            <input type="text" class="form-control" id="tendardate" readonly="readonly" placeholder="Project Date" datetime-picker="yyyy-MM-dd " size="3" ng-model="p.creation_date" is-open="ctrl.date.eventTime" /> 									
+			                            <input type="text" class="form-control" id="tendardate" readonly="readonly" placeholder="Project Date" datetime-picker="yyyy-MM-dd " size="3" ng-model="creation_date" is-open="ctrl.date.eventTime" /> 									
 										<span class="input-group-btn">
 										<button type="button" class="btn btn-blue" ng-click="ctrl.date.eventTime = true"> <i class="fa fa-calendar"></i>
 									
@@ -44,8 +44,8 @@
 
 							<div class="col-md-12">
 								<div class="form-group">
-									<label for="af3">Tender Name </label> <input type="text"
-										class="form-control" ng-model="p.projectName" id="af3"
+									<label for="af3">LOA Details  </label> <input type="text"
+										class="form-control" ng-model="p.loa_no" id="af3"
 										placeholder="">
 								</div>
 							</div>
