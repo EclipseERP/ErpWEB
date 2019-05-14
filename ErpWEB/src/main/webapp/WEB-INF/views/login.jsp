@@ -77,9 +77,9 @@
 				id="loginform" method='POST'>
 				<div class="form-group has-feedback">
 					<select id="usertype" class="custom-select form-control">
-						<option value="">User Type</option>
-						<option value="1">Admin</option>
-						<option value="2">User</option>
+						<option value="">Department Type</option>
+						<option value="1">Accounts Management</option>
+						<option value="2">Order Management</option>
 
 					</select>
 
