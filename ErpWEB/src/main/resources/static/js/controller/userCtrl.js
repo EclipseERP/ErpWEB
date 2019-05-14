@@ -795,9 +795,9 @@ app
                          var url="/project/saveProject/"+$scope.currentUserName;
                         
                          
-                         var params="?projectLocationlist="+projectLocationlist+"&projectLocationlistSCHQTY="+projectLocationlistSCHQTY+"&addEiworklist="+addEiworklist+"&addEiworklistQTY="+addEiworklistQTY+"&itemcodeslist="+itemcodeslist+"&unitlist="+unitlist+"&locationvaluelist="+locationvaluelist+"&descriptionlist="+descriptionlist+"&totallist="+totallist+"&inslist="+inslist +"&locflaglist="+locflaglist+"&eiflaglist="+eiflaglist;
-                         
-                         
+                         var params="?projectLocationlist="+projectLocationlist+"&projectLocationlistSCHQTY="+projectLocationlistSCHQTY+"&addEiworklist="+addEiworklist+"&addEiworklistQTY="+addEiworklistQTY+"&itemcodeslist="+itemcodeslist+"&unitlist="+unitlist+"&locationvaluelist="+locationvaluelist+"&descriptionlist="+descriptionlist+"&totallist="+totallist+"&inslist="+inslist +"&locflaglist="+locflaglist
+                         +"&eiflaglist="+eiflaglist+"&projectcode="+projectcode+"&loa_details="+tendername+"&projectdetails="+projectdetails+"&eiworksvaluelist="+eiworksvaluelist;
+                          
 						$http.post(url+params).success(
 								function(data) 
 								{

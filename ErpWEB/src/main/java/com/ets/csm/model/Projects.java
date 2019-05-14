@@ -59,6 +59,10 @@ public class Projects {
     @Column(name="projectname")
     private String projectname;
     
+    @Column(name="projectdetails")
+    private String projectdetails;
+    
+    
 	public String getProjectCode() {
 		return project_code;
 	}
@@ -202,8 +206,19 @@ public class Projects {
 		this.projectname = projectname;
 	}
 
+public String getProjectdetails() {
+		return projectdetails;
+	}
+
+	public void setProjectdetails(String projectdetails) {
+		this.projectdetails = projectdetails;
+	}
+
+
+
 public Projects(int id, String project_code, String loa_no, Date creation_date, Date update_date, int company_id,
-			User user, String itemcodes, String ins, String location, String eiwork, String projectname) {
+			User user, String itemcodes, String ins, String location, String eiwork, String projectname,
+			String projectdetails) {
 		super();
 		this.id = id;
 		this.project_code = project_code;
@@ -217,6 +232,7 @@ public Projects(int id, String project_code, String loa_no, Date creation_date, 
 		this.location = location;
 		this.eiwork = eiwork;
 		this.projectname = projectname;
+		this.projectdetails = projectdetails;
 	}
 
 public Projects(){
