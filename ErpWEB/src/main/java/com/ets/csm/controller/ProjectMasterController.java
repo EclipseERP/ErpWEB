@@ -12,9 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.ets.csm.model.ProjectEIWorkMaster;
 import com.ets.csm.model.ProjectLocationMaster;
 import com.ets.csm.model.Projects;
 import com.ets.csm.model.User;
+import com.ets.csm.service.ProjectEIWorkMasterService;
+import com.ets.csm.service.ProjectLocationMasterService;
 import com.ets.csm.service.ProjectsService;
 import com.ets.csm.service.UserService;
 import com.ets.csm.util.DateUtility;
@@ -31,6 +34,11 @@ public class ProjectMasterController {
 	@Autowired
 	ProjectsService projectservice;
 	
+	@Autowired
+	ProjectLocationMasterService projectlocationservice;
+	
+	@Autowired
+	ProjectEIWorkMasterService projecteiservice;
 
 	
 	
@@ -79,6 +87,8 @@ public class ProjectMasterController {
 		
 		for(int i=0;i<projectLocationlist.length;i++)
 		{
+		try
+		{	
 		Projects pdata=new Projects();
 		pdata.setProject_code(projectcode);
 		pdata.setLoa_no(loadetails);
@@ -89,52 +99,49 @@ public class ProjectMasterController {
 		pdata.setTotalqty(totallist[i]);
 		pdata.setIns(inslist[i]);
 		
+		projectservice.saveOrUpdate(pdata);	
+		
+		
 		for(int l=0;l<projectLocationlistSCHQTY.length;l++)
 		{
 		ProjectLocationMaster plocation=new ProjectLocationMaster();
 		
-		plocation.setProjectcode(projectcode);
-		plocation.setProjectLocation(projectLocationlist[i]);
-		plocation.setSchQuantity(projectLocationlistSCHQTY[l]);
-			
-			
-		}
-		
-		projectservice.saveOrUpdate(pdata);	
-			
-		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		/*
-		
-		String eiwork[]=eiworks;
-		String locationfield[]=locationfields;
-		String itemcode[]=itemcodes;
-		String ins[]=inslist;
-		
-		for(int i=0;i<itemcode.length;i++)
+		if(locflaglist[l].equalsIgnoreCase(projectLocationlist[i]))
 		{
-			
-			User userdetails = userService.getUserByUserName(userName);
-			p.setCreationDate(DateUtility.getCurrentDateWithTime());
-			p.setProjectCode(projectcode);
-			p.setItemcodes(itemcodes[i]);
-			p.setLocation(locationfields[i]);
-			p.setEiwork(eiworks[i]);
-			p.setIns(ins[i]);
-			projectservice.saveOrUpdate(p);
-			
+			plocation.setProjectcode(projectcode);
+			plocation.setProjectLocation(projectLocationlist[i]);
+			plocation.setSchQuantity(projectLocationlistSCHQTY[l]);
+			projectlocationservice.saveOrUpdate(plocation);
 		}
 		
-	  */
+		}
 		
+		for(int m=0;m<addEiworklistQTY.length;m++)
+		{
+		ProjectEIWorkMaster eiworks=new ProjectEIWorkMaster();
+		
+		if(eiflaglist[m].equalsIgnoreCase(addEiworklist[i]))
+		{
+			eiworks.setProject_code(projectcode);
+			eiworks.setEiWorks(addEiworklist[i]);
+			eiworks.setQuantity(addEiworklistQTY[m]);
+			projecteiservice.saveOrUpdate(eiworks);
+		}
+		
+		}
+		
+		
+		
+		}
+		
+		
+		
+		catch(ArrayIndexOutOfBoundsException d)
+		{
+			System.out.println("exception occur"+ d);
+		}
+
+		}
 		
 	}
 	
