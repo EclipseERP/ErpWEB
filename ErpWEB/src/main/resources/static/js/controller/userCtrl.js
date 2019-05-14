@@ -795,9 +795,9 @@ app
                          var url="/project/saveProject/"+$scope.currentUserName;
                         
                          
-                         var params="?projectLocationlist="+projectLocationlist+"&projectLocationlistSCHQTY="+projectLocationlistSCHQTY;
+                         var params="?projectLocationlist="+projectLocationlist+"&projectLocationlistSCHQTY="+projectLocationlistSCHQTY+"&addEiworklist="+addEiworklist+"&addEiworklistQTY="+addEiworklistQTY+"&itemcodeslist="+itemcodeslist+"&unitlist="+unitlist+"&locationvaluelist="+locationvaluelist+"&descriptionlist="+descriptionlist+"&totallist="+totallist+"&inslist="+inslist +"&locflaglist="+locflaglist+"&eiflaglist="+eiflaglist;
                          
-						
+                         
 						$http.post(url+params).success(
 								function(data) 
 								{
@@ -808,9 +808,8 @@ app
 								}, function myError(response) {
 									alert("Sorry, Some technical error occur");
 								});
-						
-						
-
+                        
+			
 					}
 
 					// *************************************************************************************************************************************

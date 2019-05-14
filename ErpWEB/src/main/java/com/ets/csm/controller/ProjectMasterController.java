@@ -55,7 +55,7 @@ public class ProjectMasterController {
 	//++++++++++++++++++++++++++++++++++++++++++++++ Tender Creation method starts here ++++++++++++++++++++++++++++++++++++++++++++++++++
 	
 	@PostMapping("/saveProject/{userName}")
-	public @ResponseBody void saveProject(@PathVariable String userName,@RequestParam("projectLocationlist") String[] projectLocationlist) 
+	public @ResponseBody void saveProject(@PathVariable String userName,@RequestParam("projectLocationlist") String[] projectLocationlist,@RequestParam("projectLocationlistSCHQTY") String[] projectLocationlistSCHQTY,@RequestParam("addEiworklist") String[] addEiworklist,@RequestParam("addEiworklistQTY") String[] addEiworklistQTY,@RequestParam("itemcodeslist") String[] itemcodeslist,@RequestParam("unitlist") String[] unitlist,@RequestParam("locationvaluelist") String[] locationvaluelist,@RequestParam("eiworksvaluelist") String[] eiworksvaluelist,@RequestParam("descriptionlist") String[] descriptionlist,@RequestParam("totallist") String[] totallist,@RequestParam("inslist") String[] inslist,@RequestParam("locflaglist") String[] locflaglist,@RequestParam("eiflaglist") String[] eiflaglist) 
 	{
 		
         System.out.println("called"+projectLocationlist.length);
