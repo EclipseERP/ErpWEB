@@ -39,6 +39,67 @@ public class Projects {
 	@Column(name = "company_id")
 	private int company_id;
 	
+	
+	
+	
+	
+	@Column(name = "sch_unit_rate")
+	private int schUnitRate;
+	
+	@Column(name = "amount")
+	private String amount;
+	
+	@Column(name = "bill_quantity")
+	private String billQuantity;
+	
+	@Column(name = "way_bill_no_date")
+	private String wayBillNoDate;
+	
+	@Column(name = "bill_no")
+	private String billNo;
+	
+	@Column(name = "date")
+	private String date;
+	
+	@Column(name = "arrival_date_at_railway_store")
+	private String arrivalDateAtRailwayStore;
+
+	@Column(name = "date_of_railway_receipt")
+	private String dateOfRailwayReceipt;
+	
+	@Column(name = "truck_number")
+	private String truckNumber;
+	
+	@Column(name = "transporter")
+	private String transporter;
+	
+	@Column(name = "place_of_delivery")
+	private String placeOfDelivery;
+	
+	@Column(name = "supply_quantity")
+	private String supplyQuantity;
+	
+	@Column(name = "balance_quantity")
+	private String balanceQuantity;
+	
+	@Column(name = "ic_details")
+	private String icDetails;
+	
+	@Column(name = "date_of_supply")
+	private String dateOfSupply;
+	
+	@Column(name = "supplier_with_address")
+	private String supplierWithAddress;
+	
+	@Column(name = "percentage_above")
+	private String percentageAbove;
+	
+	@Column(name = "all_inclusive_rate")
+	private String allInclusiveRate;
+	
+	
+	
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnore
 	@JoinColumn(name="user_id")
