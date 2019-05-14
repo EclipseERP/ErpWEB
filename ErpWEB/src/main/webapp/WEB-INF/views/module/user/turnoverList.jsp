@@ -13,17 +13,14 @@ $(function () {
 	});
 });
 </script>
- <section class="content" ng-show="itemlistshow">
+ <section class="content" ng-show="turnoverListshow">
             <div class="row">
                 <div class="col-md-12">
                     <div class="box box-primary">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Item List / Report</h3>
+                            <h3 class="box-title">Turnover List</h3>
                             <div class="box-tools pull-right">
-                
-                                
-                          
-								<button type="button"  ng-click="itemaddload()" class="btn btn-box-tool" data-widget="add">
+                                <button type="button"  ng-click="itemaddload()" class="btn btn-box-tool" data-widget="add">
 									<i class="fa fa-plus"></i> ADD Item
 								</button>
                             </div>
@@ -36,21 +33,30 @@ $(function () {
 										<thead>
 											<tr>
 												
-												<th>Raw Material</th>
-												<th>Description</th>
-												<th>Unit</th>
-												<th>Quantity</th>
-												<th>Rate</th>
-												<th>GST</th>
-												<th>Total Amount(Rs.)</th>
-												<th>Date of Entry</th>
+												<th>Cont No.</th>
+												<th>BIll No.</th>
+												<th>Bill Passed Date</th>
+												<th>Payment Received Date</th>
+												<th>Gross Amount Including GST</th>
+												<th>Gross Amount Excluding GST</th>
+												<th>Retention Deducted</th>
+												<th>Retention Released</th>
+												<th>Bills Payable</th>
+												<th>S.D Deducted</th>
+												<th>S.D. Released</th>
+												<th>Income Tax</th>
+												<th>Surcharge</th>
+												<th>SGST TDS</th>
+												<th>CGST TDS</th>
+												<th>Misc Charge</th>
+												<th>Misc Charge Release</th>
+												<th>SGST @6%</th>
+												<th>CGST @ 6%</th>
 											</tr>
 										</thead>
 										<tbody>
-										
-										
 							<tr ng-repeat="datas in $data | filter : keyword">
-							<td title="'Raw Material'">{{datas.name}}</td>
+							<td title="'Cont No.'">{{datas.name}}</td>
 							<td title="'Description'">{{datas.descriptionHSNno}}</td>
 							<td title="'Unit'">{{datas.unit}}</td>
 							<td title="'Quantity'">{{datas.qty}}</td>
@@ -64,23 +70,12 @@ $(function () {
 													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
 													<i class="fa fa-trash-o text-danger" aria-hidden="true"></i>
 												</td>
-							
-							
-						</tr>
-										
-										
-										
-										
-										
-											
+						</tr>	
 										</tbody>
 									</table>									
 								</div>				
                             </div>
                         </div>
-						<!--<div class="box-footer" align="right">
-							<button type="submit" class="btn btn-primary pad40L pad40R mrg5L">Submit</button>
-						</div>-->
                     </div>
                 </div>                
             </div>

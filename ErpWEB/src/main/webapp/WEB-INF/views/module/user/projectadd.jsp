@@ -111,6 +111,7 @@
 
 						<div class="col-md-12">
 							<div class="form-group">
+
 								<label for="af3">Project Details : </label> 
 								<b>{{projectname}}
 								</b>
@@ -122,17 +123,23 @@
 							<div class="form-group">
 								<label for="af3">Date : </label> <b>{{projectdate}}
 								</b>
+
 							</div>
 						</div>
 
 
 						<div class="col-md-12">
 							<div class="form-group">
-								<label for="af3">Details : </label> <b>{{details}} </b>
+								<label for="af3">Details : </label> <b>{{details}}</b>
 							</div>
 						</div>
+<<<<<<< HEAD
+                    </div>
+
+
 
 					</div>
+
 					<div class="box-footer" align="left">
 						<a class="btn btn-primary pad40L pad40R mrg5L"
 							ng-click="addItemModal()"> Add Item</a>
