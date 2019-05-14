@@ -133,12 +133,12 @@
 								<label for="af3">Details : </label> <b>{{details}}</b>
 							</div>
 						</div>
-<<<<<<< HEAD
+
                     </div>
 
 
 
-					</div>
+					
 
 					<div class="box-footer" align="left">
 						<a class="btn btn-primary pad40L pad40R mrg5L"
