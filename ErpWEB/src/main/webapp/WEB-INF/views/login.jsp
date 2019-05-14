@@ -79,8 +79,7 @@
 					<select id="usertype" class="custom-select form-control">
 						<option value="">User Type</option>
 						<option value="1">Admin</option>
-						<option value="2">Order Management Department</option>
-						<option value="3">Accounts Department</option>
+						<option value="2">User</option>
 
 					</select>
 
