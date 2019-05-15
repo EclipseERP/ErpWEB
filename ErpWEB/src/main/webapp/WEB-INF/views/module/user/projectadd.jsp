@@ -240,7 +240,7 @@
 
 
 					<div class="box-footer" align="right">
-						<button type="button" ng-click="saveProject(p)" class="btn btn-primary pad40L pad40R mrg5L">Save project</button>
+						<button type="button" ng-click="saveProject(p)" id="btprsave" class="btn btn-primary pad40L pad40R mrg5L">Save project</button>
 					</div>
 				</div>
 			</form>
