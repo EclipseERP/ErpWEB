@@ -200,8 +200,6 @@ app
 						$scope.getProjectData();
 						}, 200);
 						
-						
-						
 					}
 
 					$scope.projectaddload = function() {
