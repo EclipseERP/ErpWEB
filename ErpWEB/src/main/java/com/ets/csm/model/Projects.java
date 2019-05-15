@@ -41,18 +41,7 @@ public class Projects {
 	
 	@Column(name = "sch_unit_rate")
 	private int schUnitRate;
-	
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JsonIgnore
-	@JoinColumn(name="sch_unit_rate")
-	private ProjectLocationMaster schQty;
-	
-	
-	
-	
-	
-	
+
 	@Column(name = "amount")
 	private String amount;
 	
@@ -103,9 +92,6 @@ public class Projects {
 	
 	@Column(name = "all_inclusive_rate")
 	private String allInclusiveRate;
-	
-	
-	
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnore

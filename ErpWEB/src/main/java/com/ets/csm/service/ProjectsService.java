@@ -13,6 +13,7 @@ public interface ProjectsService {
 
 	public Projects saveOrUpdate(Projects p);
 	public void removeProject(Projects p);
+	public List getProjectByProjectcode(String projectcode);
 	
 	
 }

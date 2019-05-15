@@ -25,16 +25,48 @@ public class ProjectEIWorkMaster {
 	@Column(name = "id")
 	private int id;
 
-/*	@ManyToOne(fetch = FetchType.LAZY)
-	@JsonIgnore
-	@JoinColumn(name="project_code")
-	private Projects projects;*/
-	
 	@Column(name = "ei_works")
 	private String eiWorks;
 	
+	@Column(name = "project_code")
+	private String project_code;
+	
 	@Column(name = "quantity")
 	private String quantity;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getProject_code() {
+		return project_code;
+	}
+
+	public void setProject_code(String project_code) {
+		this.project_code = project_code;
+	}
+
+	public String getEiWorks() {
+		return eiWorks;
+	}
+
+	public void setEiWorks(String eiWorks) {
+		this.eiWorks = eiWorks;
+	}
+
+	public String getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(String quantity) {
+		this.quantity = quantity;
+	}
+	
+	
 	
 /*	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnore
