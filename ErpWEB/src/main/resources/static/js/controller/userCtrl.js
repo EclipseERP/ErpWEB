@@ -180,8 +180,9 @@ app
 					$scope.itemaddload = function() {
 						$scope.itemaddshow = true;
 						$scope.itemlistshow = false;
-						
-						$http.get('/rawMaterials/getItemCode/').success(function(data) {
+
+						$http.get('/rawMaterials/getItemCode/').success(
+								function(data) {
 									var code = "ITEM0" + parseInt(data)
 									console.log("itemcode..", code)
 									$scope.itemcode = code;
@@ -204,17 +205,18 @@ app
 					}
 
 					$scope.projectlistload = function() {
-						
-						$route.reload();
-						
+
+						$scope.getProjectData();
 						$scope.projectaddshow = false;
 						$scope.projectlistshow = true;
+						$scope.pi=false;
 						
 						
+						/*
 						$timeout(function() {
-						$scope.getProjectData();
+							$route.reload();
 						}, 200);
-						
+                       */
 					}
 
 					$scope.projectaddload = function() {
@@ -686,7 +688,7 @@ app
 
 						var projectLocationlist = new Array(); // Project
 						var projectLocationlistSCHQTY = new Array();// Project
-																	// quantity
+						// quantity
 						var addEiworklist = new Array();
 						var addEiworklistQTY = new Array();
 						var itemcodeslist = new Array();
@@ -703,6 +705,7 @@ app
 						var projectcode = $("#af1").val();
 						var tendername = $("#af3").val();
 						var projectdetails = $("#af4").val();
+						var tendardate=$("#tendardate").val();
 
 						var locations = $("[name=locationfield]");
 						var eiworksfileds = $("[name=eiworksfield]");
@@ -823,20 +826,29 @@ app
 								+ "&eiflaglist=" + eiflaglist + "&projectcode="
 								+ projectcode + "&loa_details=" + tendername
 								+ "&projectdetails=" + projectdetails
-								+ "&eiworksvaluelist=" + eiworksvaluelist;
+								+ "&eiworksvaluelist=" + eiworksvaluelist+"&tendardate="+tendardate;
 
 						$http.post(url + params).success(function(data) {
 
 							alert("saved");
 							$('#btprsave').prop('disabled', false);
 							$("#btprsave").attr('value', 'Save project');
-							
+
 							$scope.projectlistload();
-							
-							
+
 						}, function myError(response) {
 							alert("Sorry, Some technical error occur");
 						});
+
+					}
+					
+					
+					$scope.viewItemDetailsProject=function()
+					{
+						alert()
+						$scope.projectlistshow=false;				
+						$scope.pi=true;
+						
 
 					}
 

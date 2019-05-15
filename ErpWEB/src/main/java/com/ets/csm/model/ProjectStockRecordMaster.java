@@ -94,6 +94,8 @@ public class ProjectStockRecordMaster {
 	@Column(name = "all_inclusive_rate")
 	private String allInclusiveRate;
 	
+	@Column(name="rate")
+	private int rate;
 
 	public int getId() {
 		return id;
@@ -109,6 +111,14 @@ public class ProjectStockRecordMaster {
 
 	public void setProjectcode(String projectcode) {
 		this.projectcode = projectcode;
+	}
+
+	public int getRate() {
+		return rate;
+	}
+
+	public void setRate(int rate) {
+		this.rate = rate;
 	}
 
 	public String getItemcode() {
@@ -141,6 +151,166 @@ public class ProjectStockRecordMaster {
 
 	public void setTotal(int total) {
 		this.total = total;
+	}
+
+	public Date getUpdate_date() {
+		return update_date;
+	}
+
+	public void setUpdate_date(Date update_date) {
+		this.update_date = update_date;
+	}
+
+	public int getCompany_id() {
+		return company_id;
+	}
+
+	public void setCompany_id(int company_id) {
+		this.company_id = company_id;
+	}
+
+	public int getSchUnitRate() {
+		return schUnitRate;
+	}
+
+	public void setSchUnitRate(int schUnitRate) {
+		this.schUnitRate = schUnitRate;
+	}
+
+	public String getAmount() {
+		return amount;
+	}
+
+	public void setAmount(String amount) {
+		this.amount = amount;
+	}
+
+	public String getBillQuantity() {
+		return billQuantity;
+	}
+
+	public void setBillQuantity(String billQuantity) {
+		this.billQuantity = billQuantity;
+	}
+
+	public String getWayBillNoDate() {
+		return wayBillNoDate;
+	}
+
+	public void setWayBillNoDate(String wayBillNoDate) {
+		this.wayBillNoDate = wayBillNoDate;
+	}
+
+	public String getBillNo() {
+		return billNo;
+	}
+
+	public void setBillNo(String billNo) {
+		this.billNo = billNo;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public String getArrivalDateAtRailwayStore() {
+		return arrivalDateAtRailwayStore;
+	}
+
+	public void setArrivalDateAtRailwayStore(String arrivalDateAtRailwayStore) {
+		this.arrivalDateAtRailwayStore = arrivalDateAtRailwayStore;
+	}
+
+	public String getDateOfRailwayReceipt() {
+		return dateOfRailwayReceipt;
+	}
+
+	public void setDateOfRailwayReceipt(String dateOfRailwayReceipt) {
+		this.dateOfRailwayReceipt = dateOfRailwayReceipt;
+	}
+
+	public String getTruckNumber() {
+		return truckNumber;
+	}
+
+	public void setTruckNumber(String truckNumber) {
+		this.truckNumber = truckNumber;
+	}
+
+	public String getTransporter() {
+		return transporter;
+	}
+
+	public void setTransporter(String transporter) {
+		this.transporter = transporter;
+	}
+
+	public String getPlaceOfDelivery() {
+		return placeOfDelivery;
+	}
+
+	public void setPlaceOfDelivery(String placeOfDelivery) {
+		this.placeOfDelivery = placeOfDelivery;
+	}
+
+	public String getSupplyQuantity() {
+		return supplyQuantity;
+	}
+
+	public void setSupplyQuantity(String supplyQuantity) {
+		this.supplyQuantity = supplyQuantity;
+	}
+
+	public String getBalanceQuantity() {
+		return balanceQuantity;
+	}
+
+	public void setBalanceQuantity(String balanceQuantity) {
+		this.balanceQuantity = balanceQuantity;
+	}
+
+	public String getIcDetails() {
+		return icDetails;
+	}
+
+	public void setIcDetails(String icDetails) {
+		this.icDetails = icDetails;
+	}
+
+	public String getDateOfSupply() {
+		return dateOfSupply;
+	}
+
+	public void setDateOfSupply(String dateOfSupply) {
+		this.dateOfSupply = dateOfSupply;
+	}
+
+	public String getSupplierWithAddress() {
+		return supplierWithAddress;
+	}
+
+	public void setSupplierWithAddress(String supplierWithAddress) {
+		this.supplierWithAddress = supplierWithAddress;
+	}
+
+	public String getPercentageAbove() {
+		return percentageAbove;
+	}
+
+	public void setPercentageAbove(String percentageAbove) {
+		this.percentageAbove = percentageAbove;
+	}
+
+	public String getAllInclusiveRate() {
+		return allInclusiveRate;
+	}
+
+	public void setAllInclusiveRate(String allInclusiveRate) {
+		this.allInclusiveRate = allInclusiveRate;
 	}
 	
 	

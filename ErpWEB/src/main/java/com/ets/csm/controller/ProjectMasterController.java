@@ -62,8 +62,15 @@ public class ProjectMasterController {
 	public String projectAdd() {
 		return "/module/user/projectadd";
 	}
+	
+	@GetMapping("/projectItemViewload")
+	public String projectItemViewLoad() {
+		return "/module/user/projectItemView";
+	}
+	
+	
 
-	// ++++++++++++++++++++++++++++++++++++++++++++++ Tender Creation method starts
+	// +++++++++++++++++++ Tender Creation method starts
 	// here ++++++++++++++++++++++++++++++++++++++++++++++++++
 
 	@PostMapping("/saveProject/{userName}")
@@ -78,7 +85,7 @@ public class ProjectMasterController {
 			@RequestParam("descriptionlist") String[] descriptionlist, @RequestParam("totallist") int[] totallist,
 			@RequestParam("inslist") String[] inslist, @RequestParam("locflaglist") String[] locflaglist,
 			@RequestParam("eiflaglist") String[] eiflaglist, @RequestParam("projectcode") String projectcode,
-			@RequestParam("loa_details") String loadetails, @RequestParam("projectdetails") String projectdetails) {
+			@RequestParam("loa_details") String loadetails, @RequestParam("projectdetails") String projectdetails,@RequestParam("tendardate") String tenderdate) {
 
 		try {
 			for (int i = 0; i < projectLocationlist.length; i++) {
@@ -88,18 +95,33 @@ public class ProjectMasterController {
 				pdata.setLoa_no(loadetails);
 				pdata.setProjectdetails(projectdetails);
 				pdata.setProjectname(projectLocationlist[i]);
-
+				pdata.setDate(tenderdate);
 				projectservice.saveOrUpdate(pdata);
 
 			}
 
-			for (int k = 0; k < itemcodeslist.length; k++) {
+			for (int k = 0; k < itemcodeslist.length; k++) 
+			{
 				ProjectStockRecordMaster pdatas = new ProjectStockRecordMaster();
 				pdatas.setItemcode(itemcodeslist[k]);
 				pdatas.setUnit(unitlist[k]);
 				pdatas.setTotal(totallist[k]);
 				pdatas.setIns(inslist[k]);
 				pdatas.setProjectcode(projectcode);
+				pdatas.setSchUnitRate(0);
+				pdatas.setAmount("0");
+				pdatas.setPercentageAbove("0");
+				pdatas.setAllInclusiveRate("0");
+				pdatas.setSupplierWithAddress("No Supplier");
+				pdatas.setRate(0);
+				pdatas.setIcDetails("No Data Available");
+				pdatas.setSupplyQuantity("0");
+				pdatas.setBalanceQuantity("0");
+				pdatas.setPlaceOfDelivery("");
+			    pdatas.setTruckNumber("");
+			    pdatas.setTransporter("");
+			    pdatas.setBillNo("");
+			    pdatas.setBillQuantity(totallist[k]+"");				
 				projectstockmasterservice.saveorUpdate(pdatas);
 			}
 
@@ -116,7 +138,6 @@ public class ProjectMasterController {
 					}
 
 				}
-
 			}
 
 			for (int n = 0; n < addEiworklist.length; n++) {
@@ -136,7 +157,6 @@ public class ProjectMasterController {
 		} catch (ArrayIndexOutOfBoundsException d) {
 			System.out.println("exception occur" + d);
 		}
-
 	}
 
 	// +++++++++++++++++++++++++++++++++++++++++++++ Tender Creation method ends
