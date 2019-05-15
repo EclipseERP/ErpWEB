@@ -23,7 +23,10 @@ public class AccountsController {
 	}
 	
 	
-	
+	@GetMapping("/accountsListPageload")
+	public String projectlistShow() {
+		return "/module/user/turnoverList";
+	}
 	
 	
 	

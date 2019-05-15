@@ -53,9 +53,10 @@
                     <ul class="treeview-menu">
                       
                         <li>
-							<a href="#projectListload" ng-click="projectlistload()">
+							<!-- <a href="#projectListload" ng-click="projectlistload()">
 								<i class="fa fa-circle-o"></i> Accounts Turnover
-							</a>
+							</a> -->
+							<a href="#accountsListload" ng-click="accountslistload()"><i class="fa fa-circle-o"></i> Accounts Turnover</a>
 						</li>
     
                     </ul>

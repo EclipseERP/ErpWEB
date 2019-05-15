@@ -413,6 +413,28 @@ app
 
 					}
 
+					
+					
+					
+/*$scope.accountslistload = function() {
+						
+						$route.reload();
+						
+						$scope.turnoveraddshow = false;
+						$scope.turnoverlistshow = true;
+						
+						
+						$timeout(function() {
+						$scope.getProjectData();
+						}, 200);
+						
+						
+						
+					}*/
+					
+					
+					
+					
 					// *************************************************************************************************************************************************
 					// *******************************************************************
 					// Item add method to project
