@@ -180,6 +180,21 @@ app
 					$scope.itemaddload = function() {
 						$scope.itemaddshow = true;
 						$scope.itemlistshow = false;
+						
+						$http.get('/rawMaterials/getItemCode/').success(function(data) {
+									var code = "ITEM0" + parseInt(data)
+									console.log("itemcode..", code)
+									$scope.itemcode = code;
+									$scope.itemlistshow = false;
+
+								}, function myError(response) {
+									alert("Sorry, Some technical error occur");
+
+									$timeout(function() {
+
+									}, 200);
+
+								});
 					}
 
 					$scope.itemlistload = function() {

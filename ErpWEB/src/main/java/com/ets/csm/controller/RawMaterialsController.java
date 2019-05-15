@@ -57,4 +57,20 @@ public class RawMaterialsController {
 		return rawservice.getAllRawMaterials();
 	}
 	
+	@GetMapping("/getItemCode")
+	public @ResponseBody Object getItemCode()
+	{
+	
+		Object  code=rawservice.getAllRawMaterials().size()+1;
+		return code;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 }

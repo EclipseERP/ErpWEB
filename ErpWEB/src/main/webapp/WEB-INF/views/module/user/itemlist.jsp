@@ -31,6 +31,7 @@ $(function () {
                         <!-- /.box-header -->
                         <div class="box-body">
                             <div class="row">
+                            <input type="text" class="pull-right" placeholder=" search.." ng-model = "keyword">
 								<div class="col-md-12">									
 									<table id="dataTableID" ng-table="rowMaterialData" class="data-table table table-bordered table-striped table-responsive">
 										<thead>
@@ -50,12 +51,16 @@ $(function () {
 										
 										
 							<tr ng-repeat="datas in $data | filter : keyword">
-							<td title="'Raw Material'">{{datas.name}}</td>
+							<td title="'Item Name'">{{datas.name}}</td>
+							<td title="'Quantity'">{{datas.qty}}</td>
+							<td title="'Item Type'">{{datas.qty}}</td>
+							<td title="'HSN No.'">{{datas.qty}}</td>
 							<td title="'Description'">{{datas.descriptionHSNno}}</td>
-							<td title="'Unit'">{{datas.unit}}</td>
+							<td title="'Date of Entry'">{{datas.descriptionHSNno}}</td>
+						<!-- 	<td title="'Unit'">{{datas.unit}}</td>
 							<td title="'Quantity'">{{datas.qty}}</td>
 							<td title="'Rate'">{{datas.rate}}</td>
-							<td title="'GST'">{{datas.gst}}</td>
+							<td title="'GST'">{{datas.gst}}</td> -->
 							
 							<td title="'Total Amount(Rs.)'">{{datas.totalAmount}}</td>
 							<td title="'dateofentry'">{{datas.dateOfEntry| date : 'yyyy-MM-dd h:mm a'}}</td>
