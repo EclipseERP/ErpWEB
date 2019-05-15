@@ -9,7 +9,10 @@ import com.ets.csm.model.RawMaterials;
 
 public interface RawMaterialsRepository extends JpaRepository<RawMaterials, Integer> {
 	
+	
 	@Query("SELECT I FROM RawMaterials I order by I.id")
 	public List getAllRawMaterials();
+
+	
 	
 }
