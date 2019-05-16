@@ -1,5 +1,7 @@
 package com.ets.csm.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,12 @@ public class ProjectStockRecordMasterImpl implements ProjectStockMasterService {
 		
 		projectstocrepo.save(wu);
 		
+	}
+
+	@Override
+	public List getProjectStockDetailsByProjectcode(String projectcode) {
+		// TODO Auto-generated method stub
+		return projectstocrepo.getAllProjectsStockByProjectcode(projectcode);
 	}
 
 }

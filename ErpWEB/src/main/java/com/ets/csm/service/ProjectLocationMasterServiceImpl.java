@@ -20,5 +20,11 @@ public class ProjectLocationMasterServiceImpl implements ProjectLocationMasterSe
 		// TODO Auto-generated method stub
 		return plocrepository.save(p);
 	}
+	@Override
+	public List getAllProjectLocationMaster(String projectlocation,String projectcode) {
+		// TODO Auto-generated method stub
+		
+		return plocrepository.getAllProjectLocation(projectlocation,projectcode);
+	}
 
 }

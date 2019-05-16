@@ -627,6 +627,7 @@ app
 
 					$scope.projectSecondPartshow = function() {
 
+			
 						var locations = $("[name=locationfield]");
 						var flagloc = 0
 						var projectDetails = "";
@@ -634,11 +635,17 @@ app
 
 						for (var h = 0; h < locations.length; h++) {
 
+						
+							
 							if (locations[h].value == "") {
 								alert("One of your loaction field is blank !!")
 								flagloc = 0;
 								break;
 							}
+							
+							
+							
+							
 							if (locations[h].value != "") {
 
 								projectDetails = projectDetails.concat(inb
@@ -865,13 +872,25 @@ app
 					}
 					
 					
-					$scope.viewItemDetailsProject=function()
+					$scope.viewItemDetailsProject=function(projectcode,projectlocation,loa)
 					{
-						alert()
+	                    $scope.projectlocation=projectlocation;
+	                    $scope.loano=loa;
 						$scope.projectlistshow=false;				
 						$scope.pi=true;
+					
+						$http.post('/project/getProjectItemDetailsByProjectcode?projectcode='+projectcode+"&projectlocation="+projectlocation).success(function(data) 
+						{
+						console.log("Data came ", data)
+						$scope.itemData = new NgTableParams({}, 
+						{
+							dataset : data
+						});
+							
+						}, function myError(response) {
+							alert("Sorry, Some technical error occur");
+						});	
 						
-
 					}
 
 					// *************************************************************************************************************************************
