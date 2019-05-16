@@ -284,8 +284,7 @@
 							</tr>
 						</thead>
 						<tbody>
-
-
+						
 							<tr ng-repeat="datas in $data | filter : keyword">
 								<td>{{datas.itemCode}}</td>
 								<td>No name available</td>

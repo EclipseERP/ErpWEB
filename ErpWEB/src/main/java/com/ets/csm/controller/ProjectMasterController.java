@@ -104,6 +104,7 @@ public class ProjectMasterController {
 				pdata.setProjectname(projectLocationlist[i]);
 				pdata.setDate(tenderdate);
 				pdata.setTotalqty(totallist[0]);
+			
 				projectservice.saveOrUpdate(pdata);
 			}
 
@@ -129,10 +130,44 @@ public class ProjectMasterController {
 			    pdatas.setTruckNumber("");
 			    pdatas.setTransporter("");
 			    pdatas.setBillNo("");
-			    pdatas.setBillQuantity(totallist[k]+"");	
+			    pdatas.setBillQuantity(totallist[k]+"");
+			    pdatas.setItemdescription(descriptionlist[k]);
+			    
 			   
 				projectstockmasterservice.saveorUpdate(pdatas);
+				
+								
+				
+				for (int n = 0; n < addEiworklist.length; n++) {
+
+					for (int m = 0; m < addEiworklistQTY.length; m++) {
+						ProjectEIWorkMaster eiworks = new ProjectEIWorkMaster();
+						if (eiflaglist[m].equalsIgnoreCase(addEiworklist[n])) {
+							eiworks.setProject_code(projectcode);
+							eiworks.setEiWorks(addEiworklist[n]);
+							eiworks.setQuantity(addEiworklistQTY[m]);
+							eiworks.setItemcode(itemcodeslist[k]);
+							projecteiservice.saveOrUpdate(eiworks);
+						}
+
+					}
+				}
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
 			}
+			
+			
 
 			for (int j = 0; j < projectLocationlist.length; j++) {
 
@@ -149,19 +184,7 @@ public class ProjectMasterController {
 				}
 			}
 
-			for (int n = 0; n < addEiworklist.length; n++) {
-
-				for (int m = 0; m < addEiworklistQTY.length; m++) {
-					ProjectEIWorkMaster eiworks = new ProjectEIWorkMaster();
-					if (eiflaglist[m].equalsIgnoreCase(addEiworklist[n])) {
-						eiworks.setProject_code(projectcode);
-						eiworks.setEiWorks(addEiworklist[n]);
-						eiworks.setQuantity(addEiworklistQTY[m]);
-						projecteiservice.saveOrUpdate(eiworks);
-					}
-
-				}
-			}
+		
 
 		} catch (ArrayIndexOutOfBoundsException d) {
 			System.out.println("exception occur" + d);
@@ -200,7 +223,7 @@ public class ProjectMasterController {
 			pdto.setTotalqty(projetctstockmasterlist.get(i).getTotal());
 			pdto.setBalanceqty(Integer.parseInt(projetctstockmasterlist.get(i).getBalanceQuantity()));
 			pdto.setSupplyqty(Integer.parseInt(projetctstockmasterlist.get(i).getSupplyQuantity()));
-			
+			pdto.setDesciption(projetctstockmasterlist.get(i).getItemdescription());
 			projectstockdtolist.add(pdto);
 		
 	}
@@ -210,5 +233,11 @@ public class ProjectMasterController {
 	}
 	
 	
+	@GetMapping("/getProjectEIWorksDataByProjectcode")
+	public @ResponseBody List getProjectEIWorksDataByProjectcode(@RequestParam("projectcode") String projectcode) 
+	{
+		
+		return projecteiservice.getProjectEiWorkDetailsByProjectCode(projectcode);
 
+	}
 }

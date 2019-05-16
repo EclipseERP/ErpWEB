@@ -23,4 +23,10 @@ public class ProjectEIWorkMasterServiceImpl implements ProjectEIWorkMasterServic
 		return projecteirepository.save(p);
 	}
 
+	@Override
+	public List getProjectEiWorkDetailsByProjectCode(String projectcode) {
+		// TODO Auto-generated method stub
+		return projecteirepository.getProjectEIWorkByProjectCode(projectcode);
+	}
+
 }

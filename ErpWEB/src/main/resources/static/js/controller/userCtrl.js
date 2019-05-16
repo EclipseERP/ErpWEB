@@ -580,7 +580,7 @@ app
 												+ icounter
 												+ i
 												+ " /><input type=hidden name=eiflag value='"
-												+ eiworks[i].value + "' ></td>");
+												+ eiworks[i].value + "' ><input type=text name=itemcodeflag value=</td>");
 								incei++
 							}
 
@@ -893,6 +893,41 @@ app
 						
 					}
 
+					
+					$scope.viewEiWorkQty=function(itemcodes,projectcode)
+					{
+						
+						$scope.itemcode=itemcodes;
+						
+						    $http.get('/project/getProjectEIWorksDataByProjectcode?projectcode='+projectcode).success(function(data) 
+								{
+								console.log("Data came ", data)
+								$scope.itemData2 = new NgTableParams({}, 
+								{
+									dataset : data
+								});
+									
+								}, function myError(response) {
+									alert("Sorry, Some technical error occur");
+								});
+						
+						
+						
+						
+						
+						
+						
+						
+						$("#eiworkqty").modal({
+							backdrop : 'static',
+							keyboard : false
+						});
+						
+						
+						
+					}
+					
+					
 					// *************************************************************************************************************************************
 
 					// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
