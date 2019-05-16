@@ -11,9 +11,9 @@ import com.ets.csm.model.ProjectStockRecordMaster;
 import com.ets.csm.model.Unit;
 
 @Repository("projectstockmasterrepository")
-public interface projectStockMasterRepository extends JpaRepository<ProjectStockRecordMaster, Integer>{
+public interface projectStockMasterRepository extends JpaRepository<ProjectStockRecordMaster, Integer>
+{
+	@Query("SELECT P FROM ProjectStockRecordMaster P WHERE P.projectcode =:projectcode")
+	public List getAllProjectsStockByProjectcode(@Param ("projectcode") String projectcode);
 	
-
-	
-
 }

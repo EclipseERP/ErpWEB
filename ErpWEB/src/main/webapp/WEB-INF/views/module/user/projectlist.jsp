@@ -34,19 +34,19 @@
 												<th>LOA Details</th>
 												<th>Sate</th>
 												<th>Date of Apply </th>
-												<th>Total Qty </th>
-												<th>Supply Qty </th>
-												<th>Balance Qty </th>
+<!-- 												<th>Total Qty </th> -->
+<!-- 												<th>Supply Qty </th> -->
+<!-- 												<th>Balance Qty </th> -->
 												<th>View Item details</th>
 												  <th>View Supply details </th>
-												  <th>Status</th>
+									
 												<th>Action</th>
 										
 											</tr>
 										</thead>
 										<tbody>
 												<tr ng-repeat="datas in $data | filter : keyword">
-												
+
 												<td>
 												
 												{{ $index + 1 }}
@@ -68,20 +68,20 @@
 												<td> West Bengal</td>
 												<td>{{datas.date}} </td>
 												
-											    <td>0</td>
-											      <td>0 </td>
-											    <td>0</td>
+<!-- 											    <td>0</td> -->
+<!-- 											      <td>0 </td> -->
+<!-- 											    <td>0</td> -->
 											    		<td>
 												
-												<a   ng-click="viewItemDetailsProject()"    > View item details</a>
+												<a   ng-click="viewItemDetailsProject(datas.project_code,datas.projectname,datas.loa_no)"   style="cursor: pointer"  > <b>View item details</b></a>
 												
 												</td>
 											           		<td>
 												
-												<a   ng-click="viewItemDetailsProject()"    > View item details</a>
+												<a   ng-click="viewItemDetailsProject()"    ><b> View item details</b></a>
 												
 												</td>
-											    <td style="color:red"><b>Pending</b></td>
+						
 												
 										
 								
@@ -115,7 +115,9 @@
                 <div class="col-md-12">
                     <div class="box box-primary">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Item list </h3>
+                       
+                             <h3 class="box-title">Location : <b>{{projectlocation}}</b> </h3> &nbsp;&nbsp;  <h3 class="box-title">LOA No :  <b>{{loano}} </b></h3>
+                 
                             <div class="box-tools pull-right">
                  
                    
@@ -136,16 +138,18 @@
 								
 								
 								             <input type="text" class="pull-right" placeholder=" search.." ng-model = "keyword">
-							<table  ng-table="projectListTable" class="data-table table table-bordered table-striped table-responsive">
+							<table  ng-table="itemData" class="data-table table table-bordered table-striped table-responsive">
 										<thead>
 											<tr>
 											   <th>SL No.</th>
-											   <th>Item code</th>
-											    <th>Item name</th>
+											    <th>Item codes</th>
 											    <th>Description</th>
-											    <th>Qty</th>
-											
-											      <th>Actions</th>
+											    <th>Sch Qty</th>
+											    <th>Total Sch Qty  </th>
+											    <th>Supply Qty  </th>
+											    <th>Balance Qty  </th>
+											    <th>Status </th>
+											    <th>Actions</th>
 											
 										
 											</tr>
@@ -160,19 +164,17 @@
 												</td>
 												    <td >
 							                     
-							                    itemcode
+							                    {{datas.itemcode}}
 							                      
 									                </td> 
 									                
-									               <td >
-							                     
-							                     itemname
-							                      
-									                </td> 
 												<td> description</td>
-												
-											<td> qty</td>
-												
+												<td>   {{datas.qty}}</td>
+											<td>   {{datas.totalqty}}</td>
+											<td>   {{datas.supplyqty}}</td>
+										    <td>   {{datas.balanceqty}}</td>
+										    <td>   {{datas.balanceqty}}</td>
+										    <td style="color:red"><b>Pending</b></td>
 							
 										
 								

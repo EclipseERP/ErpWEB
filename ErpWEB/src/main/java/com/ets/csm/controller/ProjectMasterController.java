@@ -1,5 +1,6 @@
 package com.ets.csm.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.ets.csm.dto.ProjectItemCodeListDTO;
 import com.ets.csm.model.ProjectEIWorkMaster;
 import com.ets.csm.model.ProjectLocationMaster;
 import com.ets.csm.model.ProjectStockRecordMaster;
@@ -42,6 +44,8 @@ public class ProjectMasterController {
 
 	@Autowired
 	ProjectStockMasterService projectstockmasterservice;
+	
+
 
 	@GetMapping("/getProjects")
 	public @ResponseBody List getProjectList() {
@@ -71,7 +75,7 @@ public class ProjectMasterController {
 	
 
 	// +++++++++++++++++++ Tender Creation method starts
-	// here ++++++++++++++++++++++++++++++++++++++++++++++++++
+	// here +++++++++++++++++++++++++++++++++++++++++++
 
 	@PostMapping("/saveProject/{userName}")
 	public @ResponseBody void saveProject(@PathVariable String userName,
@@ -88,6 +92,9 @@ public class ProjectMasterController {
 			@RequestParam("loa_details") String loadetails, @RequestParam("projectdetails") String projectdetails,@RequestParam("tendardate") String tenderdate) {
 
 		try {
+			
+			
+			
 			for (int i = 0; i < projectLocationlist.length; i++) {
 
 				Projects pdata = new Projects();
@@ -96,12 +103,13 @@ public class ProjectMasterController {
 				pdata.setProjectdetails(projectdetails);
 				pdata.setProjectname(projectLocationlist[i]);
 				pdata.setDate(tenderdate);
+				pdata.setTotalqty(totallist[0]);
 				projectservice.saveOrUpdate(pdata);
-
 			}
 
 			for (int k = 0; k < itemcodeslist.length; k++) 
 			{
+				
 				ProjectStockRecordMaster pdatas = new ProjectStockRecordMaster();
 				pdatas.setItemcode(itemcodeslist[k]);
 				pdatas.setUnit(unitlist[k]);
@@ -121,7 +129,8 @@ public class ProjectMasterController {
 			    pdatas.setTruckNumber("");
 			    pdatas.setTransporter("");
 			    pdatas.setBillNo("");
-			    pdatas.setBillQuantity(totallist[k]+"");				
+			    pdatas.setBillQuantity(totallist[k]+"");	
+			   
 				projectstockmasterservice.saveorUpdate(pdatas);
 			}
 
@@ -163,11 +172,43 @@ public class ProjectMasterController {
 	// here +++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 	@GetMapping("/getProjectCode")
-	public @ResponseBody Object getProjectCode() {
-
+	public @ResponseBody Object getProjectCode() 
+	{
 		Object code = projectservice.getAllProjects().size() + 1;
 		return code;
 
 	}
+	
+	@PostMapping("/getProjectItemDetailsByProjectcode")
+	public @ResponseBody List getProjectItemDetailsByProjectcode(@RequestParam("projectcode") String projectcode,@RequestParam("projectlocation") String projectlocation) 
+	{
+
+	System.out.println(" "+projectcode);
+	
+	List projectstockdtolist=new ArrayList();
+	
+	List<ProjectStockRecordMaster> projetctstockmasterlist=projectstockmasterservice.getProjectStockDetailsByProjectcode(projectcode);
+	List<ProjectLocationMaster> projectlist=projectlocationservice.getAllProjectLocationMaster(projectlocation,projectcode);
+	
+	for(int i=0;i<projetctstockmasterlist.size();i++)	
+	{
+			ProjectItemCodeListDTO pdto=new ProjectItemCodeListDTO();
+			
+			pdto.setItemcode(projetctstockmasterlist.get(i).getItemcode());
+			pdto.setQty(projectlist.get(i).getSchQuantity());
+			pdto.setProjectcode(projectcode);
+			pdto.setTotalqty(projetctstockmasterlist.get(i).getTotal());
+			pdto.setBalanceqty(Integer.parseInt(projetctstockmasterlist.get(i).getBalanceQuantity()));
+			pdto.setSupplyqty(Integer.parseInt(projetctstockmasterlist.get(i).getSupplyQuantity()));
+			
+			projectstockdtolist.add(pdto);
+		
+	}
+	
+	
+	return projectstockdtolist;
+	}
+	
+	
 
 }
