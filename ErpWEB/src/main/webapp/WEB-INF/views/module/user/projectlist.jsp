@@ -54,7 +54,7 @@
 												</td>
 												    <td >
 							                     
-							                       {{datas.projectname}}
+							                     <b>  {{datas.projectname}}</b>
 							                      
 									                </td> 
 									                
@@ -189,9 +189,6 @@
 							
 										
 									</table>
-									
-									
-									
 
 				</div>
 				</div>
