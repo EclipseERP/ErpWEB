@@ -13,7 +13,7 @@ $(function () {
 	});
 });
 </script>
- <section class="content" ng-show="itemlistshow">
+<section class="content" ng-show="itemlistshow">
             <div class="row">
                 <div class="col-md-12">
                     <div class="box box-primary">
@@ -36,22 +36,20 @@ $(function () {
 									<table ng-table="rowMaterialData" class="data-table table table-bordered table-striped table-responsive">
 										<thead>
 											<tr>
-												
 												<th>Raw Material</th>
 												<!-- <th>Item Code</th> -->
 												<!-- <th>Item Type</th> -->
 												<th>HSN No.</th>
 												<th>Description</th>
-											<!-- 	<th>Unit</th>
+											<!--<th>Unit</th>
 												<th>Quantity</th>
 												<th>Rate</th>
 												<th>GST</th>
-												<th>Total Amount(Rs.)</th> -->
+												<th>Total Amount(Rs.)</th>-->
 												<th>Date of Entry</th>
 											</tr>
 										</thead>
 										<tbody>
-										
 										
 							<tr ng-repeat="datas in $data | filter : keyword">
 							<td title="'Item Name'">{{datas.name}}</td>
@@ -72,29 +70,17 @@ $(function () {
 													<i class="fa fa-trash-o text-danger" aria-hidden="true"></i>
 												</td>
 							
-							
 						</tr>
-										
-										
-										
-										
-										
-											
+												
 										</tbody>
 									</table>									
 								</div>				
                             </div>
                         </div>
-						<!--<div class="box-footer" align="right">
-							<button type="submit" class="btn btn-primary pad40L pad40R mrg5L">Submit</button>
-						</div>-->
                     </div>
                 </div>                
             </div>
         </section>
         
      
-        
-        
-      
       <jsp:include page="/WEB-INF/views/module/user/item.jsp" />  

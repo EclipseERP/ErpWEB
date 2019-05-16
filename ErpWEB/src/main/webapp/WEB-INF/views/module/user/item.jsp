@@ -47,13 +47,13 @@
 								<div class="col-md-6">									
 									<div class="form-group">
 										<label for="af10">HSN Number</label>
-										<input type="text" onkeypress="return isNumber(event)" onkeyup="positiveNumberValidation_divid('hsn','number_validation','Please enter only valid integers !!')" class="form-control" ng-model="data.hsno" id="hsn" placeholder="" required>
+										<input type="text" class="form-control" ng-model="data.hsno" id="hsn" placeholder="" required>
 									</div>									
 								</div>
 								<div class="col-md-12">									
 									<div class="form-group">
 										<label for="af11">Description</label>
-										<input textarea ng-model="data.description" class="form-control" id="description" placeholder="" required>
+										<textarea ng-model="data.description" class="form-control" id="description" rows="5" placeholder="" required></textarea>
 									</div>									
 								</div>
 								
