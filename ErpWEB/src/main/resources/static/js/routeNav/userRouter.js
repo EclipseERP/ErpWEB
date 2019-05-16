@@ -57,8 +57,11 @@ app.config(function($routeProvider,$httpProvider) {
 						templateUrl : '/project/projectListPageload',
 						controller : 'userCtrl'
 				   })
-				   
-				   	  .when('/itemload', {
+				   .when('/accountsListload', {
+						templateUrl : '/accounts/accountsListPageload',
+						controller : 'userCtrl'
+				   })
+				   .when('/itemload', {
 						templateUrl : '/itemctrl/itemPageload',
 						controller : 'userCtrl'
 				   })

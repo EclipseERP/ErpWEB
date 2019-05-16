@@ -33,17 +33,20 @@ $(function () {
                             <div class="row">
                             <input type="text" class="pull-right" placeholder=" search.." ng-model = "keyword">
 								<div class="col-md-12">									
-									<table id="dataTableID" ng-table="rowMaterialData" class="data-table table table-bordered table-striped table-responsive">
+									<table ng-table="rowMaterialData" class="data-table table table-bordered table-striped table-responsive">
 										<thead>
 											<tr>
 												
 												<th>Raw Material</th>
+												<!-- <th>Item Code</th> -->
+												<!-- <th>Item Type</th> -->
+												<th>HSN No.</th>
 												<th>Description</th>
-												<th>Unit</th>
+											<!-- 	<th>Unit</th>
 												<th>Quantity</th>
 												<th>Rate</th>
 												<th>GST</th>
-												<th>Total Amount(Rs.)</th>
+												<th>Total Amount(Rs.)</th> -->
 												<th>Date of Entry</th>
 											</tr>
 										</thead>
@@ -52,18 +55,17 @@ $(function () {
 										
 							<tr ng-repeat="datas in $data | filter : keyword">
 							<td title="'Item Name'">{{datas.name}}</td>
-							<td title="'Quantity'">{{datas.qty}}</td>
-							<td title="'Item Type'">{{datas.qty}}</td>
-							<td title="'HSN No.'">{{datas.qty}}</td>
-							<td title="'Description'">{{datas.descriptionHSNno}}</td>
-							<td title="'Date of Entry'">{{datas.descriptionHSNno}}</td>
-						<!-- 	<td title="'Unit'">{{datas.unit}}</td>
+							<!-- <td title="'Item Code'">{{datas.itemCode}}</td> -->
+							<!-- <td title="'Quantity'">{{datas.qty}}</td> -->
+							<td title="'HSN No.'">{{datas.hsno}}</td>
+							<td title="'Description'">{{datas.description}}</td>
+							<!-- <td title="'Description'">{{datas.descriptionHSNno}}</td> -->
+							<!-- <td title="'Unit'">{{datas.unit}}</td>
 							<td title="'Quantity'">{{datas.qty}}</td>
 							<td title="'Rate'">{{datas.rate}}</td>
-							<td title="'GST'">{{datas.gst}}</td> -->
-							
-							<td title="'Total Amount(Rs.)'">{{datas.totalAmount}}</td>
-							<td title="'dateofentry'">{{datas.dateOfEntry| date : 'yyyy-MM-dd h:mm a'}}</td>
+							<td title="'GST'">{{datas.gst}}</td>
+							<td title="'Total Amount(Rs.)'">{{datas.totalAmount}}</td> -->
+							<td title="'Date of Entry'">{{datas.dateOfEntry| date : 'yyyy-MM-dd h:mm a'}}</td>
 						    <td class="action" width="1">
 													<i class="fa fa-eye text-primary" aria-hidden="true"></i>
 													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>

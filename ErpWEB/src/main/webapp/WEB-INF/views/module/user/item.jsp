@@ -31,7 +31,7 @@
 									<div class="col-md-6">									
 									<div class="form-group">
 										<label for="af3">Item Code</label>
-										<input type="text" value="{{itemcode}}" ng-model="data.itemCode" class="form-control" id="af3" placeholder="" required>
+										<input type="text" value="{{itemcode}}" class="form-control" id="af3" placeholder="" required>
 									</div>									
 								</div>
 								<div class="col-md-6">									
