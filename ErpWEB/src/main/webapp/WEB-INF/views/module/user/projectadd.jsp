@@ -76,7 +76,7 @@
 									<label for="af4">Details </label>
 
 
-									<textarea class="form-control" cols="12" id="af4" rows="3"
+									<textarea class="form-control" cols="12" id="af4" rows="5"
 										required="required"></textarea>
 
 

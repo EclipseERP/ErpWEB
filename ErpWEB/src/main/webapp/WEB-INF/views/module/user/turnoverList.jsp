@@ -1,10 +1,11 @@
 
  <section class="content" ng-show="projectlistshow">
-            <div class="row">
+         
                 <div class="col-md-12">
                     <div class="box box-primary">
                         <div class="box-header with-border">
                             <h3 class="box-title">Turnover List </h3>
+                            <h3><button class="btn btn-blue pull-left" style="margin-top:-5px; border-radius : 0;" ng-click="exportTurnoverList()"><i class="fa fa-plus"></i> Export </button></h3>
                             <div class="box-tools pull-right">
                  
                    
@@ -21,11 +22,16 @@
                         </div>
                         <div class="box-body">
                             <div class="row">
-								
-								
-								             <input type="text" class="pull-right" placeholder=" Search Project-wise.." ng-model = "keyword">
-								             <input type="text" class="pull-right" placeholder=" Search State-wise.." ng-model = "keyword">
-								             <input type="text" class="pull-right" placeholder=" Search Year-wise.." ng-model = "keyword">
+								<div class="col-md-3">
+								    <div class="form-group">
+										<label for="af2">Search Turnover</label>
+										<select ng-model="data.itemType" class="form-control select2" style="width: 100%;">
+											<option value="1">Project-wise</option>
+											<option value="2">State-wise</option>
+											<option value="3">Year-wise</option>
+                                        </select>
+									</div>
+							   </div>
 							<table  ng-table="projectListTable" class="data-table table table-bordered table-striped table-responsive">
 										<thead>
 											<tr>
@@ -54,7 +60,6 @@
 									<tbody>
 									
 									<tr>
-												<td>1</td>
 												<td>Janai Road</td>
 												<td>3RD</td>
 												<td>18.12.2018</td>
@@ -67,8 +72,8 @@
 												<td>215344</td>
 												<td>107672</td>
 												<td>107672</td>
+												<td>136578</td>
 												<td>1</td>
-												<td></td>
 												<td>646033</td>
 												<td>646033</td>
 												<td>9216735</td>
@@ -78,8 +83,137 @@
 													<i class="fa fa-trash-o text-danger" aria-hidden="true"></i>
 												</td>
 											</tr>
+											
+											
+											
+											
+											<tr>
+												<td>Naihati Ranaghat</td>
+												<td>2ND</td>
+												<td>09.03.2019</td>
+												<td>12.03.2019</td>
+												<td>51778202</td>
+												<td>46230538</td>
+												<td>5177820</td>
+												<td></td>
+												<td></td>
+												<td>46600382</td>
+												<td>5177820</td>
+												<td>107672</td>
+												<td></td>
+												<td>924610</td>
+												<td>462306</td>
+												<td>462306</td>
+												<td>2773832</td>
+												<td class="action" width="1">
+													<i class="fa fa-eye text-primary" aria-hidden="true"></i>
+													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
+													<i class="fa fa-trash-o text-danger" aria-hidden="true"></i>
+												</td>
+											</tr>
+											
+											
+											
+											<tr>
+												<td>Kahalgaon</td>
+												<td>6TH</td>
+												<td>24.03.2019</td>
+												<td></td>
+												<td></td>
+												<td>46230538</td>
+												<td>5177820</td>
+												<td></td>
+												<td></td>
+												<td>46600382</td>
+												<td>5177820</td>
+												<td>107672</td>
+												<td></td>
+												<td>924610</td>
+												<td>462306</td>
+												<td>462306</td>
+												<td>2773832</td>
+												<td class="action" width="1">
+													<i class="fa fa-eye text-primary" aria-hidden="true"></i>
+													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
+													<i class="fa fa-trash-o text-danger" aria-hidden="true"></i>
+												</td>
+											</tr>
+											
+											
+											<tr>
+												<td>Ballygunge Sonarpur</td>
+												<td>5TH</td>
+												<td></td>
+												<td>05.10.2018</td>
+												<td>9130190</td>
+												<td>8151955</td>
+												<td>913019</td>
+												<td></td>
+												<td>8217171</td>
+												<td>913019</td>
+												<td></td>
+												<td>163019</td>
+												<td></td>
+												<td>81520</td>
+												<td>81520</td>
+												<td>49117</td>
+												<td>489117</td>
+												<td class="action" width="1">
+													<i class="fa fa-eye text-primary" aria-hidden="true"></i>
+													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
+													<i class="fa fa-trash-o text-danger" aria-hidden="true"></i>
+												</td>
+											</tr>
+											
+											
+											
+											
+											
+											<tr>
+												<td>Bandel EI</td>
+												<td>2ND</td>
+												<td></td>
+												<td>16.01.2019</td>
+												<td>15221948</td>
+												<td>13591025</td>
+												<td>1522195</td>
+												<td></td>
+												<td>13699753</td>
+												<td>1522195</td>
+												<td></td>
+												<td>271821</td>
+												<td></td>
+												<td>135911</td>
+												<td>135911</td>
+												<td>815642</td>
+												<td>815642</td>
+												<td class="action" width="1">
+													<i class="fa fa-eye text-primary" aria-hidden="true"></i>
+													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
+													<i class="fa fa-trash-o text-danger" aria-hidden="true"></i>
+												</td>
+											</tr>
+											
+											
+											
+											
+											
+											
+											
 								</tbody>
 							</table>
+    <style>
+
+    .search-table{table-layout: auto; margin:40px auto 0px auto; }
+    .search-table, td, th {
+        border-collapse: collapse;
+    }
+      th{padding:20px 7px; font-size:15px; color:#444;}
+      td{padding:5px 10px; height:35px;}
+      .search-table-outter { overflow-x: auto; }
+      th, td { min-width: 200px; }
+
+    </style>
 									
 				</div>
 				</div>

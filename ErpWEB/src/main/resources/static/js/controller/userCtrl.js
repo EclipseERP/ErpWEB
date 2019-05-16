@@ -290,6 +290,23 @@ app
 								});
 					}
 
+					
+					
+					
+					$scope.submitVendorDocForm = function(ven) {
+						alert("aaaaaaaaaaa");
+						console.log("Vendor Data...", ven);
+						console.log("Data...", $scope.currentUserName);
+						$http.post('/vendorDocCtrl/addVendorDoc/'+ $scope.currentUserName, ven).success(
+								function(data) {
+								}, function myError(response) {
+									alert("Sorry, Some technical error occur");
+								});
+					}
+					
+					
+					
+					
 					$scope.calculateTotal = function() {
 						var total = 0;
 						var subtotal = 0;
@@ -870,6 +887,16 @@ app
 						});
 
 					}
+					
+					
+					$scope.exportProjectList = function() {
+					  $http.get('/project/getProjectCode/').success(function(data) {
+					  JSONToCSVConvertor(data, "Details", true,"Project");
+                        }, function myError(response) {
+						  alert("Sorry, Some technical error occur");
+                        });
+                        }
+					
 					
 					
 					$scope.viewItemDetailsProject=function(projectcode,projectlocation,loa)
