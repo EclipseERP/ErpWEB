@@ -30,7 +30,6 @@ public class ProjectMasterController {
 	@Autowired
 	UserService userService;
 	
-	
 	@Autowired
 	ProjectsService projectservice;
 	
@@ -40,7 +39,6 @@ public class ProjectMasterController {
 	@Autowired
 	ProjectEIWorkMasterService projecteiservice;
 
-	
 	
 	@GetMapping("/getProjects")
 	public @ResponseBody List getProjectList() {
@@ -130,11 +128,8 @@ public class ProjectMasterController {
 		
 		}
 		
-		
-		
+
 		}
-		
-		
 		
 		catch(ArrayIndexOutOfBoundsException d)
 		{
@@ -155,9 +150,6 @@ public class ProjectMasterController {
 		return code;
 		
 	}
-	
-	
-	
 	
 	
 	
