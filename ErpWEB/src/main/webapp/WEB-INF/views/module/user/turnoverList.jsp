@@ -5,6 +5,7 @@
                     <div class="box box-primary">
                         <div class="box-header with-border">
                             <h3 class="box-title">Turnover List </h3>
+                            <h3><button class="btn btn-blue pull-left" style="margin-top:-5px; border-radius : 0;" ng-click="exportTurnoverList()"><i class="fa fa-plus"></i> Export </button></h3>
                             <div class="box-tools pull-right">
                  
                    
@@ -211,7 +212,6 @@
       td{padding:5px 10px; height:35px;}
       .search-table-outter { overflow-x: auto; }
       th, td { min-width: 200px; }
-
 
     </style>
 									

@@ -5,6 +5,7 @@
                     <div class="box box-primary">
                         <div class="box-header with-border">
                             <h3 class="box-title">Project list </h3>
+                            <h3><button class="btn btn-blue pull-left" style="margin-top:-5px; border-radius : 0;" ng-click="exportProjectList()"><i class="fa fa-plus"></i> Export </button></h3>
                             <div class="box-tools pull-right">
                  
                    
