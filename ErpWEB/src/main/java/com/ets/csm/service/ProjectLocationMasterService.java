@@ -11,5 +11,6 @@ import com.ets.csm.model.RawMaterials;
 public interface ProjectLocationMasterService {
 
 	public ProjectLocationMaster saveOrUpdate(ProjectLocationMaster p);
+	public List  getAllProjectLocationMaster(String projectlocation,String projectcode);
 	
 }

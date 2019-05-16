@@ -1,5 +1,4 @@
- 
-     <!-- Content Header (Page header) -->
+ <!-- Content Header (Page header) -->
      <script>
 $(function () {
 	// For Datatable
@@ -22,7 +21,7 @@ $(function () {
                             <h3 class="box-title">Vendor list / Report</h3>
                             <div class="box-tools pull-right">
                         
-                               <button type="button"  ng-click="vendoraddload()" class="btn btn-box-tool" data-widget="add">
+                                <button type="button"  ng-click="vendoraddload()" class="btn btn-box-tool" data-widget="add">
 									<i class="fa fa-plus"></i> ADD Vendor
 								</button>
                             </div>
@@ -34,189 +33,37 @@ $(function () {
 									<table id="vendorDataTable" ng-table="vendorData" class="data-table table table-bordered table-striped table-responsive">
 										<thead>
 											<tr>
-												<th width="1">#</th>
-												<th>Name</th>
+												<!-- <th width="1">#</th> -->
+												<th>Company Type</th>
 												<th>Contact Number</th>
 												<th>PAN No.</th>
 												<th>Address</th>
 												<th>State</th>
-												<th>Company Type</th>
 											</tr>
 										</thead>
 										<tbody>
-										
-										
-										
-										
-										
+									
 							<tr ng-repeat="datas in $data | filter : keyword">
-							<td title="'Name'">{{datas.name}}</td>
-							<td title="'Contact Number'">{{datas.descriptionHSNno}}</td>
-							<td title="'PAN No.'">{{datas.unit}}</td>
-							<td title="'Address'">{{datas.qty}}</td>
-							<td title="'State'">{{datas.rate}}</td>
-							<td title="'Company Type'">{{datas.gst}}</td>
-							<td title="'Total Amount(Rs.)'">{{datas.totalAmount}}</td>
-							<td title="'dateofentry'">{{datas.dateOfEntry| date : 'yyyy-MM-dd h:mm a'}}</td>
+							<td title="'Company Type'">{{datas.companyName}}</td>
+							<td title="'Contact Number'">{{datas.primaryContact}}</td>
+							<td title="'PAN No.'">{{datas.companyPAN}}</td>
+							<td title="'Address'">{{datas.address1}}</td>
+							<td title="'State'">{{datas.state}}</td>
+							
 						    <td class="action" width="1">
 													<i class="fa fa-eye text-primary" aria-hidden="true"></i>
 													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
 													<i class="fa fa-trash-o text-danger" aria-hidden="true"></i>
 												</td>
 							
-							
-						</tr>
+						   </tr>
 										
 										
-										
-										
-										
-										
-										
-										
-											<!-- <tr>
-												<td>1</td>
-												<td>Luminous Steel</td>
-												<td>8965744122</td>
-												<td>AELPU5278H</td>
-												<td>2/G Kottam, Near Gol Gumbaj</td>
-												<td>Kerala</td>
-												<td>Iron And Steel</td>
-												<td class="action" width="1">
-													<i class="fa fa-eye text-primary" aria-hidden="true"></i>
-													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
-													<i class="fa fa-trash-o text-danger" aria-hidden="true"></i>
-												</td>
-											</tr>
-											<tr>
-												<td>2</td>
-												<td>Forestry Furniture</td>
-												<td> 9898652358</td>
-												<td>FFLPU5278H</td>
-												<td>Lake Town, Kolkata-700053</td>
-												<td>West Bengal</td>
-												<td>Furniture</td>
-												<td class="action" width="1">
-													<i class="fa fa-eye text-primary" aria-hidden="true"></i>
-													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
-													<i class="fa fa-trash-o text-danger" aria-hidden="true"></i>
-												</td>
-											</tr>
-											<tr>
-												<td>3</td>
-												<td>Thread Computers</td>
-												<td>9854721589</td>
-												<td>DPLPU5368H</td>
-												<td>Kankar Bagh, near Golambar, PAtna-800006</td>
-												<td>Bihar</td>
-												<td>Computer Shop</td>
-												<td class="action" width="1">
-													<i class="fa fa-eye text-primary" aria-hidden="true"></i>
-													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
-													<i class="fa fa-trash-o text-danger" aria-hidden="true"></i>
-												</td>
-											</tr>
-											<tr>
-												<td>4</td>
-												<td>Biom Plastics</td>
-												<td>9898653258</td>
-												<td>FDLPU6578H</td>
-												<td>Near Shivalik Temple, Bhopal-8</td>
-												<td>Madhya Pradesh</td>
-												<td>Synthetic Fibres</td>
-												<td class="action" width="1">
-													<i class="fa fa-eye text-primary" aria-hidden="true"></i>
-													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
-													<i class="fa fa-trash-o text-danger" aria-hidden="true"></i>
-												</td>
-											</tr>
-											<tr>
-												<td>5</td>
-												<td>Potential Electronics</td>
-												<td>6969542130</td>
-												<td>SFLPU3628H</td>
-												<td>Sidhhi Para, Bardhamaan</td>
-												<td>West Bengal</td>
-												<td>Electronics</td>
-												<td class="action" width="1">
-													<i class="fa fa-eye text-primary" aria-hidden="true"></i>
-													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
-													<i class="fa fa-trash-o text-danger" aria-hidden="true"></i>
-												</td>
-											</tr> -->
-											<!-- <tr>
-												<td>6</td>
-												<td>Lorem ipsum dolor</td>
-												<td> sit amet, consectetur</td>
-												<td>adipisicing</td>
-												<td>elit. Ullam</td>
-												<td>Fuga sunt</td>
-												<td class="action" width="1">
-													<i class="fa fa-eye text-primary" aria-hidden="true"></i>
-													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
-													<i class="fa fa-trash-o text-danger" aria-hidden="true"></i>
-												</td>
-											</tr>
-											<tr>
-												<td>7</td>
-												<td>Lorem ipsum dolor</td>
-												<td> sit amet, consectetur</td>
-												<td>adipisicing</td>
-												<td>elit. Ullam</td>
-												<td>Fuga sunt</td>
-												<td class="action" width="1">
-													<i class="fa fa-eye text-primary" aria-hidden="true"></i>
-													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
-													<i class="fa fa-trash-o text-danger" aria-hidden="true"></i>
-												</td>
-											</tr>
-											<tr>
-												<td>8</td>
-												<td>Lorem ipsum dolor</td>
-												<td> sit amet, consectetur</td>
-												<td>adipisicing</td>
-												<td>elit. Ullam</td>
-												<td>Fuga sunt</td>
-												<td class="action" width="1">
-													<i class="fa fa-eye text-primary" aria-hidden="true"></i>
-													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
-													<i class="fa fa-trash-o text-danger" aria-hidden="true"></i>
-												</td>
-											</tr>
-											<tr>
-												<td>9</td>
-												<td>Lorem ipsum dolor</td>
-												<td> sit amet, consectetur</td>
-												<td>adipisicing</td>
-												<td>elit. Ullam</td>
-												<td>Fuga sunt</td>
-												<td class="action" width="1">
-													<i class="fa fa-eye text-primary" aria-hidden="true"></i>
-													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
-													<i class="fa fa-trash-o text-danger" aria-hidden="true"></i>
-												</td>
-											</tr>
-											<tr>
-												<td>10</td>
-												<td>Lorem ipsum dolor</td>
-												<td> sit amet, consectetur</td>
-												<td>adipisicing</td>
-												<td>elit. Ullam</td>
-												<td>Fuga sunt</td>
-												<td class="action" width="1">
-													<i class="fa fa-eye text-primary" aria-hidden="true"></i>
-													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
-													<i class="fa fa-trash-o text-danger" aria-hidden="true"></i>
-												</td>
-											</tr> -->
 										</tbody>
 									</table>									
 								</div>				
                             </div>
                         </div>
-						<!--<div class="box-footer" align="right">
-							<button type="submit" class="btn btn-primary pad40L pad40R mrg5L">Submit</button>
-						</div>-->
                     </div>
                 </div>                
             </div>

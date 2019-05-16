@@ -31,7 +31,7 @@
 									<div class="col-md-6">									
 									<div class="form-group">
 										<label for="af3">Item Code</label>
-										<input type="text" ng-model="data.itemCode" class="form-control" id="af3" placeholder="" required>
+										<input type="text" value="{{itemcode}}" class="form-control" id="af3" placeholder="" required>
 									</div>									
 								</div>
 								<div class="col-md-6">									
@@ -47,20 +47,29 @@
 								<div class="col-md-6">									
 									<div class="form-group">
 										<label for="af10">HSN Number</label>
-										<input type="text" onkeypress="return isNumber(event)" onkeyup="positiveNumberValidation_divid('hsn','number_validation','Please enter only valid integers !!')" class="form-control" ng-model="data.hsno" id="hsn" placeholder="" required>
+										<input type="text" class="form-control" ng-model="data.hsno" id="hsn" placeholder="" required>
 									</div>									
 								</div>
 								<div class="col-md-12">									
 									<div class="form-group">
 										<label for="af11">Description</label>
-										<input textarea ng-model="data.description" class="form-control" id="description" placeholder="" required>
+										<textarea ng-model="data.description" class="form-control" id="description" rows="5" placeholder="" required></textarea>
 									</div>									
 								</div>
 								
+								<div class="col-md-6">
+								<div class="form-group">
+									<label for="af2">Date of Entry </label> 
+									
+			                            <input type="text" class="form-control" id="tendardate" readonly="readonly" placeholder="Date of Entry" datetime-picker="yyyy-MM-dd " size="3" ng-model="data.dateOfSupply" is-open="ctrl.date.eventTime" /> 									
+										<span class="input-group-btn">
+										<button type="button" class="btn btn-blue" ng-click="ctrl.date.eventTime = true"> <i class="fa fa-calendar"></i>
+									
+								</div>
+							</div>
 								
 								
-								
-								<div class="col-md-12">
+								<!-- <div class="col-md-12">
 							 	<a id="schQuantityadd"  class="btn btn-primary pad40L pad40R mrg5L" >
 			                  	Add SCH Quantity</a>
 							 
@@ -93,7 +102,7 @@
 								
 								
 								
-								<!-- <div class="col-md-4">									
+								<div class="col-md-4">									
 									<div class="form-group">
 										<label for="af3">SCH Quantity 1</label>
 										<input type="text" onkeypress="return isNumber(event)" onkeyup="positiveNumberValidation_divid('sch1','number_validation','Please enter only valid integers !!')" ng-model="data.schQuantity1" id="sch1" value="NOS" class="form-control" placeholder="" required>
@@ -122,7 +131,7 @@
 										<label for="af4">EI-Work 2</label>
 										<input type="text" onkeypress="return isNumber(event)" onkeyup="positiveNumberValidation_divid('eiWork2','number_validation','Please enter only valid integers !!')" id="eiWork2" ng-model="data.eiWork2" ng-keyup="calculateTotal()" value="0" class="form-control" placeholder="" required>
 									</div>									
-								</div> -->
+								</div>
 								
 								
 								<div class="col-md-6">									
@@ -189,7 +198,7 @@
 								<div class="col-md-12">									
 									<div class="form-group">
 										<label for="af11">Supplier With Address</label>
-										<!-- <input type="text" ng-model="data.supplierWithAddress"  class="form-control" id="af11" placeholder=""> -->
+										<input type="text" ng-model="data.supplierWithAddress"  class="form-control" id="af11" placeholder="">
 									    <select ng-model="data.supplierWithAddress" class="form-control select2" style="width: 100%;">
 											<option selected="selected">Select Option</option>
 										</select>
@@ -278,7 +287,7 @@
 										<label for="af3">Way Bill No. Date</label>
 										<input type="text" datetime-picker="MM/dd/yyyy HH:mm" ng-model="data.wayBillNoDate" id="unit" value="NOS" class="form-control" id="af3" placeholder="" required>
 									</div>									
-								</div>
+								</div> -->
 												
                             </div>
                         </div>

@@ -37,8 +37,8 @@ app.config(function($routeProvider,$httpProvider) {
 						controller : 'userCtrl'
 				   })
 		
-                   .when('/userprofile', {
-                	  
+                   .when('/userprofile', 
+                   {
 						templateUrl : '/user/user_profile_load',
 						controller : 'userCtrl'
 				   })
@@ -57,8 +57,11 @@ app.config(function($routeProvider,$httpProvider) {
 						templateUrl : '/project/projectListPageload',
 						controller : 'userCtrl'
 				   })
-				   
-				   	  .when('/itemload', {
+				   .when('/accountsListload', {
+						templateUrl : '/accounts/accountsListPageload',
+						controller : 'userCtrl'
+				   })
+				   .when('/itemload', {
 						templateUrl : '/itemctrl/itemPageload',
 						controller : 'userCtrl'
 				   })
@@ -78,13 +81,18 @@ app.config(function($routeProvider,$httpProvider) {
 						controller : 'userCtrl'
 				   })
 				   
-				      	   	  .when('/vendorDocload', {
+				      	.when('/vendorDocload', {
 						templateUrl : '/vendorctrl/vendorDocPageload',
 						controller : 'userCtrl'
 				   })
 				   
-				   	   	  .when('/vendorDocListload', {
+				   	   	.when('/vendorDocListload', {
 						templateUrl : '/vendorctrl/vendorDocListPageload',
+						controller : 'userCtrl'
+				   })
+				   
+				     .when('/viewProjectItem', {
+						templateUrl : '/project/projectItemViewload',
 						controller : 'userCtrl'
 				   })
 				   

@@ -30,8 +30,8 @@ public class RawMaterials {
 	private String name;
 
 	
-	@Column(name = "itemCode")
-	private String itemCode;
+	/*@Column(name = "itemCode")
+	private String itemCode;*/
 	
 	@Column(name = "city")
 	private String city;
@@ -60,12 +60,26 @@ public class RawMaterials {
 	@Column(name = "itemType")
 	private int itemType;
 	
+	@Column(name = "itemCode")
+	private String itemCode;
+	
 	@Column(name = "transportationCode")
 	private String transportationCode;
 	
 	@Column(name = "dateOfEntry")
 	private Date dateOfEntry;
 	
+	@Column(name = "description")
+	private String description;
+	
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	@Column(name = "descriptionHSNno")
 	private String descriptionHSNno;
 	
