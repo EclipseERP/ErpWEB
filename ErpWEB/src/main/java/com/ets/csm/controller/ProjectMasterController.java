@@ -203,6 +203,19 @@ public class ProjectMasterController {
 			pdto.setBalanceqty(Integer.parseInt(projetctstockmasterlist.get(i).getBalanceQuantity()));
 			pdto.setSupplyqty(Integer.parseInt(projetctstockmasterlist.get(i).getSupplyQuantity()));
 			pdto.setDesciption(projetctstockmasterlist.get(i).getItemdescription());
+			
+			List<ProjectEIWorkMaster> eilist=projecteiservice.getProjectEiWorkDetailsByProjectCode(projectcode,projetctstockmasterlist.get(i).getItemcode());
+			int eiqty=0;
+			for(ProjectEIWorkMaster pe:eilist)
+			{
+				
+				eiqty=eiqty+Integer.parseInt(pe.getQuantity());
+				
+				
+			}
+			
+
+			pdto.setEiQuantity(eiqty+"");
 			projectstockdtolist.add(pdto);
 
 		}

@@ -12,6 +12,8 @@ private int balanceqty;
 private String loano;
 private String projectcode;
 private String location;
+private String eiQuantity;
+
 
 
 
@@ -74,6 +76,12 @@ public String getLocation() {
 }
 public void setLocation(String location) {
 	this.location = location;
+}
+public String getEiQuantity() {
+	return eiQuantity;
+}
+public void setEiQuantity(String eiQuantity) {
+	this.eiQuantity = eiQuantity;
 }
 
 

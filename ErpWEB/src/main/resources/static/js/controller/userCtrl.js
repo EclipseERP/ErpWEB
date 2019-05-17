@@ -321,10 +321,13 @@ app
 					}
 
 					$scope.submitItem = function(raw) {
+						
+					var itemcode = $("#af3").val();
+						
 						console.log(raw)
 						$http.post(
 								'/rawMaterials/saveRawMaterial/'
-										+ $scope.currentUserName, raw).success(
+										+ $scope.currentUserName+"?itemcode="+itemcode, raw).success(
 								function(data) {
 									$scope.itemlistload();
 								}, function myError(response) {
@@ -610,7 +613,7 @@ app
 									+ " ><td><input type=text class=form-control name=itemcodes value="
 									+ itemdata.itemCode
 									+ " readonly=readonly /></td>"
-									+ "<td><textarea name=descriptions rows=2 cols=65 class=form-control> </textarea></td>"
+									+ "<td><textarea name=descriptions rows=2 cols=65 class=form-control>"+itemdata.description+" </textarea></td>"
 									+ "<td><input type=text name=unit size=4 value=NOS  /></td>"
 									+ loc
 									+ ei
@@ -962,6 +965,16 @@ app
 						
 					}
 					
+					
+					$scope.viewsupplydetails=function()
+					{
+						
+						
+						$("#supplydetailsupdate").modal({
+							backdrop : 'static',
+							keyboard : false
+						});
+					}
 					
 					// *************************************************************************************************************************************
 
