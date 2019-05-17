@@ -251,13 +251,11 @@ app
 					}
 
 					$scope.vendoraddload = function() {
-						alert("aaaaaa");
 						$scope.vendoraddshow = true;
 						$scope.vendorlistshow = false;
 					}
 
 					$scope.vendorlistload = function() {
-						alert("bbbbbbbb");
 						$scope.vendoraddshow = false;
 						$scope.vendorlistshow = true;
 						$scope.getvendorData();
@@ -271,14 +269,13 @@ app
 					$scope.vendorDoclistload = function() {
 						$scope.vendorDocaddshow = false;
 						$scope.vendorDoclistshow = true;
+						$scope.getvendorDocData();
 					}
 
 					$scope.showItemForm = function() {
-						alert()
 					}
 
 					$scope.vendorAdd = function(ven) {
-						alert("aaaaaaaaaaa");
 						console.log("Vendor Data...", ven);
 						console.log("Data...", $scope.currentUserName);
 						$http.post(
@@ -294,7 +291,6 @@ app
 					
 					
 					$scope.submitVendorDocForm = function(ven) {
-						alert("aaaaaaaaaaa");
 						console.log("Vendor Data...", ven);
 						console.log("Data...", $scope.currentUserName);
 						$http.post('/vendorDocCtrl/addVendorDoc/'+ $scope.currentUserName, ven).success(
@@ -347,7 +343,6 @@ app
 					}
 
 					$scope.getvendorData = function() {
-						alert("cccc");
 						$http.get('/vendorctrl/getVendorDetails/').success(
 								function(data) {
 									$scope.vendorData = new NgTableParams({}, {
@@ -358,12 +353,22 @@ app
 									alert("Sorry, Some technical error occur");
 								});
 					}
-
+					
+					
+					
+					$scope.getvendorDocData = function() {
+						$http.get('/vendorDocCtrl/getVendorDocDetails/').success(function(data) {
+						$scope.vendorDocData = new NgTableParams({}, {
+						dataset : data
+						});
+                        }, function myError(response) {
+						   alert("Sorry, Some technical error occur");
+						});
+					}
+					
+					
 					$scope.getProjectData = function() {
-						$http
-								.get('/project/getProjects/')
-								.success(
-										function(data) {
+						$http.get('/project/getProjects/').success(function(data) {
 											console.log("Data came ", data)
 											$scope.projectListTable = new NgTableParams(
 													{}, {
@@ -431,7 +436,11 @@ app
 					}
 
 					
-					
+					    $scope.projectWiseload = function() {
+						   $scope.projectlistshow = false;
+						   $scope.turnovewrlistshow = true;
+					    }
+
 					
 /*$scope.accountslistload = function() {
 						
@@ -875,8 +884,6 @@ app
 								+ "&eiworksvaluelist=" + eiworksvaluelist+"&tendardate="+tendardate;
 
 						$http.post(url + params).success(function(data) {
-
-							alert("saved");
 							$('#btprsave').prop('disabled', false);
 							$("#btprsave").attr('value', 'Save project');
 

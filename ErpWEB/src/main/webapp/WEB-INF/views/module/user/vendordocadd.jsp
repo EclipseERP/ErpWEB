@@ -48,9 +48,9 @@ $document.ready( function(){
 								<div class="col-md-6">									
 									<div class="form-group">
                                         <label for="datepicker">Date of Upload </label>
-                                        <div class="input-group date">
-                                            <div class="input-group-addon"> <i class="fa fa-calendar"></i> </div>
-                                            <input type="text" ng-model="venData.dataOfUpload" class="form-control pull-right" id="Upload_Date" name="upload_date" id="upload_date" required>
+                                        <input type="text" class="form-control" id="turnoverDate" readonly="readonly" placeholder="Date of Entry" datetime-picker="yyyy-MM-dd " size="3" ng-model="venData.dataOfUpload" is-open="ctrl.date.eventTime" /> 									
+										<span class="input-group-btn">
+										<button type="button" class="btn btn-blue" ng-click="ctrl.date.eventTime = true"> <i class="fa fa-calendar"></i>
                                         </div> 
                                     </div>									
 								</div>

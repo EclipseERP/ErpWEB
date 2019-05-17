@@ -5,7 +5,7 @@
                     <div class="box box-primary">
                         <div class="box-header with-border">
                             <h3 class="box-title">Turnover List </h3>
-                            <h3><button class="btn btn-blue pull-left" style="margin-top:-5px; border-radius : 0;" ng-click="exportTurnoverList()"><i class="fa fa-plus"></i> Export </button></h3>
+                            <h3><button class="btn btn-blue pull-left" style="margin-top:-5px; border-radius : 0;" ng-click="exportProjectList()"><i class="fa fa-plus"></i> Export </button></h3>
                             <div class="box-tools pull-right">
                  
                    
@@ -26,9 +26,9 @@
 								    <div class="form-group">
 										<label for="af2">Search Turnover</label>
 										<select ng-model="data.itemType" class="form-control select2" style="width: 100%;">
-											<option value="1">Project-wise</option>
-											<option value="2">State-wise</option>
-											<option value="3">Year-wise</option>
+											<option value="1" ng-click="projectWiseload()" >Project-wise</option>
+											<option value="2" ng-click="stateWiseload()" >State-wise</option>
+											<option value="3" ng-click="yearWiseload()" >Year-wise</option>
                                         </select>
 									</div>
 							   </div>
@@ -41,8 +41,8 @@
 												<th>Payment Received Date</th>
 												<th>Gross Amount Including GST</th>
 												<th>Gross Amount Excluding GST</th>
-												<th>Retention Deducted</th>
-												<th>Retention Released</th>
+												<th>Retention Deducted</th><!-- 
+												<th>Retention Released</th> -->
 												<!-- <th>Bills Payable</th> -->
 												<th>S.D Deducted</th>
 												<th>S.D. Released</th>
@@ -66,8 +66,8 @@
 												<td>20.11.2018</td>
 												<td>12059280</td>
 												<td>10767214</td>
-												<td>1205928</td>
-												<td>1205928</td>
+												<td>1205928</td><!-- 
+												<td>1205928</td> -->
 												<td>12059280</td>
 												<td>215344</td>
 												<td>107672</td>
@@ -94,8 +94,8 @@
 												<td>12.03.2019</td>
 												<td>51778202</td>
 												<td>46230538</td>
-												<td>5177820</td>
-												<td></td>
+												<td>5177820</td><!-- 
+												<td></td> -->
 												<td></td>
 												<td>46600382</td>
 												<td>5177820</td>
@@ -121,8 +121,8 @@
 												<td></td>
 												<td></td>
 												<td>46230538</td>
-												<td>5177820</td>
-												<td></td>
+												<td>5177820</td><!-- 
+												<td></td> -->
 												<td></td>
 												<td>46600382</td>
 												<td>5177820</td>
@@ -147,8 +147,8 @@
 												<td>05.10.2018</td>
 												<td>9130190</td>
 												<td>8151955</td>
-												<td>913019</td>
-												<td></td>
+												<td>913019</td><!-- 
+												<td></td> -->
 												<td>8217171</td>
 												<td>913019</td>
 												<td></td>
@@ -176,8 +176,8 @@
 												<td>16.01.2019</td>
 												<td>15221948</td>
 												<td>13591025</td>
-												<td>1522195</td>
-												<td></td>
+												<td>1522195</td><!-- 
+												<td></td> -->
 												<td>13699753</td>
 												<td>1522195</td>
 												<td></td>
@@ -202,18 +202,7 @@
 											
 								</tbody>
 							</table>
-    <style>
-
-    .search-table{table-layout: auto; margin:40px auto 0px auto; }
-    .search-table, td, th {
-        border-collapse: collapse;
-    }
-      th{padding:20px 7px; font-size:15px; color:#444;}
-      td{padding:5px 10px; height:35px;}
-      .search-table-outter { overflow-x: auto; }
-      th, td { min-width: 200px; }
-
-    </style>
+  
 									
 				</div>
 				</div>

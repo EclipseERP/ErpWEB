@@ -1,5 +1,6 @@
 package com.ets.csm.controller;
 import java.util.List;
+import org.springframework.stereotype.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,24 +14,35 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ets.csm.model.RawMaterials;
 import com.ets.csm.model.User;
-import com.ets.csm.model.Vendor;
-import com.ets.csm.model.Venue;
+import com.ets.csm.model.VendorDoc;
 import com.ets.csm.service.UserService;
-import com.ets.csm.service.VendorService;
-import com.ets.csm.service.VenueService;
+import com.ets.csm.service.VendorDocService;
 import com.ets.csm.util.DateUtility;
 
 @Controller
 @RequestMapping("/vendorDocCtrl")
 public class VendorDocumentController {
-	/*@Autowired
+	@Autowired
 	VendorDocService vendorDocService;
 	
+	@Autowired
+	UserService userService;
+	
 	@PostMapping("/addVendorDoc/{userName}")
-	public @ResponseBody void saveVendor(@RequestBody Vendor ven, @PathVariable String userName) {
+	public @ResponseBody void saveVendor(@RequestBody VendorDoc vendorDoc, @PathVariable String userName) {
 		User user = userService.getUserByUserName(userName);
-		ven.setUser(user);
-		vendorDocService.saveVendorDocData(ven);
+		vendorDoc.setUser(user);
+		vendorDocService.saveVendorDocData(vendorDoc);
+	}
 		
-	}*/
+		
+		@GetMapping("/getVendorDocDetails")
+		public @ResponseBody List getVendorDocList() {
+			return vendorDocService.getAllVendorDocs();
+		}
+		
+		
+		
+		
+	
 }

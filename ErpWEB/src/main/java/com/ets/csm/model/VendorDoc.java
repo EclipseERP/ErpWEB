@@ -44,6 +44,19 @@ public class VendorDoc {
 	
 	@Column(name = "document_url")
 	private String documentUrl;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnore
+	@JoinColumn(name="admin_user_id")
+	private User user;
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	public int getId() {
 		return id;
