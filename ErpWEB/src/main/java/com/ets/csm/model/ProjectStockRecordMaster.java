@@ -96,6 +96,9 @@ public class ProjectStockRecordMaster {
 	
 	@Column(name="rate")
 	private int rate;
+	
+	@Column(name="itemdescription")
+	private String itemdescription;
 
 	public int getId() {
 		return id;
@@ -312,7 +315,13 @@ public class ProjectStockRecordMaster {
 	public void setAllInclusiveRate(String allInclusiveRate) {
 		this.allInclusiveRate = allInclusiveRate;
 	}
-	
-	
 
+	public String getItemdescription() {
+		return itemdescription;
+	}
+
+	public void setItemdescription(String itemdescription) {
+		this.itemdescription = itemdescription;
+	}
+	
 }

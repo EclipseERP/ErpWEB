@@ -317,10 +317,13 @@ app
 					}
 
 					$scope.submitItem = function(raw) {
+						
+					var itemcode = $("#af3").val();
+						
 						console.log(raw)
 						$http.post(
 								'/rawMaterials/saveRawMaterial/'
-										+ $scope.currentUserName, raw).success(
+										+ $scope.currentUserName+"?itemcode="+itemcode, raw).success(
 								function(data) {
 									$scope.itemlistload();
 								}, function myError(response) {
@@ -606,7 +609,7 @@ app
 												+ icounter
 												+ i
 												+ " /><input type=hidden name=eiflag value='"
-												+ eiworks[i].value + "' ></td>");
+												+ eiworks[i].value + "'/><input type=hidden name=itemcodeflag value='"+itemdata.itemCode+"' /></td>");
 								incei++
 							}
 
@@ -619,7 +622,7 @@ app
 									+ " ><td><input type=text class=form-control name=itemcodes value="
 									+ itemdata.itemCode
 									+ " readonly=readonly /></td>"
-									+ "<td><textarea name=descriptions rows=2 cols=65 class=form-control> </textarea></td>"
+									+ "<td><textarea name=descriptions rows=2 cols=65 class=form-control>"+itemdata.description+" </textarea></td>"
 									+ "<td><input type=text name=unit size=4 value=NOS  /></td>"
 									+ loc
 									+ ei
@@ -755,6 +758,7 @@ app
 						var inslist = new Array();
 						var locflaglist = new Array();
 						var eiflaglist = new Array();
+						var itemcodeflagslist = new Array();
 						// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 						var projectcode = $("#af1").val();
@@ -775,6 +779,9 @@ app
 						var totals = $("[name=totalval]");
 						var ins = $("[name=ins]");
 						var units = $("[name=unit")
+						var itemcodeflags = $("[name=itemcodeflag")
+						
+						
 
 						// alert("length of local val " + locval.length)
 
@@ -861,6 +868,16 @@ app
 
 						}
 						// ---------------------------------------------------------------------------
+						
+						
+						// ---------------------------------------------------------------------------
+						for (var d = 0; d < itemcodeflags.length; d++) {
+
+							itemcodeflagslist.push(itemcodeflags[d].value);
+
+						}
+						// ---------------------------------------------------------------------------
+						
 						$("#btprsave").attr('value', 'Please wait !!');
 						$('#btprsave').prop('disabled', true);
 
@@ -881,7 +898,7 @@ app
 								+ "&eiflaglist=" + eiflaglist + "&projectcode="
 								+ projectcode + "&loa_details=" + tendername
 								+ "&projectdetails=" + projectdetails
-								+ "&eiworksvaluelist=" + eiworksvaluelist+"&tendardate="+tendardate;
+								+ "&eiworksvaluelist=" + eiworksvaluelist+"&tendardate="+tendardate+"&itemcodeflagslist="+itemcodeflagslist;
 
 						$http.post(url + params).success(function(data) {
 							$('#btprsave').prop('disabled', false);
@@ -927,6 +944,45 @@ app
 						
 					}
 
+					
+					$scope.viewEiWorkQty=function(itemcodes,projectcode)
+					{
+						
+						$scope.itemcode=itemcodes;
+						
+						    $http.get('/project/getProjectEIWorksDataByProjectcode?projectcode='+projectcode+"&itemcode="+itemcodes).success(function(data) 
+								{
+								console.log("Data came ", data)
+								$scope.itemData2 = new NgTableParams({}, 
+								{
+									dataset : data
+								});
+									
+								}, function myError(response) {
+									alert("Sorry, Some technical error occur");
+								});
+						
+						
+						$("#eiworkqty").modal({
+							backdrop : 'static',
+							keyboard : false
+						});
+						
+						
+						
+					}
+					
+					
+					$scope.viewsupplydetails=function()
+					{
+						
+						
+						$("#supplydetailsupdate").modal({
+							backdrop : 'static',
+							keyboard : false
+						});
+					}
+					
 					// *************************************************************************************************************************************
 
 					// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

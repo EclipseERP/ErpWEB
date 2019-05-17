@@ -40,6 +40,13 @@
 										<select ng-model="data.itemType" class="form-control select2" style="width: 100%;">
 											<option selected="selected">Select Option</option>
 											<option value="1">Electronics</option>
+											<option value="2">Hardware</option>
+											<option value="3">Construction Material</option>
+											<option value="4">Metal</option>
+											<option value="5">Computer Hardware and Accessories</option>
+											<option value="6">Furniture</option>
+											
+											
 								
 										</select>
 									</div>									

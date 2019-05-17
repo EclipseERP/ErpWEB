@@ -44,8 +44,6 @@ public class ProjectMasterController {
 
 	@Autowired
 	ProjectStockMasterService projectstockmasterservice;
-	
-
 
 	@GetMapping("/getProjects")
 	public @ResponseBody List getProjectList() {
@@ -66,13 +64,11 @@ public class ProjectMasterController {
 	public String projectAdd() {
 		return "/module/user/projectadd";
 	}
-	
+
 	@GetMapping("/projectItemViewload")
 	public String projectItemViewLoad() {
 		return "/module/user/projectItemView";
 	}
-	
-	
 
 	// +++++++++++++++++++ Tender Creation method starts
 	// here +++++++++++++++++++++++++++++++++++++++++++
@@ -89,12 +85,13 @@ public class ProjectMasterController {
 			@RequestParam("descriptionlist") String[] descriptionlist, @RequestParam("totallist") int[] totallist,
 			@RequestParam("inslist") String[] inslist, @RequestParam("locflaglist") String[] locflaglist,
 			@RequestParam("eiflaglist") String[] eiflaglist, @RequestParam("projectcode") String projectcode,
-			@RequestParam("loa_details") String loadetails, @RequestParam("projectdetails") String projectdetails,@RequestParam("tendardate") String tenderdate) {
+			@RequestParam("loa_details") String loadetails, @RequestParam("projectdetails") String projectdetails,
+			@RequestParam("tendardate") String tenderdate,
+	        @RequestParam("itemcodeflagslist") String[] itemcodeflagslist)
+	{
 
 		try {
-			
-			
-			
+
 			for (int i = 0; i < projectLocationlist.length; i++) {
 
 				Projects pdata = new Projects();
@@ -104,12 +101,12 @@ public class ProjectMasterController {
 				pdata.setProjectname(projectLocationlist[i]);
 				pdata.setDate(tenderdate);
 				pdata.setTotalqty(totallist[0]);
+
 				projectservice.saveOrUpdate(pdata);
 			}
 
-			for (int k = 0; k < itemcodeslist.length; k++) 
-			{
-				
+			for (int k = 0; k < itemcodeslist.length; k++) {
+
 				ProjectStockRecordMaster pdatas = new ProjectStockRecordMaster();
 				pdatas.setItemcode(itemcodeslist[k]);
 				pdatas.setUnit(unitlist[k]);
@@ -126,12 +123,15 @@ public class ProjectMasterController {
 				pdatas.setSupplyQuantity("0");
 				pdatas.setBalanceQuantity("0");
 				pdatas.setPlaceOfDelivery("");
-			    pdatas.setTruckNumber("");
-			    pdatas.setTransporter("");
-			    pdatas.setBillNo("");
-			    pdatas.setBillQuantity(totallist[k]+"");	
-			   
+				pdatas.setTruckNumber("");
+				pdatas.setTransporter("");
+				pdatas.setBillNo("");
+				pdatas.setBillQuantity(totallist[k] + "");
+				pdatas.setItemdescription(descriptionlist[k]);
+
 				projectstockmasterservice.saveorUpdate(pdatas);
+
+
 			}
 
 			for (int j = 0; j < projectLocationlist.length; j++) {
@@ -148,7 +148,7 @@ public class ProjectMasterController {
 
 				}
 			}
-
+			
 			for (int n = 0; n < addEiworklist.length; n++) {
 
 				for (int m = 0; m < addEiworklistQTY.length; m++) {
@@ -157,6 +157,8 @@ public class ProjectMasterController {
 						eiworks.setProject_code(projectcode);
 						eiworks.setEiWorks(addEiworklist[n]);
 						eiworks.setQuantity(addEiworklistQTY[m]);
+						eiworks.setItemcode(itemcodeflagslist[m]);
+						
 						projecteiservice.saveOrUpdate(eiworks);
 					}
 
@@ -172,43 +174,59 @@ public class ProjectMasterController {
 	// here +++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 	@GetMapping("/getProjectCode")
-	public @ResponseBody Object getProjectCode() 
-	{
+	public @ResponseBody Object getProjectCode() {
 		Object code = projectservice.getAllProjects().size() + 1;
 		return code;
 
 	}
-	
-	@PostMapping("/getProjectItemDetailsByProjectcode")
-	public @ResponseBody List getProjectItemDetailsByProjectcode(@RequestParam("projectcode") String projectcode,@RequestParam("projectlocation") String projectlocation) 
-	{
 
-	System.out.println(" "+projectcode);
-	
-	List projectstockdtolist=new ArrayList();
-	
-	List<ProjectStockRecordMaster> projetctstockmasterlist=projectstockmasterservice.getProjectStockDetailsByProjectcode(projectcode);
-	List<ProjectLocationMaster> projectlist=projectlocationservice.getAllProjectLocationMaster(projectlocation,projectcode);
-	
-	for(int i=0;i<projetctstockmasterlist.size();i++)	
-	{
-			ProjectItemCodeListDTO pdto=new ProjectItemCodeListDTO();
-			
+	@PostMapping("/getProjectItemDetailsByProjectcode")
+	public @ResponseBody List getProjectItemDetailsByProjectcode(@RequestParam("projectcode") String projectcode,
+			@RequestParam("projectlocation") String projectlocation) {
+
+		System.out.println(" " + projectcode);
+
+		List projectstockdtolist = new ArrayList();
+
+		List<ProjectStockRecordMaster> projetctstockmasterlist = projectstockmasterservice
+				.getProjectStockDetailsByProjectcode(projectcode);
+		List<ProjectLocationMaster> projectlist = projectlocationservice.getAllProjectLocationMaster(projectlocation,
+				projectcode);
+
+		for (int i = 0; i < projetctstockmasterlist.size(); i++) {
+			ProjectItemCodeListDTO pdto = new ProjectItemCodeListDTO();
+
 			pdto.setItemcode(projetctstockmasterlist.get(i).getItemcode());
 			pdto.setQty(projectlist.get(i).getSchQuantity());
 			pdto.setProjectcode(projectcode);
 			pdto.setTotalqty(projetctstockmasterlist.get(i).getTotal());
 			pdto.setBalanceqty(Integer.parseInt(projetctstockmasterlist.get(i).getBalanceQuantity()));
 			pdto.setSupplyqty(Integer.parseInt(projetctstockmasterlist.get(i).getSupplyQuantity()));
+			pdto.setDesciption(projetctstockmasterlist.get(i).getItemdescription());
 			
-			projectstockdtolist.add(pdto);
-		
-	}
-	
-	
-	return projectstockdtolist;
-	}
-	
-	
+			List<ProjectEIWorkMaster> eilist=projecteiservice.getProjectEiWorkDetailsByProjectCode(projectcode,projetctstockmasterlist.get(i).getItemcode());
+			int eiqty=0;
+			for(ProjectEIWorkMaster pe:eilist)
+			{
+				
+				eiqty=eiqty+Integer.parseInt(pe.getQuantity());
+				
+				
+			}
+			
 
+			pdto.setEiQuantity(eiqty+"");
+			projectstockdtolist.add(pdto);
+
+		}
+
+		return projectstockdtolist;
+	}
+
+	@GetMapping("/getProjectEIWorksDataByProjectcode")
+	public @ResponseBody List getProjectEIWorksDataByProjectcode(@RequestParam("projectcode") String projectcode,@RequestParam("itemcode") String itemcode) {
+
+		return projecteiservice.getProjectEiWorkDetailsByProjectCode(projectcode,itemcode);
+
+	}
 }

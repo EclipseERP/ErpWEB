@@ -33,6 +33,9 @@ public class ProjectEIWorkMaster {
 	
 	@Column(name = "quantity")
 	private String quantity;
+	
+	@Column(name="itemcode")
+	private String itemcode;
 
 	public int getId() {
 		return id;
@@ -64,6 +67,14 @@ public class ProjectEIWorkMaster {
 
 	public void setQuantity(String quantity) {
 		this.quantity = quantity;
+	}
+
+	public String getItemcode() {
+		return itemcode;
+	}
+
+	public void setItemcode(String itemcode) {
+		this.itemcode = itemcode;
 	}
 	
 	

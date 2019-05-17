@@ -32,7 +32,6 @@
                          	<div class="col-md-6">
 								<div class="form-group">
 									<label for="af2">Date </label> 
-									
 			                            <input type="text" class="form-control" id="tendardate" readonly="readonly" placeholder="Project Date" datetime-picker="yyyy-MM-dd " size="3" ng-model="creation_date" is-open="ctrl.date.eventTime" /> 									
 										<span class="input-group-btn">
 										<button type="button" class="btn btn-blue" ng-click="ctrl.date.eventTime = true"> <i class="fa fa-calendar"></i>
@@ -275,7 +274,7 @@
 						<thead>
 							<tr>
 								<th>Item Code</th>
-								<th>Item/Material Name</th>
+								
 								<th>Description</th>
 								<th>INS</th>
 								<th>View full details</th>
@@ -284,12 +283,11 @@
 							</tr>
 						</thead>
 						<tbody>
-
-
+						
 							<tr ng-repeat="datas in $data | filter : keyword">
 								<td>{{datas.itemCode}}</td>
-								<td>No name available</td>
-								<td>{{datas.descriptionHSNno}}</td>
+								
+								<td>{{datas.description}}</td>
 								<td><select id="insindex{{$index}} ">
 
 										<option value="">--Select INS Types--</option>
