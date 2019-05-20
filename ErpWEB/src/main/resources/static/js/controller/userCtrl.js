@@ -984,11 +984,20 @@ app
 					
 					$scope.viewsupplydetails=function()
 					{
-											
+							
+						$scope.showSupplyDetailslistByItemcode=true;
+						$scope.showProjectDetailslistByLoaNO=false;
+						$scope.projectlistshow=false;
+						$scope.pi=false;
+						
+						
+						/*
+						
 						$("#supplydetailsupdate").modal({
 							backdrop : 'static',
 							keyboard : false
 						});
+						*/
 					}
 					
 					

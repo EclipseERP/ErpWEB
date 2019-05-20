@@ -515,6 +515,11 @@
     
     	 <div ng-show="showProjectDetailslistByLoaNO">
     	 <jsp:include page="/WEB-INF/views/module/user/loalist.jsp" />
+	    </div> 
+	    
+	    
+	     <div ng-show="showSupplyDetailslistByItemcode">
+    	 <jsp:include page="/WEB-INF/views/module/user/supplydetails.jsp" />
 	    </div>   
     
     
