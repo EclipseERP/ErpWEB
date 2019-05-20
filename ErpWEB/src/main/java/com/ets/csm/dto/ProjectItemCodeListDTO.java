@@ -13,6 +13,7 @@ private String loano;
 private String projectcode;
 private String location;
 private String eiQuantity;
+private String unit;
 
 
 
@@ -82,6 +83,12 @@ public String getEiQuantity() {
 }
 public void setEiQuantity(String eiQuantity) {
 	this.eiQuantity = eiQuantity;
+}
+public String getUnit() {
+	return unit;
+}
+public void setUnit(String unit) {
+	this.unit = unit;
 }
 
 

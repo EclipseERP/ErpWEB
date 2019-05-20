@@ -209,6 +209,7 @@ app
 						$scope.getProjectData();
 						$scope.projectaddshow = false;
 						$scope.projectlistshow = true;
+						$scope.showProjectDetailslistByLoaNO = false;
 						$scope.pi=false;
 						
 						
@@ -371,7 +372,7 @@ app
 					
 					
 					$scope.getProjectData = function() {
-						$http.get('/project/getProjects/').success(function(data) {
+						$http.get('/project/getProjectDetailsGroupByProjectCode/').success(function(data) {
 											console.log("Data came ", data)
 											$scope.projectListTable = new NgTableParams(
 													{}, {
@@ -539,6 +540,7 @@ app
 
 							var itemHeaddynamicdata = "<tr>"
 									+ "<th>Item Code</th>"
+									+ "<th>Item Name</th>"
 									+ "<th>Description</th><th>Unit</th>" + loc
 									+ ei + "<th>Total</th>" + "<th>INS</th>"
 									+ "<th>Remove</th>" + "</tr>"
@@ -562,6 +564,9 @@ app
 					var icounter = 0;
 					$scope.addItemToProjectCart = function(itemdata, indexno) {
 
+						
+						console.log("Item data...",itemdata)
+						
 						var insSelected = $("#insindex" + indexno).val();
 
 						if (insSelected == "") {
@@ -622,8 +627,9 @@ app
 									+ " ><td><input type=text class=form-control name=itemcodes value="
 									+ itemdata.itemCode
 									+ " readonly=readonly /></td>"
+									+"<td>"+itemdata.name+"</td>"
 									+ "<td><textarea name=descriptions rows=2 cols=65 class=form-control>"+itemdata.description+" </textarea></td>"
-									+ "<td><input type=text name=unit size=4 value=NOS  /></td>"
+									+ "<td><input type=text name=unit size=4 value="+itemdata.unit+"  /></td>"
 									+ loc
 									+ ei
 									+ "<td><input type=text name=totalval size=4 value=0 id=totalvalid"
@@ -927,8 +933,9 @@ app
 					{
 	                    $scope.projectlocation=projectlocation;
 	                    $scope.loano=loa;
-						$scope.projectlistshow=false;				
+	                	$scope.showProjectDetailslistByLoaNO=false;				
 						$scope.pi=true;
+						$scope.projectcode=projectcode;
 					
 						$http.post('/project/getProjectItemDetailsByProjectcode?projectcode='+projectcode+"&projectlocation="+projectlocation).success(function(data) 
 						{
@@ -942,13 +949,15 @@ app
 							alert("Sorry, Some technical error occur");
 						});	
 						
+						
 					}
 
 					
-					$scope.viewEiWorkQty=function(itemcodes,projectcode)
+					$scope.viewEiWorkQty=function(itemcodes,projectcode,itemname)
 					{
 						
 						$scope.itemcode=itemcodes;
+						$scope.itemname=itemname;
 						
 						    $http.get('/project/getProjectEIWorksDataByProjectcode?projectcode='+projectcode+"&itemcode="+itemcodes).success(function(data) 
 								{
@@ -975,13 +984,37 @@ app
 					
 					$scope.viewsupplydetails=function()
 					{
-						
-						
+											
 						$("#supplydetailsupdate").modal({
 							backdrop : 'static',
 							keyboard : false
 						});
 					}
+					
+					
+					$scope.getProjectDataByProjectCode=function(projectcode,loano,projectdate)
+					{
+					
+					    $http.get('/project/getProjectDetailsbyProjectCode?projectcode='+projectcode).success(function(data) 
+								{
+								console.log("Data came ", data)
+								$scope.projectListTableByProjectcode = new NgTableParams({}, 
+								{
+									dataset : data
+								});
+									
+								}, function myError(response) {
+									alert("Sorry, Some technical error occur");
+								});
+						
+						$scope.loano=loano;
+						$scope.projectdate=projectdate;
+						
+						$scope.showProjectDetailslistByLoaNO=true;
+						$scope.projectlistshow=false;
+						$scope.pi=false;
+					}
+					
 					
 					// *************************************************************************************************************************************
 

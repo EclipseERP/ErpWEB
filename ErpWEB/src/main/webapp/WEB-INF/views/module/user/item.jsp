@@ -51,10 +51,12 @@
 										</select>
 									</div>									
 								</div>
+							
+								
 								<div class="col-md-6">									
 									<div class="form-group">
-										<label for="af10">HSN Number</label>
-										<input type="text" class="form-control" ng-model="data.hsno" id="hsn" placeholder="" required>
+										<label for="af10">Unit</label>
+										<input type="text" class="form-control" ng-model="data.unit" id="init" placeholder="" required>
 									</div>									
 								</div>
 								<div class="col-md-12">									

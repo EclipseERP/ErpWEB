@@ -269,7 +269,7 @@
 					<input type="text" class="pull-right" placeholder=" search.."
 						ng-model="keyword">
 					<table ng-table="rowMaterialData"
-						class="data-table table table-bordered table-striped table-responsive"
+					
 						style="width: 100%;">
 						<thead>
 							<tr>
@@ -277,7 +277,7 @@
 								
 								<th>Description</th>
 								<th>INS</th>
-								<th>View full details</th>
+								
 								<th>Add to Project/Tender</th>
 
 							</tr>
@@ -287,7 +287,7 @@
 							<tr ng-repeat="datas in $data | filter : keyword">
 								<td>{{datas.itemCode}}</td>
 								
-								<td>{{datas.description}}</td>
+								<td><textarea cols="34" rows="1">{{datas.description}}</textarea></td>
 								<td><select id="insindex{{$index}} ">
 
 										<option value="">--Select INS Types--</option>
@@ -296,7 +296,6 @@
 										<option value="RDSO">RDSO</option>
 
 								</select></td>
-								<td><a>View full details</a></td>
 								<td><a class="btn btn-primary pad40L pad40R mrg5L"
 									ng-click="addItemToProjectCart(datas,$index )"
 									style="cursor: pointer">Add to project</a></td>

@@ -18,11 +18,13 @@ import com.ets.csm.model.ProjectEIWorkMaster;
 import com.ets.csm.model.ProjectLocationMaster;
 import com.ets.csm.model.ProjectStockRecordMaster;
 import com.ets.csm.model.Projects;
+import com.ets.csm.model.RawMaterials;
 import com.ets.csm.model.User;
 import com.ets.csm.service.ProjectEIWorkMasterService;
 import com.ets.csm.service.ProjectLocationMasterService;
 import com.ets.csm.service.ProjectStockMasterService;
 import com.ets.csm.service.ProjectsService;
+import com.ets.csm.service.RawMaterialsService;
 import com.ets.csm.service.UserService;
 import com.ets.csm.util.DateUtility;
 
@@ -44,6 +46,10 @@ public class ProjectMasterController {
 
 	@Autowired
 	ProjectStockMasterService projectstockmasterservice;
+	
+	@Autowired
+	RawMaterialsService rawmaterialservice;
+	
 
 	@GetMapping("/getProjects")
 	public @ResponseBody List getProjectList() {
@@ -121,13 +127,13 @@ public class ProjectMasterController {
 				pdatas.setRate(0);
 				pdatas.setIcDetails("No Data Available");
 				pdatas.setSupplyQuantity("0");
-				pdatas.setBalanceQuantity("0");
+				pdatas.setBalanceQuantity(totallist[k] + "");
 				pdatas.setPlaceOfDelivery("");
 				pdatas.setTruckNumber("");
 				pdatas.setTransporter("");
 				pdatas.setBillNo("");
 				pdatas.setBillQuantity(totallist[k] + "");
-				pdatas.setItemdescription(descriptionlist[k]);
+				pdatas.setItemdescription(rawmaterialservice.getAllRawMaterialsByItemcode(itemcodeslist[k]).getDescription());
 
 				projectstockmasterservice.saveorUpdate(pdatas);
 
@@ -188,10 +194,8 @@ public class ProjectMasterController {
 
 		List projectstockdtolist = new ArrayList();
 
-		List<ProjectStockRecordMaster> projetctstockmasterlist = projectstockmasterservice
-				.getProjectStockDetailsByProjectcode(projectcode);
-		List<ProjectLocationMaster> projectlist = projectlocationservice.getAllProjectLocationMaster(projectlocation,
-				projectcode);
+		List<ProjectStockRecordMaster> projetctstockmasterlist = projectstockmasterservice.getProjectStockDetailsByProjectcode(projectcode);
+		List<ProjectLocationMaster> projectlist = projectlocationservice.getAllProjectLocationMaster(projectlocation,projectcode);
 
 		for (int i = 0; i < projetctstockmasterlist.size(); i++) {
 			ProjectItemCodeListDTO pdto = new ProjectItemCodeListDTO();
@@ -203,15 +207,15 @@ public class ProjectMasterController {
 			pdto.setBalanceqty(Integer.parseInt(projetctstockmasterlist.get(i).getBalanceQuantity()));
 			pdto.setSupplyqty(Integer.parseInt(projetctstockmasterlist.get(i).getSupplyQuantity()));
 			pdto.setDesciption(projetctstockmasterlist.get(i).getItemdescription());
-			
+			pdto.setItemname(rawmaterialservice.getAllRawMaterialsByItemcode(projetctstockmasterlist.get(i).getItemcode()).getName());
+			pdto.setUnit(rawmaterialservice.getAllRawMaterialsByItemcode(projetctstockmasterlist.get(i).getItemcode()).getUnit());
 			List<ProjectEIWorkMaster> eilist=projecteiservice.getProjectEiWorkDetailsByProjectCode(projectcode,projetctstockmasterlist.get(i).getItemcode());
 			int eiqty=0;
 			for(ProjectEIWorkMaster pe:eilist)
 			{
 				
 				eiqty=eiqty+Integer.parseInt(pe.getQuantity());
-				
-				
+
 			}
 			
 
@@ -229,4 +233,23 @@ public class ProjectMasterController {
 		return projecteiservice.getProjectEiWorkDetailsByProjectCode(projectcode,itemcode);
 
 	}
+	
+	
+	@GetMapping("/getProjectDetailsGroupByProjectCode")
+	public @ResponseBody List getProjectDetailsGroupByProjectCode() {
+
+		return projectservice.getProjectGroupByProjectCode();
+
+	}
+	
+	
+	@GetMapping("/getProjectDetailsbyProjectCode")
+	public @ResponseBody List getProjectDetailsbyProjectCode(@RequestParam("projectcode") String projectcode) {
+
+		return projectservice.getProjectByProjectcode(projectcode);
+
+	}
+	
+	
+	
 }
