@@ -9,16 +9,12 @@
                            <h3 class="box-title">LOA No :  <b>{{loano}}  </b> &nbsp; Date :  <b>{{projectdate}}  </b> </h3>
                             <div class="box-tools pull-right">
                  
-                   
-                           
                             			
 							   <button type="button" ng-click="projectlistload()"
 								class="btn btn-box-tool" data-widget="back">
 								 Back
 						     	</button>
 						     	
-				
-					
 								
 								</div>
                             </div>
@@ -26,7 +22,7 @@
                         <!-- /.box-header -->
                         <div class="box-body">
                             <div class="row">
-								
+							
 								
 								             <input type="text" class="pull-right" placeholder=" search.." ng-model = "keyword">
 							<table  ng-table="projectListTableByProjectcode" class="data-table table table-bordered table-striped table-responsive">

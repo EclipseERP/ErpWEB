@@ -8,15 +8,18 @@
                             <h3><button class="btn btn-blue pull-left" style="margin-top:-5px; border-radius : 0;" ng-click="exportProjectList()"><i class="fa fa-plus"></i> Export </button></h3>
                             <div class="box-tools pull-right">
                  
-                   
+                                   
                                    <button type="button"  ng-click="projectaddload()" class="btn btn-box-tool" data-widget="add">
 									<i class="fa fa-plus"></i> ADD Project
 									
 								  </button>
+                            		
+                            		
+                            		
+                            		
+                            		
+                            		
                             			
-						
-					
-								
 								</div>
                             </div>
                         </div>
@@ -108,7 +111,7 @@
                    
                                	<button type="button" ng-click="projectlistload()"
 								class="btn btn-box-tool" data-widget="back">
-								 Project List
+								 LOA List
 						     	</button>
                             	|	
                             	<a 	class="btn btn-box-tool" ng-click="getProjectDataByProjectCode(projectcode,loano,projectdate)" >  Back</a>		
@@ -169,7 +172,7 @@
 											<td>   {{datas.totalqty}}</td>
 											<td>   {{datas.supplyqty}}</td>
 										    <td>   {{datas.balanceqty}}</td>
-										    <td>  <a    ng-click="viewsupplydetails(datas.project_code,datas.projectname,datas.loa_no)"   style="cursor: pointer"  > <b>View</b></a>   </td>
+										    <td>  <a    ng-click="viewsupplydetails(datas.project_code,datas.projectname,datas.loa_no,projectlocation,datas.itemname)"   style="cursor: pointer"  > <b>View</b></a>   </td>
 									
 										    <td style="color:red"><b>Pending</b></td>
 			
@@ -243,7 +246,7 @@
 									                </td> 
 									                
 									                <td>
-									               {{datas.quantity}}
+									            {{datas.quantity}}
 									                </td>
 									                
 										

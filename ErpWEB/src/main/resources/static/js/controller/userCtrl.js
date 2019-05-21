@@ -209,6 +209,7 @@ app
 						$scope.getProjectData();
 						$scope.projectaddshow = false;
 						$scope.projectlistshow = true;
+					   	$scope.showSupplyDetailslistByItemcode=false;
 						$scope.showProjectDetailslistByLoaNO = false;
 						$scope.pi=false;
 						
@@ -931,9 +932,12 @@ app
 					
 					$scope.viewItemDetailsProject=function(projectcode,projectlocation,loa)
 					{
+					
+						
 	                    $scope.projectlocation=projectlocation;
 	                    $scope.loano=loa;
-	                	$scope.showProjectDetailslistByLoaNO=false;				
+	                	$scope.showProjectDetailslistByLoaNO=false;	
+	                	$scope.showSupplyDetailslistByItemcode=false;
 						$scope.pi=true;
 						$scope.projectcode=projectcode;
 					
@@ -982,9 +986,11 @@ app
 					}
 					
 					
-					$scope.viewsupplydetails=function()
+					$scope.viewsupplydetails=function(projectcode,projectname,loano,projectlocation,itemname)
 					{
-							
+						
+						$scope.projectlocation=projectlocation;
+						$scope.itemname=itemname;
 						$scope.showSupplyDetailslistByItemcode=true;
 						$scope.showProjectDetailslistByLoaNO=false;
 						$scope.projectlistshow=false;
@@ -1018,8 +1024,9 @@ app
 						
 						$scope.loano=loano;
 						$scope.projectdate=projectdate;
-						
+						$scope.projectcode=projectcode;
 						$scope.showProjectDetailslistByLoaNO=true;
+						$scope.showSupplyDetailslistByItemcode=false;
 						$scope.projectlistshow=false;
 						$scope.pi=false;
 					}

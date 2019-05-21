@@ -6,25 +6,44 @@
                 <div class="col-md-12">
                     <div class="box box-primary">
                         <div class="box-header with-border">
-                           <h3 class="box-title">LOA No :  <b>{{loano}}  </b> &nbsp; Date :  <b>{{projectdate}}  </b> </h3>
+                           <h3 class="box-title">LOA No :  <b>{{loano}}  </b><br/> <br/> Project Location :  <b>{{projectlocation}}  </b> <br/> <br/> 
+                         
+                         Item name : <b>{{itemname}}  </b>
+                         
+                         <br/><br/> Project Date :  <b>{{projectdate}}</b>
+                         
+                            </h3>
                             <div class="box-tools pull-right">
-                 
-                   
-                           
-                            			
-							   <button type="button" ng-click="projectlistload()"
+                 	
+
+						      <button type="button" ng-click="projectlistload()"
 								class="btn btn-box-tool" data-widget="back">
-								 Back
+								LOA List
 						     	</button>
-		
-				
-					
-								
+						     	|
+						     	  <button type="button" ng-click="getProjectDataByProjectCode(projectcode,loano,projectdate)"
+								class="btn btn-box-tool" data-widget="back">
+								 Project Location details
+						     	</button>
+                            	|	
+                            	
+                            	<a 	class="btn btn-box-tool" ng-click="viewItemDetailsProject(projectcode,projectlocation,loano)" >  Back</a>		
+						
+								</div>
+						     	
 								</div>
                             </div>
-                            
-                                <div class="box-body">
+                             
+                                <div class="box box-primary">
+                                <div class="box-header with-border">
                             <div class="row">
+                           		
+                           		
+                           	<div class="col-md-12">
+								<div         class="form-group">
+									<h4>Supply details</h4>
+								</div>
+							</div>	
                            						
 							<div class="col-md-6">
 								<div class="form-group">
@@ -238,6 +257,7 @@
 
 
 						</div>
+                            </div>
                             </div>
                             </div>
                             
