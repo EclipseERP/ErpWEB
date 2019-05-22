@@ -9,4 +9,5 @@ public interface ProjectStockMasterService {
 	
 	public void saveorUpdate(ProjectStockRecordMaster wu);
 	public List getProjectStockDetailsByProjectcode(String projectcode);
+	public ProjectStockRecordMaster getProjectStockDataByItemdandProjectCode(String projectcode,String itemcode);
 }

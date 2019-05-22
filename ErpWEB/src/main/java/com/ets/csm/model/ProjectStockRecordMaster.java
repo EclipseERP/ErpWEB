@@ -50,19 +50,19 @@ public class ProjectStockRecordMaster {
 	private String billQuantity;
 	
 	@Column(name = "way_bill_no_date")
-	private String wayBillNoDate;
+	private Date wayBillNoDate;
 	
 	@Column(name = "bill_no")
 	private String billNo;
 	
 	@Column(name = "date")
-	private String date;
+	private Date date;
 	
 	@Column(name = "arrival_date_at_railway_store")
-	private String arrivalDateAtRailwayStore;
+	private Date arrivalDateAtRailwayStore;
 
 	@Column(name = "date_of_railway_receipt")
-	private String dateOfRailwayReceipt;
+	private Date dateOfRailwayReceipt;
 	
 	@Column(name = "truck_number")
 	private String truckNumber;
@@ -83,7 +83,7 @@ public class ProjectStockRecordMaster {
 	private String icDetails;
 	
 	@Column(name = "date_of_supply")
-	private String dateOfSupply;
+	private Date dateOfSupply;
 	
 	@Column(name = "supplier_with_address")
 	private String supplierWithAddress;
@@ -99,6 +99,9 @@ public class ProjectStockRecordMaster {
 	
 	@Column(name="itemdescription")
 	private String itemdescription;
+	
+	@Column(name="dateofArrivalrelayreceipt")
+	private Date dateofArrivalrelayreceipt;
 
 	public int getId() {
 		return id;
@@ -114,14 +117,6 @@ public class ProjectStockRecordMaster {
 
 	public void setProjectcode(String projectcode) {
 		this.projectcode = projectcode;
-	}
-
-	public int getRate() {
-		return rate;
-	}
-
-	public void setRate(int rate) {
-		this.rate = rate;
 	}
 
 	public String getItemcode() {
@@ -196,11 +191,11 @@ public class ProjectStockRecordMaster {
 		this.billQuantity = billQuantity;
 	}
 
-	public String getWayBillNoDate() {
+	public Date getWayBillNoDate() {
 		return wayBillNoDate;
 	}
 
-	public void setWayBillNoDate(String wayBillNoDate) {
+	public void setWayBillNoDate(Date wayBillNoDate) {
 		this.wayBillNoDate = wayBillNoDate;
 	}
 
@@ -212,27 +207,27 @@ public class ProjectStockRecordMaster {
 		this.billNo = billNo;
 	}
 
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 
-	public String getArrivalDateAtRailwayStore() {
+	public Date getArrivalDateAtRailwayStore() {
 		return arrivalDateAtRailwayStore;
 	}
 
-	public void setArrivalDateAtRailwayStore(String arrivalDateAtRailwayStore) {
+	public void setArrivalDateAtRailwayStore(Date arrivalDateAtRailwayStore) {
 		this.arrivalDateAtRailwayStore = arrivalDateAtRailwayStore;
 	}
 
-	public String getDateOfRailwayReceipt() {
+	public Date getDateOfRailwayReceipt() {
 		return dateOfRailwayReceipt;
 	}
 
-	public void setDateOfRailwayReceipt(String dateOfRailwayReceipt) {
+	public void setDateOfRailwayReceipt(Date dateOfRailwayReceipt) {
 		this.dateOfRailwayReceipt = dateOfRailwayReceipt;
 	}
 
@@ -284,11 +279,11 @@ public class ProjectStockRecordMaster {
 		this.icDetails = icDetails;
 	}
 
-	public String getDateOfSupply() {
+	public Date getDateOfSupply() {
 		return dateOfSupply;
 	}
 
-	public void setDateOfSupply(String dateOfSupply) {
+	public void setDateOfSupply(Date dateOfSupply) {
 		this.dateOfSupply = dateOfSupply;
 	}
 
@@ -316,6 +311,14 @@ public class ProjectStockRecordMaster {
 		this.allInclusiveRate = allInclusiveRate;
 	}
 
+	public int getRate() {
+		return rate;
+	}
+
+	public void setRate(int rate) {
+		this.rate = rate;
+	}
+
 	public String getItemdescription() {
 		return itemdescription;
 	}
@@ -323,5 +326,15 @@ public class ProjectStockRecordMaster {
 	public void setItemdescription(String itemdescription) {
 		this.itemdescription = itemdescription;
 	}
+
+	public Date getDateofArrivalrelayreceipt() {
+		return dateofArrivalrelayreceipt;
+	}
+
+	public void setDateofArrivalrelayreceipt(Date dateofArrivalrelayreceipt) {
+		this.dateofArrivalrelayreceipt = dateofArrivalrelayreceipt;
+	}
+
+
 	
 }

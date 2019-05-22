@@ -134,6 +134,15 @@ public class ProjectMasterController {
 				pdatas.setBillNo("");
 				pdatas.setBillQuantity(totallist[k] + "");
 				pdatas.setItemdescription(rawmaterialservice.getAllRawMaterialsByItemcode(itemcodeslist[k]).getDescription());
+				pdatas.setSchUnitRate(0);
+				pdatas.setAmount("0");
+				pdatas.setPercentageAbove("0");
+				pdatas.setAllInclusiveRate("0");
+				pdatas.setRate(0);
+				pdatas.setIcDetails("");
+				pdatas.setBillNo("");
+			
+			
 
 				projectstockmasterservice.saveorUpdate(pdatas);
 
@@ -217,9 +226,20 @@ public class ProjectMasterController {
 				eiqty=eiqty+Integer.parseInt(pe.getQuantity());
 
 			}
-			
-
+		
 			pdto.setEiQuantity(eiqty+"");
+			pdto.setSchUnitRate(projetctstockmasterlist.get(i).getSchUnitRate());
+			pdto.setAmount(projetctstockmasterlist.get(i).getAmount());
+			pdto.setPercentageAbove(projetctstockmasterlist.get(i).getPercentageAbove());
+			pdto.setAllInclusiveRate(projetctstockmasterlist.get(i).getAllInclusiveRate());
+			pdto.setRate(projetctstockmasterlist.get(i).getRate()+"");
+			pdto.setDetailsofic(projetctstockmasterlist.get(i).getIcDetails());
+			pdto.setDateofarrivalrlyreceipt(projetctstockmasterlist.get(i).getDateofArrivalrelayreceipt());
+			pdto.setDateofrlyreceipt(projetctstockmasterlist.get(i).getDateOfRailwayReceipt());
+			pdto.setDateofsupply(projetctstockmasterlist.get(i).getDateOfSupply());
+			pdto.setWaybillnodate(projetctstockmasterlist.get(i).getWayBillNoDate());
+			pdto.setBillno(projetctstockmasterlist.get(i).getBillNo());
+			pdto.setBillqty(projetctstockmasterlist.get(i).getBillQuantity());
 			projectstockdtolist.add(pdto);
 
 		}
@@ -230,8 +250,7 @@ public class ProjectMasterController {
 	@GetMapping("/getProjectEIWorksDataByProjectcode")
 	public @ResponseBody List getProjectEIWorksDataByProjectcode(@RequestParam("projectcode") String projectcode,@RequestParam("itemcode") String itemcode) {
 
-		return projecteiservice.getProjectEiWorkDetailsByProjectCode(projectcode,itemcode);
-
+	return projecteiservice.getProjectEiWorkDetailsByProjectCode(projectcode,itemcode);
 	}
 	
 	
@@ -250,6 +269,36 @@ public class ProjectMasterController {
 
 	}
 	
-	
+	@PostMapping("/updateSupplyData")
+	public @ResponseBody void updateSupplydata(@RequestBody ProjectItemCodeListDTO itemdata)
+	{
+		ProjectStockRecordMaster pdatas=projectstockmasterservice.getProjectStockDataByItemdandProjectCode(itemdata.getProjectcode(), itemdata.getItemcode());
+		
+		pdatas.setItemcode(itemdata.getItemcode());
+		pdatas.setUnit(itemdata.getUnit());
+		pdatas.setTotal(itemdata.getTotalqty());
+		pdatas.setSchUnitRate(itemdata.getSchUnitRate());
+		pdatas.setAmount(itemdata.getAmount());
+		pdatas.setPercentageAbove(itemdata.getPercentageAbove());
+		pdatas.setAllInclusiveRate(itemdata.getAllInclusiveRate());
+		pdatas.setRate(Integer.parseInt(itemdata.getRate()));
+		pdatas.setIcDetails(itemdata.getDetailsofic());
+		pdatas.setSupplyQuantity(itemdata.getSupplyqty()+"");
+		pdatas.setBalanceQuantity(itemdata.getBalanceqty()+"");
+		pdatas.setPlaceOfDelivery(itemdata.getPlaceofdelivery());
+		pdatas.setTruckNumber(itemdata.getTrukno());
+		pdatas.setBillNo(itemdata.getBillno());
+		pdatas.setBillQuantity(itemdata.getBillqty());
+		pdatas.setPercentageAbove(itemdata.getPercentageAbove());
+		pdatas.setAllInclusiveRate(itemdata.getAllInclusiveRate());
+        pdatas.setUpdate_date(DateUtility.getCurrentDateWithTime());
+        pdatas.setWayBillNoDate(itemdata.getWaybillnodate());
+        pdatas.setDateOfSupply(itemdata.getDateofsupply());
+        pdatas.setDateofArrivalrelayreceipt(itemdata.getDateofarrivalrlyreceipt());
+        pdatas.setDateOfRailwayReceipt(itemdata.getDateofrlyreceipt());
+		
+        projectstockmasterservice.saveorUpdate(pdatas);
+		
+	}
 	
 }

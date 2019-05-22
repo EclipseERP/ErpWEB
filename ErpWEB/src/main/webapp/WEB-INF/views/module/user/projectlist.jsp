@@ -172,7 +172,7 @@
 											<td>   {{datas.totalqty}}</td>
 											<td>   {{datas.supplyqty}}</td>
 										    <td>   {{datas.balanceqty}}</td>
-										    <td>  <a    ng-click="viewsupplydetails(datas.project_code,datas.projectname,datas.loa_no,projectlocation,datas.itemname)"   style="cursor: pointer"  > <b>View</b></a>   </td>
+										    <td>  <a    ng-click="viewsupplydetails(datas.project_code,datas.projectname,datas.loa_no,projectlocation,datas.itemname,datas)"   style="cursor: pointer"  > <b>View</b></a>   </td>
 									
 										    <td style="color:red"><b>Pending</b></td>
 			

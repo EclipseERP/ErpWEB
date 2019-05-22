@@ -48,8 +48,8 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="af1">SCH Unit Rate </label> <input type="text"
-										class="form-control"  id="af1"
-										value="{{projectcode}}" placeholder="">
+										class="form-control"  id="af1" ng-model="itemdata.schUnitRate"
+										 placeholder="">
 								</div>
 							</div>
 
@@ -60,7 +60,7 @@
 								<div class="form-group">
 									<label for="af1">Amount </label> <input type="text"
 										class="form-control"  id="af1"
-										value="{{projectcode}}" placeholder="">
+										ng-model="itemdata.supplyqty" placeholder="">
 								</div>
 							</div>
 
@@ -71,41 +71,47 @@
 								<div class="form-group">
 									<label for="af1">% Above </label> <input type="text"
 										class="form-control"  id="af1"
-										value="{{projectcode}}" placeholder="">
+										ng-model="itemdata.percentageAbove" placeholder="">
 								</div>
 							</div>
 							
 							 	<div class="col-md-6">
 								<div class="form-group">
 									<label for="af1">All inclusive rate </label> <input type="text"
-										class="form-control" readonly="readonly" id="af1"
-										value="{{projectcode}}" placeholder="">
+										class="form-control"  id="af1"
+										ng-model="itemdata.allInclusiveRate" placeholder="">
 								</div>
 							</div>
 							
 							
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="af1">Supplier Name  </label> <input type="text"
-										class="form-control"  id="af1"
-										value="{{projectcode}}" placeholder="">
+									
+									<label for="af1"> </label>
+									
+									<select ng-model="custData.referral" class="form-control" ng-options="x.name for x in referralData1 track by x.id" ng-change = "addnewReferral(x)" name="refferalId" id="refferalId"  required>
+									<option ng-click="newCustomerAddModal()" value="">--Supplier Name  --</option>
+									
+									</select>
 								</div>
 							</div>
 							
 							
-									<div class="col-md-6">
+									<div class="col-md-12">
 								<div class="form-group">
-									<label for="af1">Supplier Address </label> <input type="text"
-										class="form-control"  id="af1"
-										value="{{projectcode}}" placeholder="">
+									<label for="af1">Supplier Address </label> 
+									
+									<textarea rows="2" class="form-control"></textarea>
+									
+									
 								</div>
 							</div>
 							
 									<div class="col-md-6">
 								<div class="form-group">
 									<label for="af1">Rate </label> <input type="text"
-										class="form-control" readonly="readonly" id="af1"
-										value="{{projectcode}}" placeholder="">
+										class="form-control"  id="af1"
+										ng-model="itemdata.rate" placeholder="">
 								</div>
 							</div>
 							
@@ -114,7 +120,7 @@
 								<div class="form-group">
 									<label for="af1">Details of IC </label> <input type="text"
 										class="form-control"  id="af1"
-										value="{{projectcode}}" placeholder="">
+										ng-model="itemdata.detailsofic" placeholder="">
 								</div>
 							</div>
 					
@@ -125,7 +131,7 @@
 									<label for="af1">Date of Supply </label> 
 									<input type="text"
 										class="form-control"  id="af1"
-										value="{{projectcode}}" datetime-picker="yyyy-MM-dd " size="3" ng-model="creation_date" is-open="ctrl.date.eventTimee" /> 									
+										ng-model="itemdata.dateofsupply" datetime-picker="yyyy-MM-dd " size="3" ng-model="creation_date" is-open="ctrl.date.eventTimee" /> 									
 										<span class="input-group-btn">
 										<button type="button" class="btn btn-blue" ng-click="ctrl.date.eventTimee = true"> <i class="fa fa-calendar"></i>
 								</div>
@@ -138,7 +144,7 @@
 								<div class="form-group">
 									<label for="af1">Supply qty </label> <input type="text"
 										class="form-control"  id="af1"
-										value="{{projectcode}}" placeholder="">
+										ng-model="itemdata.supplyqty"  placeholder="">
 								</div>
 							</div>
 							
@@ -146,7 +152,7 @@
 								<div class="form-group">
 									<label for="af1">Balance QTY </label> <input type="text"
 										class="form-control"  id="af1"
-										value="{{projectcode}}" placeholder="">
+										ng-model="itemdata.balanceqty" placeholder="">
 								</div>
 							</div>
 							
@@ -154,7 +160,7 @@
 								<div class="form-group">
 									<label for="af1">Place of Delivery </label> <input type="text"
 										class="form-control"  id="af1"
-										value="{{projectcode}}" placeholder="">
+										ng-model="itemdata.placeofdelivery" placeholder="">
 								</div>
 							</div>
 							
@@ -163,27 +169,30 @@
 								<div class="form-group">
 									<label for="af1">Way Bill No Date </label> <input type="text"
 										class="form-control"  id="af1"
-										value="{{projectcode}}" datetime-picker="yyyy-MM-dd " size="3" ng-model="creation_date" is-open="ctrl.date.eventTimen" /> 									
+										ng-model="itemdata.waybillnodate" datetime-picker="yyyy-MM-dd " size="3" ng-model="creation_date" is-open="ctrl.date.eventTimen" /> 									
 										<span class="input-group-btn">
 										<button type="button" class="btn btn-blue" ng-click="ctrl.date.eventTimen = true"> <i class="fa fa-calendar"></i>
 								</div>
 							</div>
 							
-							 <div class="col-md-6">
-								<div class="form-group">
-									<label for="af1">Truck no. </label> <input type="text"
-										class="form-control"  id="af1"
-										value="{{projectcode}}" placeholder="">
-								</div>
-							</div>
+					
 							
 							
 							
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="af1">Transporter </label> <input type="text"
+									<label for="af1"> </label> 
+									<select ng-model="custData.referral" class="form-control" ng-options="x.name for x in referralData1 track by x.id" ng-change = "addnewReferral(x)" name="refferalId" id="refferalId"  required>
+									<option ng-click="newCustomerAddModal()" value="">--Transporter Name  --</option>
+									</select>
+								</div>
+							</div>
+							
+									 <div class="col-md-6">
+								<div class="form-group">
+									<label for="af1">Truck no. </label> <input type="text"
 										class="form-control"  id="af1"
-										value="{{projectcode}}" placeholder="">
+										ng-model="itemdata.trukno" placeholder="">
 								</div>
 							</div>
 							
@@ -191,7 +200,7 @@
 								<div class="form-group">
 									<label for="af1">Date of arrival at Rly Store </label> <input type="text"
 										class="form-control"  id="afy"
-										value="{{projectcode}}" datetime-picker="yyyy-MM-dd " size="3" ng-model="creation_datek" is-open="ctrl.date.eventTimep" /> 									
+										ng-model="itemdata.dateofarrivalrlyreceipt" datetime-picker="yyyy-MM-dd " size="3" ng-model="creation_datek" is-open="ctrl.date.eventTimep" /> 									
 										<span class="input-group-btn">
 										<button type="button" class="btn btn-blue" ng-click="ctrl.date.eventTimep = true"> <i class="fa fa-calendar"></i>
 								</div>
@@ -201,47 +210,31 @@
 								<div class="form-group">
 									<label for="af1">Date of Rly receipt </label> <input type="text"
 										class="form-control"  id="afo"
-										value="{{projectcode}}" datetime-picker="yyyy-MM-dd " size="3" ng-model="creation_datet" is-open="ctrl.date.eventTimek" /> 									
+										ng-model="itemdata.dateofrlyreceipt" datetime-picker="yyyy-MM-dd " size="3" ng-model="creation_datet" is-open="ctrl.date.eventTimek" /> 									
 										<span class="input-group-btn">
 										<button type="button" class="btn btn-blue" ng-click="ctrl.date.eventTimek = true"> <i class="fa fa-calendar"></i>
 								</div>
 							</div>
 							
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="af1">Date of Rly receipt </label> <input type="text"
-										class="form-control"  id="afr"
-										value="{{projectcode}}" datetime-picker="yyyy-MM-dd " size="3" ng-model="creation_datey" is-open="ctrl.date.eventTimel" /> 									
-										<span class="input-group-btn">
-										<button type="button" class="btn btn-blue" ng-click="ctrl.date.eventTimel = true"> <i class="fa fa-calendar"></i>
-								</div>
-							</div>
+						
 							
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="af1">Bill no </label> <input type="text"
 										class="form-control"  id="af1"
-										value="{{projectcode}}" placeholder="">
+										ng-model="itemdata.billno" placeholder="">
 								</div>
 							</div>
 							
 							
-								<div class="col-md-6">
-								<div class="form-group">
-									<label for="af1">Date </label> <input type="text"
-										class="form-control"  id="afv"
-										value="{{projectcode}}" datetime-picker="yyyy-MM-dd " size="3" ng-model="creation_date" is-open="ctrl.date.eventTimeh" /> 									
-										<span class="input-group-btn">
-										<button type="button" class="btn btn-blue" ng-click="ctrl.date.eventTimeh = true"> <i class="fa fa-calendar"></i>
-								</div>
-							</div>
+					
 							
 							
 								<div class="col-md-6">
 								<div class="form-group">
 									<label for="af1">Bill QTY </label> <input type="text"
 										class="form-control"  id="af1"
-										value="{{projectcode}}" placeholder="">
+										ng-model="itemdata.billqty" placeholder="">
 								</div>
 							</div>
 							
@@ -249,7 +242,7 @@
 								<div class="form-group" align="right">
 
 									<a class="btn btn-primary pad40L pad40R mrg5L"
-										ng-click="projectSecondPartshow()"> Save and Continue</a>
+										ng-click="updateSupplyData(itemdata)"> Save and Continue</a>
 
 
 								</div>

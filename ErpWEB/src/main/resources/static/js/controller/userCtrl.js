@@ -986,7 +986,7 @@ app
 					}
 					
 					
-					$scope.viewsupplydetails=function(projectcode,projectname,loano,projectlocation,itemname)
+					$scope.viewsupplydetails=function(projectcode,projectname,loano,projectlocation,itemname,itemobj)
 					{
 						
 						$scope.projectlocation=projectlocation;
@@ -995,6 +995,11 @@ app
 						$scope.showProjectDetailslistByLoaNO=false;
 						$scope.projectlistshow=false;
 						$scope.pi=false;
+						
+						
+						$scope.itemdata=itemobj;
+						
+						
 						
 						
 						/*
@@ -1031,6 +1036,22 @@ app
 						$scope.pi=false;
 					}
 					
+					
+					$scope.updateSupplyData=function(itemdata)
+					{
+						
+					console.log("Itemdata found ",itemdata)
+					$http.post('/project/updateSupplyData',itemdata).success(function(data) 
+								{
+						  
+						        alert("save");
+									
+								}, function myError(response) {
+									alert("Sorry, Some technical error occur");
+								});
+					
+
+					}
 					
 					// *************************************************************************************************************************************
 

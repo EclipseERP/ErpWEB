@@ -29,4 +29,11 @@ public class ProjectStockRecordMasterImpl implements ProjectStockMasterService {
 		return projectstocrepo.getAllProjectsStockByProjectcode(projectcode);
 	}
 
+	@Override
+	public ProjectStockRecordMaster getProjectStockDataByItemdandProjectCode(String projectcode,String itemcode)
+	{
+		return projectstocrepo.getProjectsStockByProjectcodeAndItemcode(projectcode, itemcode);
+	}
+	
+	
 }

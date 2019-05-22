@@ -16,4 +16,7 @@ public interface projectStockMasterRepository extends JpaRepository<ProjectStock
 	@Query("SELECT P FROM ProjectStockRecordMaster P WHERE P.projectcode =:projectcode")
 	public List getAllProjectsStockByProjectcode(@Param ("projectcode") String projectcode);
 	
+	@Query("SELECT P FROM ProjectStockRecordMaster P WHERE P.projectcode =:projectcode And P.itemcode=:itemcode")
+	public ProjectStockRecordMaster getProjectsStockByProjectcodeAndItemcode(@Param ("projectcode") String projectcode, @Param("itemcode") String itemcode);
+	
 }
