@@ -143,15 +143,15 @@
                               <div class="col-md-6">
 								<div class="form-group">
 									<label for="af1">Supply qty </label> <input type="text"
-										class="form-control"  id="af1"
-										ng-model="itemdata.supplyqty"  placeholder="">
+										class="form-control"  id="supplyQTY" ng-keyup="calculateSupply(itemdata)"
+										ng-model="itemdata.supplyqty"   placeholder="">
 								</div>
 							</div>
 							
 							          <div class="col-md-6">
 								<div class="form-group">
 									<label for="af1">Balance QTY </label> <input type="text"
-										class="form-control"  id="af1"
+										class="form-control"  id="balanceQty"
 										ng-model="itemdata.balanceqty" placeholder="">
 								</div>
 							</div>

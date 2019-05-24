@@ -594,6 +594,9 @@ function calculationItemtotal(inccounter_calc, icounterSingle) {
 	$("#totalvalid" + icounterSingle).val(parseInt(locval) + parseInt(eiwal));
 }
 
+
+
+
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // ERP JAVA ,JQuery
