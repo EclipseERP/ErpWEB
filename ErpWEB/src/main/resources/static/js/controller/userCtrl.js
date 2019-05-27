@@ -952,8 +952,7 @@ app
 						}, function myError(response) {
 							alert("Sorry, Some technical error occur");
 						});	
-						
-						
+											
 					}
 
 					
@@ -981,10 +980,7 @@ app
 							keyboard : false
 						});
 						
-						
-						
 					}
-					
 					
 					$scope.viewsupplydetails=function(projectcode,projectname,loano,projectlocation,itemname,itemobj)
 					{
@@ -995,11 +991,7 @@ app
 						$scope.showProjectDetailslistByLoaNO=false;
 						$scope.projectlistshow=false;
 						$scope.pi=false;
-						
-						
 						$scope.itemdata=itemobj;
-						
-						
 						
 						
 						/*
