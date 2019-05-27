@@ -102,6 +102,9 @@ public class ProjectStockRecordMaster {
 	
 	@Column(name="dateofArrivalrelayreceipt")
 	private Date dateofArrivalrelayreceipt;
+	
+	@Column(name="status")
+	private String status;
 
 	public int getId() {
 		return id;
@@ -333,6 +336,14 @@ public class ProjectStockRecordMaster {
 
 	public void setDateofArrivalrelayreceipt(Date dateofArrivalrelayreceipt) {
 		this.dateofArrivalrelayreceipt = dateofArrivalrelayreceipt;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 
