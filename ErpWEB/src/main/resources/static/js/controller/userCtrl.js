@@ -278,10 +278,7 @@ app
 					$scope.vendorAdd = function(ven) {
 						console.log("Vendor Data...", ven);
 						console.log("Data...", $scope.currentUserName);
-						$http.post(
-								'/vendorctrl/addVendor/'
-										+ $scope.currentUserName, ven).success(
-								function(data) {
+						$http.post('/vendorctrl/addVendor/'+ $scope.currentUserName, ven).success(function(data) {
 								}, function myError(response) {
 									alert("Sorry, Some technical error occur");
 								});
@@ -332,11 +329,10 @@ app
 					}
 
 					$scope.getRawMaterialsData = function() {
-						$http.get('/rawMaterials/getRawMaterials/').success(
-								function(data) {
+						$http.get('/rawMaterials/getRawMaterials/').success(function(data) {
 									console.log(data)
-									$scope.rowMaterialData = new NgTableParams(
-											{}, {
+									$scope.rowMaterialData = new NgTableParams({}, 
+											{
 												dataset : data
 											});
 
