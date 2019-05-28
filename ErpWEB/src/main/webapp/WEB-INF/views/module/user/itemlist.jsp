@@ -39,7 +39,8 @@ $(function () {
 												<th>Raw Material</th>
 												<!-- <th>Item Code</th> -->
 												<!-- <th>Item Type</th> -->
-												<th>HSN No.</th>
+											    <th>Item Code</th> 
+												<th>Unit</th>
 												<th>Description</th>
 											<!--<th>Unit</th>
 												<th>Quantity</th>
@@ -53,9 +54,9 @@ $(function () {
 										
 							<tr ng-repeat="datas in $data | filter : keyword">
 							<td title="'Item Name'">{{datas.name}}</td>
-							<!-- <td title="'Item Code'">{{datas.itemCode}}</td> -->
+							 <td title="'Item Code'">{{datas.itemCode}}</td> 
 							<!-- <td title="'Quantity'">{{datas.qty}}</td> -->
-							<td title="'HSN No.'">{{datas.hsno}}</td>
+							<td title="'HSN No.'">{{datas.unit}}</td>
 							<td title="'Description'">{{datas.description}}</td>
 							<!-- <td title="'Description'">{{datas.descriptionHSNno}}</td> -->
 							<!-- <td title="'Unit'">{{datas.unit}}</td>

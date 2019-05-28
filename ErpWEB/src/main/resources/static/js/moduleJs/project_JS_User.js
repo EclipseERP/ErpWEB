@@ -532,12 +532,6 @@ function removeEiworks(count) {
 }
 
 
-
-
-
-
-
-
 var counters=0;
 $("#schQuantityadd").click(function()
 {
@@ -550,8 +544,6 @@ function removeSCHworks(count)
 	  $('#ccc'+count).remove();
 	
 }
-
-
 
 
 var count=0;
@@ -601,6 +593,9 @@ function calculationItemtotal(inccounter_calc, icounterSingle) {
 
 	$("#totalvalid" + icounterSingle).val(parseInt(locval) + parseInt(eiwal));
 }
+
+
+
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

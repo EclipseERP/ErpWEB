@@ -36,4 +36,19 @@ public class RawMaterialsServiceImpl implements RawMaterialsService{
 		return rawmaterialrepository.getAllRawMaterials();
 	}
 	
+	
+	
+	@Override
+	public RawMaterials getAllRawMaterialsByItemcode(String itemcode)
+	{
+		return rawmaterialrepository.getAllRawMaterialsByItemcode(itemcode);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 }

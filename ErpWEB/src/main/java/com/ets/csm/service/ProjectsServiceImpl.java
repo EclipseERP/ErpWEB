@@ -44,4 +44,10 @@ public class ProjectsServiceImpl implements ProjectsService {
 		return projectrepo.getAllProjectsByProjectCode(projectcode);
 	}
 
+	
+	@Override
+	public List getProjectGroupByProjectCode() {
+		// TODO Auto-generated method stub
+		return projectrepo.getAllProjectsGroupByLoaNO();
+	}
 }

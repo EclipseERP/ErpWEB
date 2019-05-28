@@ -27,5 +27,11 @@ public interface ProjectsRepository extends JpaRepository<Projects, Integer> {
 	@Query(value="INSERT INTO Projects(id,project_code,loa_no,creation_date,update_date,company_id,user_id) values(:id,:project_code,:loa_no,:creation_date,:update_date,:company_id,:user_id)")
 	public Projects saveProject(@Param("id") int id); */
 	
-
+	@Query("SELECT P from Projects P group by P.loa_no")
+	public List getAllProjectsGroupByLoaNO();
+	
+	
+	
+	
+	
 }

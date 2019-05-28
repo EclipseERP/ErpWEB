@@ -18,11 +18,13 @@ import com.ets.csm.model.ProjectEIWorkMaster;
 import com.ets.csm.model.ProjectLocationMaster;
 import com.ets.csm.model.ProjectStockRecordMaster;
 import com.ets.csm.model.Projects;
+import com.ets.csm.model.RawMaterials;
 import com.ets.csm.model.User;
 import com.ets.csm.service.ProjectEIWorkMasterService;
 import com.ets.csm.service.ProjectLocationMasterService;
 import com.ets.csm.service.ProjectStockMasterService;
 import com.ets.csm.service.ProjectsService;
+import com.ets.csm.service.RawMaterialsService;
 import com.ets.csm.service.UserService;
 import com.ets.csm.util.DateUtility;
 
@@ -44,6 +46,10 @@ public class ProjectMasterController {
 
 	@Autowired
 	ProjectStockMasterService projectstockmasterservice;
+	
+	@Autowired
+	RawMaterialsService rawmaterialservice;
+	
 
 	@GetMapping("/getProjects")
 	public @ResponseBody List getProjectList() {
@@ -121,13 +127,22 @@ public class ProjectMasterController {
 				pdatas.setRate(0);
 				pdatas.setIcDetails("No Data Available");
 				pdatas.setSupplyQuantity("0");
-				pdatas.setBalanceQuantity("0");
+				pdatas.setBalanceQuantity(totallist[k] + "");
 				pdatas.setPlaceOfDelivery("");
 				pdatas.setTruckNumber("");
 				pdatas.setTransporter("");
 				pdatas.setBillNo("");
 				pdatas.setBillQuantity(totallist[k] + "");
-				pdatas.setItemdescription(descriptionlist[k]);
+				pdatas.setItemdescription(rawmaterialservice.getAllRawMaterialsByItemcode(itemcodeslist[k]).getDescription());
+				pdatas.setSchUnitRate(0);
+				pdatas.setAmount("0");
+				pdatas.setPercentageAbove("0");
+				pdatas.setAllInclusiveRate("0");
+				pdatas.setRate(0);
+				pdatas.setIcDetails("");
+				pdatas.setBillNo("");
+			
+			
 
 				projectstockmasterservice.saveorUpdate(pdatas);
 
@@ -188,10 +203,8 @@ public class ProjectMasterController {
 
 		List projectstockdtolist = new ArrayList();
 
-		List<ProjectStockRecordMaster> projetctstockmasterlist = projectstockmasterservice
-				.getProjectStockDetailsByProjectcode(projectcode);
-		List<ProjectLocationMaster> projectlist = projectlocationservice.getAllProjectLocationMaster(projectlocation,
-				projectcode);
+		List<ProjectStockRecordMaster> projetctstockmasterlist = projectstockmasterservice.getProjectStockDetailsByProjectcode(projectcode);
+		List<ProjectLocationMaster> projectlist = projectlocationservice.getAllProjectLocationMaster(projectlocation,projectcode);
 
 		for (int i = 0; i < projetctstockmasterlist.size(); i++) {
 			ProjectItemCodeListDTO pdto = new ProjectItemCodeListDTO();
@@ -203,19 +216,30 @@ public class ProjectMasterController {
 			pdto.setBalanceqty(Integer.parseInt(projetctstockmasterlist.get(i).getBalanceQuantity()));
 			pdto.setSupplyqty(Integer.parseInt(projetctstockmasterlist.get(i).getSupplyQuantity()));
 			pdto.setDesciption(projetctstockmasterlist.get(i).getItemdescription());
-			
+			pdto.setItemname(rawmaterialservice.getAllRawMaterialsByItemcode(projetctstockmasterlist.get(i).getItemcode()).getName());
+			pdto.setUnit(rawmaterialservice.getAllRawMaterialsByItemcode(projetctstockmasterlist.get(i).getItemcode()).getUnit());
 			List<ProjectEIWorkMaster> eilist=projecteiservice.getProjectEiWorkDetailsByProjectCode(projectcode,projetctstockmasterlist.get(i).getItemcode());
 			int eiqty=0;
 			for(ProjectEIWorkMaster pe:eilist)
 			{
 				
 				eiqty=eiqty+Integer.parseInt(pe.getQuantity());
-				
-				
-			}
-			
 
+			}
+		
 			pdto.setEiQuantity(eiqty+"");
+			pdto.setSchUnitRate(projetctstockmasterlist.get(i).getSchUnitRate());
+			pdto.setAmount(projetctstockmasterlist.get(i).getAmount());
+			pdto.setPercentageAbove(projetctstockmasterlist.get(i).getPercentageAbove());
+			pdto.setAllInclusiveRate(projetctstockmasterlist.get(i).getAllInclusiveRate());
+			pdto.setRate(projetctstockmasterlist.get(i).getRate()+"");
+			pdto.setDetailsofic(projetctstockmasterlist.get(i).getIcDetails());
+			pdto.setDateofarrivalrlyreceipt(projetctstockmasterlist.get(i).getDateofArrivalrelayreceipt());
+			pdto.setDateofrlyreceipt(projetctstockmasterlist.get(i).getDateOfRailwayReceipt());
+			pdto.setDateofsupply(projetctstockmasterlist.get(i).getDateOfSupply());
+			pdto.setWaybillnodate(projetctstockmasterlist.get(i).getWayBillNoDate());
+			pdto.setBillno(projetctstockmasterlist.get(i).getBillNo());
+			pdto.setBillqty(projetctstockmasterlist.get(i).getBillQuantity());
 			projectstockdtolist.add(pdto);
 
 		}
@@ -226,7 +250,55 @@ public class ProjectMasterController {
 	@GetMapping("/getProjectEIWorksDataByProjectcode")
 	public @ResponseBody List getProjectEIWorksDataByProjectcode(@RequestParam("projectcode") String projectcode,@RequestParam("itemcode") String itemcode) {
 
-		return projecteiservice.getProjectEiWorkDetailsByProjectCode(projectcode,itemcode);
+	return projecteiservice.getProjectEiWorkDetailsByProjectCode(projectcode,itemcode);
+	}
+	
+	
+	@GetMapping("/getProjectDetailsGroupByProjectCode")
+	public @ResponseBody List getProjectDetailsGroupByProjectCode() {
+
+		return projectservice.getProjectGroupByProjectCode();
 
 	}
+	
+	
+	@GetMapping("/getProjectDetailsbyProjectCode")
+	public @ResponseBody List getProjectDetailsbyProjectCode(@RequestParam("projectcode") String projectcode) {
+
+		return projectservice.getProjectByProjectcode(projectcode);
+
+	}
+	
+	@PostMapping("/updateSupplyData")
+	public @ResponseBody void updateSupplydata(@RequestBody ProjectItemCodeListDTO itemdata)
+	{
+		ProjectStockRecordMaster pdatas=projectstockmasterservice.getProjectStockDataByItemdandProjectCode(itemdata.getProjectcode(), itemdata.getItemcode());
+		
+		pdatas.setItemcode(itemdata.getItemcode());
+		pdatas.setUnit(itemdata.getUnit());
+		pdatas.setTotal(itemdata.getTotalqty());
+		pdatas.setSchUnitRate(itemdata.getSchUnitRate());
+		pdatas.setAmount(itemdata.getAmount());
+		pdatas.setPercentageAbove(itemdata.getPercentageAbove());
+		pdatas.setAllInclusiveRate(itemdata.getAllInclusiveRate());
+		pdatas.setRate(Integer.parseInt(itemdata.getRate()));
+		pdatas.setIcDetails(itemdata.getDetailsofic());
+		pdatas.setSupplyQuantity(itemdata.getSupplyqty()+"");
+		pdatas.setBalanceQuantity(itemdata.getBalanceqty()+"");
+		pdatas.setPlaceOfDelivery(itemdata.getPlaceofdelivery());
+		pdatas.setTruckNumber(itemdata.getTrukno());
+		pdatas.setBillNo(itemdata.getBillno());
+		pdatas.setBillQuantity(itemdata.getBillqty());
+		pdatas.setPercentageAbove(itemdata.getPercentageAbove());
+		pdatas.setAllInclusiveRate(itemdata.getAllInclusiveRate());
+        pdatas.setUpdate_date(DateUtility.getCurrentDateWithTime());
+        pdatas.setWayBillNoDate(itemdata.getWaybillnodate());
+        pdatas.setDateOfSupply(itemdata.getDateofsupply());
+        pdatas.setDateofArrivalrelayreceipt(itemdata.getDateofarrivalrlyreceipt());
+        pdatas.setDateOfRailwayReceipt(itemdata.getDateofrlyreceipt());
+		
+        projectstockmasterservice.saveorUpdate(pdatas);
+		
+	}
+	
 }
