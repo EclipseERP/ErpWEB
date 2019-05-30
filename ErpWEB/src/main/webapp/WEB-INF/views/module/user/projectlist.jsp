@@ -172,9 +172,15 @@
 											<td>   {{datas.totalqty}}</td>
 											<td>   {{datas.supplyqty}}</td>
 										    <td>   {{datas.balanceqty}}</td>
-										    <td>  <a    ng-click="viewsupplydetails(datas.project_code,datas.projectname,datas.loa_no,projectlocation,datas.itemname,datas)"   style="cursor: pointer"  > <b>View</b></a>   </td>
+										    <td>  <a ng-click="viewsupplydetails(datas.project_code,datas.projectname,datas.loa_no,projectlocation,datas.itemname,datas)"   style="cursor: pointer"  > <b>View</b></a>   </td>
 									
-										    <td style="color:red"><b>Pending</b></td>
+										    <td>
+										    
+							              <span ng-if="datas.status == 'Pending'" style="color:red"> <b> Pending </b></span>
+							              <span ng-if="datas.status == 'Paid'" style="color:green"><b > Paid </b> </span>
+										    
+										    
+										  </td>
 			
 												<td class="action" width="1">
 <!-- 											<i class="fa fa-eye text-primary" aria-hidden="true"></i> -->

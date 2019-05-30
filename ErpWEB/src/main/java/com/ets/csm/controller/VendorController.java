@@ -63,8 +63,6 @@ public class VendorController {
 		
 	}
 	
-	
-	
 	@PostMapping("/addVendor/{userName}")
 	public @ResponseBody void saveVendor(@RequestBody Vendor ven, @PathVariable String userName) {
 		User user = userService.getUserByUserName(userName);
@@ -73,11 +71,11 @@ public class VendorController {
 		
 	}
 	
-	
 	@GetMapping("/getVendorDetails")
 	public @ResponseBody List getVendorList() {
+		
+		
 		return vendorService.getAllVendors();
 	}
-	
 	
 }

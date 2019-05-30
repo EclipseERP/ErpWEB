@@ -91,8 +91,9 @@
 									
 									<select ng-model="custData.referral" class="form-control" ng-options="x.name for x in referralData1 track by x.id" ng-change = "addnewReferral(x)" name="refferalId" id="refferalId"  required>
 									<option ng-click="newCustomerAddModal()" value="">--Supplier Name  --</option>
-									
 									</select>
+									
+									
 								</div>
 							</div>
 							
@@ -137,14 +138,13 @@
 								</div>
 							</div>
 							
-							
-							
-
                               <div class="col-md-6">
 								<div class="form-group">
 									<label for="af1">Supply qty </label> <input type="text"
-										class="form-control"  id="supplyQTY" ng-keyup="calculateSupply(itemdata)"
+										class="form-control"  id="supplyQTY" ng-change="calculateSupply(itemdata)"
 										ng-model="itemdata.supplyqty"   placeholder="">
+										
+										
 								</div>
 							</div>
 							
@@ -152,7 +152,10 @@
 								<div class="form-group">
 									<label for="af1">Balance QTY </label> <input type="text"
 										class="form-control"  id="balanceQty"
-										ng-model="itemdata.balanceqty" placeholder="">
+										ng-model="itemdata.balanceqty" readonly="readonly" placeholder="">
+										
+					
+										
 								</div>
 							</div>
 							
@@ -241,7 +244,7 @@
 							<div class="col-md-12">
 								<div class="form-group" align="right">
 
-									<a class="btn btn-primary pad40L pad40R mrg5L"
+									<a class="btn btn-primary pad40L pad40R mrg5L" id=""
 										ng-click="updateSupplyData(itemdata)"> Save and Continue</a>
 
 
