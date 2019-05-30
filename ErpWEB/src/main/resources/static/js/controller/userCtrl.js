@@ -296,7 +296,18 @@ app
 					$scope.vendoraddload = function() {
 						$scope.vendoraddshow = true;
 						$scope.vendorlistshow = false;
-					}
+						$http.get('/vendorctrl/getVendorCode/').success(function(data) {
+									var code = "VEN0" + parseInt(data)
+									console.log("Vendor Code..", code)
+									$scope.vendorCode = code;
+									$scope.turnoverListShow = false;
+
+							}, function myError(response) {
+							   alert("Sorry, Some technical error occur");
+                               $timeout(function() {
+                              }, 200);
+                          });
+                      }
 
 					$scope.vendorlistload = function() {
 						$scope.vendoraddshow = false;
