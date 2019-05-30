@@ -398,6 +398,10 @@ app
 					$scope.getvendorData = function() {
 						$http.get('/vendorctrl/getVendorDetails/').success(
 								function(data) {
+									
+									console.log("Supply data",data)
+									
+									
 									$scope.vendorData = new NgTableParams({}, {
 										dataset : data
 									});
@@ -981,7 +985,6 @@ app
 					$scope.viewItemDetailsProject=function(projectcode,projectlocation,loa)
 					{
 					
-						
 	                    $scope.projectlocation=projectlocation;
 	                    $scope.loano=loa;
 	                	$scope.showProjectDetailslistByLoaNO=false;	
@@ -1032,7 +1035,7 @@ app
 					
 					$scope.viewsupplydetails=function(projectcode,projectname,loano,projectlocation,itemname,itemobj)
 					{
-						
+						alert()
 						$scope.projectlocation=projectlocation;
 						$scope.itemname=itemname;
 						$scope.showSupplyDetailslistByItemcode=true;
@@ -1040,6 +1043,8 @@ app
 						$scope.projectlistshow=false;
 						$scope.pi=false;
 						$scope.itemdata=itemobj;
+						alert()
+						$scope.getvendorData();
 						
 						
 						/*
@@ -1079,31 +1084,60 @@ app
 					
 					$scope.updateSupplyData=function(itemdata)
 					{
-						
+					alert()	
 					console.log("Itemdata found ",itemdata)
+					
+					 $('#supplysavebutton').prop('disabled', true);
+					
 					$http.post('/project/updateSupplyData',itemdata).success(function(data) 
-								{
+				   {
 						  
 						        alert("save");
-									
+						        
+						     
+						        $('#supplysavebutton').prop('disabled', false);    
+						        
+						        
+						     console.log(itemdata)
+						     
+						     $scope.itemdata=null;
+						        
+						        
+						        
 								}, function myError(response) {
 									alert("Sorry, Some technical error occur");
 								});
 					
-
 					}
 					
-					$scope.calculateSupply=function(itemdata)
-					{
-                   var supply=	$("#supplyQTY").val();
-                   var balanceqty=$("#balanceQty").val();
-                   var total=parseFloat(balanceqty)-parseFloat(supply)
-                   
-                   $scope.itemdata.balanceqty=total;
-                   
+				   $scope.calculateSupply=function(itemdata)
+				   {
+				
+				    
+//				   var tempbalanceqty=$("#balanceQty").val();
+//                   var supply=	$("#supplyQTY").val();
+//                   var balanceqty=$("#balanceQty").val();
+//                   
+//                   var total=parseFloat(balanceqty)-parseFloat(supply)
+//                   
+//                   if(total<0)
+//                	   {
+//                	   alert("Invalid quantity check your input !!")
+//                	   $scope.itemdata.balanceqty=tempbalanceqty;
+//                	   }
+//                   
+//                   else if(supply==0)
+//                	   {
+//                	   alert("Invalid quantity check your input !!")
+//                	   
+//                	   }
+//                   
+//                   else
+//                	   {
+//                	   $scope.itemdata.balanceqty=total;
+//                	   }
 
 				   }
-					
 					
 					// *************************************************************************************************************************************
 

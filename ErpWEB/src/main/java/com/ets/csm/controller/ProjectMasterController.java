@@ -141,9 +141,8 @@ public class ProjectMasterController {
 				pdatas.setRate(0);
 				pdatas.setIcDetails("");
 				pdatas.setBillNo("");
+				pdatas.setStatus("Pending");
 			
-			
-
 				projectstockmasterservice.saveorUpdate(pdatas);
 
 
@@ -220,13 +219,12 @@ public class ProjectMasterController {
 			pdto.setUnit(rawmaterialservice.getAllRawMaterialsByItemcode(projetctstockmasterlist.get(i).getItemcode()).getUnit());
 			List<ProjectEIWorkMaster> eilist=projecteiservice.getProjectEiWorkDetailsByProjectCode(projectcode,projetctstockmasterlist.get(i).getItemcode());
 			int eiqty=0;
+			
 			for(ProjectEIWorkMaster pe:eilist)
 			{
-				
 				eiqty=eiqty+Integer.parseInt(pe.getQuantity());
-
 			}
-		
+			
 			pdto.setEiQuantity(eiqty+"");
 			pdto.setSchUnitRate(projetctstockmasterlist.get(i).getSchUnitRate());
 			pdto.setAmount(projetctstockmasterlist.get(i).getAmount());
@@ -240,6 +238,7 @@ public class ProjectMasterController {
 			pdto.setWaybillnodate(projetctstockmasterlist.get(i).getWayBillNoDate());
 			pdto.setBillno(projetctstockmasterlist.get(i).getBillNo());
 			pdto.setBillqty(projetctstockmasterlist.get(i).getBillQuantity());
+			pdto.setStatus(projetctstockmasterlist.get(i).getStatus());
 			projectstockdtolist.add(pdto);
 
 		}
@@ -274,6 +273,9 @@ public class ProjectMasterController {
 	{
 		ProjectStockRecordMaster pdatas=projectstockmasterservice.getProjectStockDataByItemdandProjectCode(itemdata.getProjectcode(), itemdata.getItemcode());
 		
+		int totasupplyqty=0;
+		int oldsupplyqty=Integer.parseInt(pdatas.getSupplyQuantity());
+		
 		pdatas.setItemcode(itemdata.getItemcode());
 		pdatas.setUnit(itemdata.getUnit());
 		pdatas.setTotal(itemdata.getTotalqty());
@@ -283,7 +285,6 @@ public class ProjectMasterController {
 		pdatas.setAllInclusiveRate(itemdata.getAllInclusiveRate());
 		pdatas.setRate(Integer.parseInt(itemdata.getRate()));
 		pdatas.setIcDetails(itemdata.getDetailsofic());
-		pdatas.setSupplyQuantity(itemdata.getSupplyqty()+"");
 		pdatas.setBalanceQuantity(itemdata.getBalanceqty()+"");
 		pdatas.setPlaceOfDelivery(itemdata.getPlaceofdelivery());
 		pdatas.setTruckNumber(itemdata.getTrukno());
@@ -297,8 +298,30 @@ public class ProjectMasterController {
         pdatas.setDateofArrivalrelayreceipt(itemdata.getDateofarrivalrlyreceipt());
         pdatas.setDateOfRailwayReceipt(itemdata.getDateofrlyreceipt());
 		
-        projectstockmasterservice.saveorUpdate(pdatas);
-		
+        
+        //+++++++++ Supply calculation++++++++++++++++++++++++++        
+
+        double total=0;
+        
+        if(itemdata.getSupplyqty()!=0 && itemdata.getSupplyqty()<=itemdata.getBalanceqty() && itemdata.getSupplyqty()>=0  )
+        {
+        	total=itemdata.getBalanceqty()-itemdata.getSupplyqty();
+        	totasupplyqty=oldsupplyqty+itemdata.getSupplyqty();
+        	pdatas.setSupplyQuantity(totasupplyqty+"");
+        	
+        	if(totasupplyqty==itemdata.getTotalqty())
+        	{
+        	
+        	pdatas.setStatus("Paid");
+        	
+        	}
+        	
+        	
+        	
+        	pdatas.setBalanceQuantity(Math.round(total)+"");
+        	projectstockmasterservice.saveorUpdate(pdatas);	
+        }
+   
 	}
 	
 }

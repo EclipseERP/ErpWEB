@@ -32,6 +32,7 @@ private Date dateofrlyreceipt;
 private Date dateofarrivalrlyreceipt;
 private String billno;
 private String billqty;
+private String status;
 
 
 public int getSchUnitRate() {
@@ -204,6 +205,12 @@ public Date getWaybillnodate() {
 }
 public void setWaybillnodate(Date waybillnodate) {
 	this.waybillnodate = waybillnodate;
+}
+public String getStatus() {
+	return status;
+}
+public void setStatus(String status) {
+	this.status = status;
 }
 
 
