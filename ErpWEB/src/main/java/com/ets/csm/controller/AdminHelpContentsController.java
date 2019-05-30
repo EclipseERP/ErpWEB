@@ -27,6 +27,15 @@ public class AdminHelpContentsController {
 		return "/module/admin/settingsMyAccount";
 	}
 	
+/*	
+	@GetMapping("/openTenderList")
+	public String openTenderList() {
+		return "/module/admin/tenderlist";
+	}
+	*/
+	
+	
+	
 	@GetMapping("/addTheme")
 	public String userManagementActionn() {
 		return "/module/admin/themesMyAccount";

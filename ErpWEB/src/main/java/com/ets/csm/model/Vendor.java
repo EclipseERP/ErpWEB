@@ -63,7 +63,7 @@ public class Vendor {
 	private Integer zip;
 	
 	@Column(name = "vendor_code")
-	private int vendorCode;
+	private String vendorCode;
 	
 	@Column(name = "vendor_docID")
 	private int vendorDocID;
@@ -172,11 +172,12 @@ public class Vendor {
 		this.zip = zip;
 	}
 
-	public int getVendorCode() {
+
+	public String getVendorCode() {
 		return vendorCode;
 	}
 
-	public void setVendorCode(int vendorCode) {
+	public void setVendorCode(String vendorCode) {
 		this.vendorCode = vendorCode;
 	}
 

@@ -424,6 +424,10 @@ app.config(function($routeProvider,$httpProvider) {
                 	    templateUrl : '/adminHelp/addNewCakePansLists',
 						controller : 'adminCtrl'
 				   })
+				 /*  .when('/accountsListload', {
+                	    templateUrl : '/adminHelp/openTenderList',
+						controller : 'adminCtrl'
+				   })*/
 				   
 				   .otherwise({
 						redirectTo : '/'
