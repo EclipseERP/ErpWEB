@@ -86,4 +86,13 @@ public class VendorController {
 	
 	
 	
+	
+	@GetMapping("/getVendorCode")
+	public @ResponseBody Object getVendorCode()
+	{
+	    Object  code = vendorService.getAllVendors().size()+1;
+		return code;
+		
+	}
+	
 }

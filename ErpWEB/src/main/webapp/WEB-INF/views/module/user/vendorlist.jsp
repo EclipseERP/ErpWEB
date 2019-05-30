@@ -34,7 +34,8 @@ $(function () {
 										<thead>
 											<tr>
 												<!-- <th width="1">#</th> -->
-												<th>Company Type</th>
+												<th>Vendor Code</th>
+												<th>Company Name</th>
 												<th>Contact Number</th>
 												<th>PAN No.</th>
 												<th>Address</th>
@@ -44,7 +45,8 @@ $(function () {
 										<tbody>
 									
 							<tr ng-repeat="datas in $data | filter : keyword">
-							<td title="'Company Type'">{{datas.companyName}}</td>
+							<td title="'Vendor Code'">{{datas.vendorCode}}</td>
+							<td title="'Company Name'">{{datas.companyName}}</td>
 							<td title="'Contact Number'">{{datas.primaryContact}}</td>
 							<td title="'PAN No.'">{{datas.companyPAN}}</td>
 							<td title="'Address'">{{datas.address1}}</td>

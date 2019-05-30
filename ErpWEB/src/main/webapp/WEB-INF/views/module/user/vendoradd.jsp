@@ -79,24 +79,24 @@
 										<input type="text" ng-model="ven.bankDetailsID" class="form-control" id="af7" placeholder="">
 									</div>									
 								</div>
-								<div class="col-md-4">									
+								<div class="col-md-6">									
 									<div class="form-group">
 										<label for="af8">Vendor Type </label>
 										<input type="text" ng-model="ven.vendorType" class="form-control" id="af8" placeholder="">
 									</div>									
 								</div>
-								<div class="col-md-4">									
+								<div class="col-md-6">									
 									<div class="form-group">
 										<label for="af9">Vendor Code </label>
-										<input type="text" ng-model="ven.vendorCode" class="form-control" id="af9" placeholder="">
+										<input type="text" value="{{vendorCode}}" class="form-control" id="af9" placeholder="">
 									</div>									
 								</div>
-								<div class="col-md-4">									
+								<!-- <div class="col-md-4">									
 									<div class="form-group">
 										<label for="af91">Vendor Document ID</label>
 										<input type="text" ng-model="ven.vendorDocID" class="form-control" id="af91" placeholder="">
 									</div>									
-								</div>
+								</div> -->
 								<div class="col-md-6">									
 									<div class="form-group">
 										<label for="af611">PIN Code </label>
