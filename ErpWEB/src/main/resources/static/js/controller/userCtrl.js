@@ -221,6 +221,47 @@ app
                        */
 					}
 
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					    $scope.accountsLoad = function() {
+
+						$scope.getProjectData();
+						$scope.projectaddshow = false;
+						$scope.turnoverListShow = true;
+					   	$scope.showSupplyDetailslistByItemcode=false;
+						$scope.showProjectDetailslistByLoaNO = false;
+						$scope.pi=false;
+						
+					}
+					
+					
+					    
+					    
+					    
+					    $scope.getAccountsData = function() {
+						$http.get('/accounts/getProjectDetailsForTurnoverPageGroupByProjectCode/').success(function(data) {console.log("Data came ", data)
+							$scope.projectListTable = new NgTableParams({}, {
+							dataset : data
+							});
+                        },
+						  function myError(response) {
+						  alert("Sorry, Some technical error occur");
+						  });
+						}
+					    
+					    
+					    
+					    
+					
 					$scope.projectaddload = function() {
 						loc = "";
 						ei = "";
