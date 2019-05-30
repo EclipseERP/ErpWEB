@@ -33,6 +33,7 @@ private Date dateofarrivalrlyreceipt;
 private String billno;
 private String billqty;
 private String status;
+private String supplieraddress;
 
 
 public int getSchUnitRate() {
@@ -211,6 +212,12 @@ public String getStatus() {
 }
 public void setStatus(String status) {
 	this.status = status;
+}
+public String getSupplieraddress() {
+	return supplieraddress;
+}
+public void setSupplieraddress(String supplieraddress) {
+	this.supplieraddress = supplieraddress;
 }
 
 

@@ -33,6 +33,13 @@ public class VendorServiceImpl implements VendorService {
 	{
 		return vendorRepository.getAllVendors();
 	}
+
+
+	@Override
+	public Vendor getSupplyDetailsBySupplyid(int id) {
+		// TODO Auto-generated method stub
+		return vendorRepository.getVendorByvendorID(id);
+	}
 	
 	
 	

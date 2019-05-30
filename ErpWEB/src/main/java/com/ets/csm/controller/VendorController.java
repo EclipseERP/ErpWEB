@@ -77,5 +77,13 @@ public class VendorController {
 		
 		return vendorService.getAllVendors();
 	}
+	@GetMapping("/getVendorDetailsByVendorid/{vendorid}")
+	public @ResponseBody Vendor getVendorDetailsByVendorid(@PathVariable int vendorid) {
+		
+		
+		return vendorService.getSupplyDetailsBySupplyid(vendorid);
+	}
+	
+	
 	
 }

@@ -12,5 +12,7 @@ public interface VendorService {
 	public List getAllVendors();
 
 	public void saveVendorData(Vendor ven);
+	
+	public Vendor getSupplyDetailsBySupplyid(int id);
 
 }

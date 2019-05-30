@@ -142,7 +142,7 @@ public class ProjectMasterController {
 				pdatas.setIcDetails("");
 				pdatas.setBillNo("");
 				pdatas.setStatus("Pending");
-			
+				
 				projectstockmasterservice.saveorUpdate(pdatas);
 
 
@@ -239,6 +239,7 @@ public class ProjectMasterController {
 			pdto.setBillno(projetctstockmasterlist.get(i).getBillNo());
 			pdto.setBillqty(projetctstockmasterlist.get(i).getBillQuantity());
 			pdto.setStatus(projetctstockmasterlist.get(i).getStatus());
+			pdto.setPlaceofdelivery(projetctstockmasterlist.get(i).getPlaceOfDelivery());
 			projectstockdtolist.add(pdto);
 
 		}
@@ -271,6 +272,9 @@ public class ProjectMasterController {
 	@PostMapping("/updateSupplyData")
 	public @ResponseBody void updateSupplydata(@RequestBody ProjectItemCodeListDTO itemdata)
 	{
+		
+		System.out.println("Item data found "+itemdata);
+		
 		ProjectStockRecordMaster pdatas=projectstockmasterservice.getProjectStockDataByItemdandProjectCode(itemdata.getProjectcode(), itemdata.getItemcode());
 		
 		int totasupplyqty=0;
@@ -286,7 +290,6 @@ public class ProjectMasterController {
 		pdatas.setRate(Integer.parseInt(itemdata.getRate()));
 		pdatas.setIcDetails(itemdata.getDetailsofic());
 		pdatas.setBalanceQuantity(itemdata.getBalanceqty()+"");
-		pdatas.setPlaceOfDelivery(itemdata.getPlaceofdelivery());
 		pdatas.setTruckNumber(itemdata.getTrukno());
 		pdatas.setBillNo(itemdata.getBillno());
 		pdatas.setBillQuantity(itemdata.getBillqty());
@@ -297,7 +300,7 @@ public class ProjectMasterController {
         pdatas.setDateOfSupply(itemdata.getDateofsupply());
         pdatas.setDateofArrivalrelayreceipt(itemdata.getDateofarrivalrlyreceipt());
         pdatas.setDateOfRailwayReceipt(itemdata.getDateofrlyreceipt());
-		
+		pdatas.setPlaceOfDelivery(itemdata.getPlaceofdelivery());
         
         //+++++++++ Supply calculation++++++++++++++++++++++++++        
 
@@ -316,11 +319,10 @@ public class ProjectMasterController {
         	
         	}
         	
-        	
-        	
         	pdatas.setBalanceQuantity(Math.round(total)+"");
-        	projectstockmasterservice.saveorUpdate(pdatas);	
+        	
         }
+        projectstockmasterservice.saveorUpdate(pdatas);	
    
 	}
 	
