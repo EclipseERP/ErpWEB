@@ -637,8 +637,7 @@ app
 							var inb = 1
 							for (var h = 0; h < locations.length; h++) {
 
-								loc = loc
-										.concat("<td><input type=text name=locationvalue"
+								loc = loc.concat("<td><input type=text name=locationvalue"
 												+ " size=4 value=0 onkeyup=calculationItemtotal('"
 												+ icounter
 												+ h
@@ -723,17 +722,13 @@ app
 
 						for (var h = 0; h < locations.length; h++) {
 
-						
-							
 							if (locations[h].value == "") {
 								alert("One of your loaction field is blank !!")
 								flagloc = 0;
 								break;
 							}
 							
-							
-							
-							
+
 							if (locations[h].value != "") {
 
 								projectDetails = projectDetails.concat(inb
@@ -840,7 +835,6 @@ app
 						var units = $("[name=unit")
 						var itemcodeflags = $("[name=itemcodeflag")
 						
-						
 
 						// alert("length of local val " + locval.length)
 
@@ -940,6 +934,11 @@ app
 						$("#btprsave").attr('value', 'Please wait !!');
 						$('#btprsave').prop('disabled', true);
 
+						
+						var state=$("#statewise").val();
+						
+						alert(state)
+						
 						var url = "/project/saveProject/"
 								+ $scope.currentUserName;
 
@@ -957,7 +956,7 @@ app
 								+ "&eiflaglist=" + eiflaglist + "&projectcode="
 								+ projectcode + "&loa_details=" + tendername
 								+ "&projectdetails=" + projectdetails
-								+ "&eiworksvaluelist=" + eiworksvaluelist+"&tendardate="+tendardate+"&itemcodeflagslist="+itemcodeflagslist;
+								+ "&eiworksvaluelist=" + eiworksvaluelist+"&tendardate="+tendardate+"&itemcodeflagslist="+itemcodeflagslist+"&state="+state;
 
 						$http.post(url + params).success(function(data) {
 							$('#btprsave').prop('disabled', false);

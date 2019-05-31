@@ -38,6 +38,9 @@ public class ProjectLocationMaster {
 	
 	@Column(name = "sch_quantity")
 	private String schQuantity;
+	
+	@Column(name="state")
+	private String state;
 
 	public int getId() {
 		return id;
@@ -70,6 +73,15 @@ public class ProjectLocationMaster {
 	public void setProjectcode(String projectcode) {
 		this.projectcode = projectcode;
 	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+	
 	
 /*	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnore

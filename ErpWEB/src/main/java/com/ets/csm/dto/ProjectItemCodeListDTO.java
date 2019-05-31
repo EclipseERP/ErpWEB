@@ -34,6 +34,7 @@ private String billno;
 private String billqty;
 private String status;
 private String supplieraddress;
+private String transporter;
 
 
 public int getSchUnitRate() {
@@ -218,6 +219,12 @@ public String getSupplieraddress() {
 }
 public void setSupplieraddress(String supplieraddress) {
 	this.supplieraddress = supplieraddress;
+}
+public String getTransporter() {
+	return transporter;
+}
+public void setTransporter(String transporter) {
+	this.transporter = transporter;
 }
 
 

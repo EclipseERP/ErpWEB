@@ -65,7 +65,7 @@
 									                </td> 
 												
 												
-												<td> West Bengal</td>
+												<td> {{datas.state}}</td>
 												<td>{{datas.date}} </td>
 												
 <!-- 											    <td>0</td> -->

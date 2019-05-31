@@ -93,7 +93,7 @@ public class ProjectMasterController {
 			@RequestParam("eiflaglist") String[] eiflaglist, @RequestParam("projectcode") String projectcode,
 			@RequestParam("loa_details") String loadetails, @RequestParam("projectdetails") String projectdetails,
 			@RequestParam("tendardate") String tenderdate,
-	        @RequestParam("itemcodeflagslist") String[] itemcodeflagslist)
+	        @RequestParam("itemcodeflagslist") String[] itemcodeflagslist,@RequestParam("state") String state)
 	{
 
 		try {
@@ -107,6 +107,8 @@ public class ProjectMasterController {
 				pdata.setProjectname(projectLocationlist[i]);
 				pdata.setDate(tenderdate);
 				pdata.setTotalqty(totallist[0]);
+				pdata.setState(state);
+				
 
 				projectservice.saveOrUpdate(pdata);
 			}
@@ -143,6 +145,7 @@ public class ProjectMasterController {
 				pdatas.setBillNo("");
 				pdatas.setStatus("Pending");
 				
+				
 				projectstockmasterservice.saveorUpdate(pdatas);
 
 
@@ -157,6 +160,7 @@ public class ProjectMasterController {
 						plocation.setProjectcode(projectcode);
 						plocation.setProjectLocation(projectLocationlist[j]);
 						plocation.setSchQuantity(projectLocationlistSCHQTY[l]);
+						plocation.setState(state);
 						projectlocationservice.saveOrUpdate(plocation);
 					}
 
@@ -301,6 +305,7 @@ public class ProjectMasterController {
         pdatas.setDateofArrivalrelayreceipt(itemdata.getDateofarrivalrlyreceipt());
         pdatas.setDateOfRailwayReceipt(itemdata.getDateofrlyreceipt());
 		pdatas.setPlaceOfDelivery(itemdata.getPlaceofdelivery());
+		pdatas.setTransporter(itemdata.getTransporter());
         
         //+++++++++ Supply calculation++++++++++++++++++++++++++        
 

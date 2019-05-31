@@ -180,9 +180,18 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="af1"> </label> 
-									<select ng-model="custData.referral" class="form-control" ng-options="x.name for x in referralData1 track by x.id" ng-change = "addnewReferral(x)" name="refferalId" id="refferalId"  required>
-									<option ng-click="newCustomerAddModal()" value="">--Transporter Name  --</option>
+								
+
+									<select class="form-control" ng-model="itemdata.transporter">
+									<option value="">---Select Transport---</option>
+									<option value="Ab Transport">Ab Transport </option>
+									<option value="An Transport">An Transport </option>
+									
+									
 									</select>
+									
+									
+									
 								</div>
 							</div>
 							
