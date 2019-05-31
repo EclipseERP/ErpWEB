@@ -23,6 +23,20 @@
 								</div>
                             </div>
                         </div>
+                        
+                        <div class="box-body">
+                            <div class="row">
+								<div class="col-md-3">
+								    <div class="form-group">
+										<label for="af2">Search Turnover</label>
+										<select ng-model="data.itemType" class="form-control select2" style="width: 100%;">
+											<option value="1" ng-click="projectWiseload()" >Project-wise</option>
+											<option value="2" ng-click="stateWiseload()" >State-wise</option>
+											<option value="3" ng-click="yearWiseload()" >Year-wise</option>
+                                        </select>
+									</div>
+							   </div>
+							   
                         <!-- /.box-header -->
                         <div class="box-body">
                             <div class="row">
