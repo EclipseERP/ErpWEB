@@ -120,11 +120,9 @@ public class User {
 	@JsonIgnore
 	private Set<Role> roles;
 
-
 	@OneToMany(mappedBy="user",cascade=CascadeType.ALL)
 	@JsonIgnore
 	private Set<CupCakePricing> cupCakePricing;
-	
 	
 	public Long getId() {
 		return id;

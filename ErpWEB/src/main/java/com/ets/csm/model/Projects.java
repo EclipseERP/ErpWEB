@@ -122,6 +122,9 @@ public class Projects {
     @Column(name="units")
     private String units;
     
+    @Column(name="state")
+    private String state;
+    
     
      
     
@@ -433,7 +436,13 @@ public String getProjectdetails() {
 		this.projectdetails = projectdetails;
 	}
 
+public String getState() {
+		return state;
+	}
 
+	public void setState(String state) {
+		this.state = state;
+	}
 
 public Projects(int id, String project_code, String loa_no, Date creation_date, Date update_date, int company_id,
 			User user, String itemcodes, String ins, String location, String eiwork, String projectname,

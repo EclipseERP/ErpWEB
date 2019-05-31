@@ -400,7 +400,7 @@ app
 								function(data) {
 									
 									console.log("Supply data",data)
-									
+									$scope.vendorDatas=data;
 									
 									$scope.vendorData = new NgTableParams({}, {
 										dataset : data
@@ -637,8 +637,7 @@ app
 							var inb = 1
 							for (var h = 0; h < locations.length; h++) {
 
-								loc = loc
-										.concat("<td><input type=text name=locationvalue"
+								loc = loc.concat("<td><input type=text name=locationvalue"
 												+ " size=4 value=0 onkeyup=calculationItemtotal('"
 												+ icounter
 												+ h
@@ -723,17 +722,13 @@ app
 
 						for (var h = 0; h < locations.length; h++) {
 
-						
-							
 							if (locations[h].value == "") {
 								alert("One of your loaction field is blank !!")
 								flagloc = 0;
 								break;
 							}
 							
-							
-							
-							
+
 							if (locations[h].value != "") {
 
 								projectDetails = projectDetails.concat(inb
@@ -840,7 +835,6 @@ app
 						var units = $("[name=unit")
 						var itemcodeflags = $("[name=itemcodeflag")
 						
-						
 
 						// alert("length of local val " + locval.length)
 
@@ -940,6 +934,11 @@ app
 						$("#btprsave").attr('value', 'Please wait !!');
 						$('#btprsave').prop('disabled', true);
 
+						
+						var state=$("#statewise").val();
+						
+						alert(state)
+						
 						var url = "/project/saveProject/"
 								+ $scope.currentUserName;
 
@@ -957,7 +956,7 @@ app
 								+ "&eiflaglist=" + eiflaglist + "&projectcode="
 								+ projectcode + "&loa_details=" + tendername
 								+ "&projectdetails=" + projectdetails
-								+ "&eiworksvaluelist=" + eiworksvaluelist+"&tendardate="+tendardate+"&itemcodeflagslist="+itemcodeflagslist;
+								+ "&eiworksvaluelist=" + eiworksvaluelist+"&tendardate="+tendardate+"&itemcodeflagslist="+itemcodeflagslist+"&state="+state;
 
 						$http.post(url + params).success(function(data) {
 							$('#btprsave').prop('disabled', false);
@@ -980,8 +979,7 @@ app
                         });
                         }
 					
-					
-					
+
 					$scope.viewItemDetailsProject=function(projectcode,projectlocation,loa)
 					{
 					
@@ -1035,7 +1033,9 @@ app
 					
 					$scope.viewsupplydetails=function(projectcode,projectname,loano,projectlocation,itemname,itemobj)
 					{
-						alert()
+						
+						console.log("Item object ",itemobj);
+						
 						$scope.projectlocation=projectlocation;
 						$scope.itemname=itemname;
 						$scope.showSupplyDetailslistByItemcode=true;
@@ -1043,10 +1043,9 @@ app
 						$scope.projectlistshow=false;
 						$scope.pi=false;
 						$scope.itemdata=itemobj;
-						alert()
+
 						$scope.getvendorData();
-						
-						
+
 						/*
 						
 						$("#supplydetailsupdate").modal({
@@ -1083,61 +1082,50 @@ app
 					
 					
 					$scope.updateSupplyData=function(itemdata)
-					{
-					alert()	
+					{				
+
 					console.log("Itemdata found ",itemdata)
-					
-					 $('#supplysavebutton').prop('disabled', true);
+					$('#supplysavebutton').prop('disabled', true);
 					
 					$http.post('/project/updateSupplyData',itemdata).success(function(data) 
 				   {
-						  
-						        alert("save");
-						        
-						     
-						        $('#supplysavebutton').prop('disabled', false);    
-						        
-						        
-						     console.log(itemdata)
-						     
-						     $scope.itemdata=null;
-						        
-						        
-						        
-								}, function myError(response) {
-									alert("Sorry, Some technical error occur");
-								});
+			
+					 $('#supplysavebutton').prop('disabled', false);    
+					
+					 alert("save");
+
+					}, function myError(response) 
+					{
+					alert("Sorry, Some technical error occur");
+					});
 					
 					}
 					
-				   $scope.calculateSupply=function(itemdata)
-				   {
-				
-				    
-//				   var tempbalanceqty=$("#balanceQty").val();
-//                   var supply=	$("#supplyQTY").val();
-//                   var balanceqty=$("#balanceQty").val();
-//                   
-//                   var total=parseFloat(balanceqty)-parseFloat(supply)
-//                   
-//                   if(total<0)
-//                	   {
-//                	   alert("Invalid quantity check your input !!")
-//                	   $scope.itemdata.balanceqty=tempbalanceqty;
-//                	   }
-//                   
-//                   else if(supply==0)
-//                	   {
-//                	   alert("Invalid quantity check your input !!")
-//                	   
-//                	   }
-//                   
-//                   else
-//                	   {
-//                	   $scope.itemdata.balanceqty=total;
-//                	   }
+					$scope.supplyDetailsFetch=function(itemdata)
+					{
+						var supplyid=$("#vendorid").val();
+						$scope.supplyDetailsWithVendorid(supplyid,itemdata);
+					}
+					
+					
+					$scope.supplyDetailsWithVendorid=function(vendorid,itemdata)
+					{
+						
 
-				   }
+						console.log("Item data ",itemdata)
+						
+						
+					    $http.get('/vendorctrl/getVendorDetailsByVendorid/'+vendorid).success(function(data) 
+								{
+								console.log("Data came ----------", data)
+					
+							    $scope.itemdata.supplieraddress=data.address1;
+
+								}, function myError(response) {
+									alert("Sorry, Some technical error occur");
+								});
+					}
+
 					
 					// *************************************************************************************************************************************
 

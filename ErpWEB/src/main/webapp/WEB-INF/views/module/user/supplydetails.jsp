@@ -86,14 +86,13 @@
 							
 							<div class="col-md-6">
 								<div class="form-group">
+                                    <label for="af1"> </label>
 									
-									<label for="af1"> </label>
-									
-									<select ng-model="custData.referral" class="form-control" ng-options="x.name for x in referralData1 track by x.id" ng-change = "addnewReferral(x)" name="refferalId" id="refferalId"  required>
-									<option ng-click="newCustomerAddModal()" value="">--Supplier Name  --</option>
+									<select id="vendorid" ng-model="itemdata.vendorname" class="form-control" ng-options="x.companyName for x in vendorDatas track by x.id" 
+									ng-change="supplyDetailsFetch(itemdata)"  required>
+									<option  value="">--Supplier Name  --</option>
 									</select>
-									
-									
+																		
 								</div>
 							</div>
 							
@@ -102,7 +101,7 @@
 								<div class="form-group">
 									<label for="af1">Supplier Address </label> 
 									
-									<textarea rows="2" class="form-control"></textarea>
+									<textarea rows="2"  ng-model="itemdata.supplieraddress" class="form-control"></textarea>
 									
 									
 								</div>
@@ -153,8 +152,7 @@
 									<label for="af1">Balance QTY </label> <input type="text"
 										class="form-control"  id="balanceQty"
 										ng-model="itemdata.balanceqty" readonly="readonly" placeholder="">
-										
-					
+															
 										
 								</div>
 							</div>
@@ -178,16 +176,22 @@
 								</div>
 							</div>
 							
-					
-							
-							
-							
+
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="af1"> </label> 
-									<select ng-model="custData.referral" class="form-control" ng-options="x.name for x in referralData1 track by x.id" ng-change = "addnewReferral(x)" name="refferalId" id="refferalId"  required>
-									<option ng-click="newCustomerAddModal()" value="">--Transporter Name  --</option>
+								
+
+									<select class="form-control" ng-model="itemdata.transporter">
+									<option value="">---Select Transport---</option>
+									<option value="Ab Transport">Ab Transport </option>
+									<option value="An Transport">An Transport </option>
+									
+									
 									</select>
+									
+									
+									
 								</div>
 							</div>
 							

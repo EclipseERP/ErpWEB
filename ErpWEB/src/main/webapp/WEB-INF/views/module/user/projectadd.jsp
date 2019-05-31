@@ -40,6 +40,24 @@
 							</div>
 
 
+                            <div class="col-md-12">
+								<div class="form-group">
+									<label for="af3">State  </label>
+									
+									<select class="form-control" ng-model="p.state" id="statewise">
+									
+									<option value="">---Select state----</option>
+									
+									<option value="Bihar"> Bihar  </option>
+									<option value="Jharkhand"> Jharkhand  </option>
+								    <option value="West Bengal"> West Bengal  </option>
+									
+									</select>
+									
+									 
+								</div>
+							</div>
+
 
 							<div class="col-md-12">
 								<div class="form-group">
@@ -248,7 +266,6 @@
 
 </section>
 
-
 <div id="itemModal" class="modal fade">
 	<div class="modal-dialog" style="max-width: 100%" role="document">
 		<div class="modal-content"
@@ -259,7 +276,6 @@
 				<h4 class="modal-title">Items available</h4>
 			</div>
 			<div class="modal-body" style="background-color: white;">
-
 
 				<div class="col-md-12">
 					<button type="button" class="btn btn-box-tool" data-widget="add">

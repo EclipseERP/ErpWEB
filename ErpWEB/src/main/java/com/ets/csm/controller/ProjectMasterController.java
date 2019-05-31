@@ -93,7 +93,7 @@ public class ProjectMasterController {
 			@RequestParam("eiflaglist") String[] eiflaglist, @RequestParam("projectcode") String projectcode,
 			@RequestParam("loa_details") String loadetails, @RequestParam("projectdetails") String projectdetails,
 			@RequestParam("tendardate") String tenderdate,
-	        @RequestParam("itemcodeflagslist") String[] itemcodeflagslist)
+	        @RequestParam("itemcodeflagslist") String[] itemcodeflagslist,@RequestParam("state") String state)
 	{
 
 		try {
@@ -107,6 +107,8 @@ public class ProjectMasterController {
 				pdata.setProjectname(projectLocationlist[i]);
 				pdata.setDate(tenderdate);
 				pdata.setTotalqty(totallist[0]);
+				pdata.setState(state);
+				
 
 				projectservice.saveOrUpdate(pdata);
 			}
@@ -142,7 +144,8 @@ public class ProjectMasterController {
 				pdatas.setIcDetails("");
 				pdatas.setBillNo("");
 				pdatas.setStatus("Pending");
-			
+				
+				
 				projectstockmasterservice.saveorUpdate(pdatas);
 
 
@@ -157,6 +160,7 @@ public class ProjectMasterController {
 						plocation.setProjectcode(projectcode);
 						plocation.setProjectLocation(projectLocationlist[j]);
 						plocation.setSchQuantity(projectLocationlistSCHQTY[l]);
+						plocation.setState(state);
 						projectlocationservice.saveOrUpdate(plocation);
 					}
 
@@ -239,6 +243,7 @@ public class ProjectMasterController {
 			pdto.setBillno(projetctstockmasterlist.get(i).getBillNo());
 			pdto.setBillqty(projetctstockmasterlist.get(i).getBillQuantity());
 			pdto.setStatus(projetctstockmasterlist.get(i).getStatus());
+			pdto.setPlaceofdelivery(projetctstockmasterlist.get(i).getPlaceOfDelivery());
 			projectstockdtolist.add(pdto);
 
 		}
@@ -271,6 +276,9 @@ public class ProjectMasterController {
 	@PostMapping("/updateSupplyData")
 	public @ResponseBody void updateSupplydata(@RequestBody ProjectItemCodeListDTO itemdata)
 	{
+		
+		System.out.println("Item data found "+itemdata);
+		
 		ProjectStockRecordMaster pdatas=projectstockmasterservice.getProjectStockDataByItemdandProjectCode(itemdata.getProjectcode(), itemdata.getItemcode());
 		
 		int totasupplyqty=0;
@@ -286,7 +294,6 @@ public class ProjectMasterController {
 		pdatas.setRate(Integer.parseInt(itemdata.getRate()));
 		pdatas.setIcDetails(itemdata.getDetailsofic());
 		pdatas.setBalanceQuantity(itemdata.getBalanceqty()+"");
-		pdatas.setPlaceOfDelivery(itemdata.getPlaceofdelivery());
 		pdatas.setTruckNumber(itemdata.getTrukno());
 		pdatas.setBillNo(itemdata.getBillno());
 		pdatas.setBillQuantity(itemdata.getBillqty());
@@ -297,7 +304,8 @@ public class ProjectMasterController {
         pdatas.setDateOfSupply(itemdata.getDateofsupply());
         pdatas.setDateofArrivalrelayreceipt(itemdata.getDateofarrivalrlyreceipt());
         pdatas.setDateOfRailwayReceipt(itemdata.getDateofrlyreceipt());
-		
+		pdatas.setPlaceOfDelivery(itemdata.getPlaceofdelivery());
+		pdatas.setTransporter(itemdata.getTransporter());
         
         //+++++++++ Supply calculation++++++++++++++++++++++++++        
 
@@ -316,11 +324,10 @@ public class ProjectMasterController {
         	
         	}
         	
-        	
-        	
         	pdatas.setBalanceQuantity(Math.round(total)+"");
-        	projectstockmasterservice.saveorUpdate(pdatas);	
+        	
         }
+        projectstockmasterservice.saveorUpdate(pdatas);	
    
 	}
 	
