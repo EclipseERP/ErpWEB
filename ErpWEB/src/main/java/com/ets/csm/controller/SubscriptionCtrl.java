@@ -1,6 +1,6 @@
 package com.ets.csm.controller;
 
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
+
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -18,13 +18,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import org.springframework.web.bind.annotation.RequestParam;
-
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.ets.csm.model.Role;
 import com.ets.csm.model.Subscription;
 import com.ets.csm.model.SuperAdminHelpSetting;
@@ -103,7 +99,6 @@ public class SubscriptionCtrl {
 		}
 		   
 		   return returresult;
-
 	}
 
 	//For SignUp page

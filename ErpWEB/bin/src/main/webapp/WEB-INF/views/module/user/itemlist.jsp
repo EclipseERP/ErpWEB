@@ -32,149 +32,47 @@ $(function () {
                         <div class="box-body">
                             <div class="row">
 								<div class="col-md-12">									
-									<table id="dataTableID" class="data-table table table-bordered table-striped table-responsive">
+									<table id="dataTableID" ng-table="rowMaterialData" class="data-table table table-bordered table-striped table-responsive">
 										<thead>
 											<tr>
-												<th width="1">#</th>
-												<th>Name</th>
-												<th>Address</th>
-												<th>City</th>
-												<th>PIN Code</th>
-												<th>Country</th>
-												<th>Action</th>
+												
+												<th>Raw Material</th>
+												<th>Description</th>
+												<th>Unit</th>
+												<th>Quantity</th>
+												<th>Rate</th>
+												<th>GST</th>
+												<th>Total Amount(Rs.)</th>
+												<th>Date of Entry</th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<td>1</td>
-												<td>Lorem ipsum dolor</td>
-												<td> sit amet, consectetur</td>
-												<td>adipisicing</td>
-												<td>elit. Ullam</td>
-												<td>Fuga sunt</td>
-												<td class="action" width="1">
+										
+										
+							<tr ng-repeat="datas in $data | filter : keyword">
+							<td title="'Raw Material'">{{datas.name}}</td>
+							<td title="'Description'">{{datas.descriptionHSNno}}</td>
+							<td title="'Unit'">{{datas.unit}}</td>
+							<td title="'Quantity'">{{datas.qty}}</td>
+							<td title="'Rate'">{{datas.rate}}</td>
+							<td title="'GST'">{{datas.gst}}</td>
+							
+							<td title="'Total Amount(Rs.)'">{{datas.totalAmount}}</td>
+							<td title="'dateofentry'">{{datas.dateOfEntry| date : 'yyyy-MM-dd h:mm a'}}</td>
+						     <td class="action" width="1">
 													<i class="fa fa-eye text-primary" aria-hidden="true"></i>
 													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
 													<i class="fa fa-trash-o text-danger" aria-hidden="true"></i>
 												</td>
-											</tr>
-											<tr>
-												<td>2</td>
-												<td>Lorem ipsum dolor</td>
-												<td> sit amet, consectetur</td>
-												<td>adipisicing</td>
-												<td>elit. Ullam</td>
-												<td>Fuga sunt</td>
-												<td class="action" width="1">
-													<i class="fa fa-eye text-primary" aria-hidden="true"></i>
-													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
-													<i class="fa fa-trash-o text-danger" aria-hidden="true"></i>
-												</td>
-											</tr>
-											<tr>
-												<td>3</td>
-												<td>Lorem ipsum dolor</td>
-												<td> sit amet, consectetur</td>
-												<td>adipisicing</td>
-												<td>elit. Ullam</td>
-												<td>Fuga sunt</td>
-												<td class="action" width="1">
-													<i class="fa fa-eye text-primary" aria-hidden="true"></i>
-													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
-													<i class="fa fa-trash-o text-danger" aria-hidden="true"></i>
-												</td>
-											</tr>
-											<tr>
-												<td>4</td>
-												<td>Lorem ipsum dolor</td>
-												<td> sit amet, consectetur</td>
-												<td>adipisicing</td>
-												<td>elit. Ullam</td>
-												<td>Fuga sunt</td>
-												<td class="action" width="1">
-													<i class="fa fa-eye text-primary" aria-hidden="true"></i>
-													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
-													<i class="fa fa-trash-o text-danger" aria-hidden="true"></i>
-												</td>
-											</tr>
-											<tr>
-												<td>5</td>
-												<td>Lorem ipsum dolor</td>
-												<td> sit amet, consectetur</td>
-												<td>adipisicing</td>
-												<td>elit. Ullam</td>
-												<td>Fuga sunt</td>
-												<td class="action" width="1">
-													<i class="fa fa-eye text-primary" aria-hidden="true"></i>
-													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
-													<i class="fa fa-trash-o text-danger" aria-hidden="true"></i>
-												</td>
-											</tr>
-											<tr>
-												<td>6</td>
-												<td>Lorem ipsum dolor</td>
-												<td> sit amet, consectetur</td>
-												<td>adipisicing</td>
-												<td>elit. Ullam</td>
-												<td>Fuga sunt</td>
-												<td class="action" width="1">
-													<i class="fa fa-eye text-primary" aria-hidden="true"></i>
-													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
-													<i class="fa fa-trash-o text-danger" aria-hidden="true"></i>
-												</td>
-											</tr>
-											<tr>
-												<td>7</td>
-												<td>Lorem ipsum dolor</td>
-												<td> sit amet, consectetur</td>
-												<td>adipisicing</td>
-												<td>elit. Ullam</td>
-												<td>Fuga sunt</td>
-												<td class="action" width="1">
-													<i class="fa fa-eye text-primary" aria-hidden="true"></i>
-													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
-													<i class="fa fa-trash-o text-danger" aria-hidden="true"></i>
-												</td>
-											</tr>
-											<tr>
-												<td>8</td>
-												<td>Lorem ipsum dolor</td>
-												<td> sit amet, consectetur</td>
-												<td>adipisicing</td>
-												<td>elit. Ullam</td>
-												<td>Fuga sunt</td>
-												<td class="action" width="1">
-													<i class="fa fa-eye text-primary" aria-hidden="true"></i>
-													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
-													<i class="fa fa-trash-o text-danger" aria-hidden="true"></i>
-												</td>
-											</tr>
-											<tr>
-												<td>9</td>
-												<td>Lorem ipsum dolor</td>
-												<td> sit amet, consectetur</td>
-												<td>adipisicing</td>
-												<td>elit. Ullam</td>
-												<td>Fuga sunt</td>
-												<td class="action" width="1">
-													<i class="fa fa-eye text-primary" aria-hidden="true"></i>
-													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
-													<i class="fa fa-trash-o text-danger" aria-hidden="true"></i>
-												</td>
-											</tr>
-											<tr>
-												<td>10</td>
-												<td>Lorem ipsum dolor</td>
-												<td> sit amet, consectetur</td>
-												<td>adipisicing</td>
-												<td>elit. Ullam</td>
-												<td>Fuga sunt</td>
-												<td class="action" width="1">
-													<i class="fa fa-eye text-primary" aria-hidden="true"></i>
-													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
-													<i class="fa fa-trash-o text-danger" aria-hidden="true"></i>
-												</td>
-											</tr>
+							
+							
+						</tr>
+										
+										
+										
+										
+										
+											
 										</tbody>
 									</table>									
 								</div>				

@@ -13,7 +13,7 @@
                                  <button type="button" ng-click="itemlistload()" class="btn btn-box-tool" data-widget="back">
 									<i class="fa fa-reply"> </i> Back
 								</button>
-                              
+                     
                             </div>
                         </div>
                         <!-- /.box-header -->

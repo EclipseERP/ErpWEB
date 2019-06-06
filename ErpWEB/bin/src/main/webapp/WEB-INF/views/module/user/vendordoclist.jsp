@@ -39,22 +39,21 @@ $(function () {
 										<thead>
 											<tr>
 												<th width="1">#</th>
-												<th>Name</th>
-												<th>Address</th>
-												<th>City</th>
-												<th>PIN Code</th>
-												<th>Country</th>
-												<th>Action</th>
+												<th>Document Name</th>
+												<th>Document Type</th>
+												<th>Document Code</th>
+												<th>Document URL</th>
+												<th>Date of Upload</th>
 											</tr>
 										</thead>
 										<tbody>
 											<tr>
 												<td>1</td>
-												<td>Lorem ipsum dolor</td>
-												<td> sit amet, consectetur</td>
-												<td>adipisicing</td>
-												<td>elit. Ullam</td>
-												<td>Fuga sunt</td>
+												<td>Material List</td>
+												<td>Materials</td>
+												<td>RW025</td>
+												<td>http://ets-techteam.com/user/?invalidLogin=#/vendorListload</td>
+												<td>01.01.2019</td>
 												<td class="action" width="1">
 													<i class="fa fa-eye text-primary" aria-hidden="true"></i>
 													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
@@ -63,11 +62,11 @@ $(function () {
 											</tr>
 											<tr>
 												<td>2</td>
-												<td>Lorem ipsum dolor</td>
-												<td> sit amet, consectetur</td>
-												<td>adipisicing</td>
-												<td>elit. Ullam</td>
-												<td>Fuga sunt</td>
+												<td>Material List</td>
+												<td>Materials</td>
+												<td>RW025</td>
+												<td>http://ets-techteam.com/user/?invalidLogin=#/vendorListload</td>
+												<td>01.01.2019</td>
 												<td class="action" width="1">
 													<i class="fa fa-eye text-primary" aria-hidden="true"></i>
 													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
@@ -76,11 +75,11 @@ $(function () {
 											</tr>
 											<tr>
 												<td>3</td>
-												<td>Lorem ipsum dolor</td>
-												<td> sit amet, consectetur</td>
-												<td>adipisicing</td>
-												<td>elit. Ullam</td>
-												<td>Fuga sunt</td>
+												<td>Material List</td>
+												<td>Materials</td>
+												<td>RW025</td>
+												<td>http://ets-techteam.com/user/?invalidLogin=#/vendorListload</td>
+												<td>01.01.2019</td>
 												<td class="action" width="1">
 													<i class="fa fa-eye text-primary" aria-hidden="true"></i>
 													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
@@ -89,11 +88,11 @@ $(function () {
 											</tr>
 											<tr>
 												<td>4</td>
-												<td>Lorem ipsum dolor</td>
-												<td> sit amet, consectetur</td>
-												<td>adipisicing</td>
-												<td>elit. Ullam</td>
-												<td>Fuga sunt</td>
+												<td>Material List</td>
+												<td>Materials</td>
+												<td>RW025</td>
+												<td>http://ets-techteam.com/user/?invalidLogin=#/vendorListload</td>
+												<td>01.01.2019</td>
 												<td class="action" width="1">
 													<i class="fa fa-eye text-primary" aria-hidden="true"></i>
 													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
@@ -102,11 +101,11 @@ $(function () {
 											</tr>
 											<tr>
 												<td>5</td>
-												<td>Lorem ipsum dolor</td>
-												<td> sit amet, consectetur</td>
-												<td>adipisicing</td>
-												<td>elit. Ullam</td>
-												<td>Fuga sunt</td>
+												<td>Material List</td>
+												<td>Materials</td>
+												<td>RW025</td>
+												<td>http://ets-techteam.com/user/?invalidLogin=#/vendorListload</td>
+												<td>01.01.2019</td>
 												<td class="action" width="1">
 													<i class="fa fa-eye text-primary" aria-hidden="true"></i>
 													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
@@ -115,11 +114,11 @@ $(function () {
 											</tr>
 											<tr>
 												<td>6</td>
-												<td>Lorem ipsum dolor</td>
-												<td> sit amet, consectetur</td>
-												<td>adipisicing</td>
-												<td>elit. Ullam</td>
-												<td>Fuga sunt</td>
+												<td>Material List</td>
+												<td>Materials</td>
+												<td>RW025</td>
+												<td>http://ets-techteam.com/user/?invalidLogin=#/vendorListload</td>
+												<td>01.01.2019</td>
 												<td class="action" width="1">
 													<i class="fa fa-eye text-primary" aria-hidden="true"></i>
 													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
@@ -128,18 +127,18 @@ $(function () {
 											</tr>
 											<tr>
 												<td>7</td>
-												<td>Lorem ipsum dolor</td>
-												<td> sit amet, consectetur</td>
-												<td>adipisicing</td>
-												<td>elit. Ullam</td>
-												<td>Fuga sunt</td>
+												<td>Material List</td>
+												<td>Materials</td>
+												<td>RW025</td>
+												<td>http://ets-techteam.com/user/?invalidLogin=#/vendorListload</td>
+												<td>01.01.2019</td>
 												<td class="action" width="1">
 													<i class="fa fa-eye text-primary" aria-hidden="true"></i>
 													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
 													<i class="fa fa-trash-o text-danger" aria-hidden="true"></i>
 												</td>
 											</tr>
-											<tr>
+											<!-- <tr>
 												<td>8</td>
 												<td>Lorem ipsum dolor</td>
 												<td> sit amet, consectetur</td>
@@ -177,7 +176,7 @@ $(function () {
 													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
 													<i class="fa fa-trash-o text-danger" aria-hidden="true"></i>
 												</td>
-											</tr>
+											</tr> -->
 										</tbody>
 									</table>									
 								</div>				

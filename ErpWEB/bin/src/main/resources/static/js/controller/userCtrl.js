@@ -7,6 +7,7 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 	  $scope.tirelayers=["1","2","3","4","5"];
 	  $scope.posts=[0,1,2,3,4,5,6,7,8];
 	  $scope.measures=["Please Select","Quantity(Cups)","Weight(Pounds)"];
+	  $scope.projectlistshow = true;
 
 	  
 	  $scope.getCurrentUser = function(){
@@ -49,7 +50,7 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 		    for (var i = 0; i < arrData.length; i++) {
 		        var row = "";
 		        // 2nd loop will extract each column and convert it in string
-				// comma-seprated
+				// comma-separated
 		        for (var index in arrData[i]) {
 		            row += '"' + arrData[i][index] + '",';
 		        }
@@ -116,6 +117,16 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 	  }
 	 
 	  
+	  $scope.submitVendor = function(ven){
+		    alert("aaaaaaaaaaaaaaa");
+	    	console.log("Vendor Data...",ven);
+	    	$http.post('/vendorctrl/addVendor/'+$scope.currentUserName,ven).success(function(data) {
+				/*$scope.backToVenueList();*/
+			}, function myError(response) {
+				alert("Sorry, Some technical error occur");
+			});
+	    }
+	  
 	  //-----------------------Dash board Function-------------------------------------->
 	  
 	  $scope.dashboardFn = function(){
@@ -124,7 +135,7 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 		  $scope.totalOrdersCal();
 		  $scope.totalEventsCal();
 		  $scope.totalAppointmentsCal();
-	  }
+	  };
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //#########################################################################  All JS for ERP Software starts from here #################################################################################################	  
@@ -141,8 +152,28 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 			{
 				$scope.itemaddshow=false;
 				$scope.itemlistshow=true;
+				$scope.getRawMaterialsData();
 			}
-				
+			
+			$scope.projectlistload=function()
+			{
+				$scope.projectaddshow=false;
+				$scope.projectlistshow=true;
+				$scope.getProjectData();
+			}
+			
+			$scope.projectaddload=function()
+			{
+				$scope.projectaddshow=true;
+				$scope.projectlistshow=false;
+			}
+			
+			$scope.itemadd=function()
+			{
+				$scope.itemaddshow=false;
+				$scope.itemaddlistshow=true;
+				$scope.getItemData();
+			}
 			
 			$scope.vendoraddload=function()
 			{
@@ -176,6 +207,141 @@ app.controller('userCtrl', function($scope,$http,$route,NgTableParams,$timeout,$
 				alert()
 			}
 			
+
+			$scope.vendorAdd=function(ven)
+			{
+				alert("aaaaaaaaaaaaaaa");
+		    	console.log("Vendor Data...",ven);
+		    	console.log("Data...",$scope.currentUserName);
+		    	$http.post('/vendorctrl/addVendor/'+$scope.currentUserName,ven).success(function(data) {
+		    		alert("saved")
+				}, function myError(response) {
+					alert("Sorry, Some technical error occur");
+				});
+			}
+
+			
+		    $scope.calculateTotal=function()
+		    {
+		     	var total=0;
+	        	var subtotal=0;
+	        	var qty=$("#qty").val()
+	        	var rate=$("#rate").val();
+	        	subtotal=parseFloat(rate) * parseFloat(qty)
+	        	$("#subtotal").val(subtotal)
+	        	var gstamt=parseFloat(subtotal)* $("#gst").val()/100
+	        	var fianltotal=subtotal+gstamt;
+	        	$("#grandTotal").val(fianltotal)
+		    }
+			
+		    $scope.submitItem=function(raw)
+		    {
+		    	console.log(raw)
+		    	$http.post('/rawMaterials/saveRawMaterial/'+$scope.currentUserName,raw).success(function(data) {
+/*<<<<<<< HEAD*/
+				    alert("save")
+		    		}, function myError(response) {
+/*=======*/
+					/*$scope.backToVenueList();*/
+		    		
+		    		alert("save")
+		    		$scope.itemlistload();
+		    		
+				}, function myError(response) {
+/*>>>>>>> branch 'master' of https://github.com/EclipseERP/ErpWEB.git
+*/					alert("Sorry, Some technical error occur");
+				});
+		    	
+		    }
+		    
+		    
+		    $scope.getRawMaterialsData=function()
+		    {
+		    	       $http.get('/rawMaterials/getRawMaterials/').success(function(data) 
+			  			{
+			  		       console.log("Data came ",data)
+						   $scope.rowMaterialData = new NgTableParams({}, 
+						   { 
+					       dataset : data
+						   });
+							
+						}, function myError(response) {
+							alert("Sorry, Some technical error occur");
+						});
+		    }
+		    
+		    $scope.getProjectData=function()
+		    {
+		    	       $http.get('/project/getProjects/').success(function(data) 
+			  			{
+			  		       console.log("Data came ",data)
+						   $scope.projectListTable = new NgTableParams({}, 
+						   { 
+					       dataset : data
+						   });
+							
+						}, function myError(response) {
+							alert("Sorry, Some technical error occur");
+						});
+		    }
+		    
+		    $scope.getItemData=function()
+		    {
+		    	       $http.get('/itemctrl/getItem/').success(function(data) 
+			  			{
+			  		       console.log("Data came ",data)
+						   $scope.itemData = new NgTableParams({}, 
+						   { 
+					       dataset : data
+						   });
+							
+						}, function myError(response) {
+							alert("Sorry, Some technical error occur");
+						});
+		    }
+		    
+		    $scope.projectAdd=function(p)
+			{
+				alert("aaaaaaaaaaaaaaa");
+		    	console.log("Project Data...",p);
+		    	console.log("Data...",$scope.currentUserName);
+		    	var creationDate=p.creationDate;
+		    	console.log(creationDate);
+	    		
+		    /*	var dateStr= JSON.parse(creationDate);
+		    	console.log(dateStr); */
+		    	
+		    	var date = new Date(creationDate);
+	    		
+	    		p.creationDate=date; 
+	    		console.log(p.creationDate);
+		    	
+		    	$http.post('/project/saveProject/'+ $scope.currentUserName,p).success(function(data) {
+		    		
+		    		
+		    		alert("saved");
+		    		$scope.projectlistload();
+				}, function myError(response) {
+					alert("Sorry, Some technical error occur");
+				});
+			}
+
+		    $scope.itemadd=function()
+		    {
+		    	$http.get('/itemctrl/getItem/').success(function(data) 
+			  			{
+			  		       console.log("Data came ",data)
+						   $scope.addItemData = new NgTableParams({}, 
+						   { 
+					       dataset : data
+						   });
+							
+						}, function myError(response) {
+							alert("Sorry, Some technical error occur");
+						});
+		    	
+		    }
+		    
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //#########################################################################  All JS for ERP Software starts from here #################################################################################################	  
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++		 
