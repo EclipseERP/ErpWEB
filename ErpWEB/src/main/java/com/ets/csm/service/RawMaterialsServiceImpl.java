@@ -19,7 +19,9 @@ public class RawMaterialsServiceImpl implements RawMaterialsService{
 		// TODO Auto-generated method stub
 		rawmaterialrepository.save(raw);
 	}
-
+	
+	
+	
 	
 	@Autowired
 	private RawMaterialsRepository RawMaterialsRepository;
@@ -33,5 +35,20 @@ public class RawMaterialsServiceImpl implements RawMaterialsService{
 	{
 		return rawmaterialrepository.getAllRawMaterials();
 	}
+	
+	
+	
+	@Override
+	public RawMaterials getAllRawMaterialsByItemcode(String itemcode)
+	{
+		return rawmaterialrepository.getAllRawMaterialsByItemcode(itemcode);
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 }

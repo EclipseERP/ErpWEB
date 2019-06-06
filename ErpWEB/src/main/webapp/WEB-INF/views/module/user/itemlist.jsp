@@ -13,7 +13,7 @@ $(function () {
 	});
 });
 </script>
- <section class="content" ng-show="itemlistshow">
+<section class="content" ng-show="itemlistshow">
             <div class="row">
                 <div class="col-md-12">
                     <div class="box box-primary">
@@ -31,63 +31,57 @@ $(function () {
                         <!-- /.box-header -->
                         <div class="box-body">
                             <div class="row">
+                            <input type="text" class="pull-right" placeholder=" search.." ng-model = "keyword">
 								<div class="col-md-12">									
-									<table id="dataTableID" ng-table="rowMaterialData" class="data-table table table-bordered table-striped table-responsive">
+									<table ng-table="rowMaterialData" class="data-table table table-bordered table-striped table-responsive">
 										<thead>
 											<tr>
-												
 												<th>Raw Material</th>
-												<th>Description</th>
+												<!-- <th>Item Code</th> -->
+												<!-- <th>Item Type</th> -->
+											    <th>Item Code</th> 
 												<th>Unit</th>
+												<th>Description</th>
+											<!--<th>Unit</th>
 												<th>Quantity</th>
 												<th>Rate</th>
 												<th>GST</th>
-												<th>Total Amount(Rs.)</th>
+												<th>Total Amount(Rs.)</th>-->
 												<th>Date of Entry</th>
 											</tr>
 										</thead>
 										<tbody>
 										
-										
 							<tr ng-repeat="datas in $data | filter : keyword">
-							<td title="'Raw Material'">{{datas.name}}</td>
-							<td title="'Description'">{{datas.descriptionHSNno}}</td>
-							<td title="'Unit'">{{datas.unit}}</td>
+							<td title="'Item Name'">{{datas.name}}</td>
+							 <td title="'Item Code'">{{datas.itemCode}}</td> 
+							<!-- <td title="'Quantity'">{{datas.qty}}</td> -->
+							<td title="'HSN No.'">{{datas.unit}}</td>
+							<td title="'Description'">{{datas.description}}</td>
+							<!-- <td title="'Description'">{{datas.descriptionHSNno}}</td> -->
+							<!-- <td title="'Unit'">{{datas.unit}}</td>
 							<td title="'Quantity'">{{datas.qty}}</td>
 							<td title="'Rate'">{{datas.rate}}</td>
 							<td title="'GST'">{{datas.gst}}</td>
-							
-							<td title="'Total Amount(Rs.)'">{{datas.totalAmount}}</td>
-							<td title="'dateofentry'">{{datas.dateOfEntry| date : 'yyyy-MM-dd h:mm a'}}</td>
-						     <td class="action" width="1">
+							<td title="'Total Amount(Rs.)'">{{datas.totalAmount}}</td> -->
+							<td title="'Date of Entry'">{{datas.dateOfEntry| date : 'yyyy-MM-dd h:mm a'}}</td>
+						    <td class="action" width="1">
 													<i class="fa fa-eye text-primary" aria-hidden="true"></i>
 													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
 													<i class="fa fa-trash-o text-danger" aria-hidden="true"></i>
 												</td>
 							
-							
 						</tr>
-										
-										
-										
-										
-										
-											
+												
 										</tbody>
 									</table>									
 								</div>				
                             </div>
                         </div>
-						<!--<div class="box-footer" align="right">
-							<button type="submit" class="btn btn-primary pad40L pad40R mrg5L">Submit</button>
-						</div>-->
                     </div>
                 </div>                
             </div>
         </section>
         
      
-        
-        
-      
       <jsp:include page="/WEB-INF/views/module/user/item.jsp" />  

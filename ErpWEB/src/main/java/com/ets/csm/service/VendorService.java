@@ -7,6 +7,12 @@ import com.ets.csm.model.Venue;
 
 public interface VendorService {
 
-	public void saveOrUpdate(Vendor ven);
+	/*public void saveOrUpdate(Vendor ven);*/
+
+	public List getAllVendors();
+
+	public void saveVendorData(Vendor ven);
+	
+	public Vendor getSupplyDetailsBySupplyid(int id);
 
 }

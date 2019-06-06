@@ -11,7 +11,7 @@ $document.ready( function(){
         <section class="content" ng-show="vendorDocaddshow">
             <div class="row">
                 <div class="col-md-12">
-                 <form name="VendorDocForm" class="col-md-12" ng-submit="submitVendorDocForm(vendordoc)">
+                 <form name="VendorDocForm" class="col-md-12" ng-submit="submitVendorDocForm(venData)">
                     <div class="box box-primary">
                         <div class="box-header with-border">
                             <h3 class="box-title">Vendor Document Form</h3>
@@ -28,7 +28,7 @@ $document.ready( function(){
 								<div class="col-md-6">									
 									<div class="form-group">
 										<label for="af1">Document Name </label>
-										<input type="text" class="form-control" id="docname" placeholder="docname" ng-model="vendordoc.name">
+										<input type="text" ng-model="venData.documentName" class="form-control" id="docname" placeholder="docname" ng-model="vendordoc.name">
 									</div>									
 								</div>
 								<div class="col-md-6">									
@@ -48,16 +48,16 @@ $document.ready( function(){
 								<div class="col-md-6">									
 									<div class="form-group">
                                         <label for="datepicker">Date of Upload </label>
-                                        <div class="input-group date">
-                                            <div class="input-group-addon"> <i class="fa fa-calendar"></i> </div>
-                                            <input type="text" class="form-control pull-right" id="Upload_Date" name="upload_date" id="upload_date" required>
+                                        <input type="text" class="form-control" id="turnoverDate" readonly="readonly" placeholder="Date of Entry" datetime-picker="yyyy-MM-dd " size="3" ng-model="venData.dataOfUpload" is-open="ctrl.date.eventTime" /> 									
+										<span class="input-group-btn">
+										<button type="button" class="btn btn-blue" ng-click="ctrl.date.eventTime = true"> <i class="fa fa-calendar"></i>
                                         </div> 
                                     </div>									
 								</div>
 								<div class="col-md-6">									
 									<div class="form-group">
 										<label for="af3">Document Code </label>
-										<input type="text" class="form-control" id="doccode" ng-model="vendordoc.doccode" placeholder="doccode">
+										<input type="text" ng-model="venData.documentCode" class="form-control" id="doccode" placeholder="doccode">
 									</div>									
 								</div>								
 								<div class="col-md-6">									
@@ -65,7 +65,7 @@ $document.ready( function(){
 										<label for="customFile">Document URL </label>
 										<div class="custom-file">							
 											<label class="custom-file-label" for="customFile">Choose file</label>
-											<input type="file" class="custom-file-input" id="customFile">
+											<input type="file" ng-model="venData.documentUrl" class="custom-file-input" id="customFile">
 										</div>
 									</div>									
 								</div>

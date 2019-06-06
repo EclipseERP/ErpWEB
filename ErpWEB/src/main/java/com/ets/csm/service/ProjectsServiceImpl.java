@@ -38,4 +38,16 @@ public class ProjectsServiceImpl implements ProjectsService {
 		projectrepo.delete(project);
 	}
 
+	@Override
+	public List getProjectByProjectcode(String projectcode) {
+		// TODO Auto-generated method stub
+		return projectrepo.getAllProjectsByProjectCode(projectcode);
+	}
+
+	
+	@Override
+	public List getProjectGroupByProjectCode() {
+		// TODO Auto-generated method stub
+		return projectrepo.getAllProjectsGroupByLoaNO();
+	}
 }

@@ -1,5 +1,7 @@
 package com.ets.csm.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +19,7 @@ import com.ets.csm.model.Venue;
 import com.ets.csm.service.UserService;
 import com.ets.csm.service.VendorService;
 import com.ets.csm.service.VenueService;
+import com.ets.csm.util.DateUtility;
 
 @Controller
 @RequestMapping("/vendorctrl")
@@ -60,17 +63,36 @@ public class VendorController {
 		
 	}
 	
-	
-	
 	@PostMapping("/addVendor/{userName}")
 	public @ResponseBody void saveVendor(@RequestBody Vendor ven, @PathVariable String userName) {
 		User user = userService.getUserByUserName(userName);
 		ven.setUser(user);
-		vendorService.saveOrUpdate(ven);
+		vendorService.saveVendorData(ven);
+		
+	}
+	
+	@GetMapping("/getVendorDetails")
+	public @ResponseBody List getVendorList() {
+		
+		
+		return vendorService.getAllVendors();
+	}
+	@GetMapping("/getVendorDetailsByVendorid/{vendorid}")
+	public @ResponseBody Vendor getVendorDetailsByVendorid(@PathVariable int vendorid) {
+		
+		
+		return vendorService.getSupplyDetailsBySupplyid(vendorid);
 	}
 	
 	
 	
 	
+	@GetMapping("/getVendorCode")
+	public @ResponseBody Object getVendorCode()
+	{
+	    Object  code = vendorService.getAllVendors().size()+1;
+		return code;
+		
+	}
 	
 }

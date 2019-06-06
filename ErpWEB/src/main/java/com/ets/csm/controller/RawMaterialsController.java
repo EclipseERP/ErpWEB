@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ets.csm.model.RawMaterials;
@@ -34,12 +34,14 @@ public class RawMaterialsController {
 	RawMaterialsService rawservice;
 	 
 	@PostMapping("/saveRawMaterial/{userName}")
-	public @ResponseBody void saveUser(@RequestBody RawMaterials raw , @PathVariable String userName) 
+	public @ResponseBody void saveUser(@RequestBody RawMaterials raw , @PathVariable String userName,@RequestParam("itemcode") String itemcode) 
 	{
 		User userdetails = userService.getUserByUserName(userName);
 		raw.setUser(userdetails);
 		raw.setDateOfEntry(DateUtility.getCurrentDateWithTime());
 		raw.setDescriptionHSNno("NOT Available");
+		raw.setItemCode(itemcode);
+		
 		rawservice.saveItemData(raw);
 		
 	}
@@ -56,5 +58,21 @@ public class RawMaterialsController {
 	public @ResponseBody List getRawMaterialList() {
 		return rawservice.getAllRawMaterials();
 	}
+	
+	@GetMapping("/getItemCode")
+	public @ResponseBody Object getItemCode()
+	{
+	
+		Object  code=rawservice.getAllRawMaterials().size()+1;
+		return code;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 }

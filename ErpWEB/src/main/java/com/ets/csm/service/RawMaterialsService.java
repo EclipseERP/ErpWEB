@@ -11,4 +11,5 @@ public interface RawMaterialsService {
 	public RawMaterials saveOrUpdate(RawMaterials rm);
 	public void saveItemData(RawMaterials raw);
 	public List getAllRawMaterials();
+	public RawMaterials getAllRawMaterialsByItemcode(String itemcode);
 }

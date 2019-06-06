@@ -24,11 +24,6 @@ import com.ets.csm.util.DefaultHelpSettingsLoader;
 @RequestMapping("/admin")
 public class AdminController {
 	
-	
-	
-	
-	
-	
 	@Autowired
 	private UserService delObj;
 	
@@ -40,7 +35,7 @@ public class AdminController {
 	UserService userService;
 	
 	@GetMapping("/")
-	public String adminM() {
+	public String admin() {
 		
 		return "/module/admin/admin";
 	
@@ -49,7 +44,7 @@ public class AdminController {
 	@GetMapping("/dashboard")
 	public String dashboard() {
 		
-		return "/module/admin/adminDashboard";
+		return "/module/accounts/accountsDashboard";
 	
 	}
 	
@@ -94,8 +89,7 @@ public class AdminController {
 		 return user;
 		}
 	
-	
-	
+
 	/**to edit version of user**/
 	@PostMapping("/updateUserVersion/{userName}/{version}")
 	public @ResponseBody Object updateUserVersion(@PathVariable String userName, @PathVariable String version) {

@@ -39,6 +39,12 @@
 <link rel="stylesheet" href="/css/iCheck/all.css">
 <!-- Text Editor -->
 <link rel="stylesheet" href="/css/text-editor.css">
+
+<link rel="stylesheet" type="text/css" href="/css/dataTables.bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/css/fixedHeader.bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/css/responsive.bootstrap.min.css">
+
+
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -48,6 +54,9 @@
 
 <!-- Google Font -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+
+     
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -57,7 +66,7 @@
         <!-- mini logo for sidebar mini 50x50 pixels --> 
         <span class="logo-mini"><b>PR</b>ENT</span> 
         <!-- logo for regular state and mobile devices --> 
-        <span class="logo-lg"><b>Param</b>Enterprises</span> </a> 
+        <span class="logo-lg" style="size: 3px;"><b>Param</b> Enterprises Pvt. Ltd.</span> </a> 
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top"> 
             <!-- Sidebar toggle button--> 

@@ -19,7 +19,7 @@ $(function () {
                 <div class="col-md-12">
                     <div class="box box-primary">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Vendor document list / Report</h3>
+                            <h3 class="box-title">Vendor Document List / Report</h3>
                             <div class="box-tools pull-right">
                              
                                 
@@ -35,10 +35,9 @@ $(function () {
                         <div class="box-body">
                             <div class="row">
 								<div class="col-md-12">									
-									<table id="dataTableID" class="data-table table table-bordered table-striped table-responsive">
+									<table id="dataTableID" ng-table="vendorDocData" class="data-table table table-bordered table-striped table-responsive">
 										<thead>
 											<tr>
-												<th width="1">#</th>
 												<th>Document Name</th>
 												<th>Document Type</th>
 												<th>Document Code</th>
@@ -47,8 +46,32 @@ $(function () {
 											</tr>
 										</thead>
 										<tbody>
+										
+										
+							<tr ng-repeat="datas in $data | filter : keyword">
+							<td title="'Document Name'">{{datas.documentName}}</td>
+							<td title="'Document Type'">{{datas.documentType}}</td>
+							<td title="'Document Code'">{{datas.documentCode}}</td>
+							<td title="'Document URL'">{{datas.documentUrl}}</td>
+							<td title="'Date of Upload'">{{datas.dataOfUpload}}</td>
+							
+						    <td class="action" width="1">
+													<i class="fa fa-eye text-primary" aria-hidden="true"></i>
+													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
+													<i class="fa fa-trash-o text-danger" aria-hidden="true"></i>
+												</td>
+										
+							</tr>
+										
+										
+						
+										
+										
+										
+										
+										
+										
 											<tr>
-												<td>1</td>
 												<td>Material List</td>
 												<td>Materials</td>
 												<td>RW025</td>
@@ -61,7 +84,6 @@ $(function () {
 												</td>
 											</tr>
 											<tr>
-												<td>2</td>
 												<td>Material List</td>
 												<td>Materials</td>
 												<td>RW025</td>
@@ -74,7 +96,6 @@ $(function () {
 												</td>
 											</tr>
 											<tr>
-												<td>3</td>
 												<td>Material List</td>
 												<td>Materials</td>
 												<td>RW025</td>
@@ -87,7 +108,6 @@ $(function () {
 												</td>
 											</tr>
 											<tr>
-												<td>4</td>
 												<td>Material List</td>
 												<td>Materials</td>
 												<td>RW025</td>
@@ -100,7 +120,6 @@ $(function () {
 												</td>
 											</tr>
 											<tr>
-												<td>5</td>
 												<td>Material List</td>
 												<td>Materials</td>
 												<td>RW025</td>
@@ -113,7 +132,6 @@ $(function () {
 												</td>
 											</tr>
 											<tr>
-												<td>6</td>
 												<td>Material List</td>
 												<td>Materials</td>
 												<td>RW025</td>
@@ -126,7 +144,6 @@ $(function () {
 												</td>
 											</tr>
 											<tr>
-												<td>7</td>
 												<td>Material List</td>
 												<td>Materials</td>
 												<td>RW025</td>
@@ -138,53 +155,13 @@ $(function () {
 													<i class="fa fa-trash-o text-danger" aria-hidden="true"></i>
 												</td>
 											</tr>
-											<!-- <tr>
-												<td>8</td>
-												<td>Lorem ipsum dolor</td>
-												<td> sit amet, consectetur</td>
-												<td>adipisicing</td>
-												<td>elit. Ullam</td>
-												<td>Fuga sunt</td>
-												<td class="action" width="1">
-													<i class="fa fa-eye text-primary" aria-hidden="true"></i>
-													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
-													<i class="fa fa-trash-o text-danger" aria-hidden="true"></i>
-												</td>
-											</tr>
-											<tr>
-												<td>9</td>
-												<td>Lorem ipsum dolor</td>
-												<td> sit amet, consectetur</td>
-												<td>adipisicing</td>
-												<td>elit. Ullam</td>
-												<td>Fuga sunt</td>
-												<td class="action" width="1">
-													<i class="fa fa-eye text-primary" aria-hidden="true"></i>
-													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
-													<i class="fa fa-trash-o text-danger" aria-hidden="true"></i>
-												</td>
-											</tr>
-											<tr>
-												<td>10</td>
-												<td>Lorem ipsum dolor</td>
-												<td> sit amet, consectetur</td>
-												<td>adipisicing</td>
-												<td>elit. Ullam</td>
-												<td>Fuga sunt</td>
-												<td class="action" width="1">
-													<i class="fa fa-eye text-primary" aria-hidden="true"></i>
-													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
-													<i class="fa fa-trash-o text-danger" aria-hidden="true"></i>
-												</td>
-											</tr> -->
+											
+											
 										</tbody>
 									</table>									
 								</div>				
                             </div>
                         </div>
-						<!--<div class="box-footer" align="right">
-							<button type="submit" class="btn btn-primary pad40L pad40R mrg5L">Submit</button>
-						</div>-->
                     </div>
                 </div>                
             </div>

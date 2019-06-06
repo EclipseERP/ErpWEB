@@ -19,11 +19,19 @@ public interface ProjectsRepository extends JpaRepository<Projects, Integer> {
 	@Query("SELECT P FROM Projects P WHERE P.id =:id")
 	public List getAllProjectsByID(@Param ("id") Integer id);
 	
+	@Query("SELECT P FROM Projects P WHERE P.project_code =:project_code")
+	public List getAllProjectsByProjectCode(@Param ("project_code") String project_code);
 	/*
 	@Transactional
 	@Modifying
 	@Query(value="INSERT INTO Projects(id,project_code,loa_no,creation_date,update_date,company_id,user_id) values(:id,:project_code,:loa_no,:creation_date,:update_date,:company_id,:user_id)")
 	public Projects saveProject(@Param("id") int id); */
 	
-
+	@Query("SELECT P from Projects P group by P.loa_no")
+	public List getAllProjectsGroupByLoaNO();
+	
+	
+	
+	
+	
 }

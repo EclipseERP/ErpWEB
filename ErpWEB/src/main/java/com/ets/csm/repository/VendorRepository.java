@@ -10,17 +10,13 @@ import org.springframework.stereotype.Repository;
 import com.ets.csm.model.Cake;
 import com.ets.csm.model.Vendor;
 
-/*public interface VendorRepository extends JpaRepository<Vendor, Integer>{
-	
-	
-	
-
-import org.springframework.stereotype.Repository;
-
-import com.ets.csm.model.Cake;
-import com.ets.csm.model.Vendor;*/
 
 @Repository("vendorRepository")
 public interface VendorRepository extends JpaRepository<Vendor, Integer>{
 
+	@Query("SELECT V FROM Vendor V order by V.id")
+	public List getAllVendors();
+	
+	@Query("SELECT V FROM Vendor V where V.id=:id")
+	public Vendor getVendorByvendorID(@Param ("id") Integer id);
 }
