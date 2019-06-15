@@ -29,10 +29,10 @@
 								<div class="col-md-3">
 								    <div class="form-group">
 										<label for="af2">Search Turnover</label>
-										<select ng-model="data.itemType" class="form-control select2" style="width: 100%;">
-											<option value="1" ng-click="projectWiseload()" >Project-wise</option>
-											<option value="2" ng-click="stateWiseload()" >State-wise</option>
-											<option value="3" ng-click="yearWiseload()" >Year-wise</option>
+										<select ng-model="data.itemType" id="itemType" class="form-control select2" style="width: 100%;">
+											<option value="1"  >Project-wise</option>
+											<option value="2"  >State-wise</option>
+											<option value="3"  >Year-wise</option>
                                         </select>
 									</div>
 							   </div>
@@ -42,7 +42,7 @@
                             <div class="row">
 								
 								
-								             <input type="text" class="pull-right" placeholder=" search.." ng-model = "keyword">
+								             <input type="text" class="pull-right" placeholder=" search.." id="search"  ng-keyup="search()" ng-model = "keyword">
 							<table  ng-table="projectListTable" class="data-table table table-bordered table-striped table-responsive">
 										<thead>
 											<tr>
@@ -79,7 +79,7 @@
 									                </td> 
 												
 												
-												<td> West Bengal</td>
+												<td>{{datas.state}}</td>
 												<td>{{datas.date}} </td>
 												
 <!-- 											    <td>0</td> -->

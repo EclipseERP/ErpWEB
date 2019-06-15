@@ -9,6 +9,9 @@ app
 					$scope.projectId =  $routeParams.projectId;
 					$scope.turnOver = {};
 					$scope.turnOver.project={};
+					$scope.data={};
+					$scope.data.itemType='';
+					$scope.keyword;
 					$scope.refNames = [ "Add New", "Referral A", "Referral B",
 							"Referral C" ];
 					$scope.custDta = {};
@@ -38,6 +41,55 @@ app
 								}, function myError(response) {
 									alert("Sorry, Some technical error occur");
 								});
+					}
+					$scope.search=function(){
+						if(angular.element('#search').val()==''){
+							keyword="none";
+						}else{
+							keyword=angular.element('#search').val();
+							
+							//if(angular.element('#itemType').val()=='3'){
+								
+								//if('/([0-9]+)/g'.test(keyword)){
+									//alert("ddd");
+											$http.get('/project/'+keyword+'/'+$scope.data.itemType).success(function(data) {
+												console.log("Data came ", data)
+												$scope.projectListTable = new NgTableParams(
+														{}, {
+															dataset : data
+														});
+										
+											},
+											function myError(response) {
+												alert("Sorry, Some technical error occur");
+											});
+
+									
+							//}else{
+								//alert("Enter a valid search item");
+								
+							//}
+							//}else{
+								//if(Number.isNaN(keyword)){
+//									$http.get('/project/'+keyword+'/'+$scope.data.itemType).success(function(data) {
+//										console.log("Data came ", data)
+//										$scope.projectListTable = new NgTableParams(
+//												{}, {
+//													dataset : data
+//												});
+//								
+//									},
+//									function myError(response) {
+//										alert("Sorry, Some technical error occur");
+//									});
+
+								//}else{
+									//alert("Enter a valid search item");
+								//}
+							//}
+						}
+
+
 					}
 
 					function JSONToCSVConvertor(JSONData, ReportTitle,
@@ -516,7 +568,7 @@ app
 					}		
 
 					$scope.getProjectData = function() {
-						$http.get('/project/getProjectDetailsGroupByProjectCode/').success(function(data) {
+						$http.get('/project/getProjects').success(function(data) {
 											console.log("Data came ", data)
 											$scope.projectListTable = new NgTableParams(
 													{}, {
@@ -593,10 +645,19 @@ app
 					}
 					$scope.validatePaymentForm = function(){
 						if($scope.turnOver.billPassedDate==null || $scope.turnOver.paymentRecievedDate==null || $scope.turnOver.gst==null || $scope.turnOver.grossAmountExcludinggst==null || $scope.turnOver.checkRecievedAmount==null ){
-							alert("Please enter bill Passed date or Payment recieved date or check recieved amount or amount excluding gst ");
+							alert("Please enter bill Passed date or Payment recieved date or check recieved amount or amount excluding gst");
 							return false;
 						}
+						
 						return true;
+						
+					}
+					$scope.validateNumber=function(event){
+					var text = 	String.fromCharCode(event.keyCode);
+					
+						if((event.keyCode>=65 && event.keyCode<=90) || (event.keyCode>=97&& event.keyCode<=122)){
+							alert("Please entera number");
+						}
 						
 					}
 					$scope.addTurnover = function(){

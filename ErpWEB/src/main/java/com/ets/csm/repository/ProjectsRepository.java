@@ -22,6 +22,11 @@ public interface ProjectsRepository extends JpaRepository<Projects, Integer> {
 	@Query("SELECT P FROM Projects P WHERE P.project_code =:project_code")
 	public List getAllProjectsByProjectCode(@Param ("project_code") String project_code);
 	
+	@Query("SELECT P FROM Projects P WHERE to_char(P.date,'yyyy')=:date")
+	public List<Projects> getAllProjectsByYear(@Param ("date") String date);
+	
+	
+	public List<Projects> findByStateIgnoreCaseStartingWith(String state);
 	/*
 	@Transactional
 	@Modifying

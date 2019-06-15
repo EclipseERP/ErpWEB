@@ -94,7 +94,7 @@
 										<label for="amountExcgst">Gross Amount excluding gst </label>
 										 <div class="input-group date">
                                       
-										<input type="text" class="form-control"  name="grossAmountExcludinggst" ng-blur="calulateAmountWithgst()"  ng-model="turnOver.grossAmountExcludinggst" id="amountExcgst" placeholder="Gross Amount excluding gst">
+										<input type="text" class="form-control"  name="grossAmountExcludinggst" ng-blur="calulateAmountWithgst()"  ng-model="turnOver.grossAmountExcludinggst" ng-keyup="validateNumber($event)" id="amountExcgst" placeholder="Gross Amount excluding gst">
 										</div>
 									</div>									
 								</div>
@@ -118,7 +118,7 @@
 										<label for="RetDeducted">retention deducted </label>
 										 <div class="input-group date">
                                            
-										<input type="text" class="form-control" name="retentionDeducted" ng-blur="calBillsPayable()" ng-model="turnOver.retentionDeducted" id="RetDeducted" placeholder="retention deducted">
+										<input type="text" class="form-control" name="retentionDeducted" ng-blur="calBillsPayable()" ng-model="turnOver.retentionDeducted" id="RetDeducted" ng-keyup="validateNumber($event)" placeholder="retention deducted">
 										</div>
 									</div>									
 								</div>
@@ -127,7 +127,7 @@
 									<div class="form-group">
 										<label for="retentionReleased">retention released </label>
 										 <div class="input-group date">
-                                        <input type="text" class="form-control" name="retensionReleased" ng-model="turnOver.retensionReleased" ng-blur="calBillsPayable()" id="retentionReleased" placeholder="retention released">
+                                        <input type="text" class="form-control" name="retensionReleased" ng-model="turnOver.retensionReleased" ng-blur="calBillsPayable()" id="retentionReleased" ng-keyup="validateNumber($event)" placeholder="retention released">
 										</div>
 									</div>									
 								</div>
@@ -135,7 +135,7 @@
 									<div class="form-group">
 										<label for="billsPayable">bills payable </label>
 										 <div class="input-group date">
-                                        <input type="text" class="form-control" name="billsPayable" ng-model="turnOver.billsPayable" readonly="readonly" id="billsPayable" placeholder="bills payable">
+                                        <input type="text" class="form-control" name="billsPayable" ng-model="turnOver.billsPayable" readonly="readonly" id="billsPayable" ng-keyup="validateNumber($event)" placeholder="bills payable">
 										</div>
 									</div>									
 								</div>
@@ -143,7 +143,7 @@
 									<div class="form-group">
 										<label for="sdDeducted">sd deducted </label>
 										 <div class="input-group date">
-                                      <input type="text" class="form-control" name="sdDeducted" ng-model="turnOver.sdDeducted" id="sdDeducted" placeholder="sd deducted">
+                                      <input type="text" class="form-control" name="sdDeducted" ng-model="turnOver.sdDeducted" id="sdDeducted" ng-keyup="validateNumber($event)" placeholder="sd deducted">
 										</div>
 									</div>									
 								</div>
@@ -151,7 +151,7 @@
 									<div class="form-group">
 										<label for="sdReleased">sd released </label>
 										 <div class="input-group date">
-                                     	<input type="text" class="form-control" name="sdReleased" ng-model="turnOver.sdReleased" id="sdReleased" placeholder="sd released">
+                                     	<input type="text" class="form-control" name="sdReleased" ng-model="turnOver.sdReleased" id="sdReleased" ng-keyup="validateNumber($event)" placeholder="sd released">
 										</div>
 									</div>									
 								</div>
@@ -160,7 +160,7 @@
 										<label for="incomeTax">income tax </label>
 										 <div class="input-group date">
                                            
-										<input type="text" class="form-control" name="incomeTax" ng-model="turnOver.incomeTax" id="incomeTax" placeholder="income tax">
+										<input type="text" class="form-control" name="incomeTax" ng-model="turnOver.incomeTax" id="incomeTax" ng-keyup="validateNumber($event)" placeholder="income tax">
 										</div>
 									</div>									
 								</div>
@@ -168,7 +168,7 @@
 									<div class="form-group">
 										<label for="surcharge">surcharge </label>
 										 <div class="input-group date">
-                            			<input type="text" class="form-control" name="surcharge" ng-model="turnOver.surcharge" id="surcharge" placeholder="surcharge">
+                            			<input type="text" class="form-control" name="surcharge" ng-model="turnOver.surcharge" id="surcharge" ng-keyup="validateNumber($event)" placeholder="surcharge">
 										</div>
 									</div>									
 								</div>
@@ -176,7 +176,7 @@
 									<div class="form-group">
 										<label for="sgsttds">sgst tds </label>
 										 <div class="input-group date">
-                            			<input type="text" class="form-control" name="sgsttds" ng-model="turnOver.sgsttds" id="sgsttds" placeholder="sgst tds">
+                            			<input type="text" class="form-control" name="sgsttds" ng-model="turnOver.sgsttds" ng-keyup="validateNumber($event)" id="sgsttds" placeholder="sgst tds">
 										</div>
 									</div>									
 								</div>
@@ -184,7 +184,7 @@
 									<div class="form-group">
 										<label for="cgsttds">cgst tds </label>
 										 <div class="input-group date">
-                            			<input type="text" class="form-control" name="cgsttds" ng-model="turnOver.cgsttds" id="cgsttds"  placeholder="cgst tds">
+                            			<input type="text" class="form-control" name="cgsttds" ng-keyup="validateNumber($event)" ng-model="turnOver.cgsttds" id="cgsttds"  placeholder="cgst tds">
 										</div>
 									</div>									
 								</div>
@@ -193,7 +193,7 @@
 										<label for="miscchg">misg chg </label>
 										 <div class="input-group date">
                                            
-										<input type="text" class="form-control" name="miscchg" ng-model="turnOver.miscchg" id="miscchg" placeholder="misg chg">
+										<input type="text" class="form-control" name="miscchg" ng-keyup="validateNumber($event)" ng-model="turnOver.miscchg" id="miscchg" placeholder="misg chg">
 										</div>
 									</div>									
 								</div>
@@ -202,7 +202,7 @@
 									<div class="form-group">
 										<label for="miscchgRelease">misg chg release </label>
 										 <div class="input-group date">
-                                    	 <input type="text" class="form-control" name="miscchgRelease" ng-model="turnOver.miscchgRelease" id="miscchgRelease" placeholder="misg chg release">
+                                    	 <input type="text" class="form-control" name="miscchgRelease" ng-keyup="validateNumber($event)" ng-model="turnOver.miscchgRelease" id="miscchgRelease" placeholder="misg chg release">
 										</div>
 									</div>									
 								</div>
@@ -210,7 +210,7 @@
 									<div class="form-group">
 										<label for="sgst">sgst at 6%</label>
 										 <div class="input-group date">
-                                    	<input type="text" class="form-control" name="readonly" readonly="readonly" ng-model="turnOver.sgst" id="sgst" placeholder="sgst at 6%">
+                                    	<input type="text" class="form-control" name="sgst" readonly="readonly" ng-model="turnOver.sgst" id="sgst" placeholder="sgst at 6%">
 										</div>
 									</div>									
 								</div>
@@ -226,7 +226,7 @@
 									<div class="form-group">
 										<label for="cgst">check received</label>
 										 <div class="input-group date">
-                                    	<input type="text" class="form-control" name="checkRecievedAmount"  ng-model="turnOver.checkRecievedAmount" id="checkRecievedAmount" placeholder="checkRecievedAmount">
+                                    	<input type="text" class="form-control" name="checkRecievedAmount"  ng-keyup="validateNumber($event)" ng-model="turnOver.checkRecievedAmount" id="checkRecievedAmount" placeholder="checkRecievedAmount">
 										</div>
 									</div>									
 								</div>

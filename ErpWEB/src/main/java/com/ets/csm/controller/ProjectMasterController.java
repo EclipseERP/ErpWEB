@@ -60,7 +60,22 @@ public class ProjectMasterController {
 	public @ResponseBody List getProjectListByID(int id) {
 		return projectservice.getAllProjectsByID(id);
 	}
-
+	@GetMapping("/{state}/{itemType}")
+	public @ResponseBody List<Projects> getProjectListByState(@PathVariable String state,@PathVariable int itemType) {
+		if(itemType==2&&!"none".equals(state)) {
+			return projectservice.getProjectByState(state);
+		}
+		if(itemType==3 && !"none".equals(state)) {
+			return projectservice.getProjectByYear(state);
+		}
+		if("none".equals(state)) {
+			return projectservice.getAllProjects();
+		}
+		
+		
+		return null;
+	}
+	
 	@GetMapping("/projectListPageload")
 	public String projectlistShow() {
 		return "/module/user/projectlist";
