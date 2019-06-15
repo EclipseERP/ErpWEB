@@ -1,6 +1,7 @@
 package com.ets.csm.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import com.ets.csm.model.User;
 
@@ -22,7 +24,7 @@ public class Projects {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
-	private int id;
+	private Long id;
 
 	@Column(name = "project_code")
 	private String project_code;
@@ -98,6 +100,7 @@ public class Projects {
 	@JoinColumn(name="user_id")
 	private User user;
 	
+	
     @Column(name="itemid")
     private String itemcodes;
     
@@ -109,7 +112,9 @@ public class Projects {
     
     @Column(name="eiwork")
     private String eiwork;
-    
+    @OneToMany(mappedBy="project")
+    @JsonIgnore
+    private List<Payment> payments;
     @Column(name="projectname")
     private String projectname;
     
@@ -329,11 +334,11 @@ public class Projects {
 		this.totalqty = totalqty;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -444,7 +449,19 @@ public String getState() {
 		this.state = state;
 	}
 
-public Projects(int id, String project_code, String loa_no, Date creation_date, Date update_date, int company_id,
+
+
+
+
+public List<Payment> getPayments() {
+		return payments;
+	}
+
+	public void setPayments(List<Payment> payments) {
+		this.payments = payments;
+	}
+
+public Projects(Long id, String project_code, String loa_no, Date creation_date, Date update_date, int company_id,
 			User user, String itemcodes, String ins, String location, String eiwork, String projectname,
 			String projectdetails) {
 		super();

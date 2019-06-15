@@ -371,6 +371,18 @@ app.controller('adminCtrl', function($scope,$http,$route,NgTableParams,$timeout,
 			});
 	}
 	
+	$scope.saveturnover = function(turnover){
+		$http.post('/turnover/saveturnover',turnover).success(function(data) {
+			alert(data);
+			//$scope.viewSubsc();
+//			$scope.subsPlanListShow=true;
+//			$scope.addSubsShow=false;
+//			$scope.editSubsShow=false;
+		}, function myError(response) {
+			alert("Sorry, Some technical error occur");
+		});
+}
+	
 	/****back to Subscription Management***/
 	$scope.backButton = function(){
 		$scope.subsPlanListShow=true;

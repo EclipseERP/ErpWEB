@@ -34,6 +34,7 @@ app.config(function($routeProvider,$httpProvider) {
 						templateUrl : '/admin/userManagement',
 						controller : 'adminCtrl'
 						
+				   
 				   })
 
 				   .when('/subscription', {
@@ -422,6 +423,10 @@ app.config(function($routeProvider,$httpProvider) {
 				   
 				   .when('/addNewCakePansList', {
                 	    templateUrl : '/adminHelp/addNewCakePansLists',
+						controller : 'adminCtrl'
+				   })
+				   .when('/addNewturnover', {
+                	    templateUrl : '/accounts/turnover',
 						controller : 'adminCtrl'
 				   })
 				 /*  .when('/accountsListload', {

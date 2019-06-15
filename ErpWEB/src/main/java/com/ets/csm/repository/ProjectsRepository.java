@@ -21,6 +21,7 @@ public interface ProjectsRepository extends JpaRepository<Projects, Integer> {
 	
 	@Query("SELECT P FROM Projects P WHERE P.project_code =:project_code")
 	public List getAllProjectsByProjectCode(@Param ("project_code") String project_code);
+	
 	/*
 	@Transactional
 	@Modifying

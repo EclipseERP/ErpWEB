@@ -54,11 +54,19 @@
                       
                         <li>
 							<!-- <a href="#projectListload" ng-click="projectlistload()"><i class="fa fa-circle-o"></i> Accounts Turnover</a> -->
-							<a href="#accountsListload" ng-click="accountsLoad()"><i class="fa fa-circle-o"></i> Accounts Turnover</a>
+							<a href="#accountsListload"><i class="fa fa-circle-o"></i> Accounts Turnover</a>
+						</li>
+						<li>
+							<a href="#addNewturnover" ng-click="showAddTurnover()" ><i class="fa fa-circle-o"></i>Add  Payment</a>
 						</li>
     
                     </ul>
                 </li>
+                <li>
+							<a href="#payments">
+								<i class="fa fa-circle-o"></i> Payments
+							</a> 
+				</li>
                 <!--  
                   <li class="treeview">
 					<a href="#">

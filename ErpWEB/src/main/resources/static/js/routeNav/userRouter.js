@@ -96,6 +96,20 @@ app.config(function($routeProvider,$httpProvider) {
 						controller : 'userCtrl'
 				   })
 				   
+				   
+				   .when('/addNewturnover/:project_code', {
+						templateUrl : '/accounts/turnover',
+						controller : 'userCtrl'
+				   })
+				    .when('/payments', {
+						templateUrl : '/accounts/paymentsPage',
+						controller : 'userCtrl'
+				   })
+				   .when('/payments/:projectId', {
+						templateUrl : '/accounts/paymentsPage',
+						controller : 'userCtrl'
+				   })
+				   
 					.otherwise({
 						redirectTo : '/'
 					})

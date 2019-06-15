@@ -16,6 +16,7 @@ app.controller('adminCtrl', function($scope,$http,$route,NgTableParams,$timeout,
 	$scope.units = {};
 	$scope.ingrData = {};
 	$scope.unitData = {};
+	
 	$scope.completeUnit = ["","Weight(Pounds)","Quantity(Cups)"]
 	
 	$scope.getCurrentUser = function(){
@@ -83,6 +84,14 @@ app.controller('adminCtrl', function($scope,$http,$route,NgTableParams,$timeout,
 		
 		});
 	}
+	$scope.showAddTurnover = function(e){
+		
+//		e.preventDefault();
+//		alert($scope.showaddTurnoverPage);
+//		console.log();
+//		$scope.showaddTurnoverPage = true;
+	}
+
 	
 	    $scope.addDeatils = function(user){
 

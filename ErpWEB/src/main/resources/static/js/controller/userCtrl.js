@@ -2,9 +2,13 @@ app
 		.controller(
 				'userCtrl',
 				function($scope, $http, $route, NgTableParams, $timeout,
-						$uibModal, Upload) {
+						$uibModal, Upload,$routeParams) {
 					$scope.customerListView = true;
 					$scope.ReferralListView = true;
+					$scope.projectCode =  $routeParams.project_code;
+					$scope.projectId =  $routeParams.projectId;
+					$scope.turnOver = {};
+					$scope.turnOver.project={};
 					$scope.refNames = [ "Add New", "Referral A", "Referral B",
 							"Referral C" ];
 					$scope.custDta = {};
@@ -351,8 +355,53 @@ app
 								});
 					}
 					
+					$scope.calulatecgst = function(){
+						var amount =    angular.element('#amountExcgst').val();
+				 		var cGstAmount=(6/100)*amount ;
+				 		if(Number.isNaN(cGstAmount)){
+				 			GstAmount=0;
+				 		}
+				 		var roundedValue=Math.round(cGstAmount);
+				 		
+				 		angular.element('#cgst').val(roundedValue);
+				 		angular.element('#sgst').val(roundedValue);
+				 		$scope.turnOver.cgst=roundedValue;
+				 		$scope.turnOver.sgst=roundedValue;
+					}	
+					$scope.calBillsPayable	 = function(){
+				          
+		                var retDeducted =    angular.element('#RetDeducted').val();
+		                var retReleased =    angular.element('#retentionReleased').val();
+						var amount =    angular.element('#amountIncludinggst').val();
+						var deductions = retDeducted - retReleased;
+				 		var billsPayable =  amount - deductions;
+				 		
+				 		if(Number.isNaN(billsPayable)){
+				 			billsPayable=0;
+				 		}
+				 		
+				 		angular.element('#billsPayable').val(billsPayable);
+				 		$scope.turnOver.billsPayable=billsPayable;
+					}	
+					
+					$scope.calulateAmountWithgst = function(){
+					         
+			                var gst =    angular.element('#gst').val();
+							var amount =    angular.element('#amountExcgst').val();
+					 		var GstAmount=((gst/100)+1)*amount ;
+					 		if(Number.isNaN(GstAmount)){
+					 			GstAmount=0;
+					 		}
+					 		var gstIncAmount = Math.round(GstAmount);
+					 		
+					 		angular.element('#amountIncludinggst').val(gstIncAmount);
+					 		$scope.turnOver.grossAmountIncludingGst=gstIncAmount;
+					 		$scope.calBillsPayable();
+					 		$scope.calulatecgst();
+					}
 					
 					
+				
 					
 					$scope.calculateTotal = function() {
 						var total = 0;
@@ -422,8 +471,50 @@ app
 						   alert("Sorry, Some technical error occur");
 						});
 					}
-					
-					
+					$scope.getPaymentsData = function(id) {
+						if(id!=null){
+							
+							$http.get('/accounts/payments/'+parseInt(id)).success(function(data) {
+								console.log("Data came ", data)
+								$scope.projectListTable = new NgTableParams(
+										{}, {
+											dataset : data
+										});
+
+							},
+							function myError(response) {
+								alert("Sorry, Some technical error occur");
+							});
+						}else{
+							$http.get('/accounts/payments').success(function(data) {
+								console.log("Data came ", data)
+								$scope.projectListTable = new NgTableParams(
+										{}, {
+											dataset : data
+										});
+
+							},
+							function myError(response) {
+								alert("Sorry, Some technical error occur");
+							});
+
+						}
+					}
+					$scope.getDeletePaymentsData = function(id) {
+							
+							$http.get('/accounts/payments/delete/'+parseInt(id)).success(function(data) {
+								console.log("Data came ", data)
+								$scope.projectListTable = new NgTableParams(
+										{}, {
+											dataset : data
+										});
+
+							},
+							function myError(response) {
+								alert("Sorry, Some technical error occur");
+							});
+					}		
+
 					$scope.getProjectData = function() {
 						$http.get('/project/getProjectDetailsGroupByProjectCode/').success(function(data) {
 											console.log("Data came ", data)
@@ -436,6 +527,15 @@ app
 										function myError(response) {
 											alert("Sorry, Some technical error occur");
 										});
+					}
+					$scope.getProjectDataByPCode = function(projectCode){
+						$http.get('/project/getProjectDetailsbyProjectCode?projectcode='+projectCode).success(function(data){
+							$scope.turnOver.project = data[0];
+							angular.element('projectCode').val($scope.turnOver.project.project_code);
+							console.log(data[0]);
+						}, function myError(response) {
+							alert("Sorry, Some technical error occur");
+						});
 					}
 
 					$scope.getItemData = function() {
@@ -490,6 +590,30 @@ app
 							alert("Sorry, Some technical error occur");
 						});
 
+					}
+					$scope.validatePaymentForm = function(){
+						if($scope.turnOver.billPassedDate==null || $scope.turnOver.paymentRecievedDate==null || $scope.turnOver.gst==null || $scope.turnOver.grossAmountExcludinggst==null || $scope.turnOver.checkRecievedAmount==null ){
+							alert("Please enter bill Passed date or Payment recieved date or check recieved amount or amount excluding gst ");
+							return false;
+						}
+						return true;
+						
+					}
+					$scope.addTurnover = function(){
+						if($scope.validatePaymentForm()){
+							$http.post("/accounts/saveturnover",$scope.turnOver).success(function(data){
+								alert("Data Saved Successfully!");
+							}, function myError(response) {
+					    		
+					    		$("#processing").fadeOut(2000);
+					    		alert("Sorry, Some technical error occur");
+					    	});
+						}else{
+							alert("Please enter the required fields");
+						}
+						
+						
+						
 					}
 
 					
@@ -1034,7 +1158,7 @@ app
 					$scope.viewsupplydetails=function(projectcode,projectname,loano,projectlocation,itemname,itemobj)
 					{
 						
-						console.log("Item object ",itemobj);
+						console.log("Item object",itemobj);
 						
 						$scope.projectlocation=projectlocation;
 						$scope.itemname=itemname;
