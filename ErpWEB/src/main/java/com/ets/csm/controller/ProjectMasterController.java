@@ -62,6 +62,9 @@ public class ProjectMasterController {
 	}
 	@GetMapping("/{state}/{itemType}")
 	public @ResponseBody List<Projects> getProjectListByState(@PathVariable String state,@PathVariable int itemType) {
+		if(itemType==1&&!"none".equals(state)) {
+			return projectservice.getProjectByLoa(state);
+		}
 		if(itemType==2&&!"none".equals(state)) {
 			return projectservice.getProjectByState(state);
 		}
@@ -78,7 +81,7 @@ public class ProjectMasterController {
 	
 	@GetMapping("/projectListPageload")
 	public String projectlistShow() {
-		return "/module/user/projectlist";
+		return "/module/user/projectList";
 	}
 
 	@GetMapping("/projectPageload")

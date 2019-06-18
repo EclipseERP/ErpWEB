@@ -47,46 +47,65 @@ app
 							keyword="none";
 						}else{
 							keyword=angular.element('#search').val();
-							
-							//if(angular.element('#itemType').val()=='3'){
+				
+						}
+						
+						if(angular.element('#itemType').val()=='3'){
+							var regex = new RegExp('\([0-9]+)');
+							if(regex.test(keyword)){
 								
-								//if('/([0-9]+)/g'.test(keyword)){
-									//alert("ddd");
-											$http.get('/project/'+keyword+'/'+$scope.data.itemType).success(function(data) {
-												console.log("Data came ", data)
-												$scope.projectListTable = new NgTableParams(
-														{}, {
-															dataset : data
-														});
-										
-											},
-											function myError(response) {
-												alert("Sorry, Some technical error occur");
-											});
-
+										$http.get('/project/'+keyword+'/'+angular.element('#itemType').val()).success(function(data) {
+											console.log("Data came ", data)
+											$scope.projectListTable = new NgTableParams(
+													{}, {
+														dataset : data
+													});
 									
-							//}else{
-								//alert("Enter a valid search item");
-								
-							//}
-							//}else{
-								//if(Number.isNaN(keyword)){
-//									$http.get('/project/'+keyword+'/'+$scope.data.itemType).success(function(data) {
-//										console.log("Data came ", data)
-//										$scope.projectListTable = new NgTableParams(
-//												{}, {
-//													dataset : data
-//												});
-//								
-//									},
-//									function myError(response) {
-//										alert("Sorry, Some technical error occur");
-//									});
+										},
+										function myError(response) {
+											alert("Sorry, Some technical error occur");
+										});
 
-								//}else{
-									//alert("Enter a valid search item");
-								//}
-							//}
+								
+						}else{
+							alert("Enter a valid search item");
+							
+						}
+						}else{
+							var regex1 = new RegExp('\([a-zA-z]+)');
+							if(angular.element('#itemType').val()=='2'){
+							if(regex1.test(keyword)){
+								
+								$http.get('/project/'+keyword+'/'+angular.element('#itemType').val()).success(function(data) {
+									console.log("Data came ", data)
+									$scope.projectListTable = new NgTableParams(
+											{}, {
+												dataset : data
+											});
+							
+								},
+								function myError(response) {
+									alert("Sorry, Some technical error occur");
+								});
+
+							}else{
+								alert("Enter a valid search item");
+							}
+							}else{
+
+								$http.get('/project/'+keyword+'/'+angular.element('#itemType').val()).success(function(data) {
+									console.log("Data came ", data)
+									$scope.projectListTable = new NgTableParams(
+											{}, {
+												dataset : data
+											});
+							
+								},
+								function myError(response) {
+									alert("Sorry, Some technical error occur");
+								});
+
+							}
 						}
 
 

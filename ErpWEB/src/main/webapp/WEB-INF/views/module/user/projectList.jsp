@@ -1,6 +1,6 @@
 
  <section class="content" >
-            <div ng-show="projectlistshow" class="row">
+            <div ng-show="projectlistshow" class="row" ng-init="projectlistload()">
                 <div class="col-md-12">
                     <div class="box box-primary">
                         <div class="box-header with-border">
@@ -66,7 +66,7 @@
 												
 												
 												<td> {{datas.state}}</td>
-												<td>{{datas.date}} </td>
+												<td>{{datas.date |  date }} </td>
 												
 <!-- 											    <td>0</td> -->
 <!-- 											      <td>0 </td> -->

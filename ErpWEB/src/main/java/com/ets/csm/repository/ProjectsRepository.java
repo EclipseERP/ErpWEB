@@ -22,9 +22,11 @@ public interface ProjectsRepository extends JpaRepository<Projects, Integer> {
 	@Query("SELECT P FROM Projects P WHERE P.project_code =:project_code")
 	public List getAllProjectsByProjectCode(@Param ("project_code") String project_code);
 	
-	@Query("SELECT P FROM Projects P WHERE to_char(P.date,'yyyy')=:date")
+	@Query("SELECT P FROM Projects P WHERE year(P.date) =:date")
 	public List<Projects> getAllProjectsByYear(@Param ("date") String date);
 	
+	@Query("SELECT P FROM Projects P WHERE P.loano like %:date")
+	public List<Projects> getAllProjectsByLoa(@Param("date")String loa);
 	
 	public List<Projects> findByStateIgnoreCaseStartingWith(String state);
 	/*
@@ -33,7 +35,7 @@ public interface ProjectsRepository extends JpaRepository<Projects, Integer> {
 	@Query(value="INSERT INTO Projects(id,project_code,loa_no,creation_date,update_date,company_id,user_id) values(:id,:project_code,:loa_no,:creation_date,:update_date,:company_id,:user_id)")
 	public Projects saveProject(@Param("id") int id); */
 	
-	@Query("SELECT P from Projects P group by P.loa_no")
+	@Query("SELECT P from Projects P group by P.loano")
 	public List getAllProjectsGroupByLoaNO();
 	
 	

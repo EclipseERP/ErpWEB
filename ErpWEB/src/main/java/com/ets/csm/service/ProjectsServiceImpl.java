@@ -59,7 +59,12 @@ public class ProjectsServiceImpl implements ProjectsService {
 
 	@Override
 	public List<Projects> getProjectByYear(String year) {
-		// TODO Auto-generated method stub
 		return projectrepo.getAllProjectsByYear(year);
+	}
+
+	@Override
+	public List<Projects> getProjectByLoa(String loa) {
+		
+		return projectrepo.getAllProjectsByLoa(loa);
 	}
 }

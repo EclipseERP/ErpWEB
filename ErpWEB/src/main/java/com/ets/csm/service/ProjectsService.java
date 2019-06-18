@@ -14,9 +14,10 @@ public interface ProjectsService {
 	public Projects saveOrUpdate(Projects p);
 	public void removeProject(Projects p);
 	public List getProjectByProjectcode(String projectcode);
-	public List getProjectGroupByProjectCode();
-	public List getProjectByState(String state);
-	public List getProjectByYear(String state);
+	public List<Projects> getProjectGroupByProjectCode();
+	public List<Projects> getProjectByState(String state);
+	public List<Projects> getProjectByYear(String state);
+	public List<Projects> getProjectByLoa(String state);
 	
 	
 }

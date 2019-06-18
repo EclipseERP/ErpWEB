@@ -54,8 +54,8 @@ public class AccountsController {
 	
 	@PostMapping("/saveturnover")
 	@ResponseBody
-	public String saveTurnOver(@RequestBody Payment turnover) {
-		return paymentService.save(turnover);
+	public void saveTurnOver(@RequestBody Payment turnover) {
+		 paymentService.save(turnover);
 	}
 	
 	
