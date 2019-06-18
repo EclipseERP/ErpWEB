@@ -25,8 +25,8 @@ public interface ProjectsRepository extends JpaRepository<Projects, Integer> {
 	@Query("SELECT P FROM Projects P WHERE year(P.date) =:date")
 	public List<Projects> getAllProjectsByYear(@Param ("date") String date);
 	
-	@Query("SELECT P FROM Projects P WHERE P.loano like %:date")
-	public List<Projects> getAllProjectsByLoa(@Param("date")String loa);
+	
+	public List<Projects> findByLoanoIgnoreCaseStartingWith(String loa);
 	
 	public List<Projects> findByStateIgnoreCaseStartingWith(String state);
 	/*

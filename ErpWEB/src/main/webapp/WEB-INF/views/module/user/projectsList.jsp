@@ -80,7 +80,7 @@
 												
 												
 												<td>{{datas.state}}</td>
-												<td>{{datas.date}} </td>
+												<td>{{datas.date |  date:'dd/MM/yyyy'}} </td>
 												
 <!-- 											    <td>0</td> -->
 <!-- 											      <td>0 </td> -->

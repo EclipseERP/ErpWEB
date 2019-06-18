@@ -65,6 +65,6 @@ public class ProjectsServiceImpl implements ProjectsService {
 	@Override
 	public List<Projects> getProjectByLoa(String loa) {
 		
-		return projectrepo.getAllProjectsByLoa(loa);
+		return projectrepo.findByLoanoIgnoreCaseStartingWith(loa);
 	}
 }
