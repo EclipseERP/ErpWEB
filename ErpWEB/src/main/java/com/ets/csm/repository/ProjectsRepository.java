@@ -29,6 +29,8 @@ public interface ProjectsRepository extends JpaRepository<Projects, Integer> {
 	public List<Projects> findByLoanoIgnoreCaseStartingWith(String loa);
 	
 	public List<Projects> findByStateIgnoreCaseStartingWith(String state);
+	
+	public List<Projects> findByLoanoIgnoreCaseContainingOrStateIgnoreCaseContainingOrDateContaining(String loa,String state,String date);
 	/*
 	@Transactional
 	@Modifying

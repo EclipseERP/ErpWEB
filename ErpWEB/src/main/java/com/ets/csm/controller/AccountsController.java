@@ -69,6 +69,11 @@ public class AccountsController {
 		return "/module/user/paymentsList";
 	}
 	
+	@GetMapping("/allPaymentsPage")
+	public String allPaymentsList() {
+		return "/module/user/AllpaymentsList";
+	}
+	
 	@GetMapping("/payments")
 	@ResponseBody
 	public List<Payment> getAllPayments() {

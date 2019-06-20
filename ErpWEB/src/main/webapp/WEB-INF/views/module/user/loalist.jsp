@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<section class="content" >
+<section class="content" ng-init="getProjectDataByProjectCode(project_code)">
             <div class="row">
                 <div class="col-md-12">
                     <div class="box box-primary">
@@ -33,7 +33,7 @@
 											    <th>Project Code</th>												
 												<th>LOA Details</th>
 												<th>Sate</th>
-												<th>Date of Apply </th>
+												<th>Date of Supply </th>
 <!-- 												<th>Total Qty </th> -->
 <!-- 												<th>Supply Qty </th> -->
 <!-- 												<th>Balance Qty </th> -->
@@ -54,7 +54,7 @@
 												</td>
 												    <td >
 							                     
-							                      <a ng-click="viewItemDetailsProject(datas.project_code,datas.projectname,datas.loa_no)" style="cursor:pointer; " > <b>{{datas.projectname}} </b></a>
+							                      <a href="#/project/{{datas.project_code}}/{{datas.projectname}}" style="cursor:pointer; " > <b>{{datas.projectname}} </b></a>
 							                      
 									                </td> 
 									                

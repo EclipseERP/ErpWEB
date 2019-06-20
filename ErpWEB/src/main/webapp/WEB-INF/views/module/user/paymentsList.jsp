@@ -55,21 +55,17 @@
 												
 												</td>
 												    
-									                <td><a ng-click="getProjectDataByProjectCode(datas.project_code,datas.loa_no,datas.date)" style="cursor:pointer; " ><b> </b></a></td>
-									               <td >
-							                     
-							                      {{datas.billNo}}
-							                      
-									                </td> 
+									                <td><a ng-click="getProjectDataByProjectCode(datas.project_code,datas.loa_no,datas.date)" style="cursor:pointer; " ><b> {{datas.billNo}}</b></a></td>
+									               <td >{{datas.billPassedDate | date:'dd/MM/yyyy'}}</td> 
 												
 												
-												<td> {{datas.billPassedDate}}</td>
-												<td>{{datas.paymentRecievedDate}} </td>
+												<td> {{datas.paymentRecievedDate | date:'dd/MM/yyyy'}}</td>
 												<td>{{datas.grossAmountIncludingGst}} </td>
 												<td>{{datas.grossAmountExcludinggst}} </td>
 												<td>{{datas.retentionDeducted}} </td>
 												<td>{{datas.billsPayable}} </td>
 												<td>{{datas.checkRecievedAmount}} </td>
+												
 												<td class="action" width="1">
 <!-- 													<i class="fa fa-eye text-primary" aria-hidden="true"></i> -->
 													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>

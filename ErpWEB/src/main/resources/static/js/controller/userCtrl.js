@@ -6,8 +6,11 @@ app
 					$scope.customerListView = true;
 					$scope.ReferralListView = true;
 					$scope.projectCode =  $routeParams.project_code;
+					$scope.project_code =  $routeParams.projectCode;
+					$scope.locationId =  $routeParams.locationId;
 					$scope.projectId =  $routeParams.projectId;
 					$scope.turnOver = {};
+					$scope.progress=false;
 					$scope.turnOver.project={};
 					$scope.data={};
 					$scope.data.itemType='';
@@ -53,6 +56,7 @@ app
 						if(angular.element('#itemType').val()=='3'){
 							var regex = new RegExp('\([0-9]+)');
 							if(regex.test(keyword)){
+								alert("number");
 								
 										$http.get('/project/'+keyword+'/'+angular.element('#itemType').val()).success(function(data) {
 											console.log("Data came ", data)
@@ -75,6 +79,7 @@ app
 							var regex1 = new RegExp('\([a-zA-z]+)');
 							if(angular.element('#itemType').val()=='2'){
 							if(regex1.test(keyword)){
+								alert("string");
 								
 								$http.get('/project/'+keyword+'/'+angular.element('#itemType').val()).success(function(data) {
 									console.log("Data came ", data)
@@ -92,7 +97,9 @@ app
 								alert("Enter a valid search item");
 							}
 							}else{
-
+								if(angular.element('#itemType').val()=='1'){
+									
+								alert("sdsd");
 								$http.get('/project/'+keyword+'/'+angular.element('#itemType').val()).success(function(data) {
 									console.log("Data came ", data)
 									$scope.projectListTable = new NgTableParams(
@@ -105,12 +112,27 @@ app
 									alert("Sorry, Some technical error occur");
 								});
 
+							}else{
+								console.log(angular.element('#itemType').val());
+								if(angular.element('#itemType').val() == ''){
+									
+									var itemType='0';
+									$http.get('/project/'+keyword+'/'+itemType).success(function(data) {
+										console.log("Data came ", data)
+										$scope.projectListTable = new NgTableParams(
+												{}, {
+													dataset : data
+												});
+								
+									});
+								
+							}
 							}
 						}
 
 
 					}
-
+					}
 					function JSONToCSVConvertor(JSONData, ReportTitle,
 							ShowLabel, Title) {
 						// If JSONData is not an object then JSON.parse will
@@ -1183,15 +1205,37 @@ app
                         });
                         }
 					
-
-					$scope.viewItemDetailsProject=function(projectcode,projectlocation,loa)
+					$scope.fileUpload=function(element){
+						var file = element.files[0];
+						var reader= new FileReader();
+						
+						reader.onloadend  = function(e){
+							
+					//	var data=	e.target.result();
+							angular.element('#fileContent').val(reader.result);
+							$scope.progress=true;
+							
+						}
+//						reader.onloadstart = function(e){
+//							$scope.progress=true;
+//						}
+//						reader.onprogress = function(e){
+//							angular.element('#progress').html("Uploading-------");
+//							
+//						}
+						
+						reader.onerror = error => console.log(error)
+					reader.readAsBinaryString(file);
+						
+					}
+					$scope.viewItemDetailsProject=function(projectcode,projectlocation)
 					{
 					
 	                    $scope.projectlocation=projectlocation;
-	                    $scope.loano=loa;
-	                	$scope.showProjectDetailslistByLoaNO=false;	
-	                	$scope.showSupplyDetailslistByItemcode=false;
-						$scope.pi=true;
+	                   // $scope.loano=loa;
+//	                	$scope.showProjectDetailslistByLoaNO=false;	
+//	                	$scope.showSupplyDetailslistByItemcode=false;
+//						$scope.pi=true;
 						$scope.projectcode=projectcode;
 					
 						$http.post('/project/getProjectItemDetailsByProjectcode?projectcode='+projectcode+"&projectlocation="+projectlocation).success(function(data) 
@@ -1260,7 +1304,7 @@ app
 					}
 					
 					
-					$scope.getProjectDataByProjectCode=function(projectcode,loano,projectdate)
+					$scope.getProjectDataByProjectCode=function(projectcode)
 					{
 					
 					    $http.get('/project/getProjectDetailsbyProjectCode?projectcode='+projectcode).success(function(data) 
@@ -1275,13 +1319,13 @@ app
 									alert("Sorry, Some technical error occur");
 								});
 						
-						$scope.loano=loano;
-						$scope.projectdate=projectdate;
-						$scope.projectcode=projectcode;
-						$scope.showProjectDetailslistByLoaNO=true;
-						$scope.showSupplyDetailslistByItemcode=false;
-						$scope.projectlistshow=false;
-						$scope.pi=false;
+//						$scope.loano=loano;
+//						$scope.projectdate=projectdate;
+//						$scope.projectcode=projectcode;
+//						$scope.showProjectDetailslistByLoaNO=true;
+//						$scope.showSupplyDetailslistByItemcode=false;
+//						$scope.projectlistshow=false;
+//						$scope.pi=false;
 					}
 					
 					

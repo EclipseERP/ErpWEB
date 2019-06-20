@@ -18,6 +18,7 @@ public interface ProjectsService {
 	public List<Projects> getProjectByState(String state);
 	public List<Projects> getProjectByYear(String state);
 	public List<Projects> getProjectByLoa(String state);
+	public List<Projects> getProjectByLoaSateAndYear(String state);
 	
 	
 }

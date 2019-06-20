@@ -67,4 +67,10 @@ public class ProjectsServiceImpl implements ProjectsService {
 		
 		return projectrepo.findByLoanoIgnoreCaseStartingWith(loa);
 	}
+
+	@Override
+	public List<Projects> getProjectByLoaSateAndYear(String state) {
+		
+		return projectrepo.findByLoanoIgnoreCaseContainingOrStateIgnoreCaseContainingOrDateContaining(state,state,state);
+	}
 }
