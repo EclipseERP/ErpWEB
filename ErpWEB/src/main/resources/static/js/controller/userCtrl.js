@@ -6,9 +6,16 @@ app
 					$scope.customerListView = true;
 					$scope.ReferralListView = true;
 					$scope.projectCode =  $routeParams.project_code;
+					$scope.project_code =  $routeParams.projectCode;
+					$scope.locationId =  $routeParams.locationId;
 					$scope.projectId =  $routeParams.projectId;
 					$scope.turnOver = {};
+					$scope.progress=false;
 					$scope.turnOver.project={};
+					$scope.data={};
+					$scope.file={};
+					$scope.data.itemType='';
+					$scope.keyword;
 					$scope.refNames = [ "Add New", "Referral A", "Referral B",
 							"Referral C" ];
 					$scope.custDta = {};
@@ -39,7 +46,94 @@ app
 									alert("Sorry, Some technical error occur");
 								});
 					}
+					$scope.search=function(){
+						if(angular.element('#search').val()==''){
+							keyword="none";
+						}else{
+							keyword=angular.element('#search').val();
+				
+						}
+						
+						if(angular.element('#itemType').val()=='3'){
+							var regex = new RegExp('\([0-9]+)');
+							if(regex.test(keyword)){
+								alert("number");
+								
+										$http.get('/project/'+keyword+'/'+angular.element('#itemType').val()).success(function(data) {
+											console.log("Data came ", data)
+											$scope.projectListTable = new NgTableParams(
+													{}, {
+														dataset : data
+													});
+									
+										},
+										function myError(response) {
+											alert("Sorry, Some technical error occur");
+										});
 
+								
+						}else{
+							alert("Enter a valid search item");
+							
+						}
+						}else{
+							var regex1 = new RegExp('\([a-zA-z]+)');
+							if(angular.element('#itemType').val()=='2'){
+							if(regex1.test(keyword)){
+								alert("string");
+								
+								$http.get('/project/'+keyword+'/'+angular.element('#itemType').val()).success(function(data) {
+									console.log("Data came ", data)
+									$scope.projectListTable = new NgTableParams(
+											{}, {
+												dataset : data
+											});
+							
+								},
+								function myError(response) {
+									alert("Sorry, Some technical error occur");
+								});
+
+							}else{
+								alert("Enter a valid search item");
+							}
+							}else{
+								if(angular.element('#itemType').val()=='1'){
+									
+								alert("sdsd");
+								$http.get('/project/'+keyword+'/'+angular.element('#itemType').val()).success(function(data) {
+									console.log("Data came ", data)
+									$scope.projectListTable = new NgTableParams(
+											{}, {
+												dataset : data
+											});
+							
+								},
+								function myError(response) {
+									alert("Sorry, Some technical error occur");
+								});
+
+							}else{
+								console.log(angular.element('#itemType').val());
+								if(angular.element('#itemType').val() == ''){
+									
+									var itemType='0';
+									$http.get('/project/'+keyword+'/'+itemType).success(function(data) {
+										console.log("Data came ", data)
+										$scope.projectListTable = new NgTableParams(
+												{}, {
+													dataset : data
+												});
+								
+									});
+								
+							}
+							}
+						}
+
+
+					}
+					}
 					function JSONToCSVConvertor(JSONData, ReportTitle,
 							ShowLabel, Title) {
 						// If JSONData is not an object then JSON.parse will
@@ -120,6 +214,23 @@ app
 								}, function myError(response) {
 									alert("Sorry, Some technical error occur");
 								});
+					}
+					$scope.saveDocument = function(){
+						var formData =  new FormData();
+						console.log($scope.file.document);
+						formData.append("document",$scope.file.document);
+						formData.append("documentName",$scope.file.documentName);
+						$http.post("/project/documents",formData,{
+							transformRequest: angular.identity,
+		                    headers : {
+		                        'Content-Type' : undefined
+		                    }}).success(function(data){
+							alert("file uploaded successfully");
+						},
+						
+						function myError(response) {
+							alert("Sorry, Some technical error occur");
+						});
 					}
 
 					$scope.themeFetchByUser = function(id) {
@@ -516,7 +627,7 @@ app
 					}		
 
 					$scope.getProjectData = function() {
-						$http.get('/project/getProjectDetailsGroupByProjectCode/').success(function(data) {
+						$http.get('/project/getProjects').success(function(data) {
 											console.log("Data came ", data)
 											$scope.projectListTable = new NgTableParams(
 													{}, {
@@ -593,10 +704,19 @@ app
 					}
 					$scope.validatePaymentForm = function(){
 						if($scope.turnOver.billPassedDate==null || $scope.turnOver.paymentRecievedDate==null || $scope.turnOver.gst==null || $scope.turnOver.grossAmountExcludinggst==null || $scope.turnOver.checkRecievedAmount==null ){
-							alert("Please enter bill Passed date or Payment recieved date or check recieved amount or amount excluding gst ");
+							alert("Please enter bill Passed date or Payment recieved date or check recieved amount or amount excluding gst");
 							return false;
 						}
+						
 						return true;
+						
+					}
+					$scope.validateNumber=function(event){
+					var text = 	String.fromCharCode(event.keyCode);
+					
+						if((event.keyCode>=65 && event.keyCode<=90) || (event.keyCode>=97&& event.keyCode<=122)){
+							alert("Please entera number");
+						}
 						
 					}
 					$scope.addTurnover = function(){
@@ -834,6 +954,11 @@ app
 
 					$scope.closeItemCart = function() {
 						$scope.itemShow = false;
+					}
+					$scope.uploadFile = function(event){
+						console.log(event.target.files[0]);
+						//angular.element("#fileName").val(fileName);
+						
 					}
 
 					$scope.projectSecondPartshow = function() {
@@ -1094,7 +1219,11 @@ app
 
 					}
 					
-					
+					$scope.save = function(){
+						$http.post('project/document',$scope.file).success(function(data){
+							alert("data saved successfully");
+						});
+					}
 					$scope.exportProjectList = function() {
 					  $http.get('/project/getProjectCode/').success(function(data) {
 					  JSONToCSVConvertor(data, "Details", true,"Project");
@@ -1103,15 +1232,40 @@ app
                         });
                         }
 					
-
-					$scope.viewItemDetailsProject=function(projectcode,projectlocation,loa)
+					$scope.fileUpload=function(element){
+						var file = element.files[0];
+						var reader= new FileReader();
+						
+						reader.onloadend  = function(e){
+							angular.element('#progress').html();
+							
+					//	var data=	e.target.result();
+							angular.element('#fileContent').val(reader.result);
+							
+							
+						}
+						reader.onloadstart = function(e){
+							//angular.element('#progress').html("Uploading----");
+							
+						}
+						reader.onprogress  = function(e){
+							
+						
+									
+								}
+						
+						reader.onerror = error => console.log(error)
+					reader.readAsBinaryString(file);
+						
+					}
+					$scope.viewItemDetailsProject=function(projectcode,projectlocation)
 					{
 					
 	                    $scope.projectlocation=projectlocation;
-	                    $scope.loano=loa;
-	                	$scope.showProjectDetailslistByLoaNO=false;	
-	                	$scope.showSupplyDetailslistByItemcode=false;
-						$scope.pi=true;
+	                   // $scope.loano=loa;
+//	                	$scope.showProjectDetailslistByLoaNO=false;	
+//	                	$scope.showSupplyDetailslistByItemcode=false;
+//						$scope.pi=true;
 						$scope.projectcode=projectcode;
 					
 						$http.post('/project/getProjectItemDetailsByProjectcode?projectcode='+projectcode+"&projectlocation="+projectlocation).success(function(data) 
@@ -1180,7 +1334,7 @@ app
 					}
 					
 					
-					$scope.getProjectDataByProjectCode=function(projectcode,loano,projectdate)
+					$scope.getProjectDataByProjectCode=function(projectcode)
 					{
 					
 					    $http.get('/project/getProjectDetailsbyProjectCode?projectcode='+projectcode).success(function(data) 
@@ -1195,13 +1349,13 @@ app
 									alert("Sorry, Some technical error occur");
 								});
 						
-						$scope.loano=loano;
-						$scope.projectdate=projectdate;
-						$scope.projectcode=projectcode;
-						$scope.showProjectDetailslistByLoaNO=true;
-						$scope.showSupplyDetailslistByItemcode=false;
-						$scope.projectlistshow=false;
-						$scope.pi=false;
+//						$scope.loano=loano;
+//						$scope.projectdate=projectdate;
+//						$scope.projectcode=projectcode;
+//						$scope.showProjectDetailslistByLoaNO=true;
+//						$scope.showSupplyDetailslistByItemcode=false;
+//						$scope.projectlistshow=false;
+//						$scope.pi=false;
 					}
 					
 					

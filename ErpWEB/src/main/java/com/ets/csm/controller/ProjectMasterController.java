@@ -1,9 +1,15 @@
 package com.ets.csm.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.websocket.Decoder.Binary;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,15 +17,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.ets.csm.dto.ProjectItemCodeListDTO;
+import com.ets.csm.model.Document;
 import com.ets.csm.model.ProjectEIWorkMaster;
 import com.ets.csm.model.ProjectLocationMaster;
 import com.ets.csm.model.ProjectStockRecordMaster;
 import com.ets.csm.model.Projects;
 import com.ets.csm.model.RawMaterials;
 import com.ets.csm.model.User;
+import com.ets.csm.service.DocumentService;
 import com.ets.csm.service.ProjectEIWorkMasterService;
 import com.ets.csm.service.ProjectLocationMasterService;
 import com.ets.csm.service.ProjectStockMasterService;
@@ -34,6 +44,9 @@ import com.ets.csm.util.DateUtility;
 public class ProjectMasterController {
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	DocumentService documentService;
 
 	@Autowired
 	ProjectsService projectservice;
@@ -60,10 +73,65 @@ public class ProjectMasterController {
 	public @ResponseBody List getProjectListByID(int id) {
 		return projectservice.getAllProjectsByID(id);
 	}
-
+	
+	@GetMapping("/projectLocationsPage")
+	public String getProjectLocationsPage() {
+		return "/module/user/loalist";
+	}
+	
+	@GetMapping("items/itemsPage")
+	public String getItemsPage() {
+		return "/module/user/itemsList";
+	}
+	
+	@GetMapping("/document")
+	public String getDocumentPage() {
+		return "/module/user/addDocument";
+	}
+	
+	@PostMapping(value="/documents",consumes=MediaType.MULTIPART_FORM_DATA_VALUE)
+	@ResponseBody
+	public void saveDocument(@RequestParam MultipartFile document,@RequestParam String documentName) {
+		 try {
+			documentService.save(document,documentName);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+//	@PostMapping(value="/documents")
+//	@ResponseBody
+//	public void saveDocument(@RequestBody Document document) {
+//		 	documentService.save(document);
+//		
+//	}
+	
+	
+	@GetMapping("/{state}/{itemType}")
+	public @ResponseBody List<Projects> getProjectListByState(@PathVariable String state,@PathVariable int itemType) {
+		if(itemType==1&&!"none".equals(state)) {
+			return projectservice.getProjectByLoa(state);
+		}
+		if(itemType==2&&!"none".equals(state)) {
+			return projectservice.getProjectByState(state);
+		}
+		if(itemType==3 && !"none".equals(state)) {
+			return projectservice.getProjectByYear(state);
+		}
+		if(itemType==0 && !"none".equals(state)) {
+			return projectservice.getProjectByLoaSateAndYear(state);
+		}
+		if("none".equals(state)) {
+			return projectservice.getAllProjects();
+		}
+		
+		
+		return null;
+	}
+	
 	@GetMapping("/projectListPageload")
 	public String projectlistShow() {
-		return "/module/user/projectlist";
+		return "/module/user/projectList";
 	}
 
 	@GetMapping("/projectPageload")
@@ -254,7 +322,7 @@ public class ProjectMasterController {
 	@GetMapping("/getProjectEIWorksDataByProjectcode")
 	public @ResponseBody List getProjectEIWorksDataByProjectcode(@RequestParam("projectcode") String projectcode,@RequestParam("itemcode") String itemcode) {
 
-	return projecteiservice.getProjectEiWorkDetailsByProjectCode(projectcode,itemcode);
+		return projecteiservice.getProjectEiWorkDetailsByProjectCode(projectcode,itemcode);
 	}
 	
 	

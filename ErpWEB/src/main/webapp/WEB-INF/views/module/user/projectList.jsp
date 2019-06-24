@@ -1,6 +1,6 @@
 
  <section class="content" >
-            <div ng-show="projectlistshow" class="row">
+            <div ng-show="projectlistshow" class="row" ng-init="projectlistload()">
                 <div class="col-md-12">
                     <div class="box box-primary">
                         <div class="box-header with-border">
@@ -11,6 +11,11 @@
                                    
                                    <button type="button"  ng-click="projectaddload()" class="btn btn-box-tool" data-widget="add">
 									<i class="fa fa-plus"></i> ADD Project
+									
+								  </button>
+								  
+								  <button type="button"   class="btn btn-box-tool" data-widget="add">
+									<i class="fa fa-plus"></i><a href="#uploadDocument">Upload Document</a> 
 									
 								  </button>
                             		
@@ -37,7 +42,7 @@
 											    <th>Project Code</th>												
 												
 												<th>Sate</th>
-												<th>Date of Apply </th>
+												<th>Date of Supply </th>
 <!-- 												<th>Total Qty </th> -->
 <!-- 												<th>Supply Qty </th> -->
 <!-- 												<th>Balance Qty </th> -->
@@ -57,7 +62,7 @@
 												
 												</td>
 												    
-									                <td><a ng-click="getProjectDataByProjectCode(datas.project_code,datas.loa_no,datas.date)" style="cursor:pointer; " ><b> {{datas.loa_no}}</b></a></td>
+									                <td><a  href="#projects/{{datas.project_code}}" style="cursor:pointer; " ><b> {{datas.loa_no}}</b></a></td>
 									               <td >
 							                     
 							                      {{datas.project_code}}
@@ -66,7 +71,7 @@
 												
 												
 												<td> {{datas.state}}</td>
-												<td>{{datas.date}} </td>
+												<td>{{datas.date |  date:'dd/MM/yyyy' }} </td>
 												
 <!-- 											    <td>0</td> -->
 <!-- 											      <td>0 </td> -->
@@ -99,6 +104,7 @@
 				
 				
 				 <section class="content" ng-show="pi">
+				 
             <div class="row">
                 <div class="col-md-12">
                     <div class="box box-primary">
@@ -522,9 +528,10 @@
         </div>
     </div>
     
-    	 <div ng-show="showProjectDetailslistByLoaNO">
+    	<!--   <div ng-show="showProjectDetailslistByLoaNO">
     	 <jsp:include page="/WEB-INF/views/module/user/loalist.jsp" />
-	    </div> 
+	    </div>
+	    --> 
 	    
 	    
 	     <div ng-show="showSupplyDetailslistByItemcode">

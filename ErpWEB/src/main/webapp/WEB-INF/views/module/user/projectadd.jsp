@@ -62,7 +62,7 @@
 							<div class="col-md-12">
 								<div class="form-group">
 									<label for="af3">LOA Details  </label> <input type="text"
-										class="form-control" ng-model="p.loa_no" id="af3"
+										class="form-control" ng-model="p.loano" id="af3"
 										placeholder="">
 								</div>
 							</div>

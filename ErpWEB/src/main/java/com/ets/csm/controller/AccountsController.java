@@ -54,8 +54,8 @@ public class AccountsController {
 	
 	@PostMapping("/saveturnover")
 	@ResponseBody
-	public String saveTurnOver(@RequestBody Payment turnover) {
-		return paymentService.save(turnover);
+	public void saveTurnOver(@RequestBody Payment turnover) {
+		 paymentService.save(turnover);
 	}
 	
 	
@@ -67,6 +67,11 @@ public class AccountsController {
 	@GetMapping("/paymentsPage")
 	public String paymentsList() {
 		return "/module/user/paymentsList";
+	}
+	
+	@GetMapping("/allPaymentsPage")
+	public String allPaymentsList() {
+		return "/module/user/AllpaymentsList";
 	}
 	
 	@GetMapping("/payments")

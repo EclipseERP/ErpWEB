@@ -102,11 +102,19 @@ app.config(function($routeProvider,$httpProvider) {
 						controller : 'userCtrl'
 				   })
 				    .when('/payments', {
-						templateUrl : '/accounts/paymentsPage',
+						templateUrl : '/accounts/allPaymentsPage',
 						controller : 'userCtrl'
 				   })
 				   .when('/payments/:projectId', {
 						templateUrl : '/accounts/paymentsPage',
+						controller : 'userCtrl'
+				   })
+				   .when('/projects/:projectCode', {
+						templateUrl : '/project/projectLocationsPage',
+						controller : 'userCtrl'
+				   })
+				   .when('/uploadDocument', {
+						templateUrl : '/project/document',
 						controller : 'userCtrl'
 				   })
 				   

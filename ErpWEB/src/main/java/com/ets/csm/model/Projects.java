@@ -30,7 +30,7 @@ public class Projects {
 	private String project_code;
 	
 	@Column(name = "loa_no")
-	private String loa_no;
+	private String loano;
 	
 	@Column(name = "creation_date")
 	private Date creation_date;
@@ -142,11 +142,11 @@ public class Projects {
 	}
 	
 	public String getLOAnumber() {
-		return loa_no;
+		return loano;
 	}
 
 	public void setLOAnumber(String loa_no) {
-		this.loa_no = loa_no;
+		this.loano = loa_no;
 	}
 	
 	public Date getCreationDate() {
@@ -351,11 +351,11 @@ public class Projects {
 	}
 
 	public String getLoa_no() {
-		return loa_no;
+		return loano;
 	}
 
 	public void setLoa_no(String loa_no) {
-		this.loa_no = loa_no;
+		this.loano = loa_no;
 	}
 
 	public Date getCreation_date() {
@@ -467,7 +467,7 @@ public Projects(Long id, String project_code, String loa_no, Date creation_date,
 		super();
 		this.id = id;
 		this.project_code = project_code;
-		this.loa_no = loa_no;
+		this.loano = loa_no;
 		this.creation_date = creation_date;
 		this.update_date = update_date;
 		this.company_id = company_id;

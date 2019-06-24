@@ -14,6 +14,8 @@ app.directive('pwCheck', [function () {
         }
       }
     }]);
+
+
 app.config(function($routeProvider,$httpProvider) {
 	
 	

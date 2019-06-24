@@ -50,4 +50,27 @@ public class ProjectsServiceImpl implements ProjectsService {
 		// TODO Auto-generated method stub
 		return projectrepo.getAllProjectsGroupByLoaNO();
 	}
+
+	@Override
+	public List<Projects> getProjectByState(String state) {
+		
+		return projectrepo.findByStateIgnoreCaseStartingWith(state);
+	}
+
+	@Override
+	public List<Projects> getProjectByYear(String year) {
+		return projectrepo.getAllProjectsByYear(year);
+	}
+
+	@Override
+	public List<Projects> getProjectByLoa(String loa) {
+		
+		return projectrepo.findByLoanoIgnoreCaseStartingWith(loa);
+	}
+
+	@Override
+	public List<Projects> getProjectByLoaSateAndYear(String state) {
+		
+		return projectrepo.findByLoanoIgnoreCaseContainingOrStateIgnoreCaseContainingOrDateContaining(state,state,state);
+	}
 }
