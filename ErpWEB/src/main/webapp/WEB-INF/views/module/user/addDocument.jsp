@@ -4,7 +4,7 @@
 <section class="content" >
 	<div class="row">
 		<div class="col-md-12">
-			<form ng-submit="projectAdd(f)" class="col-md-12" name="ProjectForm" enctype="multipart/formData">
+			<form ng-submit="saveDocument()" class="col-md-12" name="ProjectForm" enctype="multipart/formData">
 				<div class="box box-primary">
 					<div class="box-header with-border">
 						<h3 class="box-title">Upload Document</h3>
@@ -22,7 +22,7 @@
 								<div class="form-group">
 									<label for="af3">Document Name</label>
 									<input type="text"
-										class="form-control" ng-model="f.documentName" no-validate id="af2"
+										class="form-control" ng-model="file.documentName" no-validate id="af2"
 										placeholder="">
 								</div>
 							</div>
@@ -31,19 +31,24 @@
 							<div class="col-md-12">
 								<div class="form-group">
 									<label for="af4">Document  </label>
-									<input type="text"
-										class="form-control"id="fileContent"  ng-model="f.document" id="af3"
-										placeholder="">
-									 <input type="file"
-										class="form-control"  onChange="angular.element(this).scope().fileUpload(this)"  name="file" id="file"  id="af4"
+									
+									 <button class="button"
+										class="form-control"  ngf-select ng-model="file.document"  name="file" id="file"  id="af4"
+										placeholder="">Document</button>
+										<input type="text"
+										class="form-control"id="fileContent"  ng-model="file.document" id="fileName"
 										placeholder="">
 										
 								</div>
 							</div>
+							
+							<div class="box-footer" align="right">
+									<button type="submit" id="btprsave" class="btn btn-primary pad40L pad40R mrg5L">Save project</button>
+							</div>
 							<div class="col-md-12" id="progress">
 								
 							</div>
-
+		
 
 						</div>
 					</div>

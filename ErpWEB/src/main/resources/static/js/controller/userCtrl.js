@@ -13,6 +13,7 @@ app
 					$scope.progress=false;
 					$scope.turnOver.project={};
 					$scope.data={};
+					$scope.file={};
 					$scope.data.itemType='';
 					$scope.keyword;
 					$scope.refNames = [ "Add New", "Referral A", "Referral B",
@@ -213,6 +214,23 @@ app
 								}, function myError(response) {
 									alert("Sorry, Some technical error occur");
 								});
+					}
+					$scope.saveDocument = function(){
+						var formData =  new FormData();
+						console.log($scope.file.document);
+						formData.append("document",$scope.file.document);
+						formData.append("documentName",$scope.file.documentName);
+						$http.post("/project/documents",formData,{
+							transformRequest: angular.identity,
+		                    headers : {
+		                        'Content-Type' : undefined
+		                    }}).success(function(data){
+							alert("file uploaded successfully");
+						},
+						
+						function myError(response) {
+							alert("Sorry, Some technical error occur");
+						});
 					}
 
 					$scope.themeFetchByUser = function(id) {
@@ -937,6 +955,11 @@ app
 					$scope.closeItemCart = function() {
 						$scope.itemShow = false;
 					}
+					$scope.uploadFile = function(event){
+						console.log(event.target.files[0]);
+						//angular.element("#fileName").val(fileName);
+						
+					}
 
 					$scope.projectSecondPartshow = function() {
 
@@ -1196,7 +1219,11 @@ app
 
 					}
 					
-					
+					$scope.save = function(){
+						$http.post('project/document',$scope.file).success(function(data){
+							alert("data saved successfully");
+						});
+					}
 					$scope.exportProjectList = function() {
 					  $http.get('/project/getProjectCode/').success(function(data) {
 					  JSONToCSVConvertor(data, "Details", true,"Project");
@@ -1210,19 +1237,22 @@ app
 						var reader= new FileReader();
 						
 						reader.onloadend  = function(e){
+							angular.element('#progress').html();
 							
 					//	var data=	e.target.result();
 							angular.element('#fileContent').val(reader.result);
-							$scope.progress=true;
+							
 							
 						}
-//						reader.onloadstart = function(e){
-//							$scope.progress=true;
-//						}
-//						reader.onprogress = function(e){
-//							angular.element('#progress').html("Uploading-------");
-//							
-//						}
+						reader.onloadstart = function(e){
+							//angular.element('#progress').html("Uploading----");
+							
+						}
+						reader.onprogress  = function(e){
+							
+						
+									
+								}
 						
 						reader.onerror = error => console.log(error)
 					reader.readAsBinaryString(file);

@@ -42,6 +42,12 @@
 								<i class="fa fa-circle-o"></i> Dashboard
 							</a> 
 						</li>
+						<li>
+							<a href="#">
+								<i class="fa fa-circle-o"></i> Transport
+							</a> 
+						</li>
+						
 						 <li class="treeview">
 					<a href="#">
 						<i class="fa fa-folder"></i>
@@ -110,15 +116,7 @@
                     </ul>
                                         
                 </li>
-                <ul class="treeview-menu">
-                      
-                        <li>
-							<a href="#itemListload" ng-click="itemlistload()">
-								<i class="fa fa-circle-o"></i> Transport
-							</a>
-						</li>
-    
-                    </ul>
+               
                 
    
 				
