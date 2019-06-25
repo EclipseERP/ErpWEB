@@ -1,11 +1,11 @@
 
 <!-- Content Header (Page header) -->
 <!--Form and Application Button-->
-<section class="content" ng-show="projectaddshow">
+<section class="content"  ng-init="projectaddload()">
 	<div class="row">
 		<div class="col-md-12">
 			<form ng-submit="projectAdd(p)" class="col-md-12" name="ProjectForm">
-				<div class="box box-primary">
+				<div class="box box-primary" id="projectAdd" >
 					<div class="box-header with-border">
 						<h3 class="box-title">Project Details Form</h3>
 						<div class="box-tools pull-right">
@@ -16,7 +16,7 @@
 						</div>
 					</div>
 					<!-- /.box-header -->
-					<div ng-show="projectaddFirstPartView" class="box-body">
+					<div  class="box-body">
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
@@ -160,6 +160,9 @@
 					<div class="box-footer" align="left">
 						<a class="btn btn-primary pad40L pad40R mrg5L"
 							ng-click="addItemModal()"> Add Item</a>
+							
+							<a class="btn btn-primary pad40L pad40R mrg5L"
+							ng-click="addTransportModal()"> Add Transport</a>
 
 						<div id="ad_cart" class="form-group input-group-sm"
 							ng-show="itemShow">
@@ -250,7 +253,91 @@
 							</div>
 						</div>
 
+							<div id="ad_cart" class="form-group input-group-sm"
+							ng-show="transportShow">
+							<div class="col-sm-12 ">
 
+								<table class="table" ng-table="transportMenuTable"
+									class="data-table table table-bordered table-striped table-responsive">
+									<thead  class="thead-dark" style="width: 100%">
+										<tr>
+											<th scope="col">Serial No</th>
+											<th scope="col">Transport Id</th>
+											<th scope="col">Transport No</th>
+											
+											<th scope="col">Transport Name</th>
+											<th scope="col">Capacity</th>
+											
+											<th scope="col">Remove</th>
+										</tr>
+									</thead>
+									<tbody id="rowgen">
+
+										
+										<tr align="center"
+											ng-repeat="datas in $data | filter : keyword">
+
+											<td>
+
+												<div>
+													{{$index}}
+												</div>
+											</td>
+																									
+
+											<td>
+
+												<div >
+													<input type="hidden" name="{{p.transport[$index].id}}" ng-model="p.transport[$index].id"value="{{datas.id}}" /> <input type="hidden"
+														name='itemids' value='0' readonly='readonly' />
+												</div>
+
+												<div>
+													<input type="text" name="{{p.transport[$index].transportId}}"  ng-model="p.transport[$index].transportId" class="form-control" readonly value="{{datas.transportId}}" /> 
+												</div>
+
+											</td>
+											<td>
+
+												<div>
+													<input type="text" name='{{p.transport[$index].transportNo}}' ng-model="p.transport[$index].transportNo" class="form-control" readonly value="{{datas.transportNo}}" />
+												</div>
+											</td>
+											
+											<td>
+
+												<div>
+													<input type="text" name='{{p.transport[$index].transportName}}' ng-model="p.transport[$index].transportName" readonly class="form-control" value="{{datas.transportName}}" />
+												</div>
+											</td>
+											<td>
+												<div>
+													<input type="text" name='{{p.transport[$index].capacity}}' ng-model="p.transport[$index].capacity" readonly class="form-control" value="{{datas.capacity}}" />
+												</div>
+
+											</td>
+											
+											<td><img src="/assets/img/del.png" width="20px" height="20px" onclick="removeItem($index,datas.transportId)"  style="cursor:pointer" />
+												</td>
+
+										</tr>
+
+									</tbody>
+									<tfoot>
+										<tr>
+											<td colspan="2"><input type="button"
+												class="btn btn-blue pull-left" ng-click="closeItemCart()"
+												value="close" /></td>
+									</tfoot>
+								</table>
+								<script type="text/javascript">
+									
+								</script>
+
+							</div>
+						</div>
+
+						
 					</div>
 
 
@@ -260,6 +347,7 @@
 						<button type="button" ng-click="saveProject(p)" id="btprsave" class="btn btn-primary pad40L pad40R mrg5L">Save project</button>
 					</div>
 				</div>
+				
 			</form>
 		</div>
 	</div>
@@ -315,6 +403,63 @@
 								<td><a class="btn btn-primary pad40L pad40R mrg5L"
 									ng-click="addItemToProjectCart(datas,$index )"
 									style="cursor: pointer">Add to project</a></td>
+
+							</tr>
+
+
+						</tbody>
+					</table>
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="projectModal" class="modal fade">
+	<div class="modal-dialog" style="max-width: 100%" role="document">
+		<div class="modal-content"
+			style="width: 920px; height: 600px; left: -108px; position: relative; top: -14px;">
+			<div class="modal-header" style="background-color: #bfa8a3">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Transport available</h4>
+			</div>
+			<div class="modal-body" style="background-color: white;" ng-init="getAllTransport()">
+
+				<div class="col-md-12">
+					<button type="button" class="btn btn-box-tool" data-widget="add">
+						<i class="fa fa-plus"></i> Create Transport
+
+					</button>
+					<input type="text" class="pull-right" placeholder=" search.."
+						ng-model="keyword">
+					<table ng-table="transportData"
+					
+						style="width: 100%;">
+						<thead>
+							<tr>
+								<th>Transport Id</th>
+								<th>Transport No</th>
+								
+								<th>Transport Name</th>
+								<th>capacity</th>
+								
+								<th>Add to Project/Tender</th>
+
+							</tr>
+						</thead>
+						<tbody>
+						
+							<tr ng-repeat="datas in $data | filter : keyword">
+								<td>{{datas.transportId}}</td>
+								<td>{{datas.transportNo}}</td>
+								
+								<td><textarea cols="34" rows="1">{{datas.transportName}}</textarea></td>
+								<td>{{datas.capacity}}</td>
+								<td><button class="btn btn-primary pad40L pad40R mrg5L"
+									ng-click="addTransportToProjectCart(datas,$index)"
+									style="cursor: pointer">Add to project</button></td>
 
 							</tr>
 

@@ -10,11 +10,14 @@ app
 					$scope.locationId =  $routeParams.locationId;
 					$scope.projectId =  $routeParams.projectId;
 					$scope.turnOver = {};
+					$scope.p={};
+					$scope.p.transport=[];
 					$scope.progress=false;
 					$scope.turnOver.project={};
 					$scope.data={};
 					$scope.file={};
 					$scope.data.itemType='';
+					$scope.transport={};
 					$scope.keyword;
 					$scope.refNames = [ "Add New", "Referral A", "Referral B",
 							"Referral C" ];
@@ -133,6 +136,29 @@ app
 
 
 					}
+					}
+					$scope.getLastId = function(){
+						$http.get('/transport/getLastId').success(function(data){
+							$scope.transport.transportId='TR00'+data;
+							angular.element('#transportId').val($scope.transport.transportId);
+						},
+						function myError(response) {
+							alert("Sorry, Some technical error occur");
+						});
+					}
+					$scope.addTransport = function(){
+						$http.post('/transport/saveTransport',$scope.transport).success(function(data){
+							alert("Data Saved Successfully");
+						},
+						function myError(response) {
+							alert("Sorry, Some technical error occur");
+						});
+					}
+					$scope.checkValid= function(){
+						alert("in--");
+						if($scope.transport.form.transportNo.$error.required ||$scope.transport.form.transportName.$error.required ||$scope.transport.form.capacity.$error.required){
+							alert("Please enter the required feilds");
+						}
 					}
 					function JSONToCSVConvertor(JSONData, ReportTitle,
 							ShowLabel, Title) {
@@ -852,6 +878,16 @@ app
 							});
 						}
 					}
+					$scope.addTransportModal = function() {
+
+													$scope.transportShow = true;
+
+							$("#projectModal").modal({
+								backdrop : 'static',
+								keyboard : false
+							});
+						}
+					
 
 					// ************************************************************
 					// Item add to project method ends here
@@ -859,6 +895,30 @@ app
 					// ***********************************************************************************************************************************************************
 
 					var icounter = 0;
+					var data = [];
+					$scope.addTransportToProjectCart = function(transportData,indexno){
+						alert("transport added");
+						
+						
+							data.push(transportData);
+							$scope.p.transport=data;
+							console.log(data);
+							$scope.transportMenuTable = new NgTableParams({}, { dataset: data });
+							
+																$scope.transportShow=true;
+//							if (!itemcodearray.includes(itemdata.itemCode)) {
+//								$("#rowgen").append(dynamicdata);
+//								icounter = icounter + 1;
+//							}
+//							if (itemcodearray.includes(itemdata.itemCode)) {
+//								alert("You already added this Item in project ")
+//							}
+							$scope.transportShow=true;
+							//itemcodearray.push(itemdata.itemCode)
+
+						}
+
+					
 					$scope.addItemToProjectCart = function(itemdata, indexno) {
 
 						
@@ -960,6 +1020,25 @@ app
 						//angular.element("#fileName").val(fileName);
 						
 					}
+					$scope.addTransport = function (){
+						$http.post('/transport/saveTransport',$scope.transport).success(function(data){
+							alert("Data Saved Successfully!");
+						},
+						function myerror(){
+							alert("Sorry Some technichal error has occured");
+						});
+					}
+					$scope.getAllTransport = function(){
+						$http.get('/transport/all').success(function(data){
+							$scope.transportData = new NgTableParams({}, 
+									{
+										dataset : data
+									});
+						},
+						function myerror(){
+							alert("some technical error ocurred!")
+						});
+					}
 
 					$scope.projectSecondPartshow = function() {
 
@@ -1017,8 +1096,8 @@ app
 								$scope.projectname = projectDetails;
 								$scope.details = $("#af4").val();
 								$scope.projectdate = $("#tendardate").val();
-
-								$scope.projectaddFirstPartView = false;
+								angular.element("#projectAdd").hide();	
+								//$scope.projectaddFirstPartView = false;
 								$scope.projectaddSecondPartView = true;
 							} else {
 								// Do nothing!

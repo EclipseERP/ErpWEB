@@ -117,7 +117,17 @@ app.config(function($routeProvider,$httpProvider) {
 						templateUrl : '/project/document',
 						controller : 'userCtrl'
 				   })
+				   .when('/transport', {
+						templateUrl : '/transport',
+						controller : 'userCtrl'
+				   })
+				   .when('/addtransport', {
+						templateUrl : '/transport/add',
+						controller : 'userCtrl'
+				   })
 				   
+				   
+
 					.otherwise({
 						redirectTo : '/'
 					})
