@@ -125,6 +125,10 @@ app.config(function($routeProvider,$httpProvider) {
 						templateUrl : '/transport/add',
 						controller : 'userCtrl'
 				   })
+				   .when('/project/:projectCode/:locationId', {
+						templateUrl : '/project/items/itemsPage',
+						controller : 'userCtrl'
+				   })
 				   
 				   
 

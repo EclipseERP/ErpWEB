@@ -73,4 +73,13 @@ public class ProjectsServiceImpl implements ProjectsService {
 		
 		return projectrepo.findByLoanoIgnoreCaseContainingOrStateIgnoreCaseContainingOrDateContaining(state,state,state);
 	}
+
+	@Override
+	public Long findProjectsLastId() {
+		// TODO Auto-generated method stub
+		Projects lastProject =  projectrepo.findFirstByOrderByIdDesc();
+		Long lastId=lastProject.getId()+1L;
+		return lastId;
+		
+	}
 }

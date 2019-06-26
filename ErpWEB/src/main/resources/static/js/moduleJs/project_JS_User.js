@@ -375,7 +375,7 @@ $("#locationadd")
 								.append(
 										" <div id=c"
 												+ counter
-												+ "><input  type=text class=form-control name=locationfield id=af"
+												+ "><input  type=text class=form-control name=locationfield ng-model=p.location["+counter+"].projectLocation id=af"
 												+ counter
 												+ " placeholder='Add location' > <a id=r"
 												+ counter
@@ -391,7 +391,7 @@ $("#locationadd")
 									.append(
 											" <div id=c"
 													+ counter
-													+ "><input  type=text class=form-control name=locationfield id=af"
+													+ "><input  type=text class=form-control ng-model=p.location["+counter+"].projectLocation name=locationfield id=af"
 													+ counter
 													+ " placeholder='Add location' > <a id=r"
 													+ counter

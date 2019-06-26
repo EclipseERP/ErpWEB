@@ -26,6 +26,8 @@ public interface ProjectsRepository extends JpaRepository<Projects, Integer> {
 	public List<Projects> getAllProjectsByYear(@Param ("date") String date);
 	
 	
+	public Projects findFirstByOrderByIdDesc();
+	
 	public List<Projects> findByLoanoIgnoreCaseStartingWith(String loa);
 	
 	public List<Projects> findByStateIgnoreCaseStartingWith(String state);

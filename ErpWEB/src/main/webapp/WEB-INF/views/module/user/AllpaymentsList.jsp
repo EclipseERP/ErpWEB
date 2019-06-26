@@ -13,13 +13,7 @@
 									<i class="fa fa-plus"></i> ADD Project
 									
 								  </button>
-                            		
-                            		
-                            		
-                            		
-                            		
-                            		
-                            			
+                                  			
 								</div>
                             </div>
                         </div>
@@ -91,7 +85,7 @@
 				</section>
 				
 				
-				 <section class="content" ng-show="pi">
+		<!-- 		 <section class="content" ng-show="pi">
             <div class="row">
                 <div class="col-md-12">
                     <div class="box box-primary">
@@ -197,8 +191,8 @@
 				</section>
 				
 				
-				
-			
+	-->			
+<!-- 			
 				
 <div id="eiworkqty" class="modal fade">
     <div class="modal-dialog" style="max-width: 70%"  role="document">
@@ -214,7 +208,7 @@
                 <div class="col-md-12">
                   
                         <!-- /.box-header -->
-                        <div class="box-body">
+                   <!--      <div class="box-body">
                             <div class="row">
 								
 								
@@ -268,8 +262,8 @@
             </div>
         </div>
     </div>
-    
-    
+    -->
+  <!--   
     <div id="supplydetailsupdate" class="modal fade">
     <div class="modal-dialog" style="max-width: 70%"  role="document">
         <div class="modal-content" style="width: 915px;height:100px">
@@ -284,11 +278,11 @@
                 <div class="col-md-12">
                   
                         <!-- /.box-header -->
-                        <div class="box-body">
+          <!--                <div class="box-body">
             <div class="box box-primary">
 			
 					<!-- /.box-header -->
-					<div  class="box-body">
+				<!-- 	<div  class="box-body">
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
@@ -514,18 +508,7 @@
             </div>
         </div>
     </div>
+    -->
     
-    	 <div ng-show="showProjectDetailslistByLoaNO">
-    	 <jsp:include page="/WEB-INF/views/module/user/loalist.jsp" />
-	    </div> 
-	    
-	    
-	     <div ng-show="showSupplyDetailslistByItemcode">
-    	 <jsp:include page="/WEB-INF/views/module/user/supplydetails.jsp" />
-	    </div>   
-    
-    
-	<jsp:include page="/WEB-INF/views/module/user/projectadd.jsp" />
-	
 	
 				

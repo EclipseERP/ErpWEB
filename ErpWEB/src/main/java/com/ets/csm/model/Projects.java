@@ -3,6 +3,7 @@ package com.ets.csm.model;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -23,9 +26,15 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Projects {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id")
+	@Column(name = "project_id")
 	private Long id;
-
+	@ManyToMany(cascade=CascadeType.ALL)
+	@JoinTable(name="project_transport",
+				joinColumns={@JoinColumn(name="project_id")},
+				inverseJoinColumns={@JoinColumn(name="transport_id")})
+	
+	@JsonIgnore
+	private List<Transport> transports;
 	@Column(name = "project_code")
 	private String project_code;
 	
@@ -41,6 +50,8 @@ public class Projects {
 	@Column(name = "company_id")
 	private int company_id;
 	
+	
+
 	@Column(name = "sch_unit_rate")
 	private int schUnitRate;
 
@@ -459,6 +470,21 @@ public List<Payment> getPayments() {
 
 	public void setPayments(List<Payment> payments) {
 		this.payments = payments;
+	}
+	public List<Transport> getTransports() {
+		return transports;
+	}
+
+	public void setTransports(List<Transport> transports) {
+		this.transports = transports;
+	}
+
+	public String getLoano() {
+		return loano;
+	}
+
+	public void setLoano(String loano) {
+		this.loano = loano;
 	}
 
 public Projects(Long id, String project_code, String loa_no, Date creation_date, Date update_date, int company_id,

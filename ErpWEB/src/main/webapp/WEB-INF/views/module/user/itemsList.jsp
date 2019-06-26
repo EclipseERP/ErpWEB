@@ -13,7 +13,7 @@ $(function () {
 	});
 });
 </script>
-	 <section class="content" ng-init="viewItemDetailsProject(project_code,locationId)">
+	 <section class="content" ng-init="getProjectLocationDetails(project_code,locationId)">
 				 
             <div class="row">
                 <div class="col-md-12">

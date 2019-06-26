@@ -3,6 +3,7 @@ app
 				'userCtrl',
 				function($scope, $http, $route, NgTableParams, $timeout,
 						$uibModal, Upload,$routeParams) {
+					
 					$scope.customerListView = true;
 					$scope.ReferralListView = true;
 					$scope.projectCode =  $routeParams.project_code;
@@ -12,6 +13,8 @@ app
 					$scope.turnOver = {};
 					$scope.p={};
 					$scope.p.transport=[];
+					$scope.p.locations=[];
+					$scope.p.project_code='';
 					$scope.progress=false;
 					$scope.turnOver.project={};
 					$scope.data={};
@@ -401,21 +404,37 @@ app
 					    
 					    
 					    
-					    
+					    $scope.genCode=function(num){
+					    	if(num.toString().length==1){
+								return "PR00"+num;
+								
+							}
+							if(num.toString().length==2){
+								return "PR0"+num;
+							}
+							if(num.toString().length==3||num.toString().length>3){
+								return "PR"+num;
+							}
+					    }
 					
 					$scope.projectaddload = function() {
 						loc = "";
 						ei = "";
-						$scope.projectlistshow = false;
-						$scope.projectaddFirstPartView = true;
+						//$scope.projectlistshow = false;
+						//$scope.projectaddFirstPartView = true;
 						$scope.projectaddSecondPartView = false;
-
+						
 						$http.get('/project/getProjectCode/').success(
 								function(data) {
-									var code = "PR00" + parseInt(data)
-									console.log("projectcode..", code)
-									$scope.projectcode = code;
-									$scope.projectaddshow = true;
+									var code = $scope.genCode(data);
+									//var code = "PR00" + parseInt(data);
+									
+									$scope.p.project_code=code;
+									console.log($scope.p.project_code);
+								//console.log("projectcode..", code)
+									
+									
+									//$scope.projectaddshow = true;
 
 								}, function myError(response) {
 									alert("Sorry, Some technical error occur");
@@ -1286,7 +1305,7 @@ app
 								+ "&projectdetails=" + projectdetails
 								+ "&eiworksvaluelist=" + eiworksvaluelist+"&tendardate="+tendardate+"&itemcodeflagslist="+itemcodeflagslist+"&state="+state;
 
-						$http.post(url + params).success(function(data) {
+						$http.post(url + params,$scope.p).success(function(data) {
 							$('#btprsave').prop('disabled', false);
 							$("#btprsave").attr('value', 'Save project');
 
@@ -1412,7 +1431,20 @@ app
 						*/
 					}
 					
-					
+					$scope.getProjectLocationDetails = function(projectCode,projectLocation){
+						$http.get('/project/projectLocation/'+projectLocation+'/'+projectCode).success(function(data) 
+								{
+								console.log("Data came ", data)
+								$scope.itemData = new NgTableParams({}, 
+								{
+									dataset : data
+								});
+									
+								}, function myError(response) {
+									alert("Sorry, Some technical error occur");
+								});
+						
+					}
 					$scope.getProjectDataByProjectCode=function(projectcode)
 					{
 					

@@ -1,22 +1,37 @@
 package com.ets.csm.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="transport")
 public class Transport {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-
+	@Column(name="transport_id")
 	private Long id;
-	private String transportId;
+	private String transportCode;
 	private String transportNo;
 	private Integer capacity;
 	private String transportName;
+	@ManyToMany(cascade=CascadeType.ALL)
+	@JsonIgnore
+				
+	private List<Projects> project;
 	public Long getId() {
 		return id;
 	}
@@ -24,10 +39,10 @@ public class Transport {
 		this.id = id;
 	}
 	public String getTransportId() {
-		return transportId;
+		return transportCode;
 	}
 	public void setTransportId(String transportId) {
-		this.transportId = transportId;
+		this.transportCode = transportId;
 	}
 	public Integer getCapacity() {
 		return capacity;
@@ -47,9 +62,16 @@ public class Transport {
 	public void setTransportNo(String transportNo) {
 		this.transportNo = transportNo;
 	}
+	
+	public List<Projects> getProject() {
+		return project;
+	}
+	public void setProject(List<Projects> project) {
+		this.project = project;
+	}
 	@Override
 	public String toString() {
-		return "Transport [id=" + id + ", transportId=" + transportId + ", capacity=" + capacity + ", transportName="
+		return "Transport [id=" + id + ", transportId=" + transportCode + ", capacity=" + capacity + ", transportName="
 				+ transportName + "]";
 	}
 	@Override
@@ -58,7 +80,7 @@ public class Transport {
 		int result = 1;
 		result = prime * result + ((capacity == null) ? 0 : capacity.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((transportId == null) ? 0 : transportId.hashCode());
+		result = prime * result + ((transportCode == null) ? 0 : transportCode.hashCode());
 		result = prime * result + ((transportName == null) ? 0 : transportName.hashCode());
 		return result;
 	}
@@ -81,10 +103,10 @@ public class Transport {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (transportId == null) {
-			if (other.transportId != null)
+		if (transportCode == null) {
+			if (other.transportCode != null)
 				return false;
-		} else if (!transportId.equals(other.transportId))
+		} else if (!transportCode.equals(other.transportCode))
 			return false;
 		if (transportName == null) {
 			if (other.transportName != null)

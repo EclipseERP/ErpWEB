@@ -113,7 +113,7 @@
 				</div>
 				</section>
 				
-				
+<!--  				
 				 <section class="content" ng-show="pi">
             <div class="row">
                 <div class="col-md-12">
@@ -136,7 +136,7 @@
                             </div>
                         </div>
                         <!-- /.box-header -->
-                        <div class="box-body">
+                       <!--  <div class="box-body">
                             <div class="row">
 								
 								<a class="btn btn-primary pad40L pad40R mrg5L" data-toggle="tooltip" title="Add Items to LOA No : {{loano}} " >Add Items</a>
@@ -198,7 +198,7 @@
 <!-- 											<i class="fa fa-eye text-primary" aria-hidden="true"></i> -->
 													<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>
 													<i class="fa fa-trash-o text-danger" aria-hidden="true"></i>
-												</td>
+											<!-- 	</td>
 											</tr>
 								
 											
@@ -214,10 +214,10 @@
 				</div>
 				</div>
 				</section>
+		-->		
 				
 				
-				
-			
+	<!-- 		
 				
 <div id="eiworkqty" class="modal fade">
     <div class="modal-dialog" style="max-width: 70%"  role="document">
@@ -233,7 +233,7 @@
                 <div class="col-md-12">
                   
                         <!-- /.box-header -->
-                        <div class="box-body">
+                      <!--   <div class="box-body">
                             <div class="row">
 								
 								
@@ -307,7 +307,7 @@
             <div class="box box-primary">
 			
 					<!-- /.box-header -->
-					<div  class="box-body">
+			<!--		<div  class="box-body">
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
@@ -533,20 +533,18 @@
             </div>
         </div>
     </div>
-    
+    -->
+    <!--  
     	 <div ng-show="showProjectDetailslistByLoaNO">
     	 <jsp:include page="/WEB-INF/views/module/user/loalist.jsp" />
 	    </div> 
-	    
-	    
+	-->    
+	   <!--   
 	     <div ng-show="showSupplyDetailslistByItemcode">
     	 <jsp:include page="/WEB-INF/views/module/user/supplydetails.jsp" />
 	    </div>   
+    -->
     
-    
-	<jsp:include page="/WEB-INF/views/module/user/projectadd.jsp" />
-	
-	
 				
 
 
