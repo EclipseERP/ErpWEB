@@ -19,8 +19,8 @@
                             <div class="row">
                             	<div class="col-md-12">									
 									<div class="form-group">
-										<label for="af1">Transport Id</label>
-										<input type="text"  class="form-control" id="transportId" readonly="" ng-model="transport.transportId" name="transportId" ng-value="{{id}}" placeholder="">
+										<label for="af1">Transport Code</label>
+										<input type="text"  class="form-control" id="transportCode" readonly="" ng-model="transport.transportCode" name="transportCode"  placeholder="">
 									</div>									
 								</div>
 								

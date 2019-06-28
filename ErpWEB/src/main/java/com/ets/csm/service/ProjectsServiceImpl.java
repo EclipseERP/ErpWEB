@@ -17,7 +17,7 @@ public class ProjectsServiceImpl implements ProjectsService {
 	@Override
 	public List getAllProjects() {
 		// TODO Auto-generated method stub
-		return projectrepo.getAllProjects();
+		return projectrepo.findAll();
 	}
 	
 	@Override
@@ -80,6 +80,18 @@ public class ProjectsServiceImpl implements ProjectsService {
 		Projects lastProject =  projectrepo.findFirstByOrderByIdDesc();
 		Long lastId=lastProject.getId()+1L;
 		return lastId;
+		
+	}
+
+	@Override
+	public Projects merge(Projects p) {
+		try {
+			return	 projectrepo.merge(p);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return new Projects();
+		}
+		
 		
 	}
 }

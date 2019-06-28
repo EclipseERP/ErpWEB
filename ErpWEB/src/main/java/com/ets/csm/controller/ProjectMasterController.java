@@ -4,7 +4,10 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import javax.websocket.Decoder.Binary;
 
@@ -28,6 +31,7 @@ import com.ets.csm.model.ProjectLocationMaster;
 import com.ets.csm.model.ProjectStockRecordMaster;
 import com.ets.csm.model.Projects;
 import com.ets.csm.model.RawMaterials;
+import com.ets.csm.model.Transport;
 import com.ets.csm.model.User;
 import com.ets.csm.service.DocumentService;
 import com.ets.csm.service.ProjectEIWorkMasterService;
@@ -147,8 +151,9 @@ public class ProjectMasterController {
 	// +++++++++++++++++++ Tender Creation method starts
 	// here +++++++++++++++++++++++++++++++++++++++++++
 
-	@PostMapping("/saveProject/{userName}")
-	public @ResponseBody void saveProject(@PathVariable String userName,
+	@PostMapping(value="/saveProject/{userName}",consumes="application/json")
+	@ResponseBody
+	public  void saveProject(@PathVariable String userName,
 			@RequestParam("projectLocationlist") String[] projectLocationlist,
 			@RequestParam("projectLocationlistSCHQTY") String[] projectLocationlistSCHQTY,
 			@RequestParam("addEiworklist") String[] addEiworklist,
@@ -166,7 +171,17 @@ public class ProjectMasterController {
 	{
 
 		try {
-			projectservice.saveOrUpdate(projects);
+			Iterator trans=projects.getTransports().iterator();
+			while(trans.hasNext()) {
+				Transport transport = (Transport)trans.next();
+				Set<Projects> projectss = new HashSet<Projects>();
+				projectss.add(projects);
+				transport.setProject(projectss);
+				//System.out.println();
+			}
+			System.out.println(projects);
+			projectservice.merge(projects);
+			
 			for (int i = 0; i < projectLocationlist.length; i++) {
 
 				Projects pdata = new Projects();
@@ -230,7 +245,7 @@ public class ProjectMasterController {
 						plocation.setProjectLocation(projectLocationlist[j]);
 						plocation.setSchQuantity(projectLocationlistSCHQTY[l]);
 						plocation.setState(state);
-						projectlocationservice.saveOrUpdate(plocation);
+						//projectlocationservice.saveOrUpdate(plocation);
 					}
 
 				}

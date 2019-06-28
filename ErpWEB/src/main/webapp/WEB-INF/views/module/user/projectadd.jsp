@@ -288,36 +288,36 @@
 											<td>
 
 												<div>
-													<input type="hidden"  ng-model="p.transport[($index)].id"  /> <input type="hidden"
+													<input type="hidden"  ng-model="p.transports[($index)].id"  /> <input type="hidden"
 														name='itemids' value='0' readonly='readonly' />
 												</div>
 
 												<div>
-													<input type="text" name="{{p.transport[$index].transportId}}"  ng-model="p.transport[($index)].transportId" class="form-control" readonly  /> 
+													<input type="text"   ng-model="p.transports[($index)].transportCode" class="form-control" readonly  /> 
 												</div>
 
 											</td>
 											<td>
 
 												<div>
-													<input type="text" name='{{p.transport[$index].transportNo}}' ng-model="p.transport[($index)].transportNo" class="form-control" readonly  />
+													<input type="text"  ng-model="p.transports[($index)].transportNo" class="form-control" readonly  />
 												</div>
 											</td>
 											
 											<td>
 
 												<div>
-													<input type="text" name='{{p.transport[$index].transportName}}' ng-model="p.transport[($index)].transportName" readonly class="form-control" />
+													<input type="text"  ng-model="p.transports[($index)].transportName" readonly class="form-control" />
 												</div>
 											</td>
 											<td>
 												<div>
-													<input type="text" name='{{p.transport[$index].capacity}}' ng-model="p.transport[($index)].capacity" readonly class="form-control"  />
+													<input type="text" ng-model="p.transports[($index)].capacity" readonly class="form-control"  />
 												</div>
 
 											</td>
 											
-											<td><img src="/assets/img/del.png" width="20px" height="20px" onclick="removeItem($index,datas.transportId)"  style="cursor:pointer" />
+											<td><img src="/assets/img/del.png" width="20px" height="20px" onclick="removeItem($index,datas.transportCode)"  style="cursor:pointer" />
 												</td>
 
 										</tr>
@@ -439,7 +439,7 @@
 						style="width: 100%;">
 						<thead>
 							<tr>
-								<th>Transport Id</th>
+								<th>Transport Code</th>
 								<th>Transport No</th>
 								
 								<th>Transport Name</th>
@@ -452,7 +452,7 @@
 						<tbody>
 						
 							<tr ng-repeat="datas in $data | filter : keyword">
-								<td>{{datas.transportId}}</td>
+								<td>{{datas.transportCode}}</td>
 								<td>{{datas.transportNo}}</td>
 								
 								<td><textarea cols="34" rows="1">{{datas.transportName}}</textarea></td>

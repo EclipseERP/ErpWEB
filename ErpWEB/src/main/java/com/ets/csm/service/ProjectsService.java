@@ -12,6 +12,7 @@ public interface ProjectsService {
 	public List getAllProjectsByID(Integer id);
 
 	public Projects saveOrUpdate(Projects p);
+	public Projects merge(Projects p);
 	public void removeProject(Projects p);
 	public List getProjectByProjectcode(String projectcode);
 	public List<Projects> getProjectGroupByProjectCode();

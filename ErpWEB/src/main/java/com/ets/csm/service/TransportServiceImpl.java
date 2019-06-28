@@ -21,22 +21,30 @@ public class TransportServiceImpl implements TransportService {
 	}
 		@Override
 	public Long getFirstId() {
-		if(transrepo.findFirstIdByOrderByIdDesc()==null) {
-			return 1L;
-		}else {
-			Long id = transrepo.findFirstIdByOrderByIdDesc().getId();
-			System.out.println(id);
-			return id+1L;
-		}
-		
+			try {
+				if(transrepo.findFirstIdByOrderByIdDesc()==null) {
+					return 1L;
+				}else {
+					Long id = transrepo.findFirstIdByOrderByIdDesc().getId();
+					System.out.println(id);
+					return id+1L;
+				}
+			}catch(Exception e) {
+				return 1L;
+			}
 		
 	}
 		@Override
 		public List<Transport> getAll() {
 			// TODO Auto-generated method stub
+			try {
 			List<Transport> transports = new ArrayList<>();
 			 transrepo.findAll().forEach(transports::add);
 			 return transports;
+			}catch(Exception e) {
+				return new ArrayList<>();
+				
+			} 
 		}
 	
 

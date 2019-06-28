@@ -1,6 +1,9 @@
 package com.ets.csm.model;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -15,6 +18,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -24,25 +30,28 @@ public class Transport {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="transport_id")
 	private Long id;
+	@Column(name="transport_code")
 	private String transportCode;
+	@Column(name="transport_no")
 	private String transportNo;
 	private Integer capacity;
+	@Column(name="transport_name")
 	private String transportName;
-	@ManyToMany(cascade=CascadeType.ALL)
-	@JsonIgnore
-				
-	private List<Projects> project;
+	@ManyToMany(mappedBy="transports",cascade=CascadeType.ALL)
+	@Fetch(FetchMode.JOIN)
+	
+	private Set<Projects> project;
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getTransportId() {
+	public String getTransportCode() {
 		return transportCode;
 	}
-	public void setTransportId(String transportId) {
-		this.transportCode = transportId;
+	public void setTransportCode(String transportCode) {
+		this.transportCode = transportCode;
 	}
 	public Integer getCapacity() {
 		return capacity;
@@ -63,15 +72,21 @@ public class Transport {
 		this.transportNo = transportNo;
 	}
 	
-	public List<Projects> getProject() {
+	public Set<Projects> getProject() {
+		if(project.isEmpty()|| project==null) {
+			return new HashSet<Projects>();
+		}
 		return project;
 	}
-	public void setProject(List<Projects> project) {
-		this.project = project;
+	public void setProject(Set<Projects> projectss) {
+		if(projectss==null || projectss.isEmpty()) {
+			this.project=new HashSet<>();
+		}
+		this.project = projectss;
 	}
 	@Override
 	public String toString() {
-		return "Transport [id=" + id + ", transportId=" + transportCode + ", capacity=" + capacity + ", transportName="
+		return "Transport [id=" + id + ", transportCode=" + transportCode + ", capacity=" + capacity + ", transportName="
 				+ transportName + "]";
 	}
 	@Override

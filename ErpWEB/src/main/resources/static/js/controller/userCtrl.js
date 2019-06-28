@@ -12,8 +12,10 @@ app
 					$scope.projectId =  $routeParams.projectId;
 					$scope.turnOver = {};
 					$scope.p={};
-					$scope.p.transport=[];
+					$scope.p.transports=[];
+					$scope.p.transports.project=[];
 					$scope.p.locations=[];
+					$scope.p.stock=[];
 					$scope.p.project_code='';
 					$scope.progress=false;
 					$scope.turnOver.project={};
@@ -142,8 +144,8 @@ app
 					}
 					$scope.getLastId = function(){
 						$http.get('/transport/getLastId').success(function(data){
-							$scope.transport.transportId='TR00'+data;
-							angular.element('#transportId').val($scope.transport.transportId);
+							$scope.transport.transportCode='TR00'+data;
+							angular.element('#transportCode').val($scope.transport.transportCode);
 						},
 						function myError(response) {
 							alert("Sorry, Some technical error occur");
@@ -920,8 +922,8 @@ app
 						
 						
 							data.push(transportData);
-							$scope.p.transport=data;
-							console.log(data);
+							$scope.p.transports=data;
+							console.log($scope.p.transports);
 							$scope.transportMenuTable = new NgTableParams({}, { dataset: data });
 							
 																$scope.transportShow=true;
@@ -1051,12 +1053,15 @@ app
 						$http.get('/transport/all').success(function(data){
 							$scope.transportData = new NgTableParams({}, 
 									{
+										
 										dataset : data
 									});
 						},
 						function myerror(){
 							alert("some technical error ocurred!")
 						});
+						console.log($scope.transportData);
+						
 					}
 
 					$scope.projectSecondPartshow = function() {
@@ -1141,8 +1146,8 @@ app
 					// ****************************************************
 
 					$scope.saveProject = function(data) {
-						console.log("any...", data)
-
+						console.log("any...", $scope.p)
+						
 						// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 						var projectLocationlist = new Array(); // Project
@@ -1304,8 +1309,11 @@ app
 								+ projectcode + "&loa_details=" + tendername
 								+ "&projectdetails=" + projectdetails
 								+ "&eiworksvaluelist=" + eiworksvaluelist+"&tendardate="+tendardate+"&itemcodeflagslist="+itemcodeflagslist+"&state="+state;
-
-						$http.post(url + params,$scope.p).success(function(data) {
+							console.log($scope.p);
+							$scope.p.transports.project=$scope.p;
+						$http.post(url + params,
+									JSON.stringify($scope.p),
+									{headers: {'Content-Type': 'application/json'}} ).success(function(data) {
 							$('#btprsave').prop('disabled', false);
 							$("#btprsave").attr('value', 'Save project');
 
@@ -1322,6 +1330,7 @@ app
 							alert("data saved successfully");
 						});
 					}
+					
 					$scope.exportProjectList = function() {
 					  $http.get('/project/getProjectCode/').success(function(data) {
 					  JSONToCSVConvertor(data, "Details", true,"Project");
