@@ -182,8 +182,8 @@
 									</thead>
 									<tbody id="rowgen">
 
-										<tr>
-										<tr align="center"
+										
+										<!-- <tr align="center"
 											ng-repeat="datas in $data | filter : keyword">
 
 											<td>Free Style</td>
@@ -205,6 +205,7 @@
 
 											<td>
 
+												
 												<div ng-if="datas[0].desc==null">
 													<input type="text" name='descs' value="0" />
 												</div>
@@ -237,7 +238,7 @@
 												</button></td>
 
 										</tr>
-
+-->
 									</tbody>
 									<tfoot>
 										<tr>

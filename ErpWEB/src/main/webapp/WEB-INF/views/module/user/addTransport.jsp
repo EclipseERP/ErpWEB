@@ -1,7 +1,7 @@
 
      <!-- Content Header (Page header) -->
                       <!--Form and Application Button-->
-        <section class="content" ng-init="getLastId()">
+        <section class="content" ng-init="getLastId()" ng-show="transport">
             <div class="row">
                 <div class="col-md-12">
                 <form ng-submit="addTransport()" class="col-md-12"  name="form" novalidate>
@@ -26,8 +26,8 @@
 								
 								<div class="col-md-6">									
 									<div class="form-group">
-										<label for="af1">Transport No</label>
-										<input type="text"  class="form-control" ng-model="transport.transportNo" name="transportNo" placeholder="Transport No">
+										<label for="af1">Destination</label>
+										<input type="text"  class="form-control" ng-model="transport.destination" name="destination" placeholder="Destination">
 									</div>									
 								</div>
 								
@@ -35,10 +35,10 @@
 								<div class="col-md-6">
 								<div class="form-group">
 									<label for="af2">Transport Name </label> 
-			                            <input  ng-pattern="[a-zA-Z]+" type="text" class="form-control" id="transportName"  name="transportName" required  ng-model="transport.transportName" placeholder="transport Name" /> 									
-										<span style="color:red" ng-show="form.transportName.$error.required 
+			                            <input  ng-pattern="[a-zA-Z]+" type="text" class="form-control" id="transport_Name"  name="transport_Name" required  ng-model="transport.transport_Name" placeholder="Transport Name" /> 									
+										<span style="color:red" ng-show="form.transport_Name.$error.required 
                     && form.transportName.$dirty">Name is required</span>
-                    <span style="color:red" ng-show="form.transportName.$error.valid 
+                    <span style="color:red" ng-show="form.transport_Name.$error.valid 
                     && form.transportName.$dirty">Name is invalid</span> 
 									
 								</div>
@@ -46,12 +46,37 @@
 								
 								<div class="col-md-6">
 								<div class="form-group">
-									<label for="payementRecievedDate">capacity </label> 
-										<input type="number" class="form-control" id="capacity"  name="capacity"  required ng-model="transport.capacity" placeholder="capacity" />
+									<label for="payementRecievedDate">Truck No.</label> 
+										<input type="text" class="form-control" id="truckNo"  name="truckNo"  required ng-model="transport.truckNo" placeholder="Truck No" />
 									<span style="color:red" ng-show="form.capacity.$error.required 
-                    && form.capacity.$dirty">capacity is required</span>
-                    <span style="color:red" ng-show="form.capacity.$error.number
-                    && form.capacity.$dirty">inavlid capacity </span> 
+                    && form.capacity.$dirty">Truck No required</span>
+								</div>
+								</div>
+								
+								<div class="col-md-6">
+								<div class="form-group">
+									<label for="payementRecievedDate">Bill No.</label> 
+										<input type="text" class="form-control" id="billNo"  name="billNo"  required ng-model="transport.billNo" placeholder="Bill No" />
+									<span style="color:red" ng-show="form.capacity.$error.required 
+                    && form.capacity.$dirty">Bill No required</span>
+								</div>
+								</div>
+								
+								<div class="col-md-6">
+								<div class="form-group">
+									<label for="payementRecievedDate">Distance</label> 
+										<input type="text" class="form-control" id="distance"  name="distance"  required ng-model="transport.distance" placeholder="Distance" />
+									<span style="color:red" ng-show="form.capacity.$error.required 
+                    && form.capacity.$dirty">Distance required</span>
+								</div>
+								</div>
+								
+								<div class="col-md-6">
+								<div class="form-group">
+									<label for="payementRecievedDate">Rate</label> 
+										<input type="text" class="form-control" id="rate"  name="rate"  required ng-model="transport.rate" placeholder="Rate" />
+									<span style="color:red" ng-show="form.capacity.$error.required 
+                    && form.capacity.$dirty">Rate required</span>
 								</div>
 								</div>
 								  									

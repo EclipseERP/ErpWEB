@@ -151,7 +151,7 @@ public class ProjectMasterController {
 	// +++++++++++++++++++ Tender Creation method starts
 	// here +++++++++++++++++++++++++++++++++++++++++++
 
-	@PostMapping(value="/saveProject/{userName}",consumes="application/json")
+	@PostMapping(value="/saveProject/{userName}")
 	@ResponseBody
 	public  void saveProject(@PathVariable String userName,
 			@RequestParam("projectLocationlist") String[] projectLocationlist,
@@ -171,16 +171,8 @@ public class ProjectMasterController {
 	{
 
 		try {
-			Iterator trans=projects.getTransports().iterator();
-			while(trans.hasNext()) {
-				Transport transport = (Transport)trans.next();
-				Set<Projects> projectss = new HashSet<Projects>();
-				projectss.add(projects);
-				transport.setProject(projectss);
-				//System.out.println();
-			}
-			System.out.println(projects);
-			projectservice.merge(projects);
+			System.out.println(projects.getProjectStockRecords());
+			 projectservice.merge(projects);
 			
 			for (int i = 0; i < projectLocationlist.length; i++) {
 
@@ -230,7 +222,7 @@ public class ProjectMasterController {
 				pdatas.setStatus("Pending");
 				
 				
-				projectstockmasterservice.saveorUpdate(pdatas);
+				//projectstockmasterservice.saveorUpdate(pdatas);
 
 
 			}
@@ -245,7 +237,7 @@ public class ProjectMasterController {
 						plocation.setProjectLocation(projectLocationlist[j]);
 						plocation.setSchQuantity(projectLocationlistSCHQTY[l]);
 						plocation.setState(state);
-						//projectlocationservice.saveOrUpdate(plocation);
+						projectlocationservice.saveOrUpdate(plocation);
 					}
 
 				}

@@ -1,5 +1,6 @@
 package com.ets.csm.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -31,20 +32,21 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "project_master")
 
-public class Projects {
+public class Projects implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "project_id")
 	private Long id;
-	@ManyToMany(cascade=CascadeType.ALL)
+	@ManyToMany(cascade= {CascadeType.PERSIST,CascadeType.MERGE})
 	@Basic(fetch = FetchType.LAZY)
-	@JoinTable(name="project_transport",
+	@JoinTable(name="project_master_transport",
 				joinColumns={@JoinColumn(referencedColumnName="project_id")},
 				inverseJoinColumns={@JoinColumn(referencedColumnName="transport_id")})
-	
-	@Fetch(FetchMode.JOIN) 
+	@Fetch(FetchMode.JOIN)
 	private List<Transport> transports;
-	
+	@OneToMany(fetch=FetchType.EAGER,mappedBy="project",cascade= {CascadeType.PERSIST,CascadeType.MERGE})
+	@Fetch(FetchMode.SELECT)
+	private List<ProjectStockRecordMaster> projectStockRecords;
 
 	@Column(name = "project_code")
 	private String project_code;
@@ -502,6 +504,14 @@ public List<Payment> getPayments() {
 
 	public void setLoano(String loano) {
 		this.loano = loano;
+	}
+
+	public List<ProjectStockRecordMaster> getProjectStockRecords() {
+		return projectStockRecords;
+	}
+
+	public void setProjectStockRecords(List<ProjectStockRecordMaster> projectStockRecords) {
+		this.projectStockRecords = projectStockRecords;
 	}
 
 	public Projects(Long id, String project_code, String loa_no, Date creation_date, Date update_date, int company_id,

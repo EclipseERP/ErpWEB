@@ -563,7 +563,7 @@ function removeEIwork(count)
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ ERP JAVA ,JQuery codes++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
+         
 var incloc = 1;
 var incei = 1;
 var itemcodearray = new Array()
@@ -576,13 +576,16 @@ function removeItem(count, itemcode) {
 
 }
 
-function calculationItemtotal(inccounter_calc, icounterSingle) {
+function calculationItemtotal(inccounter_calc, icounterSingle,indexno) {
+	alert("ddd");
 	var eiwal = 0;
 	var locval = 0;
-	var locations = $("[name=locationfield]");
+	
+	var locations = $("[name=locationvalue]");
 	for (var h = 0; h < locations.length; h++) {
 
 		locval = locval + parseInt($("#locationvalueid" + icounterSingle + h).val())
+		
 	}
 
 	var eiworks = $("[name=eiworksfield]");
@@ -590,7 +593,11 @@ function calculationItemtotal(inccounter_calc, icounterSingle) {
 
 		eiwal = eiwal + parseInt($("#eiworksvalueid" + icounterSingle + i).val())
 	}
-
+	$scope.p.projectStockRecords[icounterSingle].billQuantity=parseInt(locval) + parseInt(eiwal);
+	$scope.p.projectStockRecords[icounterSingle].balanceQuantity=parseInt(locval) + parseInt(eiwal);
+	//$scope.p.projectStockRecords[icounterSingle].total=parseInt(locval) + parseInt(eiwal);
+	//console.log($scope.p.projectStockRecords[icounterSingle].total);
+	//$("#billQuantity"+icounterSingle).val(parseInt(locval) + parseInt(eiwal));
 	$("#totalvalid" + icounterSingle).val(parseInt(locval) + parseInt(eiwal));
 }
 

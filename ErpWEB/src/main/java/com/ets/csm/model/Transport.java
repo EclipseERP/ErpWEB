@@ -1,5 +1,6 @@
 package com.ets.csm.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,6 +18,7 @@ import javax.persistence.JoinColumns;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Fetch;
@@ -25,21 +28,39 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="transport")
-public class Transport {
+public class Transport implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="transport_id")
 	private Long id;
+	
 	@Column(name="transport_code")
 	private String transportCode;
-	@Column(name="transport_no")
-	private String transportNo;
-	private Integer capacity;
-	@Column(name="transport_name")
-	private String transportName;
-	@ManyToMany(mappedBy="transports",cascade=CascadeType.ALL)
-	@Fetch(FetchMode.JOIN)
 	
+	@Column(name="destination")
+	private String destination;
+	
+	@Column(name="transport_Name")
+	private String transport_Name;
+	
+	@Column(name="truckNo")
+	private String truckNo;
+	
+	@Column(name="billNo")
+	private String billNo;
+	
+	@Column(name="distance")
+	private String distance;
+	
+	@Column(name="rate")
+	private double rate;
+	
+	@OneToMany
+	@JoinColumn(name="material")
+	private List<MaterialsMaster> material;
+	
+	@ManyToMany(fetch = FetchType.LAZY)
+	@Fetch(FetchMode.JOIN)	
 	private Set<Projects> project;
 	public Long getId() {
 		return id;
@@ -53,25 +74,50 @@ public class Transport {
 	public void setTransportCode(String transportCode) {
 		this.transportCode = transportCode;
 	}
-	public Integer getCapacity() {
-		return capacity;
-	}
-	public void setCapacity(Integer capacity) {
-		this.capacity = capacity;
-	}
-	public String getTransportName() {
-		return transportName;
-	}
-	public void setTransportName(String transportName) {
-		this.transportName = transportName;
-	}
-	public String getTransportNo() {
-		return transportNo;
-	}
-	public void setTransportNo(String transportNo) {
-		this.transportNo = transportNo;
-	}
 	
+	
+	public String getDestination() {
+		return destination;
+	}
+	public void setDestination(String destination) {
+		this.destination = destination;
+	}
+	public String getTransporterName() {
+		return transport_Name;
+	}
+	public void setTransporterName(String transporter_Name) {
+		this.transport_Name = transporter_Name;
+	}
+	public String getTruckNo() {
+		return truckNo;
+	}
+	public void setTruckNo(String truckNo) {
+		this.truckNo = truckNo;
+	}
+	public String getBillNo() {
+		return billNo;
+	}
+	public void setBillNo(String billNo) {
+		this.billNo = billNo;
+	}
+	public String getDistance() {
+		return distance;
+	}
+	public void setDistance(String distance) {
+		this.distance = distance;
+	}
+	public double getRate() {
+		return rate;
+	}
+	public void setRate(double rate) {
+		this.rate = rate;
+	}
+	public List getMaterial() {
+		return material;
+	}
+	public void setMaterial(List material) {
+		this.material = material;
+	}
 	public Set<Projects> getProject() {
 		if(project.isEmpty()|| project==null) {
 			return new HashSet<Projects>();
@@ -86,17 +132,15 @@ public class Transport {
 	}
 	@Override
 	public String toString() {
-		return "Transport [id=" + id + ", transportCode=" + transportCode + ", capacity=" + capacity + ", transportName="
-				+ transportName + "]";
+		return "Transport [id=" + id + ", transportCode=" + transportCode + ", description="
+				+ destination + ", truckNo="+truckNo+", billNo="+billNo+", distance="+distance+", rate"+rate+ "]";
 	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((capacity == null) ? 0 : capacity.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((transportCode == null) ? 0 : transportCode.hashCode());
-		result = prime * result + ((transportName == null) ? 0 : transportName.hashCode());
 		return result;
 	}
 	@Override
@@ -108,11 +152,7 @@ public class Transport {
 		if (getClass() != obj.getClass())
 			return false;
 		Transport other = (Transport) obj;
-		if (capacity == null) {
-			if (other.capacity != null)
-				return false;
-		} else if (!capacity.equals(other.capacity))
-			return false;
+		
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -123,11 +163,7 @@ public class Transport {
 				return false;
 		} else if (!transportCode.equals(other.transportCode))
 			return false;
-		if (transportName == null) {
-			if (other.transportName != null)
-				return false;
-		} else if (!transportName.equals(other.transportName))
-			return false;
+		
 		return true;
 	}
 	

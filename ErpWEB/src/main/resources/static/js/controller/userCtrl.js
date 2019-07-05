@@ -13,9 +13,8 @@ app
 					$scope.turnOver = {};
 					$scope.p={};
 					$scope.p.transports=[];
-					$scope.p.transports.project=[];
+					$scope.p.projectStockRecords=[];
 					$scope.p.locations=[];
-					$scope.p.stock=[];
 					$scope.p.project_code='';
 					$scope.progress=false;
 					$scope.turnOver.project={};
@@ -888,9 +887,9 @@ app
 									+ "<th>Description</th><th>Unit</th>" + loc
 									+ ei + "<th>Total</th>" + "<th>INS</th>"
 									+ "<th>Remove</th>" + "</tr>"
-
+							var locations=loc+ei;
 							$("#materialHead").html(itemHeaddynamicdata)
-
+							//$("#loc").next().html(locations).next().html("<td>Total</td>");
 							$scope.itemShow = true;
 
 							$("#itemModal").modal({
@@ -939,41 +938,45 @@ app
 
 						}
 
-					
+					var itemData=[];
 					$scope.addItemToProjectCart = function(itemdata, indexno) {
-
+						
 						
 						console.log("Item data...",itemdata)
 						
 						var insSelected = $("#insindex" + indexno).val();
-
+						itemdata.ins=insSelected;
+						
+						itemData.push(itemdata);
+						$scope.p.projectStockRecords=itemData;
+						//$scope.p.projectStockRecords[indexno].billquantity=
+						console.log($scope.p.projectStockRecords);
+//						$scope.itemMenuTable = new NgTableParams({}, { dataset: itemData });
 						if (insSelected == "") {
 							alert("Please select INS type")
 						}
 						if (insSelected != "") {
 							console.log("itemdata found", itemdata.itemCode)
-
+							
 							// --------------------------------------Dynamic
 							// table column headings add
 							// process-------------------------------------
 							var ei = "";
 							var loc = "";
+							var location = "";
 							var locations = $("[name=locationfield]");
 							var inb = 1
 							for (var h = 0; h < locations.length; h++) {
 
 								loc = loc.concat("<td><input type=text name=locationvalue"
-												+ " size=4 value=0 onkeyup=calculationItemtotal('"
-												+ icounter
-												+ h
-												+ "','"
-												+ icounter
-												+ "') id=locationvalueid"
+												+ " size=4 value=0 onkeyup=calculationItemtotal('"+ icounter + h + "','"+ icounter+ "',"+indexno+")" +
+												" id=locationvalueid"
 												+ icounter
 												+ h
 												+ " /><input type=hidden name=locflag value='"
 												+ locations[h].value
 												+ "' ></td>");
+								
 
 								inb++
 							}
@@ -982,46 +985,47 @@ app
 							for (var i = 0; i < eiworks.length; i++) {
 
 								ei = ei
-										.concat("<td><input type=text name=eiworksvalue size=4 value=0 onkeyup=calculationItemtotal('"
-												+ icounter
-												+ i
-												+ "','"
-												+ icounter
-												+ "') id=eiworksvalueid"
+										.concat("<td><input type=text name=eiworksvalue size=4 value=0 onkeyup=calculationItemtotal('" + icounter + i + "','"+ icounter+ "',"+indexno+") id=eiworksvalueid"
 												+ icounter
 												+ i
 												+ " /><input type=hidden name=eiflag value='"
 												+ eiworks[i].value + "'/><input type=hidden name=itemcodeflag value='"+itemdata.itemCode+"' /></td>");
+								//$("#locations").next().next().html(ei);
 								incei++
 							}
-
+							
 							// --------------------------------------Dynamic
 							// table column headings add process ends
 							// here-------------------------------------
 
 							var dynamicdata = "<tr id=it"
 									+ icounter
-									+ " ><td><input type=text class=form-control name=itemcodes value="
-									+ itemdata.itemCode
-									+ " readonly=readonly /></td>"
+									+ " ><td><input type=text class=form-control ng-model=p.projectStockRecords["+icounter+"].itemCode value="+itemdata.itemCode+" name=itemcodes readonly=readonly />" +
+											"<input type=hidden name=totalval ng-model=p.projectStockRecords["+icounter+"].billQuantity id=billQuantity"+indexno+" size=4 value=0 />" +
+													"<input type=hidden name=totalval ng-model=p.projectStockRecords["+icounter+"].balanceQuantity id=balanceQuantity"+indexno+" size=4 value=0 /></td>"
 									+"<td>"+itemdata.name+"</td>"
-									+ "<td><textarea name=descriptions rows=2 cols=65 class=form-control>"+itemdata.description+" </textarea></td>"
-									+ "<td><input type=text name=unit size=4 value="+itemdata.unit+"  /></td>"
+									+ "<td><textarea name=descriptions rows=2 cols=65 ng-model=p.projectStockRecords["+icounter+"].description class=form-control>"+itemdata.description+" </textarea></td>"
+									+ "<td><input type=text name=unit ng-model=p.projectStockRecords["+icounter+"].unit size=4 value="+itemdata.unit+"  /></td>"
 									+ loc
 									+ ei
-									+ "<td><input type=text name=totalval size=4 value=0 id=totalvalid"
+									+ "<td><input type=text name=totalval ng-model=p.projectStockRecords["+icounter+"].total size=4 value=0 id=totalvalid"
 									+ icounter
 									+ " /></td>"
-									+ "<td><input type=text class=form-control name=ins value="
+									+ "<td><input type=text class=form-control ng-model=p.projectStockRecords["+icounter+"].ins name=ins value="
 									+ insSelected
 									+ " readonly=readonly/></td>"
 									+ "<td align=right><a ><img src=/assets/img/del.png width=20px height=20px onclick=removeItem('"
 									+ icounter + "','" + itemdata.itemCode
-									+ "') style='cursor:pointer' /></a></td>"
-									+ "</tr>"
-
+									+ "') style='cursor:pointer'/></a></td>"
+									+ "</tr>";
+								 //locations=loc+ei;
+								 //$("#locations").rows[4];
+								 
+								 //angular.element("#first").append(""+itemdata.name);
 							if (!itemcodearray.includes(itemdata.itemCode)) {
 								$("#rowgen").append(dynamicdata);
+								
+								
 								icounter = icounter + 1;
 							}
 							if (itemcodearray.includes(itemdata.itemCode)) {
@@ -1060,7 +1064,7 @@ app
 						function myerror(){
 							alert("some technical error ocurred!")
 						});
-						console.log($scope.transportData);
+						console.log(data);
 						
 					}
 
@@ -1310,10 +1314,9 @@ app
 								+ "&projectdetails=" + projectdetails
 								+ "&eiworksvaluelist=" + eiworksvaluelist+"&tendardate="+tendardate+"&itemcodeflagslist="+itemcodeflagslist+"&state="+state;
 							console.log($scope.p);
-							$scope.p.transports.project=$scope.p;
+							//$scope.p.transports.project=$scope.p;
 						$http.post(url + params,
-									JSON.stringify($scope.p),
-									{headers: {'Content-Type': 'application/json'}} ).success(function(data) {
+									$scope.p).success(function(data) {
 							$('#btprsave').prop('disabled', false);
 							$("#btprsave").attr('value', 'Save project');
 

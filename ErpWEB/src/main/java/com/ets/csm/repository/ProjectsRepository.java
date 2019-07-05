@@ -40,20 +40,7 @@ public interface ProjectsRepository extends JpaRepository<Projects, Integer>,Pro
 	public List<Projects> findByStateIgnoreCaseStartingWith(String state);
 	
 	public List<Projects> findByLoanoIgnoreCaseContainingOrStateIgnoreCaseContainingOrDateContaining(String loa,String state,String date);
-	public default List<Projects> findAll(Long id) {
-		//Projects project = new Projects();
-		Projects projects1 = (Projects) this.getSession().find(Projects.class,id);
-		Iterable<Projects> projects = this.findAll();
-		List<Projects> projectss = new ArrayList<Projects>();
-		projects.forEach(projectss::add);
-		Iterator i = projects.iterator();
-		while(i.hasNext()) {
-			Projects project = (Projects) i.next();
-			Hibernate.initialize(project.getTransports());
-		}
-		return projectss;
-		
-	}
+	
 
 	@Query("SELECT P from Projects P group by P.loano")
 	public List getAllProjectsGroupByLoaNO();
