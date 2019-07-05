@@ -56,15 +56,35 @@
 							<!-- <a href="#projectListload" ng-click="projectlistload()"><i class="fa fa-circle-o"></i> Accounts Turnover</a> -->
 							<a href="#accountsListload"><i class="fa fa-circle-o"></i> Accounts Turnover</a>
 						</li>
-						
-    
+							<!-- <li>
+                            <a href="#payments"><i class="fa fa-folder"></i><span>All Payments</span>
+							<i class="fa fa-angle-left pull-right"></i>
+						</span>
+					</a>
+						</li> -->
                     </ul>
                 </li>
+                
+                
+                
+                 <li >
+					<a href="#payments">
+						<i class="fa fa-folder"></i>
+						<span>All Payments</span>
+							<i class="fa fa-angle-left pull-right"></i>
+						</span>
+					</a>
+                    
+                    </li>
+                
+                
+             <!--    
+                
                 <li>
 							<a href="#payments">
 								<i class="fa fa-circle-o"></i> Payments
 							</a> 
-				</li>
+				</li> -->
                 <!--  
                   <li class="treeview">
 					<a href="#">

@@ -42,11 +42,11 @@
 								<i class="fa fa-circle-o"></i> Dashboard
 							</a> 
 						</li>
-						<li>
+						<!-- <li>
 							<a href="#transport">
 								<i class="fa fa-circle-o"></i> Transport
 							</a> 
-						</li>
+						</li> -->
 						
 						 <li class="treeview">
 					<a href="#">
@@ -112,8 +112,24 @@
 								<i class="fa fa-circle-o"></i> Vendor Docs list
 							</a>
 						</li>
+						
+						
     
                     </ul>
+                    
+                    
+                    
+                    
+                       <li >
+					<a href="#transport">
+						<i class="fa fa-folder"></i>
+						<span> Transport</span>
+							<i class="fa fa-angle-left pull-right"></i>
+						</span>
+					</a>
+                    
+                    </li>
+        
                                         
                 </li>
                

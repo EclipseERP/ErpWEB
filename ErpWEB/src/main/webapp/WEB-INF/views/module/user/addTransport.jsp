@@ -7,7 +7,7 @@
                 <form ng-submit="addTransport()" class="col-md-12"  name="form" novalidate>
                     <div class="box box-primary">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Add Transport</h3>
+                            <h3 class="box-title">Add Transport Details</h3>
                             <div class="box-tools pull-right">
                                     <button type="button" href="#accountsListload" class="btn btn-box-tool" data-widget="back">
 									<i class="fa fa-reply"> </i> Back To Transport List
@@ -26,7 +26,7 @@
 								
 								<div class="col-md-6">									
 									<div class="form-group">
-										<label for="af1">Transport No</label>
+										<label for="af1">Transport No.</label>
 										<input type="text"  class="form-control" ng-model="transport.transportNo" name="transportNo" placeholder="Transport No">
 									</div>									
 								</div>
@@ -46,7 +46,7 @@
 								
 								<div class="col-md-6">
 								<div class="form-group">
-									<label for="payementRecievedDate">capacity </label> 
+									<label for="payementRecievedDate">Capacity (Ton)</label> 
 										<input type="number" class="form-control" id="capacity"  name="capacity"  required ng-model="transport.capacity" placeholder="capacity" />
 									<span style="color:red" ng-show="form.capacity.$error.required 
                     && form.capacity.$dirty">capacity is required</span>
@@ -59,7 +59,7 @@
                             </div>
                         </div>
 						<div class="box-footer" align="right">
-							<button type="submit" ng-disabled="!form.$valid"  class="btn btn-primary pad40L pad40R mrg5L" >Submit</button>
+							<button type="submit" ng-disabled="!form.$valid"  class="btn btn-primary pad40L pad40R mrg5L" >Save</button>
 						</div>
                     </div>
                 </div>  

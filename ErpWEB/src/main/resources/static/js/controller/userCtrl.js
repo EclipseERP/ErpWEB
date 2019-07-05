@@ -581,15 +581,12 @@ app
 								});
 					}
 
-					$scope.getvendorData = function() {
-						$http.get('/vendorctrl/getVendorDetails/').success(
-								function(data) {
-									
+					    $scope.getvendorData = function() {
+						$http.get('/vendorctrl/getVendorDetails/').success(function(data) {
 									console.log("Supply data",data)
 									$scope.vendorDatas=data;
-									
 									$scope.vendorData = new NgTableParams({}, {
-										dataset : data
+								    dataset : data
 									});
 
 								}, function myError(response) {
