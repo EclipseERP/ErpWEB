@@ -3,6 +3,7 @@ app
 				'userCtrl',
 				function($scope, $http, $route, NgTableParams, $timeout,
 						$uibModal, Upload,$routeParams) {
+					
 					$scope.customerListView = true;
 					$scope.ReferralListView = true;
 					$scope.projectCode =  $routeParams.project_code;
@@ -11,7 +12,10 @@ app
 					$scope.projectId =  $routeParams.projectId;
 					$scope.turnOver = {};
 					$scope.p={};
-					$scope.p.transport=[];
+					$scope.p.transports=[];
+					$scope.p.projectStockRecords=[];
+					$scope.p.locations=[];
+					$scope.p.project_code='';
 					$scope.progress=false;
 					$scope.turnOver.project={};
 					$scope.data={};
@@ -139,8 +143,8 @@ app
 					}
 					$scope.getLastId = function(){
 						$http.get('/transport/getLastId').success(function(data){
-							$scope.transport.transportId='TR00'+data;
-							angular.element('#transportId').val($scope.transport.transportId);
+							$scope.transport.transportCode='TR00'+data;
+							angular.element('#transportCode').val($scope.transport.transportCode);
 						},
 						function myError(response) {
 							alert("Sorry, Some technical error occur");
@@ -401,21 +405,37 @@ app
 					    
 					    
 					    
-					    
+					    $scope.genCode=function(num){
+					    	if(num.toString().length==1){
+								return "PR00"+num;
+								
+							}
+							if(num.toString().length==2){
+								return "PR0"+num;
+							}
+							if(num.toString().length==3||num.toString().length>3){
+								return "PR"+num;
+							}
+					    }
 					
 					$scope.projectaddload = function() {
 						loc = "";
 						ei = "";
-						$scope.projectlistshow = false;
-						$scope.projectaddFirstPartView = true;
+						//$scope.projectlistshow = false;
+						//$scope.projectaddFirstPartView = true;
 						$scope.projectaddSecondPartView = false;
-
+						
 						$http.get('/project/getProjectCode/').success(
 								function(data) {
-									var code = "PR00" + parseInt(data)
-									console.log("projectcode..", code)
-									$scope.projectcode = code;
-									$scope.projectaddshow = true;
+									var code = $scope.genCode(data);
+									//var code = "PR00" + parseInt(data);
+									
+									$scope.p.project_code=code;
+									console.log($scope.p.project_code);
+								//console.log("projectcode..", code)
+									
+									
+									//$scope.projectaddshow = true;
 
 								}, function myError(response) {
 									alert("Sorry, Some technical error occur");
@@ -864,9 +884,9 @@ app
 									+ "<th>Description</th><th>Unit</th>" + loc
 									+ ei + "<th>Total</th>" + "<th>INS</th>"
 									+ "<th>Remove</th>" + "</tr>"
-
+							var locations=loc+ei;
 							$("#materialHead").html(itemHeaddynamicdata)
-
+							//$("#loc").next().html(locations).next().html("<td>Total</td>");
 							$scope.itemShow = true;
 
 							$("#itemModal").modal({
@@ -898,8 +918,8 @@ app
 						
 						
 							data.push(transportData);
-							$scope.p.transport=data;
-							console.log(data);
+							$scope.p.transports=data;
+							console.log($scope.p.transports);
 							$scope.transportMenuTable = new NgTableParams({}, { dataset: data });
 							
 																$scope.transportShow=true;
@@ -915,41 +935,45 @@ app
 
 						}
 
-					
+					var itemData=[];
 					$scope.addItemToProjectCart = function(itemdata, indexno) {
-
+						
 						
 						console.log("Item data...",itemdata)
 						
 						var insSelected = $("#insindex" + indexno).val();
-
+						itemdata.ins=insSelected;
+						
+						itemData.push(itemdata);
+						$scope.p.projectStockRecords=itemData;
+						//$scope.p.projectStockRecords[indexno].billquantity=
+						console.log($scope.p.projectStockRecords);
+//						$scope.itemMenuTable = new NgTableParams({}, { dataset: itemData });
 						if (insSelected == "") {
 							alert("Please select INS type")
 						}
 						if (insSelected != "") {
 							console.log("itemdata found", itemdata.itemCode)
-
+							
 							// --------------------------------------Dynamic
 							// table column headings add
 							// process-------------------------------------
 							var ei = "";
 							var loc = "";
+							var location = "";
 							var locations = $("[name=locationfield]");
 							var inb = 1
 							for (var h = 0; h < locations.length; h++) {
 
 								loc = loc.concat("<td><input type=text name=locationvalue"
-												+ " size=4 value=0 onkeyup=calculationItemtotal('"
-												+ icounter
-												+ h
-												+ "','"
-												+ icounter
-												+ "') id=locationvalueid"
+												+ " size=4 value=0 onkeyup=calculationItemtotal('"+ icounter + h + "','"+ icounter+ "',"+indexno+")" +
+												" id=locationvalueid"
 												+ icounter
 												+ h
 												+ " /><input type=hidden name=locflag value='"
 												+ locations[h].value
 												+ "' ></td>");
+								
 
 								inb++
 							}
@@ -958,46 +982,47 @@ app
 							for (var i = 0; i < eiworks.length; i++) {
 
 								ei = ei
-										.concat("<td><input type=text name=eiworksvalue size=4 value=0 onkeyup=calculationItemtotal('"
-												+ icounter
-												+ i
-												+ "','"
-												+ icounter
-												+ "') id=eiworksvalueid"
+										.concat("<td><input type=text name=eiworksvalue size=4 value=0 onkeyup=calculationItemtotal('" + icounter + i + "','"+ icounter+ "',"+indexno+") id=eiworksvalueid"
 												+ icounter
 												+ i
 												+ " /><input type=hidden name=eiflag value='"
 												+ eiworks[i].value + "'/><input type=hidden name=itemcodeflag value='"+itemdata.itemCode+"' /></td>");
+								//$("#locations").next().next().html(ei);
 								incei++
 							}
-
+							
 							// --------------------------------------Dynamic
 							// table column headings add process ends
 							// here-------------------------------------
 
 							var dynamicdata = "<tr id=it"
 									+ icounter
-									+ " ><td><input type=text class=form-control name=itemcodes value="
-									+ itemdata.itemCode
-									+ " readonly=readonly /></td>"
+									+ " ><td><input type=text class=form-control ng-model=p.projectStockRecords["+icounter+"].itemCode value="+itemdata.itemCode+" name=itemcodes readonly=readonly />" +
+											"<input type=hidden name=totalval ng-model=p.projectStockRecords["+icounter+"].billQuantity id=billQuantity"+indexno+" size=4 value=0 />" +
+													"<input type=hidden name=totalval ng-model=p.projectStockRecords["+icounter+"].balanceQuantity id=balanceQuantity"+indexno+" size=4 value=0 /></td>"
 									+"<td>"+itemdata.name+"</td>"
-									+ "<td><textarea name=descriptions rows=2 cols=65 class=form-control>"+itemdata.description+" </textarea></td>"
-									+ "<td><input type=text name=unit size=4 value="+itemdata.unit+"  /></td>"
+									+ "<td><textarea name=descriptions rows=2 cols=65 ng-model=p.projectStockRecords["+icounter+"].description class=form-control>"+itemdata.description+" </textarea></td>"
+									+ "<td><input type=text name=unit ng-model=p.projectStockRecords["+icounter+"].unit size=4 value="+itemdata.unit+"  /></td>"
 									+ loc
 									+ ei
-									+ "<td><input type=text name=totalval size=4 value=0 id=totalvalid"
+									+ "<td><input type=text name=totalval ng-model=p.projectStockRecords["+icounter+"].total size=4 value=0 id=totalvalid"
 									+ icounter
 									+ " /></td>"
-									+ "<td><input type=text class=form-control name=ins value="
+									+ "<td><input type=text class=form-control ng-model=p.projectStockRecords["+icounter+"].ins name=ins value="
 									+ insSelected
 									+ " readonly=readonly/></td>"
 									+ "<td align=right><a ><img src=/assets/img/del.png width=20px height=20px onclick=removeItem('"
 									+ icounter + "','" + itemdata.itemCode
-									+ "') style='cursor:pointer' /></a></td>"
-									+ "</tr>"
-
+									+ "') style='cursor:pointer'/></a></td>"
+									+ "</tr>";
+								 //locations=loc+ei;
+								 //$("#locations").rows[4];
+								 
+								 //angular.element("#first").append(""+itemdata.name);
 							if (!itemcodearray.includes(itemdata.itemCode)) {
 								$("#rowgen").append(dynamicdata);
+								
+								
 								icounter = icounter + 1;
 							}
 							if (itemcodearray.includes(itemdata.itemCode)) {
@@ -1029,12 +1054,15 @@ app
 						$http.get('/transport/all').success(function(data){
 							$scope.transportData = new NgTableParams({}, 
 									{
+										
 										dataset : data
 									});
 						},
 						function myerror(){
 							alert("some technical error ocurred!")
 						});
+						console.log(data);
+						
 					}
 
 					$scope.projectSecondPartshow = function() {
@@ -1119,8 +1147,8 @@ app
 					// ****************************************************
 
 					$scope.saveProject = function(data) {
-						console.log("any...", data)
-
+						console.log("any...", $scope.p)
+						
 						// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 						var projectLocationlist = new Array(); // Project
@@ -1282,8 +1310,10 @@ app
 								+ projectcode + "&loa_details=" + tendername
 								+ "&projectdetails=" + projectdetails
 								+ "&eiworksvaluelist=" + eiworksvaluelist+"&tendardate="+tendardate+"&itemcodeflagslist="+itemcodeflagslist+"&state="+state;
-
-						$http.post(url + params).success(function(data) {
+							console.log($scope.p);
+							//$scope.p.transports.project=$scope.p;
+						$http.post(url + params,
+									$scope.p).success(function(data) {
 							$('#btprsave').prop('disabled', false);
 							$("#btprsave").attr('value', 'Save project');
 
@@ -1300,6 +1330,7 @@ app
 							alert("data saved successfully");
 						});
 					}
+					
 					$scope.exportProjectList = function() {
 					  $http.get('/project/getProjectCode/').success(function(data) {
 					  JSONToCSVConvertor(data, "Details", true,"Project");
@@ -1409,7 +1440,20 @@ app
 						*/
 					}
 					
-					
+					$scope.getProjectLocationDetails = function(projectCode,projectLocation){
+						$http.get('/project/projectLocation/'+projectLocation+'/'+projectCode).success(function(data) 
+								{
+								console.log("Data came ", data)
+								$scope.itemData = new NgTableParams({}, 
+								{
+									dataset : data
+								});
+									
+								}, function myError(response) {
+									alert("Sorry, Some technical error occur");
+								});
+						
+					}
 					$scope.getProjectDataByProjectCode=function(projectcode)
 					{
 					

@@ -12,6 +12,7 @@ public interface ProjectsService {
 	public List getAllProjectsByID(Integer id);
 
 	public Projects saveOrUpdate(Projects p);
+	public Projects merge(Projects p);
 	public void removeProject(Projects p);
 	public List getProjectByProjectcode(String projectcode);
 	public List<Projects> getProjectGroupByProjectCode();
@@ -19,6 +20,7 @@ public interface ProjectsService {
 	public List<Projects> getProjectByYear(String state);
 	public List<Projects> getProjectByLoa(String state);
 	public List<Projects> getProjectByLoaSateAndYear(String state);
+	public Long findProjectsLastId();
 	
 	
 }

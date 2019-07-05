@@ -12,6 +12,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -21,13 +24,16 @@ public class ProjectStockRecordMaster {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
-	private int id;
+	private Long id;
 		
 	@Column(name = "projectcode")
 	private String projectcode;
+	@ManyToOne(fetch=FetchType.LAZY)
+	@Fetch(FetchMode.JOIN)
+	private Projects project;
 	
 	@Column(name="itemcode")
-	private String itemcode;
+	private String itemCode;
 	
 	@Column(name="unit")
     private String unit;
@@ -103,7 +109,7 @@ public class ProjectStockRecordMaster {
 	private int rate;
 	
 	@Column(name="itemdescription")
-	private String itemdescription;
+	private String description;
 	
 	@Column(name="dateofArrivalrelayreceipt")
 	private Date dateofArrivalrelayreceipt;
@@ -116,11 +122,11 @@ public class ProjectStockRecordMaster {
 	@JoinColumn(name="vendorid")
 	private Vendor vendor;
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -133,11 +139,11 @@ public class ProjectStockRecordMaster {
 	}
 
 	public String getItemcode() {
-		return itemcode;
+		return itemCode;
 	}
 
 	public void setItemcode(String itemcode) {
-		this.itemcode = itemcode;
+		this.itemCode = itemcode;
 	}
 
 	public String getUnit() {
@@ -333,11 +339,11 @@ public class ProjectStockRecordMaster {
 	}
 
 	public String getItemdescription() {
-		return itemdescription;
+		return description;
 	}
 
 	public void setItemdescription(String itemdescription) {
-		this.itemdescription = itemdescription;
+		this.description = itemdescription;
 	}
 
 	public Date getDateofArrivalrelayreceipt() {

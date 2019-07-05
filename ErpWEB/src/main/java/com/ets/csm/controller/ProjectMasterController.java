@@ -4,7 +4,10 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import javax.websocket.Decoder.Binary;
 
@@ -28,6 +31,7 @@ import com.ets.csm.model.ProjectLocationMaster;
 import com.ets.csm.model.ProjectStockRecordMaster;
 import com.ets.csm.model.Projects;
 import com.ets.csm.model.RawMaterials;
+import com.ets.csm.model.Transport;
 import com.ets.csm.model.User;
 import com.ets.csm.service.DocumentService;
 import com.ets.csm.service.ProjectEIWorkMasterService;
@@ -147,8 +151,9 @@ public class ProjectMasterController {
 	// +++++++++++++++++++ Tender Creation method starts
 	// here +++++++++++++++++++++++++++++++++++++++++++
 
-	@PostMapping("/saveProject/{userName}")
-	public @ResponseBody void saveProject(@PathVariable String userName,
+	@PostMapping(value="/saveProject/{userName}")
+	@ResponseBody
+	public  void saveProject(@PathVariable String userName,
 			@RequestParam("projectLocationlist") String[] projectLocationlist,
 			@RequestParam("projectLocationlistSCHQTY") String[] projectLocationlistSCHQTY,
 			@RequestParam("addEiworklist") String[] addEiworklist,
@@ -161,11 +166,14 @@ public class ProjectMasterController {
 			@RequestParam("eiflaglist") String[] eiflaglist, @RequestParam("projectcode") String projectcode,
 			@RequestParam("loa_details") String loadetails, @RequestParam("projectdetails") String projectdetails,
 			@RequestParam("tendardate") String tenderdate,
-	        @RequestParam("itemcodeflagslist") String[] itemcodeflagslist,@RequestParam("state") String state)
+	        @RequestParam("itemcodeflagslist") String[] itemcodeflagslist,@RequestParam("state") String state,
+	        @RequestBody Projects projects)
 	{
 
 		try {
-
+			System.out.println(projects.getProjectStockRecords());
+			 projectservice.merge(projects);
+			
 			for (int i = 0; i < projectLocationlist.length; i++) {
 
 				Projects pdata = new Projects();
@@ -178,7 +186,7 @@ public class ProjectMasterController {
 				pdata.setState(state);
 				
 
-				projectservice.saveOrUpdate(pdata);
+				//projectservice.saveOrUpdate(pdata);
 			}
 
 			for (int k = 0; k < itemcodeslist.length; k++) {
@@ -214,7 +222,7 @@ public class ProjectMasterController {
 				pdatas.setStatus("Pending");
 				
 				
-				projectstockmasterservice.saveorUpdate(pdatas);
+				//projectstockmasterservice.saveorUpdate(pdatas);
 
 
 			}
@@ -261,11 +269,17 @@ public class ProjectMasterController {
 
 	@GetMapping("/getProjectCode")
 	public @ResponseBody Object getProjectCode() {
-		Object code = projectservice.getAllProjects().size() + 1;
+		Object code = projectservice.findProjectsLastId();
 		return code;
 
 	}
-
+	@GetMapping("/projectLocation/{projectLocation}/{projectCode}")
+	@ResponseBody
+	public List<ProjectLocationMaster> getAllProjectLocationDeatils(@PathVariable String projectCode,@PathVariable String projectLocation){
+		List<ProjectLocationMaster> projectlist = projectlocationservice.getAllProjectLocationMaster(projectLocation,projectCode);
+		return projectlist;
+		
+	}
 	@PostMapping("/getProjectItemDetailsByProjectcode")
 	public @ResponseBody List getProjectItemDetailsByProjectcode(@RequestParam("projectcode") String projectcode,
 			@RequestParam("projectlocation") String projectlocation) {

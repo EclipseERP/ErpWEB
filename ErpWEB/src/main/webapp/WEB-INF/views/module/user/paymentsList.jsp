@@ -56,7 +56,7 @@
 												</td>
 												    
 									                <td><a ng-click="getProjectDataByProjectCode(datas.project_code,datas.loa_no,datas.date)" style="cursor:pointer; " ><b> {{datas.billNo}}</b></a></td>
-									               <td >{{datas.billPassedDate | date:'dd/MM/yyyy'}}</td> 
+									               <td>{{datas.billPassedDate | date:'dd/MM/yyyy'}}</td> 
 												
 												
 												<td> {{datas.paymentRecievedDate | date:'dd/MM/yyyy'}}</td>

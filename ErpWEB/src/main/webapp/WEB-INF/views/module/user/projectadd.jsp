@@ -21,8 +21,8 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="af1">Project Code </label> <input type="text"
-										class="form-control" readonly="readonly" id="af1"
-										value="{{projectcode}}" placeholder="">
+										class="form-control" ng-model="p.project_code" readonly="readonly" id="af1"
+										 placeholder="">
 								</div>
 							</div>
 
@@ -32,7 +32,7 @@
                          	<div class="col-md-6">
 								<div class="form-group">
 									<label for="af2">Date </label> 
-			                            <input type="text" class="form-control" id="tendardate" readonly="readonly" placeholder="Project Date" datetime-picker="yyyy-MM-dd " size="3" ng-model="creation_date" is-open="ctrl.date.eventTime" /> 									
+			                            <input type="text" class="form-control" id="tendardate" readonly="readonly" placeholder="Project Date" datetime-picker="yyyy-MM-dd " size="3" ng-model="p.creation_date" is-open="ctrl.date.eventTime" /> 									
 										<span class="input-group-btn">
 										<button type="button" class="btn btn-blue" ng-click="ctrl.date.eventTime = true"> <i class="fa fa-calendar"></i>
 									
@@ -129,7 +129,7 @@
 						<div class="col-md-12">
 							<div class="form-group">
 
-								<label for="af3">Project Details : </label> 
+								<label for="af3">Project Locations : </label> 
 								<b>{{projectname}}
 								</b>
 							</div>
@@ -147,7 +147,7 @@
 
 						<div class="col-md-12">
 							<div class="form-group">
-								<label for="af3">Details : </label> <b>{{details}}</b>
+								<label for="af3">Loa No : </label> <b>{{details}}</b>
 							</div>
 						</div>
 
@@ -182,8 +182,8 @@
 									</thead>
 									<tbody id="rowgen">
 
-										<tr>
-										<tr align="center"
+										
+										<!-- <tr align="center"
 											ng-repeat="datas in $data | filter : keyword">
 
 											<td>Free Style</td>
@@ -205,6 +205,7 @@
 
 											<td>
 
+												
 												<div ng-if="datas[0].desc==null">
 													<input type="text" name='descs' value="0" />
 												</div>
@@ -237,7 +238,7 @@
 												</button></td>
 
 										</tr>
-
+-->
 									</tbody>
 									<tfoot>
 										<tr>
@@ -287,37 +288,37 @@
 
 											<td>
 
-												<div >
-													<input type="hidden" name="{{p.transport[$index].id}}" ng-model="p.transport[$index].id"value="{{datas.id}}" /> <input type="hidden"
+												<div>
+													<input type="hidden"  ng-model="p.transports[($index)].id"  /> <input type="hidden"
 														name='itemids' value='0' readonly='readonly' />
 												</div>
 
 												<div>
-													<input type="text" name="{{p.transport[$index].transportId}}"  ng-model="p.transport[$index].transportId" class="form-control" readonly value="{{datas.transportId}}" /> 
+													<input type="text"   ng-model="p.transports[($index)].transportCode" class="form-control" readonly  /> 
 												</div>
 
 											</td>
 											<td>
 
 												<div>
-													<input type="text" name='{{p.transport[$index].transportNo}}' ng-model="p.transport[$index].transportNo" class="form-control" readonly value="{{datas.transportNo}}" />
+													<input type="text"  ng-model="p.transports[($index)].transportNo" class="form-control" readonly  />
 												</div>
 											</td>
 											
 											<td>
 
 												<div>
-													<input type="text" name='{{p.transport[$index].transportName}}' ng-model="p.transport[$index].transportName" readonly class="form-control" value="{{datas.transportName}}" />
+													<input type="text"  ng-model="p.transports[($index)].transportName" readonly class="form-control" />
 												</div>
 											</td>
 											<td>
 												<div>
-													<input type="text" name='{{p.transport[$index].capacity}}' ng-model="p.transport[$index].capacity" readonly class="form-control" value="{{datas.capacity}}" />
+													<input type="text" ng-model="p.transports[($index)].capacity" readonly class="form-control"  />
 												</div>
 
 											</td>
 											
-											<td><img src="/assets/img/del.png" width="20px" height="20px" onclick="removeItem($index,datas.transportId)"  style="cursor:pointer" />
+											<td><img src="/assets/img/del.png" width="20px" height="20px" onclick="removeItem($index,datas.transportCode)"  style="cursor:pointer" />
 												</td>
 
 										</tr>
@@ -439,7 +440,7 @@
 						style="width: 100%;">
 						<thead>
 							<tr>
-								<th>Transport Id</th>
+								<th>Transport Code</th>
 								<th>Transport No</th>
 								
 								<th>Transport Name</th>
@@ -452,7 +453,7 @@
 						<tbody>
 						
 							<tr ng-repeat="datas in $data | filter : keyword">
-								<td>{{datas.transportId}}</td>
+								<td>{{datas.transportCode}}</td>
 								<td>{{datas.transportNo}}</td>
 								
 								<td><textarea cols="34" rows="1">{{datas.transportName}}</textarea></td>
