@@ -25,74 +25,62 @@ import com.ets.csm.util.DateUtility;
 @RequestMapping("/vendorctrl")
 public class VendorController {
 
-	
 	@Autowired
 	VendorService vendorService;
-	
+
 	@Autowired
 	UserService userService;
-	
 
 	@GetMapping("/vendorPageload")
-	public String vendorAdd()
-	{
+	public String vendorAdd() {
 		return "/module/user/vendoradd";
 	}
-	
+
 	@GetMapping("/vendorListPageload")
-	public String vendorlistShow()
-	{
+	public String vendorlistShow() {
 		return "/module/user/vendorlist";
 	}
-	
-	
+
 	@GetMapping("/vendorDocPageload")
-	public String vendorDocAdd()
-	{
+	public String vendorDocAdd() {
 		return "/module/user/vendordocadd";
 	}
-	
+
 	@GetMapping("/vendorDocListPageload")
-	public String vendorDoclistShow()
-	{
+	public String vendorDoclistShow() {
 		return "/module/user/vendordoclist";
 	}
-	
+
 	@PostMapping("/addVendorFormData")
 	public @ResponseBody void addVendorData(@RequestBody Vendor v) {
-		
+
 	}
-	
+
 	@PostMapping("/addVendor/{userName}")
 	public @ResponseBody void saveVendor(@RequestBody Vendor ven, @PathVariable String userName) {
 		User user = userService.getUserByUserName(userName);
 		ven.setUser(user);
 		vendorService.saveVendorData(ven);
-		
+
 	}
-	
+
 	@GetMapping("/getVendorDetails")
 	public @ResponseBody List getVendorList() {
-		
-		
+
 		return vendorService.getAllVendors();
 	}
+
 	@GetMapping("/getVendorDetailsByVendorid/{vendorid}")
 	public @ResponseBody Vendor getVendorDetailsByVendorid(@PathVariable int vendorid) {
-		
-		
+
 		return vendorService.getSupplyDetailsBySupplyid(vendorid);
 	}
-	
-	
-	
-	
+
 	@GetMapping("/getVendorCode")
-	public @ResponseBody Object getVendorCode()
-	{
-	    Object  code = vendorService.getAllVendors().size()+1;
+	public @ResponseBody Object getVendorCode() {
+		Object code = vendorService.getAllVendors().size() + 1;
 		return code;
-		
+
 	}
-	
+
 }

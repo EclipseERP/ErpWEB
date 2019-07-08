@@ -24,7 +24,7 @@
 									</div>									
 								</div>
 								
-								<div class="col-md-6">									
+								<!-- <div class="col-md-6">									
 									<div class="form-group">
 
 										<label for="af1">Transport No.</label>
@@ -32,17 +32,17 @@
 										<label for="af1">Destination</label>
 										<input type="text"  class="form-control" ng-model="transport.destination" name="destination" placeholder="Destination">
 									</div>									
-								</div>
+								</div> -->
 								
 								
 								<div class="col-md-6">
 								<div class="form-group">
 									<label for="af2">Transport Name </label> 
 			                            <input  ng-pattern="[a-zA-Z]+" type="text" class="form-control" id="transport_Name"  name="transport_Name" required  ng-model="transport.transport_Name" placeholder="Transport Name" /> 									
-										<span style="color:red" ng-show="form.transport_Name.$error.required 
+									<!-- 	<span style="color:red" ng-show="form.transport_Name.$error.required 
                     && form.transportName.$dirty">Name is required</span>
                     <span style="color:red" ng-show="form.transport_Name.$error.valid 
-                    && form.transportName.$dirty">Name is invalid</span> 
+                    && form.transportName.$dirty">Name is invalid</span>  -->
 									
 								</div>
 								</div>
@@ -51,7 +51,11 @@
 								<div class="form-group">
 						<label for="payementRecievedDate">Capacity (Ton)</label> 
 										<input type="number" class="form-control" id="capacity"  name="capacity"  required ng-model="transport.capacity" placeholder="capacity" />
+</div>
+</div>
 
+<div class="col-md-6">
+								<div class="form-group">
 									<label for="payementRecievedDate">Truck No.</label> 
 										<input type="text" class="form-control" id="truckNo"  name="truckNo"  required ng-model="transport.truckNo" placeholder="Truck No" />
 									<span style="color:red" ng-show="form.capacity.$error.required 

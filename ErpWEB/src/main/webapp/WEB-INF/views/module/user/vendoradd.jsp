@@ -102,7 +102,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="af9">Vendor Code </label> <input type="text"
-										value="{{vendorCode}}" class="form-control" id="af9"
+										value="{{vendorCode}}" class="form-control" id="vCode"
 										placeholder="">
 								</div>
 							</div>
@@ -144,7 +144,7 @@
 						</div>
 					</div>
 					<div class="box-footer" align="right">
-						<button type="submit" ng-click="vendorDetailsADD(ven)"
+						<button type="submit" 
 							class="btn btn-primary pad40L pad40R mrg5L">Submit</button>
 					</div>
 				</div>

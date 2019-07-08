@@ -493,6 +493,9 @@ app
 					$scope.vendorAdd = function(ven) {
 						console.log("Vendor Data...", ven);
 						console.log("Data...", $scope.currentUserName);
+						var v=$("#vCode").val();
+						console.log("vdata",v);
+						$scope.ven.vendorCode=v;
 						$http.post('/vendorctrl/addVendor/'+ $scope.currentUserName, ven).success(function(data) {
 								}, function myError(response) {
 									alert("Sorry, Some technical error occur");

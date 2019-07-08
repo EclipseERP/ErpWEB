@@ -28,7 +28,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="transport")
-public class Transport implements Serializable{
+public class Transport{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="transport_id")
